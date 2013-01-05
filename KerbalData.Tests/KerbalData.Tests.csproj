@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E8461C3-23D1-439B-8F97-E4031AAAAA70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KerbalData.Tests</RootNamespace>
+    <AssemblyName>KerbalData.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DiffPlex">
+      <HintPath>..\..\..\..\..\..\dev\lib\DiffPlex-1.2.0\Net40\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\KSPEditor\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="CompareObjects.cs" />
+    <Compile Include="KerbalDataToJsonTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KerbalData\KerbalData.csproj">
+      <Project>{23bf8f66-05a3-4d84-b632-f08fd63bcf7b}</Project>
+      <Name>KerbalData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Saves\C_Orbit101.sfs" />
+    <None Include="Data\Saves\D_MunFlight1.sfs" />
+    <None Include="Data\Saves\EVA in Kerbin Orbit.sfs" />
+    <None Include="Data\Saves\Impending Impact.sfs" />
+    <None Include="Data\Saves\Mun Orbit.sfs" />
+    <None Include="Data\Saves\SimpleSaveWMods.sfs" />
+    <None Include="Data\Saves\SimpleSaveWModsQuickSave.sfs" />
+    <None Include="Data\Ships\BuiltIn\SPH\Aeris 3A.craft" />
+    <None Include="Data\Ships\BuiltIn\SPH\Aeris 4A.craft" />
+    <None Include="Data\Ships\BuiltIn\SPH\Albatross 3.craft" />
+    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk1.craft" />
+    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk3.craft" />
+    <None Include="Data\Ships\BuiltIn\SPH\Rocket-power VTOL.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Ion-Powered Space Probe.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Kerbal X.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\MechJeb Pod 2.0 Kit.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Orbiter 1A.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Space Station Core.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Super-Heavy Lander.craft" />
+    <None Include="Data\Ships\BuiltIn\VAB\Two-Stage Lander.craft" />
+    <None Include="Data\Ships\Custom\SPH\Auto-Saved Ship.craft" />
+    <None Include="Data\Ships\Custom\SPH\Carrie Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Carrier Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Drone Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Goose Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Goose Mk1_2.craft" />
+    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4-2.craft" />
+    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4.craft" />
+    <None Include="Data\Ships\Custom\SPH\gOOSE mK2.craft" />
+    <None Include="Data\Ships\Custom\SPH\Hopper Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Ion Observer.craft" />
+    <None Include="Data\Ships\Custom\SPH\Rover Test Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Solar Cruiser Mk1.craft" />
+    <None Include="Data\Ships\Custom\SPH\Untitled Space Craft.craft" />
+    <None Include="Data\Ships\Custom\VAB\Auto-Saved Ship.craft" />
+    <None Include="Data\Ships\Custom\VAB\GeoSync Relay Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Intersystem Probe Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Mid-Range Relay Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Multi-Sat Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Mun Rover Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.5.craft" />
+    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Munar Probe Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\SatNav Mapper Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\System Probe Test Mk1.craft" />
+    <None Include="Data\Ships\Custom\VAB\Test Rover 1.craft" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Saves\KspPersistentSfswMods.sfs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Config\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <TestData Include="Data\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(TestData)" DestinationFiles="@(TestData->'$(OutputPath)Data\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+  <Target Name="AfterClean">
+    <RemoveDir Directories="$(OutputPath)" />
+    <MakeDir Directories="$(OutputPath)" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+
+  -->
+</Project>

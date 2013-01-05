@@ -1,0 +1,3591 @@
+ship = Ravenspear Mk3
+version = 0.18.0
+type = SPH
+PART
+{
+	part = Mark1Cockpit_4292344604
+	partName = CommandPod
+	pos = -0.2540185,13.57023,4.405811
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 0
+	sqor = 2
+	attm = 0
+	link = SmallGearBay_4292344554
+	link = mk2SpacePlaneAdapter_4292344386
+	link = R8winglet_4292341674
+	link = R8winglet_4292341638
+	attN = bottom,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+		MakeReference
+		{
+			active = True
+			guiActive = True
+			guiIcon = Control From Here
+			guiName = Control From Here
+			category = Control From Here
+			guiActiveUnfocused = False
+			unfocusedRange = 2
+			externalToEVAOnly = True
+		}
+		RenameVessel
+		{
+			active = True
+			guiActive = True
+			guiIcon = Rename Vessel
+			guiName = Rename Vessel
+			category = Rename Vessel
+			guiActiveUnfocused = False
+			unfocusedRange = 2
+			externalToEVAOnly = True
+		}
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleCommand
+		isEnabled = True
+		controlSrcStatusText = 
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4292344554
+	partName = Part
+	pos = -0.2540184,12.95801,5.12488
+	rot = -8.573081E-08,0.9936191,-0.1127891,1.280693E-10
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 1
+	sqor = 2
+	attm = 1
+	srfN = srfAttach,Mark1Cockpit_4292344604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = mk2SpacePlaneAdapter_4292344386
+	partName = Part
+	pos = -0.2540185,13.57023,3.18706
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 2
+	sqor = 2
+	attm = 0
+	link = linearRcs_4292344170
+	link = linearRcs_4292344208
+	link = mk2Fuselage_4292344132
+	link = linearRcs_4292344246
+	link = linearRcs_4292344284
+	link = linearRcs_4292344322
+	link = linearRcs_4292344360
+	link = telescopicLadder_4292343408
+	attN = top,Mark1Cockpit_4292344604
+	attN = bottom,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292344360
+	partName = Part
+	pos = -0.896058,13.57023,4.027537
+	rot = -0.7071068,0.7071068,0,0
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 0
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292344322
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344322
+	partName = Part
+	pos = 0.3880211,13.57023,4.027537
+	rot = 0.7071069,0.7071068,0,0
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 1
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292344360
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344284
+	partName = Part
+	pos = -0.2192945,12.92838,3.957201
+	rot = 0.9999965,0.002691826,-3.292723E-10,-2.528811E-07
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 2
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344246
+	partName = Part
+	pos = -0.2540185,14.21625,4.020687
+	rot = -4.371141E-08,1,2.528811E-07,-6.517593E-10
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 3
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344208
+	partName = Part
+	pos = -0.2483672,14.08389,3.535746
+	rot = -0.00269188,0.9999965,2.528811E-07,-3.292723E-10
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 3
+	sqor = 2
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344170
+	partName = Part
+	pos = -0.2229372,13.05676,3.827117
+	rot = 0.9999965,0.002691797,-3.292723E-10,-2.528811E-07
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 4
+	sqor = 2
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = mk2Fuselage_4292344132
+	partName = Part
+	pos = -0.2540185,13.57023,0.3057966
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 5
+	sqor = 2
+	attm = 0
+	link = linearRcs_4292343988
+	link = linearRcs_4292344026
+	link = mk2Fuselage_4292343950
+	link = structuralWing_4292343436
+	link = structuralWing_4292343464
+	link = linearRcs_4292344064
+	link = linearRcs_4292344102
+	attN = top,mk2SpacePlaneAdapter_4292344386
+	attN = bottom,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292344102
+	partName = Part
+	pos = -1.453989,13.57023,2.250129
+	rot = -0.5,0.5,0.5000001,-0.5000001
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 4
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292344064
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344064
+	partName = Part
+	pos = 0.9459515,13.57023,2.250129
+	rot = 0.5000001,0.5,0.5000001,0.5000001
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 5
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292344102
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292344026
+	partName = Part
+	pos = 0.7151197,13.56977,1.741199
+	rot = 0.7071069,0.7071068,6.322028E-08,-4.214685E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 6
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343988
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343988
+	partName = Part
+	pos = -1.223157,13.56977,1.741199
+	rot = -0.7071069,0.7071068,6.322028E-08,4.214685E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 7
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292344026
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = mk2Fuselage_4292343950
+	partName = Part
+	pos = -0.2540185,13.57023,-3.561722
+	rot = 0.7071068,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 8
+	sqor = 2
+	attm = 0
+	link = linearRcs_4292343502
+	link = linearRcs_4292343540
+	link = linearRcs_4292343578
+	link = linearRcs_4292343616
+	link = linearRcs_4292343654
+	link = linearRcs_4292343692
+	link = linearRcs_4292343730
+	link = linearRcs_4292343768
+	link = linearRcs_4292343806
+	link = linearRcs_4292343844
+	link = linearRcs_4292343882
+	link = linearRcs_4292343920
+	link = structuralWing_4292343190
+	link = structuralWing_4292343162
+	link = noseCone_4292341374
+	link = fuelLine_4292341346
+	link = fuelLine_4292341266
+	attN = top,mk2Fuselage_4292344132
+	attN = bottom,noseCone_4292341374
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292343920
+	partName = Part
+	pos = -1.32071,13.57023,-5.506047
+	rot = 0.4999998,-0.5000003,0.5000003,-0.4999998
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 6
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292343882
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343882
+	partName = Part
+	pos = 0.8126732,13.57023,-5.506047
+	rot = 0.5,0.5000002,-0.5000002,-0.4999999
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 7
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292343920
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343844
+	partName = Part
+	pos = 0.9608447,13.57023,-5.365738
+	rot = -0.7071069,-0.7071068,0,0
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 8
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292343806
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343806
+	partName = Part
+	pos = -1.468882,13.57023,-5.365738
+	rot = 0.707107,-0.7071066,0,0
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 9
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292343844
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343768
+	partName = Part
+	pos = -0.2540184,12.94246,-5.294854
+	rot = -1,-8.742285E-08,-2.328818E-08,2.528811E-07
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 10
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343730
+	partName = Part
+	pos = -0.2540186,14.45909,-5.358317
+	rot = 1.192488E-08,-1,-2.528811E-07,2.935449E-09
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 11
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343692
+	partName = Part
+	pos = -0.9037259,13.46527,-5.117182
+	rot = 0.7071068,0,0,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 9
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343654
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343654
+	partName = Part
+	pos = 0.3956889,13.46527,-5.117182
+	rot = -0.7071069,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 10
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343692
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343616
+	partName = Part
+	pos = -0.9156286,13.72804,-5.117182
+	rot = 0.7071068,0,0,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 11
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343578
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343578
+	partName = Part
+	pos = 0.4075916,13.72804,-5.117182
+	rot = -0.7071069,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 12
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343616
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343540
+	partName = Part
+	pos = -1.096093,13.56491,-5.117182
+	rot = 0.7071068,0,0,-0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 13
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343502
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343502
+	partName = Part
+	pos = 0.5880559,13.56491,-5.117182
+	rot = -0.7071069,0,0,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 14
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343540
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = structuralWing_4292343464
+	partName = Winglet
+	pos = 0.9649044,13.57023,0.4716411
+	rot = -5.960465E-08,-0.7071068,-0.7071068,-5.960465E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 15
+	sqor = 2
+	attm = 1
+	sym = structuralWing_4292343436
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralWing_4292343436
+	partName = Winglet
+	pos = -1.472941,13.57023,0.4716411
+	rot = -0.7071069,-9.051328E-08,-9.051326E-08,-0.7071067
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 16
+	sqor = 2
+	attm = 1
+	sym = structuralWing_4292343464
+	srfN = srfAttach,mk2Fuselage_4292344132
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = telescopicLadder_4292343408
+	partName = Part
+	pos = 0.3909161,13.57023,3.92507
+	rot = -1.264406E-07,-1,0,-2.980239E-08
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 13
+	sqor = -1
+	attm = 1
+	srfN = srfAttach,mk2SpacePlaneAdapter_4292344386
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = RetractableLadder
+		isEnabled = True
+		StateName = Retracted
+		EVENTS
+		{
+			Extend
+			{
+				active = True
+				guiActive = True
+				guiIcon = Extend Ladder
+				guiName = Extend Ladder
+				category = Extend Ladder
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+			Retract
+			{
+				active = True
+				guiActive = True
+				guiIcon = Retract Ladder
+				guiName = Retract Ladder
+				category = Retract Ladder
+				guiActiveUnfocused = True
+				unfocusedRange = 4
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ExtendAction
+			{
+				actionGroup = None
+			}
+			RetractAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = structuralWing_4292343190
+	partName = Winglet
+	pos = 0.9574829,13.57023,-3.070939
+	rot = 5.198206E-08,0.7071068,-0.7071068,-9.835211E-09
+	attRot = 0,-0.9999999,5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 17
+	sqor = 2
+	attm = 1
+	link = structuralWing_4292343134
+	sym = structuralWing_4292343162
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralWing_4292343162
+	partName = Winglet
+	pos = -1.46552,13.57023,-3.070939
+	rot = -0.7071068,2.107343E-08,2.107343E-08,0.7071068
+	attRot = 0,0.9999999,-5.960464E-08,-1.776357E-15
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 18
+	sqor = 2
+	attm = 1
+	link = structuralWing_4292343106
+	sym = structuralWing_4292343190
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralWing_4292343134
+	partName = Winglet
+	pos = 1.975539,13.55741,-2.871761
+	rot = 0.2236879,0.6991714,0.6715844,-0.1004863
+	attRot = -0.08715574,5.928006E-08,0.9961947,-1.117557E-09
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 19
+	sqor = 2
+	attm = 1
+	link = MK1Fuselage_4292343078
+	link = smallCtrlSrf_4292342186
+	link = smallCtrlSrf_4292342098
+	sym = structuralWing_4292343106
+	srfN = srfAttach,structuralWing_4292343190
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = structuralWing_4292343106
+	partName = Winglet
+	pos = -2.483576,13.55741,-2.871761
+	rot = -0.6715844,0.1004863,-0.2236879,-0.6991715
+	attRot = 0.08715574,-5.928006E-08,-0.9961947,-1.117557E-09
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 20
+	sqor = 2
+	attm = 1
+	link = MK1Fuselage_4292342782
+	link = smallCtrlSrf_4292342142
+	link = smallCtrlSrf_4292342054
+	sym = structuralWing_4292343134
+	srfN = srfAttach,structuralWing_4292343162
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = MK1Fuselage_4292343078
+	partName = Part
+	pos = 3.417131,13.29072,-4.06308
+	rot = 0.5386184,0.4549855,0.4638288,0.5364153
+	attRot = 0,2.599919E-09,0.04361939,0.9990482
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 21
+	sqor = 2
+	attm = 1
+	link = linearRcs_4292342972
+	link = linearRcs_4292343010
+	link = linearRcs_4292343048
+	link = turboFanEngine_4292342868
+	link = MK1Fuselage_4292342934
+	link = R8winglet_4292342904
+	link = deltaWing_4292342486
+	link = SmallGearBay_4292341842
+	sym = MK1Fuselage_4292342782
+	srfN = srfAttach,structuralWing_4292343134
+	attN = top,MK1Fuselage_4292342934
+	attN = bottom,turboFanEngine_4292342868
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292343048
+	partName = Part
+	pos = 3.879905,13.11994,-4.639647
+	rot = 0.7601636,0.6497002,0.006253265,-0.001558296
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 22
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292342752
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292343010
+	partName = Part
+	pos = 3.392807,12.81511,-4.65604
+	rot = 0.9969242,-0.07810905,0.003320097,-0.005523261
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 23
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292342714
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292342972
+	partName = Part
+	pos = 3.490921,13.7713,-4.564087
+	rot = 0.07810915,0.9969242,0.005523345,0.003320171
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 24
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292342676
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = MK1Fuselage_4292342934
+	partName = Part
+	pos = 3.403101,13.27104,-2.188241
+	rot = 0.7088377,-0.05757887,-0.05288366,0.7010261
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 25
+	sqor = 2
+	attm = 0
+	link = RCSFuelTank_4292341602
+	sym = MK1Fuselage_4292342638
+	srfN = srfAttach,mk2Fuselage_4292343950
+	attN = top,RCSFuelTank_4292341602
+	attN = bottom,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = R8winglet_4292342904
+	partName = ControlSurface
+	pos = 3.01114,14.36669,-4.744116
+	rot = -0.5874295,0.400378,0.4002174,-0.5783169
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 29
+	sqor = 2
+	attm = 1
+	sym = R8winglet_4292342608
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = turboFanEngine_4292342868
+	partName = Part
+	pos = 3.434793,13.31549,-6.422881
+	rot = 0.7088377,-0.05757887,-0.05288366,0.7010261
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 0
+	sqor = 0
+	attm = 0
+	sym = turboFanEngine_4292342572
+	attN = top,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = MK1Fuselage_4292342782
+	partName = Part
+	pos = -3.925165,13.29072,-4.06308
+	rot = 0.5386184,-0.4549856,-0.4638289,0.5364154
+	attRot = 0,-2.599919E-09,-0.04361939,0.9990482
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 31
+	sqor = 2
+	attm = 1
+	link = linearRcs_4292342676
+	link = linearRcs_4292342714
+	link = linearRcs_4292342752
+	link = turboFanEngine_4292342572
+	link = MK1Fuselage_4292342638
+	link = R8winglet_4292342608
+	link = deltaWing_4292342336
+	link = SmallGearBay_4292342010
+	sym = MK1Fuselage_4292343078
+	srfN = srfAttach,structuralWing_4292343106
+	attN = top,MK1Fuselage_4292342638
+	attN = bottom,turboFanEngine_4292342572
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292342752
+	partName = Part
+	pos = -4.387939,13.11994,-4.639647
+	rot = 0.7601637,-0.6497,-0.00625335,-0.00155838
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 32
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343048
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292342714
+	partName = Part
+	pos = -3.900841,12.81511,-4.656041
+	rot = 0.9969242,0.07810925,-0.003320245,-0.005523134
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 33
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292343010
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292342676
+	partName = Part
+	pos = -3.998955,13.7713,-4.564089
+	rot = -0.07810925,0.9969242,0.005523134,-0.003320245
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 34
+	sqor = 2
+	attm = 1
+	sym = linearRcs_4292342972
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = MK1Fuselage_4292342638
+	partName = Part
+	pos = -3.911134,13.27104,-2.188241
+	rot = 0.7088373,0.05757919,0.0528837,0.7010264
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 35
+	sqor = 2
+	attm = 0
+	link = RCSFuelTank_4292341520
+	sym = MK1Fuselage_4292342934
+	srfN = srfAttach,mk2Fuselage_4292343950
+	attN = top,RCSFuelTank_4292341520
+	attN = bottom,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = R8winglet_4292342608
+	partName = ControlSurface
+	pos = -3.519174,14.36669,-4.744116
+	rot = -0.4002174,0.578317,0.5874293,-0.4003783
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 39
+	sqor = 2
+	attm = 1
+	sym = R8winglet_4292342904
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = turboFanEngine_4292342572
+	partName = Part
+	pos = -3.942825,13.31549,-6.422887
+	rot = 0.7088373,0.05757919,0.0528837,0.7010264
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 1
+	sqor = 0
+	attm = 0
+	sym = turboFanEngine_4292342868
+	attN = top,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleEngines
+		isEnabled = True
+		EngineIgnited = False
+		engineShutdown = False
+		currentThrottle = 0
+		flameout = False
+		staged = False
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Engine
+				guiName = Activate Engine
+				category = Activate Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = False
+				guiActive = True
+				guiIcon = Shutdown Engine
+				guiName = Shutdown Engine
+				category = Shutdown Engine
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAnimateHeat
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleGimbal
+		isEnabled = True
+		EVENTS
+		{
+			LockGimbal
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lock Gimbal
+				guiName = Lock Gimbal
+				category = Lock Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			FreeGimbal
+			{
+				active = False
+				guiActive = True
+				guiIcon = Free Gimbal
+				guiName = Free Gimbal
+				category = Free Gimbal
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleAlternator
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = deltaWing_4292342486
+	partName = Winglet
+	pos = 4.022884,13.27714,-4.056273
+	rot = -0.04008981,0.7025441,0.7096763,-0.03441586
+	attRot = -1.879424E-10,0.1305262,-5.654327E-09,0.9914449
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 41
+	sqor = 2
+	attm = 1
+	link = StandardCtrlSrf_4292342382
+	link = linearRcs_4292342420
+	link = linearRcs_4292342458
+	sym = deltaWing_4292342336
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292342458
+	partName = Part
+	pos = 4.646737,13.2722,-2.538776
+	rot = 0.9985907,0.052683,0.004012017,-0.005042829
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 14
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292342308
+	srfN = srfAttach,deltaWing_4292342486
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292342420
+	partName = Part
+	pos = 4.566468,13.37522,-2.436611
+	rot = -0.05268318,0.9985908,0.005042913,0.004012093
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 15
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292342270
+	srfN = srfAttach,deltaWing_4292342486
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = StandardCtrlSrf_4292342382
+	partName = ControlSurface
+	pos = 5.8125,13.47529,-5.079527
+	rot = -0.04757101,0.702078,0.7100018,-0.02685883
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 42
+	sqor = 2
+	attm = 1
+	sym = StandardCtrlSrf_4292342232
+	srfN = srfAttach,deltaWing_4292342486
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = deltaWing_4292342336
+	partName = Winglet
+	pos = -4.530919,13.27714,-4.056273
+	rot = 0.7096762,-0.03441573,-0.04008981,0.7025444
+	attRot = 1.879424E-10,-0.1305262,5.654327E-09,0.9914449
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 43
+	sqor = 2
+	attm = 1
+	link = StandardCtrlSrf_4292342232
+	link = linearRcs_4292342270
+	link = linearRcs_4292342308
+	sym = deltaWing_4292342486
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = linearRcs_4292342308
+	partName = Part
+	pos = -5.154768,13.2722,-2.538781
+	rot = -0.9985908,0.05268306,0.004012091,0.005042871
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 16
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292342458
+	srfN = srfAttach,deltaWing_4292342336
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = linearRcs_4292342270
+	partName = Part
+	pos = -5.074502,13.37522,-2.436613
+	rot = -0.05268306,-0.9985908,-0.005042871,0.004012091
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 17
+	sqor = -1
+	attm = 1
+	sym = linearRcs_4292342420
+	srfN = srfAttach,deltaWing_4292342336
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleRCS
+		isEnabled = True
+		isEnabled = True
+		EVENTS
+		{
+			Disable
+			{
+				active = True
+				guiActive = True
+				guiIcon = Disable RCS Port
+				guiName = Disable RCS Port
+				category = Disable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Enable
+			{
+				active = False
+				guiActive = True
+				guiIcon = Enable RCS Port
+				guiName = Enable RCS Port
+				category = Enable RCS Port
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = StandardCtrlSrf_4292342232
+	partName = ControlSurface
+	pos = -6.320529,13.47529,-5.079527
+	rot = -0.04757104,-0.702078,-0.7100019,-0.02685885
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 44
+	sqor = 2
+	attm = 1
+	sym = StandardCtrlSrf_4292342382
+	srfN = srfAttach,deltaWing_4292342336
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4292342186
+	partName = ControlSurface
+	pos = 1.528093,13.49554,-4.764693
+	rot = -0.6717178,-0.1047616,0.2247834,-0.6980636
+	attRot = 0.7071068,0,0,0.7071068
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 18
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4292342142
+	srfN = srfAttach,structuralWing_4292343134
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4292342142
+	partName = ControlSurface
+	pos = -2.03613,13.49554,-4.764695
+	rot = -0.2247834,0.6980639,0.6717176,0.1047617
+	attRot = -0.7071068,0,0,0.7071068
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 19
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4292342186
+	srfN = srfAttach,structuralWing_4292343106
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4292342098
+	partName = ControlSurface
+	pos = 2.306585,13.33881,-5.162602
+	rot = -0.6717085,-0.1047316,0.2248123,-0.6980678
+	attRot = 0.7071068,0,0,0.7071068
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 20
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4292342054
+	srfN = srfAttach,structuralWing_4292343134
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = smallCtrlSrf_4292342054
+	partName = ControlSurface
+	pos = -2.81462,13.33881,-5.162604
+	rot = -0.2248123,0.6980681,0.6717082,0.1047317
+	attRot = -0.7071068,0,0,0.7071068
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = 21
+	sqor = -1
+	attm = 1
+	sym = smallCtrlSrf_4292342098
+	srfN = srfAttach,structuralWing_4292343106
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = SmallGearBay_4292342010
+	partName = Part
+	pos = -3.862985,12.50441,-3.639126
+	rot = 0.00521327,0.003788982,-0.009075317,0.9999383
+	attRot = 1.051355E-10,-0.08715575,3.976846E-09,0.9961947
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 45
+	sqor = 2
+	attm = 1
+	sym = SmallGearBay_4292341842
+	srfN = srfAttach,MK1Fuselage_4292342782
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = SmallGearBay_4292341842
+	partName = Part
+	pos = 3.35495,12.50441,-3.639126
+	rot = 0.005213229,-0.003788839,0.009075353,0.9999382
+	attRot = -1.051355E-10,0.08715575,-3.976846E-09,0.9961947
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 46
+	sqor = 2
+	attm = 1
+	sym = SmallGearBay_4292342010
+	srfN = srfAttach,MK1Fuselage_4292343078
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleLandingGear
+		isEnabled = True
+		storedGearState = UNDEFINED
+		storedAnimationSpeed = 0
+		storedAnimationTime = 0
+		EVENTS
+		{
+			LowerLandingGear
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lower Gear
+				guiName = Lower Gear
+				category = Lower Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			RaiseLandingGear
+			{
+				active = True
+				guiActive = True
+				guiIcon = Raise Gear
+				guiName = Raise Gear
+				category = Raise Gear
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			OnAction
+			{
+				actionGroup = Gear
+			}
+			BrakesAction
+			{
+				actionGroup = Brakes
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleLight
+		isEnabled = True
+		isOn = False
+		EVENTS
+		{
+			LightsOff
+			{
+				active = False
+				guiActive = True
+				guiIcon = Lights Off
+				guiName = Lights Off
+				category = Lights Off
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			LightsOn
+			{
+				active = True
+				guiActive = True
+				guiIcon = Lights On
+				guiName = Lights On
+				category = Lights On
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleLightAction
+			{
+				actionGroup = Light
+			}
+			LightOnAction
+			{
+				actionGroup = None
+			}
+			LightOffAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = R8winglet_4292341674
+	partName = ControlSurface
+	pos = 0.7541161,13.43778,4.886421
+	rot = 0.01354332,0.7368196,0.6662949,0.1138625
+	attRot = -5.576188E-11,-1.322761E-09,-0.04361939,0.9990482
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 48
+	sqor = 2
+	attm = 1
+	sym = R8winglet_4292341638
+	srfN = srfAttach,Mark1Cockpit_4292344604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = R8winglet_4292341638
+	partName = ControlSurface
+	pos = -1.262153,13.43778,4.886421
+	rot = 0.6662949,0.1138625,0.01354333,0.7368196
+	attRot = 5.576188E-11,1.322761E-09,0.04361939,0.9990482
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 47
+	sqor = 2
+	attm = 1
+	sym = R8winglet_4292341674
+	srfN = srfAttach,Mark1Cockpit_4292344604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = RCSFuelTank_4292341602
+	partName = Part
+	pos = 3.393998,13.25827,-0.971787
+	rot = 0.7108027,-0.002645534,0.002645605,0.7033818
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 36
+	sqor = 2
+	attm = 0
+	link = noseConeAdapter_4292341576
+	sym = RCSFuelTank_4292341520
+	attN = top,noseConeAdapter_4292341576
+	attN = bottom,MK1Fuselage_4292342934
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = noseConeAdapter_4292341576
+	partName = Strut
+	pos = 3.387747,13.24951,-0.1365533
+	rot = 0.7084244,0.05230433,0.05815898,0.7014394
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 37
+	sqor = 2
+	attm = 0
+	link = standardNoseCone_4292341548
+	link = airScoop_4292341438
+	sym = noseConeAdapter_4292341494
+	attN = top,standardNoseCone_4292341548
+	attN = bottom01,RCSFuelTank_4292341602
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = standardNoseCone_4292341548
+	partName = Strut
+	pos = 3.381265,13.24041,0.7296262
+	rot = 0.7084244,0.0523043,0.0581589,0.7014394
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 38
+	sqor = 2
+	attm = 0
+	sym = standardNoseCone_4292341466
+	attN = bottom01,noseConeAdapter_4292341576
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = RCSFuelTank_4292341520
+	partName = Part
+	pos = -3.90203,13.25827,-0.9717884
+	rot = 0.7108026,0.002645557,-0.002645559,0.703382
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 36
+	sqor = 2
+	attm = 0
+	link = noseConeAdapter_4292341494
+	sym = RCSFuelTank_4292341602
+	attN = top,noseConeAdapter_4292341494
+	attN = bottom,MK1Fuselage_4292342638
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = noseConeAdapter_4292341494
+	partName = Strut
+	pos = -3.895779,13.24951,-0.1365528
+	rot = 0.7084242,-0.05230439,-0.05815898,0.7014396
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 37
+	sqor = 2
+	attm = 0
+	link = standardNoseCone_4292341466
+	link = airScoop_4292341406
+	sym = noseConeAdapter_4292341576
+	attN = top,standardNoseCone_4292341466
+	attN = bottom01,RCSFuelTank_4292341520
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = standardNoseCone_4292341466
+	partName = Strut
+	pos = -3.889297,13.24042,0.7296281
+	rot = 0.7084243,-0.05230434,-0.05815891,0.7014396
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 2
+	dstg = 0
+	sidx = 38
+	sqor = 2
+	attm = 0
+	sym = standardNoseCone_4292341548
+	attN = bottom01,noseConeAdapter_4292341494
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = airScoop_4292341438
+	partName = Part
+	pos = 2.510337,13.24951,-0.4351573
+	rot = 0.006481743,-0.0003423799,-0.7070774,0.7071068
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = airScoop_4292341406
+	srfN = srfAttach,noseConeAdapter_4292341576
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = airScoop_4292341406
+	partName = Part
+	pos = -3.018371,13.24951,-0.4351568
+	rot = -0.006481764,-0.0003424221,-0.7070774,-0.7071069
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	sym = airScoop_4292341438
+	srfN = srfAttach,noseConeAdapter_4292341494
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	MODULE
+	{
+		name = ModuleResourceIntake
+		isEnabled = True
+		intakeEnabled = True
+		EVENTS
+		{
+			Deactivate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Close Intake
+				guiName = Close Intake
+				category = Close Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Activate
+			{
+				active = False
+				guiActive = True
+				guiIcon = Open Intake
+				guiName = Open Intake
+				category = Open Intake
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+}
+PART
+{
+	part = noseCone_4292341374
+	partName = Strut
+	pos = -0.2540185,13.57023,-5.497974
+	rot = -0.7071068,0,0,0.7071068
+	attRot = -0.9999999,0,0,0
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 0
+	attN = bottom01,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = fuelLine_4292341346
+	partName = FuelLine
+	pos = 0.8139063,13.28408,-1.831791
+	rot = 0.09229613,0.7010573,0.7010576,0.09229581
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: MK1Fuselage_28; pos: -2.011299,0.1784815,0.3046702; dir: -0.984937,0.08740424,0.1491984; rot: -0.9504945,-0.003842012,0.3093443,-0.02918408
+	sym = fuelLine_4292341266
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
+PART
+{
+	part = fuelLine_4292341266
+	partName = FuelLine
+	pos = -1.321943,13.28408,-1.831791
+	rot = -0.7010576,-0.09229583,-0.09229613,-0.7010573
+	attRot = 0,0,0,1
+	mir = 1,1,1
+	istg = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	attm = 1
+	cData = tgt: MK1Fuselage_48; pos: -2.011295,0.1784815,-0.3046694; dir: -0.9849367,0.08740415,-0.1491984; rot: 0.9509422,-0.00542118,0.3093206,-0.0007134618
+	sym = fuelLine_4292341346
+	srfN = srfAttach,mk2Fuselage_4292343950
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+}
