@@ -7,10 +7,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-using DiffPlex;
-using DiffPlex.DiffBuilder;
-using DiffPlex.DiffBuilder.Model;
-
 using KerbalData;
 
 namespace KerbalData.Tests
@@ -19,48 +15,6 @@ namespace KerbalData.Tests
     public class KerbalDataToJsonTests
     {
         private KspToJson kspToJson = new KspToJson();
-
-        /*
-        [TestMethod]
-        public void ToJson()
-        {
-            var json = KerbalDatatoJson.ToJson(
-                TestHelpers.LoadFile(@"Data\Saves\KspPersistentSfswMods.sfs")).WriteToFile("testoutput_ksptojson_001.txt");
-
-            JObject jobj;
-
-            try
-            {
-                jobj = JObject.Parse(json);
-
-                Assert.IsNotNull(jobj["GAME"]);
-                Assert.IsNotNull(jobj["GAME"]["FLIGHTSTATE"]["VESSEL"]);
-
-                var vesselCount = 0;
-                foreach (var vessel in jobj["GAME"]["FLIGHTSTATE"]["VESSEL"])
-                {
-                    vesselCount++;
-                }
-
-                Assert.AreEqual(180, vesselCount); // TODO: Verifiy this with smaller and more varied data sets
-
-                // TODO: Additional testing
-            }
-            catch (Exception ex)
-            {
-                TestHelpers.WriteToConsole(ex);
-                Assert.Fail();
-            }
-        }
-
-        [TestMethod]
-        public void ToKSPData()
-        {
-            var kspData = KerbalDatatoJson.ToKspData(
-                TestHelpers.LoadFile(@"Data\Saves\KspPersistentSfswModsJson.txt")).WriteToFile("testoutput_jsontoksp_001.txt");
-
-            Assert.IsTrue(FilesAreEqual(@"Data\Saves\KspPersistentSfswMods.txt", "testoutput_jsontoksp_001.txt"));
-        }*/
 
         /// <summary>
         /// Processes all files under Data/ by reading the file into JSON.Net and then writing them back out to KSP data. Resulting files are compared

@@ -1,0 +1,7 @@
+bin/
+obj/
+*.user
+*.suo
+Data/Model/
+Data/Processing/
+Data/*.cs

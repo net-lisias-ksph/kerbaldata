@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData", "KerbalData\KerbalData.csproj", "{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData.Tests", "KerbalData.Tests\KerbalData.Tests.csproj", "{8E8461C3-23D1-439B-8F97-E4031AAAAA70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8461C3-23D1-439B-8F97-E4031AAAAA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8461C3-23D1-439B-8F97-E4031AAAAA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8461C3-23D1-439B-8F97-E4031AAAAA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8461C3-23D1-439B-8F97-E4031AAAAA70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
