@@ -30,8 +30,6 @@ namespace KerbalData
 
         public static JObject LoadFile(string path)
         {
-           path = Environment.CurrentDirectory + path;
-
             if (!File.Exists(path))
             {
                 throw new KerbalDataException("The KSP Data file cannot be found. Path: " + path);
@@ -51,6 +49,11 @@ namespace KerbalData
             }
 
             return jobj;
+        }
+
+        public static void SaveFile(string path, JObject obj)
+        {
+            Convert(obj).WriteToFile(path);
         }
 
         public static JObject Convert(string kspDataString)
