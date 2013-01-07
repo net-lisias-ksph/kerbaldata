@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeOrbit", "MakeOrbit\MakeOrbit.csproj", "{BD936CBC-46CF-4BCC-B1EA-51DE8C78C93E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearDebris", "ClearDebris\ClearDebris.csproj", "{2E69977B-EAEF-4DEA-8B56-2AAF0B57D786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{BD936CBC-46CF-4BCC-B1EA-51DE8C78C93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD936CBC-46CF-4BCC-B1EA-51DE8C78C93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD936CBC-46CF-4BCC-B1EA-51DE8C78C93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E69977B-EAEF-4DEA-8B56-2AAF0B57D786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E69977B-EAEF-4DEA-8B56-2AAF0B57D786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E69977B-EAEF-4DEA-8B56-2AAF0B57D786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E69977B-EAEF-4DEA-8B56-2AAF0B57D786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

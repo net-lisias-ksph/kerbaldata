@@ -12,6 +12,9 @@ namespace KerbalData
     using System.Linq;
     using System.Text;
 
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
@@ -33,5 +36,21 @@ namespace KerbalData
 
             return str;
         }
+
+        public static IList<dynamic> Where(this JArray array, Func<JObject, bool> predicate)
+        {
+            var list = array.ToObject<IList<JObject>>();
+
+            return list.Where(predicate).ToList<dynamic>();
+        }
+
+        public static IList<dynamic> Where(this JObject obj, Func<JObject, bool> predicate)
+        {
+            var list = obj.ToObject<IList<JObject>>();
+
+            return list.Where(predicate).ToList<dynamic>();
+        }
+
+        public static void DeleteItem(this JArray array, 
     }
 }
