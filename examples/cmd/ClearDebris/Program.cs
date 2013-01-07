@@ -20,35 +20,14 @@ namespace ClearDebris
             }
 
             var savePath = args[0];
-            //var vesselName = args[1];
-            //var refBody = args[2].Trim().ToUpper();
 
             var obj = KspData.LoadFile(savePath);
             KspData.SaveFile(savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"), obj); //Backup before editing. 
 
-            var vessels = obj["GAME"]["FLIGHTSTATE"]["VESSEL"];
-            var unknownVessels = vessels.Where(v => v["name"].ToString().ToUpper().Contains("UNKNOWN"));
+            var count = obj["GAME"]["FLIGHTSTATE"]["VESSEL"].RemoveChildren(o => o["type"].ToString() == "Unknown" || o["type"].ToString() == "Debris");
 
-            Console.WriteLine("Unknown Vessels");
-            Console.WriteLine("---------------");
+            Console.WriteLine("Removed " + count + " vessels.");
 
-            var removed = 0;
-            for (var i = 0; i < vessels.Count(); i++)
-            {
-                var vessel = vessels[i];
-                if (vessel["name"].ToString().ToUpper().Contains("UNKNOWN"))
-                {
-                    Console.WriteLine("Name: " + vessel["name"] + " Orbiting: " + vessel["ORBIT"]["REF"]);
-                    vessel.Remove();
-
-                    removed++;
-                }
-            }
-
-            Console.WriteLine("Removed " + removed + " craft from " + savePath);
-
-            unknownVessels = vessels.Where(v => v["name"].ToString().ToUpper().Contains("UNKNOWN"));
-            
             KspData.SaveFile("testdata.sfs", obj);
         }
     }

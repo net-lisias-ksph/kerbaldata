@@ -37,20 +37,33 @@ namespace KerbalData
             return str;
         }
 
-        public static IList<dynamic> Where(this JArray array, Func<JObject, bool> predicate)
+        public static int RemoveChildren(this JArray array, Func<JToken, bool> predicate)
         {
-            var list = array.ToObject<IList<JObject>>();
-
-            return list.Where(predicate).ToList<dynamic>();
+            return DeleteChildElements(array, predicate);
         }
 
-        public static IList<dynamic> Where(this JObject obj, Func<JObject, bool> predicate)
+        public static int RemoveChildren(this JObject jobj, Func<JToken, bool> predicate)
         {
-            var list = obj.ToObject<IList<JObject>>();
-
-            return list.Where(predicate).ToList<dynamic>();
+            return DeleteChildElements(jobj, predicate);
         }
 
-        public static void DeleteItem(this JArray array, 
+        public static int RemoveChildren(this JToken token, Func<JToken, bool> predicate)
+        {
+            return DeleteChildElements(token, predicate);
+        }
+
+        private static int DeleteChildElements(this JToken token, Func<JToken, bool> predicate)
+        {
+            var count = 0;
+            var objects = token.Where(predicate).ToList<dynamic>();
+            
+            for (var i = 0; i < objects.Count(); i++)
+            {
+                objects[i].Remove();
+                count++;
+            }
+
+            return count;
+        }
     }
 }

@@ -51,7 +51,6 @@
     <Compile Include="IKspFileConverter.cs" />
     <Compile Include="KerbalDataException.cs" />
     <Compile Include="KerbalDataExtension.cs" />
-    <Compile Include="KerbalDataObject.cs" />
     <Compile Include="KspData.cs" />
     <Compile Include="KspDataContext.cs" />
     <Compile Include="KspDataConverter.cs" />
