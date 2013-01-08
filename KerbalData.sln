@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData", "KerbalData\KerbalData.csproj", "{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData", "src\KerbalData\KerbalData.csproj", "{23BF8F66-05A3-4D84-B632-F08FD63BCF7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData.Tests", "KerbalData.Tests\KerbalData.Tests.csproj", "{8E8461C3-23D1-439B-8F97-E4031AAAAA70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerbalData.Tests", "src\KerbalData.Tests\KerbalData.Tests.csproj", "{8E8461C3-23D1-439B-8F97-E4031AAAAA70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
