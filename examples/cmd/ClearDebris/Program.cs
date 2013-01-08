@@ -13,22 +13,21 @@ namespace ClearDebris
     {
         static void Main(string[] args)
         {
-            if (args.Count() < 1)
+            if (args.Count() != 2)
             {
-                Console.WriteLine("The MakeOrbit command requires 3 parameters. The path of your save, the name of the flight you wish to orbit and the code of the reference body you wish to orbit");
+                Console.WriteLine("The ClearDebris command requires 2 parameters. The path of your KSP install, the name of your save game");
                 return;
             }
 
-            var savePath = args[0];
+            var kspPath = args[0].Trim();
+            var gameName = args[1].Trim();
 
-            var obj = KspData.LoadFile(savePath);
-            KspData.SaveFile(savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"), obj); //Backup before editing. 
+            var kdm = new KerbalDataManager(kspPath);
+            var gdm = kdm.Games[gameName];
 
-            var count = obj["GAME"]["FLIGHTSTATE"]["VESSEL"].RemoveChildren(o => o["type"].ToString() == "Unknown" || o["type"].ToString() == "Debris");
+            Console.WriteLine("Removed " + gdm.Vessels.ClearDebris() + " vessels.");
 
-            Console.WriteLine("Removed " + count + " vessels.");
-
-            KspData.SaveFile("testdata.sfs", obj);
+            gdm.SaveData();
         }
     }
 }

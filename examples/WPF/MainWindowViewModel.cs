@@ -28,15 +28,14 @@ namespace KSPEditor
         {
             try
             {
-                var jobj = KspData.LoadFile(@"\Data\Saves\KspPersistentSfswMods.sfs").ToObject<dynamic>();
+                var kdm = new KerbalDataManager();
 
-                vessels = jobj.GAME.FLIGHTSTATE.VESSEL.ToObject<IList<dynamic>>();
+                vessels = kdm.Games["testing"].Vessels.Data.ToObject<List<dynamic>>();
             }
             catch (Exception ex)
             {
                 var mess = ex.Message;
             }
-            
         }
 
         public IList<dynamic> Vessels {

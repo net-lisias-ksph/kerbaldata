@@ -85,55 +85,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Data\Saves\C_Orbit101.sfs" />
-    <None Include="Data\Saves\D_MunFlight1.sfs" />
-    <None Include="Data\Saves\EVA in Kerbin Orbit.sfs" />
-    <None Include="Data\Saves\Impending Impact.sfs" />
-    <None Include="Data\Saves\KspPersistentSfswMods.sfs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\Saves\Mun Orbit.sfs" />
-    <None Include="Data\Saves\SimpleSaveWMods.sfs" />
-    <None Include="Data\Saves\SimpleSaveWModsQuickSave.sfs" />
-    <None Include="Data\Ships\BuiltIn\SPH\Aeris 3A.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Aeris 4A.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Albatross 3.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk1.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk3.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Rocket-power VTOL.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Ion-Powered Space Probe.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Kerbal X.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\MechJeb Pod 2.0 Kit.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Orbiter 1A.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Space Station Core.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Super-Heavy Lander.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Two-Stage Lander.craft" />
-    <None Include="Data\Ships\Custom\SPH\Auto-Saved Ship.craft" />
-    <None Include="Data\Ships\Custom\SPH\Carrie Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Carrier Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Drone Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4-2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4.craft" />
-    <None Include="Data\Ships\Custom\SPH\gOOSE mK2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Hopper Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Ion Observer.craft" />
-    <None Include="Data\Ships\Custom\SPH\Rover Test Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Solar Cruiser Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Untitled Space Craft.craft" />
-    <None Include="Data\Ships\Custom\VAB\Auto-Saved Ship.craft" />
-    <None Include="Data\Ships\Custom\VAB\GeoSync Relay Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Intersystem Probe Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mid-Range Relay Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Multi-Sat Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Rover Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.5.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Munar Probe Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\SatNav Mapper Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\System Probe Test Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Test Rover 1.craft" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,9 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>

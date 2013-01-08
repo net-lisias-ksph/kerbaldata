@@ -13,21 +13,20 @@ namespace KerbalData.Apps.CommandLine.MakeOrbit
     {
         static void Main(string[] args)
         {
-            if (args.Count() < 3)
+            if (args.Count() < 4)
             {
                 Console.WriteLine("The MakeOrbit command requires 3 parameters. The path of your save, the name of the flight you wish to orbit and the code of the reference body you wish to orbit");
                 return;
             }
 
-            var savePath = args[0];
-            var vesselName = args[1];
-            var refBody = args[2].Trim().ToUpper();
+            var kspPath = args[0].Trim();
+            var gameName = args[1].Trim();
+            var vesselName = args[2].Trim();
+            var refBody = args[3].Trim().ToUpper();
 
-            var obj = KspData.LoadFile(savePath);
-            KspData.SaveFile(savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"), obj); //Backup before editing. 
-
-            var vessels = obj["GAME"]["FLIGHTSTATE"]["VESSEL"];
-            var vessel = vessels.Where(v => v["name"].ToString() == vesselName).FirstOrDefault();
+            var kdm = new KerbalDataManager(kspPath);
+            var gdm = kdm.Games[gameName];
+            var vessel = gdm.Vessels.Data.Where(v => v["name"].ToString() == vesselName).FirstOrDefault();
 
             var orbit = vessel["ORBIT"];
 
@@ -100,7 +99,7 @@ namespace KerbalData.Apps.CommandLine.MakeOrbit
                     orbit["REF"] = "13";
                     orbit["SMA"] = "117000";
                     break;
-                case "POL": 
+                case "POL":
                     orbit["REF"] = "14";
                     orbit["SMA"] = "145000";
                     break;
@@ -112,7 +111,7 @@ namespace KerbalData.Apps.CommandLine.MakeOrbit
                     orbit["REF"] = "16";
                     orbit["SMA"] = "310000";
                     break;
-                default: 
+                default:
                     {
                         int refVal;
                         if (!int.TryParse(refBody, out refVal))
@@ -128,11 +127,11 @@ namespace KerbalData.Apps.CommandLine.MakeOrbit
                     }
             }
 
-            orbit["SMA"] = args.Count() == 4 ? args[3] : orbit["SMA"];
+            orbit["SMA"] = args.Count() == 5 ? args[4] : orbit["SMA"];
 
             vessel["ORBIT"] = orbit;
 
-            KspData.SaveFile(savePath, obj);
+            gdm.SaveData();
         }
     }
 }

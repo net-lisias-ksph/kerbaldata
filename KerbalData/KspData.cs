@@ -51,7 +51,7 @@ namespace KerbalData
             return jobj;
         }
 
-        public static void SaveFile(string path, JObject obj)
+        public static void SaveFile(string path, JToken obj)
         {
             Convert(obj).WriteToFile(path);
         }
@@ -72,7 +72,7 @@ namespace KerbalData
             return jobj;
         }
 
-        public static string Convert(JObject jobj)
+        public static string Convert(JToken jobj)
         {
             return kspToJson.ToKspData(jobj.ToString());
         }
