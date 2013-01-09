@@ -13,7 +13,7 @@ namespace KerbalData
 using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// High level manager for a vessel list. Provides quick access properties and common operations for KSP vessel collections. Assumes data provided is in correct layout. 
     /// </summary>
     public class VesselListDataManager
     {
@@ -22,11 +22,17 @@ using Newtonsoft.Json.Linq;
         /// <summary>
         /// Initializes a new instance of the <see cref="VesselDataManager" /> class.
         /// </summary>	
+        /// <param name="vessels">vessel data collection to use</param>
         public VesselListDataManager(JToken vessels)
         {
             this.vessels = vessels as JArray;
         }
 
+        /// <summary>
+        /// Gets the vessel from the collection by index
+        /// </summary>
+        /// <param name="index">indext position to use</param>
+        /// <returns>vessel manager with loaded data</returns>
         public VesselDataManger this[int index]
         {
             get
@@ -35,6 +41,9 @@ using Newtonsoft.Json.Linq;
             }
         }
 
+        /// <summary>
+        /// Gets the JSON object for the manager
+        /// </summary>
         public JArray Data
         {
             get
@@ -43,11 +52,19 @@ using Newtonsoft.Json.Linq;
             }
         }
 
+        /// <summary>
+        /// Clear all debris from the vessel list
+        /// </summary>
+        /// <returns>number of debris removed</returns>
         public int ClearDebris()
         {
             return vessels.RemoveChildren(o => o["type"].ToString() == "Unknown" || o["type"].ToString() == "Debris");
         }
 
+        /// <summary>
+        /// Refuel resources on all craft in the list.
+        /// </summary>
+        /// <returns></returns>
         public int RefuelCraft()
         {
             var count = 0;

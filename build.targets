@@ -2,13 +2,10 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
 		DefaultTargets="Build"
 		ToolsVersion="4.0">
-		
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-	</PropertyGroup>
-		
-		
+	</PropertyGroup>	
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
@@ -18,22 +15,19 @@
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
-
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>pdbonly</DebugType>
 		<Optimize>true</Optimize>
-		<OutputPath>$(MSBuildThisFileDirectory)\target\bin\Debug\</OutputPath>
+		<OutputPath>$(MSBuildThisFileDirectory)\target\bin\Release\</OutputPath>
 		<DefineConstants>TRACE</DefineConstants>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
-	
 	<ItemGroup>
 		<CompileProjects Include="src/**/*.csproj" />
 	</ItemGroup>
-	
-  <Target Name="Build">
-    <MSBuild Projects="@(CompileProjects)" 
-		Properties="Configuration=$(Configuration);OutputPath=$(OutputPath)" />
-  </Target>		 
+	<Target Name="Build">
+		<MSBuild Projects="@(CompileProjects)" 
+			Properties="Configuration=$(Configuration);OutputPath=$(OutputPath)" />
+	</Target>		 
 </Project>

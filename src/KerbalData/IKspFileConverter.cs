@@ -13,10 +13,15 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// TODO: Interface Summary
+    /// Instances of this class are responsible for de-serialzing KSP data.
     /// </summary>
     public interface IKspFileConverter
     {
+        /// <summary>
+        /// Accepts stream of formatted data and de-serializes the data into the provided context.
+        /// </summary>
+        /// <param name="reader">data to de-serialize</param>
+        /// <param name="context">context instance to populate</param>
         void Parse(StreamReader reader, KspDataContext context);
     }
 }

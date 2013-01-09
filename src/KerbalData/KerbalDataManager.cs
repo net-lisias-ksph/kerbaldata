@@ -13,14 +13,14 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// Top Level manager class
+    /// Manager for all data in a particular game install. When provided with an install path of a valid KSP game this class will make availble and parse all save, craft, part and config files in KSP Data format
     /// </summary>
     public class KerbalDataManager
     {
         private string gamePath;
 
         private Dictionary<string, GameDataManager> games = new Dictionary<string,GameDataManager>(); // To cache loaded games in memory or to not load them?
-        private bool isGameDataLoaded = false;
+        private bool isGameDataLoaded = false; // Lazy loading
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalDataManager" /> class.
@@ -30,6 +30,9 @@ namespace KerbalData
             this.gamePath = gamePath;
         }
 
+        /// <summary>
+        /// Gets the save games available in this KSP installation
+        /// </summary>
         public IDictionary<string, GameDataManager> Games
         {
             get
@@ -39,6 +42,9 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Internal data init
+        /// </summary>
         private void InitGames()
         {
             if (!isGameDataLoaded)
@@ -55,6 +61,10 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Loads games found in subfolders. 
+        /// </summary>
+        /// <param name="dirInfo">directory to use</param>
         private void LoadGameSaves(DirectoryInfo dirInfo)
         {
             foreach (var saveDir in dirInfo.GetDirectories())

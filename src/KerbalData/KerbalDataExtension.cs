@@ -16,7 +16,7 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Extensions used and provided by KebralData
     /// </summary>
     public static class KerbalDataExtension
     {
@@ -37,16 +37,34 @@ namespace KerbalData
             return str;
         }
 
+        /// <summary>
+        /// Deletes children from the provided object
+        /// </summary>
+        /// <param name="array">object to run operation on</param>
+        /// <param name="predicate">data filter</param>
+        /// <returns>count of children removed that match the predicate</returns>
         public static int RemoveChildren(this JArray array, Func<JToken, bool> predicate)
         {
             return DeleteChildElements(array, predicate);
         }
 
+        /// <summary>
+        /// Deletes children from the provided object
+        /// </summary>
+        /// <param name="jobj">object to run operation on</param>
+        /// <param name="predicate">data filter</param>
+        /// <returns>count of children removed that match the predicate</returns>
         public static int RemoveChildren(this JObject jobj, Func<JToken, bool> predicate)
         {
             return DeleteChildElements(jobj, predicate);
         }
 
+        /// <summary>
+        /// Deletes children from the provided object
+        /// </summary>
+        /// <param name="token">object to run operation on</param>
+        /// <param name="predicate">data filter</param>
+        /// <returns>count of children removed that match the predicate</returns>
         public static int RemoveChildren(this JToken token, Func<JToken, bool> predicate)
         {
             return DeleteChildElements(token, predicate);

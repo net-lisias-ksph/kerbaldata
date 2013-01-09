@@ -13,7 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// High level manager for vessel object data. Wraps a provided JSON objeect and provides vessel releated quick access fields and methods for common operations. 
+    /// This class assumes the data it is created with matches the vessel layout for KSP data.
+    /// TODO: These implmnetation classes have the biggest chance of having major issues if the save format changes drasctilly even if the syntax changes.
+    /// Wrappers/converters for JOBjects may be required.
     /// </summary>
     public class VesselDataManger
     {
@@ -27,6 +30,9 @@ namespace KerbalData
             this.vessel = vessel as JObject;
         }
 
+        /// <summary>
+        /// Gets the Vessel data object
+        /// </summary>
         public JObject Data
         {
             get

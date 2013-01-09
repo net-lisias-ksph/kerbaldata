@@ -6,7 +6,8 @@
 
 
 // TODO: Real testing
-// I have never been a fan of TDD however do see value in proper unit testing though I tend to evolve them on a case-by-case basis. These tests are by no means proper unit testing, rather they are simple functional tests. 
+// I have never been a fan of TDD however do see value in proper unit testing though I tend to evolve them on a case-by-case basis.
+// These tests are by no means proper unit testing, rather they are simple functional tests. 
 namespace KerbalData.Tests
 {
     using System;
