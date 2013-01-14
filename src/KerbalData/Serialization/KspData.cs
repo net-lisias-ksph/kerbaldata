@@ -40,24 +40,53 @@ namespace KerbalData
         /// </summary>
         /// <param name="path">path to KSP data file</param>
         /// <returns>de-serialized JSON object containing KSP data</returns>
-        public static JObject LoadFile(string path)
+        public static JObject LoadKspFile(string path)
         {
             if (!File.Exists(path))
             {
                 throw new KerbalDataException("The KSP Data file cannot be found. Path: " + path);
             }
 
-            var file = File.Open(path, FileMode.Open);
+            JObject jobj;
+
+            using (var file = File.Open(path, FileMode.Open))
+            {
+                try
+                {
+                    jobj = JObject.Parse(kspToJson.ToJson(file));
+                }
+                catch (Exception ex)
+                {
+                    throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                }
+
+                file.Close();
+            }
+
+            return jobj;
+        }
+
+        public static JObject LoadJsonFile(string path)
+        {
+            if (!File.Exists(path))
+            {
+                throw new KerbalDataException("The KSP Data file cannot be found. Path: " + path);
+            }
 
             JObject jobj;
 
-            try
+            using (var file = File.Open(path, FileMode.Open))
             {
-                jobj = JObject.Parse(kspToJson.ToJson(file));
-            }
-            catch (Exception ex)
-            {
-                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                try
+                {
+                    jobj = JObject.Parse((new StreamReader(file)).ReadToEnd());
+                }
+                catch (Exception ex)
+                {
+                    throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                }
+
+                file.Close();
             }
 
             return jobj;

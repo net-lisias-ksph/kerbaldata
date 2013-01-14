@@ -32,6 +32,7 @@ namespace KerbalData
             {
                 file.Write(str);
                 file.Flush();
+                file.Close();
             }
 
             return str;
@@ -73,7 +74,7 @@ namespace KerbalData
         private static int DeleteChildElements(this JToken token, Func<JToken, bool> predicate)
         {
             var count = 0;
-            var objects = token.Where(predicate).ToList<dynamic>();
+            var objects = token.Where(predicate).ToList<JToken>();
             
             for (var i = 0; i < objects.Count(); i++)
             {
