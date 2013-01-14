@@ -39,16 +39,16 @@ namespace KerbalData
         public string Description { get; set; }
 
         [JsonProperty("Mode")]
-        public string Mode { get; set; }
+        public int Mode { get; set; }
 
         [JsonProperty("Status")]
-        public string Status { get; set; }
+        public int Status { get; set; }
 
         [JsonProperty("scene")]
-        public string Scene { get; set; }
+        public int Scene { get; set; }
 
         [JsonProperty("PARAMETERS")]
-        public IDictionary<string, JToken> Parameters { get; set; }
+        public GameParameters Parameters { get; set; }
 
         [JsonProperty("FLIGHTSTATE")]
         public FlightState FlightState { get; set; }

@@ -48,8 +48,11 @@
     <Compile Include="ActionGroups.cs" />
     <Compile Include="Body.cs" />
     <Compile Include="Crew.cs" />
+    <Compile Include="EditorGameParameters.cs" />
+    <Compile Include="FlightGameParameters.cs" />
     <Compile Include="FlightState.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameParameters.cs" />
     <Compile Include="IKerbalDataObject.cs" />
     <Compile Include="Serialization\IKspDataConverter.cs" />
     <Compile Include="Serialization\IKspFileConverter.cs" />
@@ -68,6 +71,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="SaveFile.cs" />
+    <Compile Include="SpaceCenterGameParameters.cs" />
+    <Compile Include="TrackingStationGameParameters.cs" />
     <Compile Include="UnMappedPropertiesConverter.cs" />
     <Compile Include="Vessel.cs" />
   </ItemGroup>

@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------
-// <copyright file="ActionGroups.cs" company="OpenSauceSolutions">
+// <copyright file="EditorGameParameters.cs" company="OpenSauceSolutions">
 // © 2013 OpenSauce Solutions
 // </copyright>
 // -----------------------------------------------------------------------
@@ -13,15 +13,15 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// ActionGroups assigned to the Vessel
+    /// TODO: Class Summary
     /// </summary>
-    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ActionGroups>))]
-    public class ActionGroups : KerbalDataObject
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<EditorGameParameters>))]
+    public class EditorGameParameters : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionGroups" /> class.
+        /// Initializes a new instance of the <see cref="EditorGameParameters" /> class.
         /// </summary>	
-        public ActionGroups()
+        public EditorGameParameters()
         {
         }
     }

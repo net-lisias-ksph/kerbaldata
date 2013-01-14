@@ -14,9 +14,8 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Container for flights, crew and key universe variables
     /// </summary>
-    /// 
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<FlightState>))]
     public class FlightState : KerbalDataObject
     {
@@ -27,11 +26,32 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the game version
+        /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
 
+        /// <summary>
+        /// Gets or sets the raw universe time
+        /// </summary>
         [JsonProperty("UT")]
         public decimal Ut { get; set; }
+
+        /// <summary>
+        /// Gets or sets the universe time translated into a standard .NET timespan. Value changes mapped to FlightState.Ut.
+        /// </summary>
+        public TimeSpan UniverseTime
+        {
+            get
+            {
+                return new TimeSpan((long)Ut * 1000000L);
+            }
+            set
+            {
+                Ut = value.Ticks / 1000000L;
+            }
+        }
 
         [JsonProperty("activeVessel")]
         public int ActiveVessel { get; set; }

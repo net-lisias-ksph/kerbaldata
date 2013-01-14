@@ -12,7 +12,7 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Provides list of bodies in the Kerbol system. 
     /// </summary>
     public enum Body
     {

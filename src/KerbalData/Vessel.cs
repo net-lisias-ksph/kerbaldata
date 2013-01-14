@@ -30,6 +30,81 @@ namespace KerbalData
 
         }
 
+        [JsonProperty("pid")]
+        public string Pid { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("sit")]
+        public string Situation { get; set; }
+
+        [JsonProperty("landed")]
+        public bool Landed { get; set; }
+
+        [JsonProperty("landedAt")]
+        public string LandedAt { get; set; }
+
+        [JsonProperty("splashed")]
+        public bool Splashed { get; set; }
+
+        [JsonProperty("met")]
+        public decimal Met { get; set; }
+
+        public TimeSpan MissionElapsedTime
+        {
+            get
+            {
+                return new TimeSpan((long)Met * 1000000L);
+            }
+            set
+            {
+                Met = value.Ticks / 1000000L;
+            }
+        }
+
+        [JsonProperty("lct")]
+        public decimal Lct { get; set; }
+
+        [JsonProperty("root")]
+        public int Root { get; set; }
+
+        [JsonProperty("lat")]
+        public decimal Latitude { get; set; }
+
+        [JsonProperty("lon")]
+        public decimal Longitude { get; set; }
+
+        [JsonProperty("alt")]
+        public decimal Altitude { get; set; }
+
+        [JsonProperty("hgt")]
+        public decimal Hgt { get; set; }
+
+        [JsonProperty("nrm")]
+        public decimal[] Nrm { get; set; }
+        
+        [JsonProperty("rot")]
+        public decimal[] Rot { get; set; }
+
+        [JsonProperty("CoM")]
+        public float[] Com { get; set; }
+
+        [JsonProperty("stg")]
+        public int Stage { get; set; }
+
+        [JsonProperty("prst")]
+        public bool Prst { get; set; }
+
+        [JsonProperty("eva")]
+        public bool Eva { get; set; }
+
+        [JsonProperty("ref")]
+        public string Ref { get; set; }
+
         [JsonProperty("ORBIT")]
         public Orbit Orbit { get; set; }
 

@@ -51,7 +51,7 @@ namespace KerbalData
 
         public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
-            return ReadJson(JObject.Load(reader), objectType, existingValue, serializer);
+            return BuildObject(objectType, JObject.Load(reader));
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -96,220 +96,218 @@ namespace KerbalData
             writer.WriteEndObject();
         }
 
-        private object ReadJson(JToken jobj, Type objectType, object existingValue, JsonSerializer serializer)// where T : class, IKerbalDataObject, new()
+        private object BuildObject(Type type, JToken value)
         {
-            if (!ValidType(objectType))
+            if (!ValidType(type))
             {
                 ThrowTypeException();
             }
 
-            var objProps = BuildRegisteredNames(objectType.GetProperties());
+            var objProps = BuildRegisteredNames(type.GetProperties());
 
-            var obj = objectType.GetConstructor(new Type[] { }).Invoke(new object[] { });
+            var obj = type.GetConstructor(new Type[] { }).Invoke(new object[] { });
 
-            foreach (var prop in objectType.GetProperties())
+            foreach (var prop in type.GetProperties())
             {
                 var name = GetJsonPropName(prop);
 
-                var jProp = ((JObject)jobj).Properties().Where(p => p.Name.Equals(name)).FirstOrDefault();
+                var jProp = ((JObject)value).Properties().Where(p => p.Name.Equals(name)).FirstOrDefault();
 
                 if (jProp != null)
                 {
-                    // Base Types
-                    if (prop.PropertyType.Equals(typeof(string)))
-                    {
-                        prop.SetValue(obj, jProp.Value.ToString());
-                    }
-                    else if (prop.PropertyType.Equals(typeof(int)))
-                    {
-                        int val;
-                        if (int.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(double)))
-                    {
-                        double val;
-                        if (double.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(decimal)))
-                    {
-                        decimal val;
-                        if (decimal.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(bool)))
-                    {
-                        bool val;
-                        if (bool.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(byte)))
-                    {
-                        byte val;
-                        if (byte.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(char)))
-                    {
-                        char val;
-                        if (char.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(DateTime)))
-                    {
-                        DateTime val;
-                        if (DateTime.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(long)))
-                    {
-                        long val;
-                        if (long.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(short)))
-                    {
-                        short val;
-                        if (short.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(Single)))
-                    {
-                        Single val;
-                        if (Single.TryParse(jProp.Value.ToString(), out val))
-                        {
-                            prop.SetValue(obj, val);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(JArray))) // JSON.NET Types
-                    {
-                        prop.SetValue(obj, jProp.Value.ToObject<JArray>());
-                    }
-                    else if (prop.PropertyType.Equals(typeof(JObject)))
-                    {
-                        prop.SetValue(obj, jProp.Value.ToObject<JObject>());
-                    }
-                    else if (prop.PropertyType.Equals(typeof(JToken)))
-                    {
-                        prop.SetValue(obj, jProp.Value.ToObject<JToken>());
-                    }
-                    else if (prop.PropertyType.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0) // KerbalData Types
-                    {
-                        prop.SetValue(obj, ReadJson(jProp.Value, prop.PropertyType, null, serializer));
-                    }
-                    else if (prop.PropertyType.Name.Contains("IDictionary")) // Supported Collections: IDictionary<string, supportedtype>, IList<supportedtype>, Array of any supported type
-                    {
-                        var dictObjArgType = prop.PropertyType.GetGenericArguments()[1];
-
-                        
-                        //var dictType = prop.PropertyType.MakeGenericType(new [] { typeof(string), dictObjArgType });
-
-                        var dictType = typeof(Dictionary<,>).MakeGenericType(new[] { typeof(string), dictObjArgType });
-
-                        var dict = dictType.GetConstructor(new Type[] { }).Invoke(new object[] { });
-
-                        if (dictObjArgType.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
-                        {
-                            foreach (JProperty jp in jProp.Value)
-                            {
-                                dictType.GetMethod("Add").Invoke(dict, new object[] { jp.Name, ReadJson(jp.Value, dictObjArgType, null, serializer) });
-                            }
-                        }
-                        else if (dictObjArgType.Equals(typeof(JToken)))
-                        {
-                            foreach (JProperty jp in jProp.Value)
-                            {
-                                dictType.GetMethod("Add").Invoke(dict, new object[] { jp.Name, jp.Value });
-                            }
-                        }
-
-                        prop.SetValue(obj, dict);
-                    }
-                    else if (prop.PropertyType.Name.Contains("IList"))
-                    {
-                        var garg = prop.PropertyType.GetGenericArguments()[0];
-                        var listType = typeof(List<>).MakeGenericType(garg);
-
-                        var list = listType.GetConstructor(new Type[] { }).Invoke(new object[] { });
-
-                        if (garg.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
-                        {
-                            if (jProp.Value.Type.Equals(JTokenType.Array))
-                            {
-                                foreach (var arObj in (JArray)jProp.Value)
-                                {
-                                    listType.GetMethod("Add").Invoke(list, new object[] { ReadJson(arObj, garg, null, serializer) });
-                                }
-                            }
-                            else
-                            {
-                                listType.GetMethod("Add").Invoke(list, new object[] { ReadJson(jProp.Value, garg, null, serializer) });
-                            }
-                        }
-                        else
-                        {
-                            if (jProp.Value.Type.Equals(JTokenType.Array))
-                            {
-                                foreach (var arObj in (JArray)jProp.Value)
-                                {
-                                    listType.GetMethod("Add").Invoke(list, new object[] { arObj });
-                                }
-                            }
-                            else
-                            {
-                                listType.GetMethod("Add").Invoke(list, new object[] { jProp.Value });
-                            }
-                        }
-
-                        prop.SetValue(obj, list);
-                    }
-                    else if (prop.PropertyType.IsArray)
-                    {
-                        var jarray = ((JArray)jProp.Value);
-                        var elementType = prop.PropertyType.GetElementType();
-
-                        var array = Array.CreateInstance(elementType, jarray.Count);
-
-                        for (var i = 0; i < jarray.Count; i++)
-                        {
-                            array.SetValue(ReadJson(jarray[i], elementType, null, serializer), i);
-                        }
-                    }
-                    else if (prop.PropertyType.Equals(typeof(object)))
-                    {
-                        prop.SetValue(obj, jProp.Value.ToObject<object>());
-                    }
+                    prop.SetValue(obj, ConvertToken(prop.PropertyType, jProp.Value));
                 }
             }
 
-            foreach (var pr in ((JObject)jobj).Properties())
+            return obj;
+        }
+
+        private object ConvertToken(Type type, JToken value)
+        {
+            // Base Types
+            if (type.Equals(typeof(string)))
             {
-                if (objProps.Where(p => p.Equals(pr.Name)).Count() == 0)
+                return value.ToString();
+            }
+            else if (type.Equals(typeof(int)))
+            {
+                int val;
+                if (int.TryParse(value.ToString(), out val))
                 {
-                    ((KerbalDataObject)obj).Add(pr.Name, pr.Value);
+                    return val;
                 }
             }
-            
-            return Convert.ChangeType(obj, objectType);
+            else if (type.Equals(typeof(double)))
+            {
+                double val;
+                if (double.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(decimal)))
+            {
+                decimal val;
+                if (decimal.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(bool)))
+            {
+                bool val;
+                if (bool.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(byte)))
+            {
+                byte val;
+                if (byte.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(char)))
+            {
+                char val;
+                if (char.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(DateTime)))
+            {
+                DateTime val;
+                if (DateTime.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(long)))
+            {
+                long val;
+                if (long.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(short)))
+            {
+                short val;
+                if (short.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(Single)))
+            {
+                Single val;
+                if (Single.TryParse(value.ToString(), out val))
+                {
+                    return val;
+                }
+            }
+            else if (type.Equals(typeof(JArray))) // JSON.NET Types
+            {
+                return value.ToObject<JArray>();
+            }
+            else if (type.Equals(typeof(JObject)))
+            {
+                return value.ToObject<JObject>();
+            }
+            else if (type.Equals(typeof(JToken)))
+            {
+                return value.ToObject<JToken>();
+            }
+            else if (type.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0) // KerbalData Types
+            {
+                return BuildObject(type, value);
+            }
+            else if (type.Name.Contains("IDictionary")) // Supported Collections: IDictionary<string, supportedtype>, IList<supportedtype>, Array of any supported type
+            {
+                var dictObjArgType = type.GetGenericArguments()[1];
+
+                var dictType = typeof(Dictionary<,>).MakeGenericType(new[] { typeof(string), dictObjArgType });
+
+                var dict = dictType.GetConstructor(new Type[] { }).Invoke(new object[] { });
+
+                if (dictObjArgType.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
+                {
+                    foreach (JProperty jp in value)
+                    {
+                        dictType.GetMethod("Add").Invoke(dict, new object[] { jp.Name, BuildObject(dictObjArgType, jp.Value) });
+                    }
+                }
+                else if (dictObjArgType.Equals(typeof(JToken)))
+                {
+                    foreach (JProperty jp in value)
+                    {
+                        dictType.GetMethod("Add").Invoke(dict, new object[] { jp.Name, jp.Value });
+                    }
+                }
+
+                return dict;
+            }
+            else if (type.Name.Contains("IList"))
+            {
+                var garg = type.GetGenericArguments()[0];
+                var listType = typeof(List<>).MakeGenericType(garg);
+
+                var list = listType.GetConstructor(new Type[] { }).Invoke(new object[] { });
+
+                if (garg.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
+                {
+                    if (value.Type.Equals(JTokenType.Array))
+                    {
+                        foreach (var arObj in (JArray)value)
+                        {
+                            listType.GetMethod("Add").Invoke(list, new object[] {BuildObject(garg, arObj) });
+                        }
+                    }
+                    else
+                    {
+                        listType.GetMethod("Add").Invoke(list, new object[] { BuildObject(garg, value) });
+                    }
+                }
+                else
+                {
+                    if (value.Type.Equals(JTokenType.Array))
+                    {
+                        foreach (var arObj in (JArray)value)
+                        {
+                            listType.GetMethod("Add").Invoke(list, new object[] { arObj });
+                        }
+                    }
+                    else
+                    {
+                        listType.GetMethod("Add").Invoke(list, new object[] { value });
+                    }
+                }
+
+                return list;
+            }
+            else if (type.IsArray)
+            {
+                var jarray = ((JArray)value);
+                var elementType = type.GetElementType();
+
+                var array = Array.CreateInstance(elementType, jarray.Count);
+
+                for (var i = 0; i < jarray.Count; i++)
+                {
+                    array.SetValue(ConvertToken(elementType, jarray[i]), i);
+                }
+
+                return array;
+            }
+            else if (type.Equals(typeof(object)))
+            {
+                return value.ToObject<object>();
+            }
+ 
+            return null;
         }
 
         private bool ValidType(Type type)

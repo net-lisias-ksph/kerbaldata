@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------
-// <copyright file="ActionGroups.cs" company="OpenSauceSolutions">
+// <copyright file="SpaceCenterGameParameters.cs" company="OpenSauceSolutions">
 // © 2013 OpenSauce Solutions
 // </copyright>
 // -----------------------------------------------------------------------
@@ -13,15 +13,15 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// ActionGroups assigned to the Vessel
+    /// TODO: Class Summary
     /// </summary>
-    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ActionGroups>))]
-    public class ActionGroups : KerbalDataObject
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<FlightGameParameters>))]
+    public class SpaceCenterGameParameters : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionGroups" /> class.
+        /// Initializes a new instance of the <see cref="SpaceCenterGameParameters" /> class.
         /// </summary>	
-        public ActionGroups()
+        public SpaceCenterGameParameters()
         {
         }
     }
