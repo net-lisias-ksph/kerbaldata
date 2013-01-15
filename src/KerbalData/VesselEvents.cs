@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------
-// <copyright file="SpaceCenterGameParameters.cs" company="OpenSauceSolutions">
+// <copyright file="VesselEvents.cs" company="OpenSauceSolutions">
 // © 2013 OpenSauce Solutions
 // </copyright>
 // -----------------------------------------------------------------------
@@ -15,13 +15,13 @@ namespace KerbalData
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
-    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<SpaceCenterGameParameters>))]
-    public class SpaceCenterGameParameters : KerbalDataObject
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<VesselEvents>))]
+    public class VesselEvents : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceCenterGameParameters" /> class.
+        /// Initializes a new instance of the <see cref="VesselEvents" /> class.
         /// </summary>	
-        public SpaceCenterGameParameters()
+        public VesselEvents()
         {
         }
     }

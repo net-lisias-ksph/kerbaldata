@@ -103,7 +103,7 @@ namespace KerbalData
         {
             var count = 0;
 
-            var debris = Vessels.Where(d => d["type"].ToString() == "Unknown" || d["type"].ToString() == "Debris").ToList();
+            var debris = Vessels.Where(d => d.Type == "Unknown" || d.Type == "Debris").ToList();
 
             foreach (var item in debris)
             {

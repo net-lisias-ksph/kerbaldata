@@ -54,6 +54,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameParameters.cs" />
     <Compile Include="IKerbalDataObject.cs" />
+    <Compile Include="Module.cs" />
     <Compile Include="Serialization\IKspDataConverter.cs" />
     <Compile Include="Serialization\IKspFileConverter.cs" />
     <Compile Include="KerbalDataException.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="TrackingStationGameParameters.cs" />
     <Compile Include="UnMappedPropertiesConverter.cs" />
     <Compile Include="Vessel.cs" />
+    <Compile Include="VesselActions.cs" />
+    <Compile Include="VesselEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

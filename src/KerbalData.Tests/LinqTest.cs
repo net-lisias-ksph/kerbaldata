@@ -36,7 +36,7 @@ namespace KerbalData.Tests
             sf.Game.Title = "HELLO WORLD!";
             sf.Game.FlightState.ClearDebris();
 
-            var sat = sf.Game.FlightState.Vessels.Where(v => v["name"].ToString().Contains("Beta Geo-Sat")).FirstOrDefault();
+            var sat = sf.Game.FlightState.Vessels.Where(v => v.Name.Contains("Beta Geo-Sat")).FirstOrDefault();
             sat.Orbit.Change(Body.Eeloo);
 
             sf.Save();

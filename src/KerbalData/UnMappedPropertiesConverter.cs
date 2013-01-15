@@ -103,8 +103,7 @@ namespace KerbalData
                 ThrowTypeException();
             }
 
-            var objProps = BuildRegisteredNames(type.GetProperties());
-
+            // Mapped properties
             var obj = type.GetConstructor(new Type[] { }).Invoke(new object[] { });
 
             foreach (var prop in type.GetProperties())
@@ -119,7 +118,18 @@ namespace KerbalData
                 }
             }
 
-            return obj;
+            // Unmapped properties
+            var objProps = BuildRegisteredNames(type.GetProperties());
+
+            foreach (var pr in ((JObject)value).Properties())
+            {
+                if (objProps.Where(p => p.Equals(pr.Name)).Count() == 0)
+                {
+                    ((KerbalDataObject)obj).Add(pr.Name, pr.Value);
+                }
+            }
+
+            return Convert.ChangeType(obj, type);
         }
 
         private object ConvertToken(Type type, JToken value)
