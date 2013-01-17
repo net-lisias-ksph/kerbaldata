@@ -12,8 +12,6 @@ namespace KerbalData.Tests
     using System.Text;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using KerbalData;
-
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
@@ -30,16 +28,23 @@ namespace KerbalData.Tests
         [TestMethod]
         public void TestGameObject()
         {
-            var sf = SaveFile.CreateFromKspFile(@"Data\Saves\KspPersistentSfswMods.sfs");
+            /*
+            var kd = new KerbalData(@"C:\games\KSP_win");
+            var sf = kd.Saves["testing"];
 
             sf.Game.FlightState.FillResources();
-            sf.Game.Title = "HELLO WORLD!";
+            sf.Game.Title = "I AM IRON MAN";
             sf.Game.FlightState.ClearDebris();
 
             var sat = sf.Game.FlightState.Vessels.Where(v => v.Name.Contains("Beta Geo-Sat")).FirstOrDefault();
-            sat.Orbit.Change(Body.Eeloo);
+            sat.Orbit.Change(Body.Bop);
 
             sf.Save();
+
+            sf.Game.Title = "WHAT WHO WHAT?";
+            sf.Game.FlightState.Vessels[0].Parts[0]["name"] = "SUPERCOREWOOO!";
+
+            sf.Save();*/
         }
     }
 }
