@@ -13,7 +13,7 @@ namespace KerbalData
 using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Represents a KSP configuration file.
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartFile>))]
     public class ConfigFile : StorableObject
@@ -30,7 +30,7 @@ using Newtonsoft.Json;
         /// </summary>
         public override void Revert()
         {
-            //Game = Original["GAME"].ToObject<Game>();
+            // TODO: Implementation
         }
     }
 }

@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Represents a loaded part file
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartFile>))]
     public class PartFile : StorableObject
@@ -30,7 +30,7 @@ namespace KerbalData
         /// </summary>
         public override void Revert()
         {
-            //Game = Original["GAME"].ToObject<Game>();
+            // TODO: Implementation
         }
     }
 }

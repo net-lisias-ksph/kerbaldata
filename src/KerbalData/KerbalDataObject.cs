@@ -27,6 +27,9 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets the keys for unmapped properties stored by this object
+        /// </summary>
         [JsonIgnore]
         public new KeyCollection Keys
         {
@@ -39,12 +42,18 @@ namespace KerbalData
             get { return base.Values; }
         }
 
+        /// <summary>
+        /// Gets the comparer
+        /// </summary>
         [JsonIgnore]
         public new IEqualityComparer<string> Comparer
         {
             get { return base.Comparer; }
         }
 
+        /// <summary>
+        /// Gets the count of unmapped elements
+        /// </summary>
         [JsonIgnore]
         public new int Count
         {

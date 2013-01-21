@@ -12,11 +12,16 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Basic reposiotry placeholder
     /// </summary>
     public static class RepoFactory
     {
-        // TODO: True Factory Impl
+        /// <summary>
+        /// Creates a new reposiotry instance
+        /// </summary>
+        /// <typeparam name="T">model type to be managed by the repository</typeparam>
+        /// <param name="parameters">paramerter data used to init the reposiotry</param>
+        /// <returns>new repository instance for the requested type</returns>
         public static IKerbalDataRepo<T> Create<T>(object[] parameters = null) where T : class, IStorable, new()
         {
             const string repoName = "KerbalData.DataProviders.KspInstallFileRepo`1, KerbalData.DataProviders";

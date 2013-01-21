@@ -12,12 +12,16 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Top level consumer API class. For easiest access use this class to edit and manage KSP data. 
     /// </summary>
     public class KerbalData
     {
         private string installPath;
-       
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KerbalData" /> class.
+        /// </summary>	
+        /// <param name="installPath">path of a valid KSP install currently only tested support of 0.18.x</param>
         public KerbalData(string installPath)
         {
             this.installPath = installPath.EndsWith("\\") ? installPath : installPath + "\\";
@@ -25,36 +29,54 @@ namespace KerbalData
 
         }
 
+        /// <summary>
+        /// Gets the saves stored in this installation
+        /// </summary>
         public StorableObjects<SaveFile> Saves
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the scenarios stored in this installation
+        /// </summary>
         public StorableObjects<SaveFile> Scenarios
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the parts stored in this installation
+        /// </summary>
         public StorableObjects<PartFile> Parts
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the VAB craft stored in this installation
+        /// </summary>
         public StorableObjects<CraftFile> CraftInVab
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the SPH craft stored in this installation
+        /// </summary>
         public StorableObjects<CraftFile> CraftInSph
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the settings and configuration files for this installation
+        /// </summary>
         public StorableObjects<ConfigFile> KspSettings
         {
             get;

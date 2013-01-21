@@ -16,10 +16,12 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// JSON.NET implmentation class for de-serializing to classes while storing unmapped properties to the the <see cref="IKerbalDataObject"/> implmentation.
     /// </summary>
     public class UnMappedPropertiesConverter<T> : CustomCreationConverter<T> where T : class, IKerbalDataObject, new()
     {
+        // TODO: This class takes over much of what JSON.NET does for us. While this makes for good code to start breaking dependency on JSON.NET analysis should be done to see if 
+        // this was even neccassary to achieve what I needed. 
         public UnMappedPropertiesConverter() : base() { }
 
         public override bool CanRead

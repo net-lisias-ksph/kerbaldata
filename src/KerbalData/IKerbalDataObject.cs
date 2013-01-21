@@ -13,10 +13,9 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Base data object. Included dictionary requirment to provide storage for root level values not mapped to strongly typed properties. 
     /// </summary>
     public interface IKerbalDataObject : IDictionary<string, JToken>
     {
-       // IDictionary<string, JToken> Properties { get; set; }
     }
 }

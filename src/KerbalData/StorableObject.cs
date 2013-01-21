@@ -28,7 +28,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Orignal data
+        /// Gets the orginal base data
         /// </summary>
         [JsonIgnore]
         public JObject Original
@@ -37,6 +37,9 @@ namespace KerbalData
             internal set; 
         }
 
+        /// <summary>
+        /// Gets the id/name of the element
+        /// </summary>
         [JsonIgnore]
         public string Id
         {
@@ -44,6 +47,9 @@ namespace KerbalData
             internal set; 
         }
 
+        /// <summary>
+        /// Gets the absloute URI of the data
+        /// </summary>
         [JsonIgnore]
         public string Uri
         {
@@ -51,6 +57,9 @@ namespace KerbalData
             internal set; 
         }
 
+        /// <summary>
+        /// Gets the is dirty flag
+        /// </summary>
         [JsonIgnore]
         public bool IsDirty
         {
@@ -60,24 +69,36 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Gets the key collection for unmapped children
+        /// </summary>
         [JsonIgnore]
         public new KeyCollection Keys
         {
             get { return base.Keys; }
         }
 
+        /// <summary>
+        /// Gets the values collection for unmapped children
+        /// </summary>
         [JsonIgnore]
         public new ValueCollection Values
         {
             get { return base.Values; }
         }
 
+        /// <summary>
+        /// Gets the comparer
+        /// </summary>
         [JsonIgnore]
         public new IEqualityComparer<string> Comparer
         {
             get { return base.Comparer; }
         }
 
+        /// <summary>
+        /// Gets the number of children
+        /// </summary>
         [JsonIgnore]
         public new int Count
         {
@@ -141,6 +162,11 @@ namespace KerbalData
             return false;
         }
 
+        /// <summary>
+        /// Clones a new instance of the object and all underlying data
+        /// </summary>
+        /// <typeparam name="T">compatible object type to clone to</typeparam>
+        /// <returns>cloned object instance</returns>
         public T Clone<T>() where T : class, IStorable, new()
         {
             return JObject.FromObject(this).ToObject<T>();
