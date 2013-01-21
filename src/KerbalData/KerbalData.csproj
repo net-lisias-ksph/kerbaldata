@@ -53,11 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfigFile.cs" />
+    <Compile Include="Config\PlanetConfig.cs" />
+    <Compile Include="Config\PresetConfig.cs" />
+    <Compile Include="Config\TerrainConfig.cs" />
     <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
     <Compile Include="Part\PartFile.cs" />
+    <Compile Include="Part\PartModule.cs" />
+    <Compile Include="Part\PartResource.cs" />
     <Compile Include="RepoFactory.cs" />
     <Compile Include="SaveGame\ActionGroups.cs" />
     <Compile Include="SaveGame\Body.cs" />

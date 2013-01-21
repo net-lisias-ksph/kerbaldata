@@ -48,6 +48,15 @@ namespace KerbalData
         }
 
         /// <summary>
+        /// Gets the training scenarios stored in this installation
+        /// </summary>
+        public StorableObjects<SaveFile> TrainingScenarios
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Gets the parts stored in this installation
         /// </summary>
         public StorableObjects<PartFile> Parts
@@ -87,6 +96,7 @@ namespace KerbalData
         {
             Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs", null, "persistent.sfs" }));
             Scenarios = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new object[] { installPath + @"Saves\scenarios\*.sfs", null, ".sfs", true }));
+            TrainingScenarios = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new object[] { installPath + @"Saves\training\*.sfs", null, ".sfs", true }));
             Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg", null, "part.cfg" }));
             CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\VAB\**\*.craft", null, ".craft", true }));
             CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\SPH\**\*.craft", null, ".craft", true }));

@@ -50,7 +50,7 @@ namespace KerbalData.Serializers.V018x
                 {
                     dataObj.Values.Add(new KspDataField { Name = "KCOM-" + Guid.NewGuid().ToString(), Value = JsonEncode(currentLine.Replace("//", "")) });
                 }
-                else if (!currentLine.Contains("=") && !currentLine.Contains("{") && !currentLine.Contains("}"))
+                else if (!currentLine.Contains("=") && !currentLine.Contains("{") && !currentLine.Contains("}") && !String.IsNullOrEmpty(currentLine.Trim()))
                 {
                     var objectName = currentLine.Trim();
                     var objectData = new List<string>();
@@ -131,7 +131,7 @@ namespace KerbalData.Serializers.V018x
 
                         rightSide = valueBuilder.ToString();
                     }
-                    else
+                    else 
                     {
                         
                         // Converting quotes to not clash with how JSON stores quote
