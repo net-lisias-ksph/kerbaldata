@@ -31,6 +31,12 @@ namespace KerbalData
             private set;
         }
 
+        public StorableObjects<SaveFile> Scenarios
+        {
+            get;
+            private set;
+        }
+
         public StorableObjects<PartFile> Parts
         {
             get;
@@ -58,6 +64,7 @@ namespace KerbalData
         private void Init()
         {
             Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs", null, "persistent.sfs" }));
+            Scenarios = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new object[] { installPath + @"Saves\scenarios\*.sfs", null, ".sfs", true }));
             Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg", null, "part.cfg" }));
             CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\VAB\**\*.craft", null, ".craft", true }));
             CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\SPH\**\*.craft", null, ".craft", true }));

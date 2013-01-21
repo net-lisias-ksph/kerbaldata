@@ -14,6 +14,7 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     using Newtonsoft.Json;
+    using NAnt.Core.Functions;
 
     /// <summary>
     /// TODO: Class Summary
@@ -21,6 +22,11 @@ namespace KerbalData
     [JsonObject]
     public class SaveFile : StorableObject
     {
+        private bool isLoaded = false;
+
+        private StorableObjects<CraftFile> craftInVab;
+        private StorableObjects<CraftFile> craftInSph;
+
         public SaveFile()
         {
 
@@ -39,6 +45,44 @@ namespace KerbalData
         public override void Revert()
         {
             Game = Original["GAME"].ToObject<Game>();
+        }
+
+        [JsonIgnore]
+        public StorableObjects<CraftFile> CraftInVab
+        {
+            get
+            {
+                LoadCraft();
+                return craftInVab;
+            }
+            private set
+            {
+                craftInVab = value;
+            }
+        }
+
+        [JsonIgnore]
+        public StorableObjects<CraftFile> CraftInSph
+        {
+            get
+            {
+                LoadCraft();
+                return craftInSph;
+            }
+            private set
+            {
+                craftInSph = value;
+            }
+        }
+
+        private void LoadCraft()
+        {
+            if (!isLoaded)
+            {
+                CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { Uri + @"\Ships\VAB\**\*.craft", null, ".craft", true }));
+                CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { Uri + @"\Ships\SPH\**\*.craft", null, ".craft", true }));
+                isLoaded = true;
+            }
         }
     }
 }

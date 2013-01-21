@@ -40,6 +40,8 @@ namespace KerbalData.Tests
             
             //var kd = new KerbalData(@"C:\games\KSP_win_test");
 
+            //var scenario = kd.Scenarios["Impending Impact"];
+            //var craft = kd.Saves["testing"].CraftInSph["Goose Mk1_4"];
             //var part = kd.Parts["Ailerons"];
             //var craft = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
             //var settings = kd.KspSettings["settings"];

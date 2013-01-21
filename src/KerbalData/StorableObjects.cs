@@ -130,7 +130,7 @@ namespace KerbalData
             {                
                 objects[id].Object = obj;
                 objects[id].Loaded = true;
-                (objects[id].Object as StorableObject).Uri = Repo.BaseUri + obj.Id;
+                (objects[id].Object as StorableObject).Uri = Repo.BaseUri + "\\" + obj.Id;
             }
         }
 
@@ -202,7 +202,7 @@ namespace KerbalData
                     Id = id, 
                     Loaded = true,
                     Object = obj,  
-                    Uri = Repo.BaseUri + id 
+                    Uri = Repo.BaseUri + "\\" + id
                 };
             }
             else if (!objects[id].Loaded || objects[id].Object == null)
@@ -212,7 +212,7 @@ namespace KerbalData
                 (objects[id].Object as StorableObject).Id = id;
                 (objects[id].Object as StorableObject).SetParent(this);
                 (objects[id].Object as StorableObject).Original = data;
-                (objects[id].Object as StorableObject).Uri = Repo.BaseUri + id;
+                (objects[id].Object as StorableObject).Uri = Repo.BaseUri  + "\\" + id;
                 objects[id].Loaded = true;
             }
         }

@@ -17,6 +17,7 @@ namespace KerbalData
     /// </summary>
     public class StorableItemMetadata<T> where T : class, IStorable, new()
     {
+        private T obj;
         public StorableItemMetadata()
         {
             Loaded = false;

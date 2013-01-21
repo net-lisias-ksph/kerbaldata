@@ -45,13 +45,14 @@ namespace KerbalData.DataProviders
             fileName = parameters.Count() == 3 ? (string)parameters[2] : string.Empty;
             fileMode = parameters.Count() == 4 ? (bool)parameters[3] : false;
 
-            BaseUri = include + exclude != null ? " EXCLUDE: " + exclude : string.Empty;
             includes = include.Split(';');
 
             if (!string.IsNullOrEmpty(exclude))
             {
                 excludes = exclude.Split(';');
             }
+
+            BaseUri =  GetFiles().ScannedDirectories[0];
         }
 
         public string BaseUri
