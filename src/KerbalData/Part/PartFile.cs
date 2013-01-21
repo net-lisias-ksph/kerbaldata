@@ -15,7 +15,7 @@ namespace KerbalData
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
-    [JsonObject]
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartFile>))]
     public class PartFile : StorableObject
     {
         /// <summary>

@@ -37,11 +37,31 @@ namespace KerbalData
             private set;
         }
 
+        public StorableObjects<CraftFile> CraftInVab
+        {
+            get;
+            private set;
+        }
+
+        public StorableObjects<CraftFile> CraftInSph
+        {
+            get;
+            private set;
+        }
+
+        public StorableObjects<ConfigFile> KspSettings
+        {
+            get;
+            private set;
+        }
+
         private void Init()
         {
-
-            Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs" }));
-            Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg" }));
+            Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs", null, "persistent.sfs" }));
+            Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg", null, "part.cfg" }));
+            CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\VAB\**\*.craft", null, ".craft", true }));
+            CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\SPH\**\*.craft", null, ".craft", true }));
+            KspSettings = new StorableObjects<ConfigFile>(RepoFactory.Create<ConfigFile>(new object[] { installPath + @"*.cfg", null, ".cfg", true }));
         }
 
     }

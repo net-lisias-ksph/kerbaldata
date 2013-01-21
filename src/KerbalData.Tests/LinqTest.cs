@@ -37,8 +37,14 @@ namespace KerbalData.Tests
 
             //Console.WriteLine();
             
+            
+            //var kd = new KerbalData(@"C:\games\KSP_win_test");
+
+            //var part = kd.Parts["Ailerons"];
+            //var craft = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
+            //var settings = kd.KspSettings["settings"];
+            //Console.WriteLine();
             /*
-            var kd = new KerbalData(@"C:\games\KSP_win_test");
             var sf = kd.Saves["testing"];
 
             

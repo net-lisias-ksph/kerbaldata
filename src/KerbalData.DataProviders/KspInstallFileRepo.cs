@@ -26,6 +26,10 @@ namespace KerbalData.DataProviders
         private string[] includes;
         private string[] excludes;
 
+        private bool fileMode = false;
+
+        private string fileName;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="KspInstallFileRepo" /> class.
         /// </summary>	
@@ -38,6 +42,8 @@ namespace KerbalData.DataProviders
 
             var include = parameters[0].ToString();
             var exclude = parameters.Count() == 2 ? parameters[1].ToString() : string.Empty;
+            fileName = parameters.Count() == 3 ? (string)parameters[2] : string.Empty;
+            fileMode = parameters.Count() == 4 ? (bool)parameters[3] : false;
 
             BaseUri = include + exclude != null ? " EXCLUDE: " + exclude : string.Empty;
             includes = include.Split(';');
@@ -67,14 +73,29 @@ namespace KerbalData.DataProviders
             foreach (var name in files.FileNames)
             {
                 var file = new FileInfo(name);
-                result.Add(
-                    new StorableItemMetadata<T>
-                    {
-                        Id = (new DirectoryInfo(PathFunctions.GetDirectoryName(name))).Name,
-                        Loaded = false,
-                        Object = null,
-                        Uri = name
-                    });
+
+                if (!fileMode)
+                {
+                    result.Add(
+                        new StorableItemMetadata<T>
+                        {
+                            Id = (new DirectoryInfo(PathFunctions.GetDirectoryName(name))).Name,
+                            Loaded = false,
+                            Object = null,
+                            Uri = name
+                        });
+                }
+                else
+                {
+                    result.Add(
+                        new StorableItemMetadata<T>
+                        {
+                            Id = PathFunctions.GetFileNameWithoutExtension(name),
+                            Loaded = false,
+                            Object = null,
+                            Uri = name
+                        });
+                }
             }
 
             return result;
@@ -145,10 +166,26 @@ namespace KerbalData.DataProviders
                 throw new KerbalDataException("Loaded Game was not loaded from a file, a file path is required in order to save");
             }
 
-            if (NameExists(id) && BackupBeforeSave)
+            if (savePath != null && BackupBeforeSave)
             {
                 File.Copy(savePath, savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"));
             }
+            else if (savePath == null)
+            {
+                if (!fileMode)
+                {
+                    var files = GetFiles();
+                    var saveDir = files.BaseDirectory + "\\" + id;
+                    Directory.CreateDirectory(saveDir);
+                    savePath = saveDir + "\\" + fileName;
+                }
+                else
+                {
+                    var files = GetFiles();
+                    savePath = files.BaseDirectory + "\\" + id + fileName;                   
+                }
+            }
+            
 
             var data = JObject.FromObject(obj);
             KspData.SaveFile(savePath, data);
@@ -186,13 +223,23 @@ namespace KerbalData.DataProviders
 
             foreach (var fileName in files.FileNames)
             {
-                if ((new DirectoryInfo(PathFunctions.GetDirectoryName(fileName)).Name.Equals(name)))
+                if (!fileMode)
                 {
-                    return fileName;
+                    if ((new DirectoryInfo(PathFunctions.GetDirectoryName(fileName)).Name.Equals(name)))
+                    {
+                        return fileName;
+                    }
+                }
+                else
+                {
+                    if (PathFunctions.GetFileNameWithoutExtension(fileName).Equals(name))
+                    {
+                        return fileName;
+                    }
                 }
             }
 
-            return files.BaseDirectory + name;
+            return null;
         }
 
         private bool NameExists(string name)

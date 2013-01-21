@@ -49,10 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ConfigFile.cs" />
+    <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
-    <Compile Include="PartFile.cs" />
+    <Compile Include="Part\PartFile.cs" />
     <Compile Include="RepoFactory.cs" />
     <Compile Include="SaveGame\ActionGroups.cs" />
     <Compile Include="SaveGame\Body.cs" />

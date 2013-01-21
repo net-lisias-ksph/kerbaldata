@@ -125,7 +125,7 @@ namespace KerbalData
             {
                 if (objProps.Where(p => p.Equals(pr.Name)).Count() == 0)
                 {
-                    ((KerbalDataObject)obj).Add(pr.Name, pr.Value);
+                    ((IDictionary<string, JToken>)obj).Add(pr.Name, pr.Value);
                 }
             }
 

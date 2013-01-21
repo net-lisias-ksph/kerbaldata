@@ -17,7 +17,8 @@ namespace KerbalData
     /// <summary>
     /// base class for top level consumer models. Contains functionality for saving/updating data store model is loaded from.
     /// </summary>
-    public abstract class StorableObject : IStorable 
+    [JsonObject]
+    public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable 
     {
         private object parent;
 
@@ -57,6 +58,30 @@ namespace KerbalData
             {
                 return !JToken.DeepEquals(Original, JObject.FromObject(this));
             }
+        }
+
+        [JsonIgnore]
+        public new KeyCollection Keys
+        {
+            get { return base.Keys; }
+        }
+
+        [JsonIgnore]
+        public new ValueCollection Values
+        {
+            get { return base.Values; }
+        }
+
+        [JsonIgnore]
+        public new IEqualityComparer<string> Comparer
+        {
+            get { return base.Comparer; }
+        }
+
+        [JsonIgnore]
+        public new int Count
+        {
+            get { return base.Count; }
         }
 
         /// <summary>
