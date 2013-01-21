@@ -37,9 +37,6 @@
     <Reference Include="log4net">
       <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="NAnt.Core">
-      <HintPath>..\..\lib\NAnt.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Net40\Newtonsoft.Json.dll</HintPath>
@@ -55,7 +52,7 @@
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
-    <Compile Include="KspInstallFileRepo.cs" />
+    <Compile Include="PartFile.cs" />
     <Compile Include="RepoFactory.cs" />
     <Compile Include="SaveGame\ActionGroups.cs" />
     <Compile Include="SaveGame\Body.cs" />
@@ -74,10 +71,8 @@
     <Compile Include="KerbalDataObject.cs" />
     <Compile Include="Serialization\KspData.cs" />
     <Compile Include="Serialization\KspDataContext.cs" />
-    <Compile Include="Serialization\KspDataConverter.cs" />
     <Compile Include="Serialization\KspDataField.cs" />
     <Compile Include="Serialization\KspDataObject.cs" />
-    <Compile Include="Serialization\KspFileConverter.cs" />
     <Compile Include="Serialization\KspToJson.cs" />
     <Compile Include="SaveGame\Orbit.cs" />
     <Compile Include="SaveGame\Part.cs" />
@@ -95,7 +90,9 @@
     <Compile Include="SaveGame\VesselEvents.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Design\HighLevel.dgml" />
     <None Include="packages.config" />
+    <None Include="Design\SaveFileModel.dgml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

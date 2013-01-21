@@ -27,8 +27,13 @@ namespace KerbalData
         /// </summary>	
         public KspToJson()
         {
-            fileConverter = new KspFileConverter();
-            dataConverter = new KspDataConverter();
+            const string fileConverterName = "KerbalData.Serializers.V018x.KspFileConverter, KerbalData.Serializers";
+            const string dataConverterName = "KerbalData.Serializers.V018x.KspDataConverter, KerbalData.Serializers";
+            // TODO: Configuration and loading framework for Converters. Doing it this way for the time being so I can start
+            // Pulling out JSON.NET dependencies on the core framework and to prevent adding new dependcies just for data converson
+            // needs
+            fileConverter = Activator.CreateInstance(Type.GetType(fileConverterName)) as IKspFileConverter;
+            dataConverter = Activator.CreateInstance(Type.GetType(dataConverterName)) as IKspDataConverter;
         }
 
         /// <summary>

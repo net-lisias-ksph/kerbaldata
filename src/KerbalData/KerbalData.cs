@@ -17,7 +17,6 @@ namespace KerbalData
     public class KerbalData
     {
         private string installPath;
-        private IKerbalDataRepo<SaveFile> saveRepo;
        
         public KerbalData(string installPath)
         {
@@ -32,16 +31,17 @@ namespace KerbalData
             private set;
         }
 
+        public StorableObjects<PartFile> Parts
+        {
+            get;
+            private set;
+        }
+
         private void Init()
         {
-            
-            Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs" } ));
 
-            // Parts = new StorableObjects<SaveFile>(new KspInstallFileRepo<SaveFile>(installPath + @"\Saves"));
-
-            // Ships = new StorableObjects<SaveFile>(new KspInstallFileRepo<SaveFile>(installPath + @"\Saves"));
-
-            // Configuration = new StorableObjects<SaveFile>(new KspInstallFileRepo<SaveFile>(installPath + @"\Saves"));
+            Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs" }));
+            Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg" }));
         }
 
     }

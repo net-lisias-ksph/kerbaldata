@@ -28,19 +28,29 @@ namespace KerbalData.Tests
         [TestMethod]
         public void TestGameObject()
         {
+            //var obj = KspData.LoadKspFile(@"C:\dev\KspData\src\KerbalData.Tests\bin\Debug\Data\Parts\dockingPort1\part.cfg");
+
+
+            //var vessel = obj["GAME"]["FLIGHTSTATE"]["VESSEL"].Where(v => v["pid"].ToString().Equals("f55d3f0601704035aa06e0a8174b723c")).FirstOrDefault();
+            
+            //var parts = vessel["PART"].Where(p => p["uid"].ToString().Equals("2910085908"));
+
+            //Console.WriteLine();
+            
             /*
-            var kd = new KerbalData(@"C:\games\KSP_win");
+            var kd = new KerbalData(@"C:\games\KSP_win_test");
             var sf = kd.Saves["testing"];
 
-            sf.Game.FlightState.FillResources();
-            sf.Game.Title = "I AM IRON MAN";
+            
+            sf.Game.Title = "TESTINGTESTINGTESTINGTESTING";
             sf.Game.FlightState.ClearDebris();
 
             var sat = sf.Game.FlightState.Vessels.Where(v => v.Name.Contains("Beta Geo-Sat")).FirstOrDefault();
-            sat.Orbit.Change(Body.Bop);
+            sat.Orbit.Change(Body.Kerbol);
 
-            sf.Save();
+            sf.Save();*/
 
+            /*
             sf.Game.Title = "WHAT WHO WHAT?";
             sf.Game.FlightState.Vessels[0].Parts[0]["name"] = "SUPERCOREWOOO!";
 

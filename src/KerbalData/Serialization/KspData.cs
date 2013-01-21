@@ -53,7 +53,8 @@ namespace KerbalData
             {
                 try
                 {
-                    jobj = JObject.Parse(kspToJson.ToJson(file));
+                    var json = kspToJson.ToJson(file);
+                    jobj = JObject.Parse(json);
                 }
                 catch (Exception ex)
                 {

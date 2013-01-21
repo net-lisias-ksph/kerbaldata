@@ -74,7 +74,8 @@ namespace KerbalData
         /// <returns>true=success;false=failure</returns>
         public bool Save(string name = null, bool backup = true)
         {
-            if (IsDirty || !string.IsNullOrEmpty(name)) // Don't waste cycles saving when we don't need to. Unless we get a name value
+            //if (IsDirty || !string.IsNullOrEmpty(name)) // IsDirty implmentation is very expensive right now, for most data operations it's just quicker to save. Re-evaluate when real Diff and deep change matching is implmented. 
+            if (!string.IsNullOrEmpty(name)) // Don't waste cycles saving when we don't need to. Unless we get a name value
             {
                 if (parent == null) // If parent is null then this instance was loaded manually. Save using System.IO and lower level classes
                 {
@@ -112,7 +113,7 @@ namespace KerbalData
                 return result;
             }
 
-            return true;
+            return false;
         }
 
         public T Clone<T>() where T : class, IStorable, new()

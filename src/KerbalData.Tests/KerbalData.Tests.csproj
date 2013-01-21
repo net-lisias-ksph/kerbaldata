@@ -61,63 +61,20 @@
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KerbalData.DataProviders\KerbalData.DataProviders.csproj">
+      <Project>{f46f937f-8bbc-4b9a-8b36-4a662bf6af13}</Project>
+      <Name>KerbalData.DataProviders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KerbalData.Serializers\KerbalData.Serializers.csproj">
+      <Project>{f285877a-8c4b-4a02-9d8b-ac0fc539f2fc}</Project>
+      <Name>KerbalData.Serializers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KerbalData\KerbalData.csproj">
       <Project>{23bf8f66-05a3-4d84-b632-f08fd63bcf7b}</Project>
       <Name>KerbalData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Saves\C_Orbit101.sfs" />
-    <None Include="Data\Saves\D_MunFlight1.sfs" />
-    <None Include="Data\Saves\EVA in Kerbin Orbit.sfs" />
-    <None Include="Data\Saves\Impending Impact.sfs" />
-    <None Include="Data\Saves\Mun Orbit.sfs" />
-    <None Include="Data\Saves\SimpleSaveWMods.sfs" />
-    <None Include="Data\Saves\SimpleSaveWModsQuickSave.sfs" />
-    <None Include="Data\Ships\BuiltIn\SPH\Aeris 3A.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Aeris 4A.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Albatross 3.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk1.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Ravenspear Mk3.craft" />
-    <None Include="Data\Ships\BuiltIn\SPH\Rocket-power VTOL.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Ion-Powered Space Probe.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Kerbal X.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\MechJeb Pod 2.0 Kit.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Orbiter 1A.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Space Station Core.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Super-Heavy Lander.craft" />
-    <None Include="Data\Ships\BuiltIn\VAB\Two-Stage Lander.craft" />
-    <None Include="Data\Ships\Custom\SPH\Auto-Saved Ship.craft" />
-    <None Include="Data\Ships\Custom\SPH\Carrie Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Carrier Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Drone Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4-2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Goose Mk1_4.craft" />
-    <None Include="Data\Ships\Custom\SPH\gOOSE mK2.craft" />
-    <None Include="Data\Ships\Custom\SPH\Hopper Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Ion Observer.craft" />
-    <None Include="Data\Ships\Custom\SPH\Rover Test Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Solar Cruiser Mk1.craft" />
-    <None Include="Data\Ships\Custom\SPH\Untitled Space Craft.craft" />
-    <None Include="Data\Ships\Custom\VAB\Auto-Saved Ship.craft" />
-    <None Include="Data\Ships\Custom\VAB\GeoSync Relay Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Intersystem Probe Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mid-Range Relay Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Multi-Sat Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Rover Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.5.craft" />
-    <None Include="Data\Ships\Custom\VAB\Mun Sat Const Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Munar Probe Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\SatNav Mapper Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\System Probe Test Mk1.craft" />
-    <None Include="Data\Ships\Custom\VAB\Test Rover 1.craft" />
-    <None Include="Data\Saves\KspPersistentSfswMods.sfs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

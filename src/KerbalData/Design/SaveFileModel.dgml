@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 Type=Crew)" Category="CodeSchema_Class" Bounds="-9500.75274088542,-9538.76919296875,67.5533333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Crew" Icon="Microsoft.VisualStudio.Class.Public" Label="Crew" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category2" />
+    </Node>
+    <Node Id="(@1 @2 Type=EditorGameParameters)" Category="CodeSchema_Class" Bounds="-9295.99999348958,-9647.85307734375,162.596666666665,26" CodeSchemaProperty_IsPublic="True" CommonLabel="EditorGameParameters" Icon="Microsoft.VisualStudio.Class.Public" Label="EditorGameParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=FlightGameParameters)" Category="CodeSchema_Class" Bounds="-9298.00005859375,-9703.85317734375,160.879999999997,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FlightGameParameters" Icon="Microsoft.VisualStudio.Class.Public" Label="FlightGameParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=Module)" Category="CodeSchema_Class" Bounds="-9416.60937988281,-9427.8017578125,81.8466666666645,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Module" Icon="Microsoft.VisualStudio.Class.Public" Label="Module" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category2" />
+    </Node>
+    <Node Id="(@1 @2 Type=Orbit)" Category="CodeSchema_Class" Bounds="-9753.26932942708,-9482.53442382813,68.246666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Orbit" Icon="Microsoft.VisualStudio.Class.Public" Label="Orbit" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=Resource)" Category="CodeSchema_Class" Bounds="-9817.38271321615,-9426.1083984375,89.3600000000006,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Resource" Icon="Microsoft.VisualStudio.Class.Public" Label="Resource" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category2" />
+    </Node>
+    <Node Id="(@1 @2 Type=SaveFile)" Category="CodeSchema_Class" Bounds="-9551.08994791667,-9718.60329010417,83.4533333333311,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SaveFile" Icon="Microsoft.VisualStudio.Class.Public" Label="SaveFile" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=SpaceCenterGameParameters)" Category="CodeSchema_Class" Bounds="-9287.7625,-9535.85287734375,197.650000000001,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SpaceCenterGameParameters" Icon="Microsoft.VisualStudio.Class.Public" Label="SpaceCenterGameParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=TrackingStationGameParameters)" Category="CodeSchema_Class" Bounds="-9293.00001953125,-9591.85297734375,213.459999999999,26" CodeSchemaProperty_IsPublic="True" CommonLabel="TrackingStationGameParameters" Icon="Microsoft.VisualStudio.Class.Public" Label="TrackingStationGameParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=VesselActions)" Category="CodeSchema_Class" Bounds="-9698.02271321615,-9426.5341796875,113.27,26" CodeSchemaProperty_IsPublic="True" CommonLabel="VesselActions" Icon="Microsoft.VisualStudio.Class.Public" Label="VesselActions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=VesselEvents)" Category="CodeSchema_Class" Bounds="-9554.75271321614,-9425.802734375,108.143333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="VesselEvents" Icon="Microsoft.VisualStudio.Class.Public" Label="VesselEvents" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="-9610.00016927083,-9606.60309010417,97.4866666666676,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FlightState" Icon="Microsoft.VisualStudio.Class.Public" Label="FlightState" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="@4" Category="CodeSchema_Class" Bounds="-9508.63682291667,-9662.60319010417,71.9533333333311,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Game" Icon="Microsoft.VisualStudio.Class.Public" Label="Game" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="-9475.28332682221,-9600.603515625,131.283333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="GameParameters" Icon="Microsoft.VisualStudio.Class.Public" Label="GameParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="-9624.00013020833,-9482.53442382813,62.0666666666657,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Part" Icon="Microsoft.VisualStudio.Class.Public" Label="Part" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category2" />
+    </Node>
+    <Node Id="@7" Category="CodeSchema_Class" Bounds="-9661.0001953125,-9538.53452382812,74.0999999999985,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Vessel" Icon="Microsoft.VisualStudio.Class.Public" Label="Vessel" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category2" />
+    </Node>
+  </Nodes>
+  <Links>
+    <Link Source="(@1 @2 Type=SaveFile)" Target="@4" Bounds="-9500.84291294643,-9692.603515625,14.7288853531099,22.4726799087039" />
+    <Link Source="@3" Target="(@1 @2 Type=Crew)" Bounds="-9543.18846042283,-9580.603515625,50.8384323246974,36.5777000640992" />
+    <Link Source="@3" Target="@7" Bounds="-9605.87961561967,-9580.603515625,32.6493983395067,35.4488148557612" />
+    <Link Source="@4" Target="@3" Bounds="-9533.08206359334,-9636.603515625,39.8548209873115,25.1913500953051" />
+    <Link Source="@4" Target="@5" Bounds="-9459.44658833165,-9636.603515625,30.1758220992469,29.6880970918937" />
+    <Link Source="@5" Target="(@1 @2 Type=EditorGameParameters)" Bounds="-9356.00683446421,-9619.73304181853,78.9236678531051,19.1295261935265" />
+    <Link Source="@5" Target="(@1 @2 Type=FlightGameParameters)" Bounds="-9385.45692127371,-9673.59200257262,135.784863199289,72.9884869476227" />
+    <Link Source="@5" Target="(@1 @2 Type=SpaceCenterGameParameters)" Bounds="-9365.33079017173,-9574.603515625,123.446471762401,36.2169881918599" />
+    <Link Source="@5" Target="(@1 @2 Type=TrackingStationGameParameters)" Bounds="-9343.99993489583,-9585.03201610036,42.0068134201811,1.64560874558811" />
+    <Link Source="@6" Target="(@1 @2 Type=Module)" Bounds="-9561.93346354167,-9461.71734468565,136.612235297958,34.4125191344592" />
+    <Link Source="@6" Target="(@1 @2 Type=Resource)" Bounds="-9722.70668216707,-9459.79202629259,98.7065519587341,30.9878936035293" />
+    <Link Source="@6" Target="(@1 @2 Type=VesselActions)" Bounds="-9624.26069391303,-9456.53461796875,20.0534142645902,23.1924545141082" />
+    <Link Source="@6" Target="(@1 @2 Type=VesselEvents)" Bounds="-9571.81969882601,-9456.53461796875,42.3244257193073,26.0185834045078" />
+    <Link Source="@7" Target="(@1 @2 Type=Orbit)" Bounds="-9689.28988253,-9512.53471796875,43.2408744535769,25.4371750148603" />
+    <Link Source="@7" Target="@6" Bounds="-9616.75763351908,-9512.53471796875,12.241224966856,22.1250688057753" />
+  </Links>
+  <Categories>
+    <Category Id="Category2" Label="Category 2" Background="#FF339933" IsTag="True" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+  </Categories>
+  <Properties>
+    <Property Id="Background" Label="Background" Description="The background color" DataType="System.Windows.Media.Brush" />
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsTag" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=KerbalData" />
+    <Alias n="3" Id="(@1 @2 Type=FlightState)" />
+    <Alias n="4" Id="(@1 @2 Type=Game)" />
+    <Alias n="5" Id="(@1 @2 Type=GameParameters)" />
+    <Alias n="6" Id="(@1 @2 Type=Part)" />
+    <Alias n="7" Id="(@1 @2 Type=Vessel)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Category 2" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category2')" />
+      <Setter Property="Background" Value="#FF339933" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPathUri" Value="file:///C:/dev/KspData/src/KerbalData/bin/Debug/KerbalData.dll" />
+  </Paths>
+</DirectedGraph>
