@@ -22,13 +22,13 @@
                   AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                   ItemsSource="{Binding Vessels}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=name.Value}" MinWidth="80">
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Typee" Binding="{Binding Path=type.Value}" MinWidth="200">
+                <DataGridTextColumn Header="Typee" Binding="{Binding Path=Type}" MinWidth="200">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Status" Binding="{Binding Path=sit.Value}" MinWidth="100">
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Body" Binding="{Binding Path=ORBIT.REF.Value}" MinWidth="200">
+                <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="200">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

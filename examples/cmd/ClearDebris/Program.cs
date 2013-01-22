@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using KerbalData;
-using Newtonsoft.Json.Linq;
-
-namespace ClearDebris
+﻿namespace KerbalData.Apps.CommandLine.ClearDebris
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class Program
     {
         static void Main(string[] args)
@@ -22,12 +19,12 @@ namespace ClearDebris
             var kspPath = args[0].Trim();
             var gameName = args[1].Trim();
 
-            var kdm = new KerbalDataManager(kspPath);
-            var gdm = kdm.Games[gameName];
+            var kd = new KerbalData(kspPath);
+            var save = kd.Saves[gameName];
 
-            Console.WriteLine("Removed " + gdm.Vessels.ClearDebris() + " vessels.");
+            Console.WriteLine("Removed " + save.Game.FlightState.ClearDebris() + " vessels.");
 
-            gdm.SaveData();
+            save.Save();
         }
     }
 }

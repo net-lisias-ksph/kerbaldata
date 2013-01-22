@@ -20,7 +20,9 @@ namespace KSPEditor
     /// </summary>
     public class MainWindowViewModel
     {
-        private IList<dynamic> vessels;
+        private KerbalData kd;
+        private string saveName = "testing"; // TODO: Change to your game or wire in UI to accept user input. 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
         /// </summary>	
@@ -28,9 +30,8 @@ namespace KSPEditor
         {
             try
             {
-                var kdm = new KerbalDataManager();
-
-                vessels = kdm.Games["testing"].Vessels.Data.ToObject<List<dynamic>>();
+                // TODO: Enter your path or wire in UI to accept user path
+                kd = new KerbalData(@"C:\games\KSP_win_test");
             }
             catch (Exception ex)
             {
@@ -38,14 +39,14 @@ namespace KSPEditor
             }
         }
 
-        public IList<dynamic> Vessels {
+        public IList<Vessel> Vessels {
             get
             {
-                return vessels;
+                return kd.Saves[saveName].Game.FlightState.Vessels;
             }
             set
             {
-                vessels = value;
+                kd.Saves[saveName].Game.FlightState.Vessels = value;
             }
         }
     }
