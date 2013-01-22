@@ -14,40 +14,83 @@ namespace KSPEditor
     using Newtonsoft.Json.Linq;
 
     using KerbalData;
+    using System.ComponentModel;
+    using System.Windows.Input;
+    using System.Windows.Forms;
 
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private KerbalData kd;
-        private string saveName = "testing"; // TODO: Change to your game or wire in UI to accept user input. 
+        private string installPath;
+        private KerbalData kerbalData;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
         /// </summary>	
         public MainWindowViewModel()
         {
-            try
-            {
-                // TODO: Enter your path or wire in UI to accept user path
-                kd = new KerbalData(@"C:\games\KSP_win_test");
-            }
-            catch (Exception ex)
-            {
-                var mess = ex.Message;
-            }
+            this.OpenKspInstallFolderCommand = new DelegateCommand<object>(OpenKspInstallFolderDialog);
         }
 
-        public IList<Vessel> Vessels {
+        public KerbalData KerbalData
+        {
             get
             {
-                return kd.Saves[saveName].Game.FlightState.Vessels;
+                return kerbalData;
             }
             set
             {
-                kd.Saves[saveName].Game.FlightState.Vessels = value;
+                if (value != kerbalData)
+                {
+                    kerbalData = value;
+                    OnPropertyChanged("KerbalData");
+                }
             }
+        }
+
+        public string InstallPath
+        {
+            get
+            {
+                return installPath;
+            }
+            set
+            {
+                if (value != installPath)
+                {
+                    installPath = value;
+                    OnPropertyChanged("InstallPath");
+                }
+
+                UpdateInstallPath();
+            }
+        }
+
+        public ICommand OpenKspInstallFolderCommand { get; private set; }
+
+        private void UpdateInstallPath()
+        {
+            KerbalData = null;
+            KerbalData = new KerbalData(installPath);
+        }
+
+        private void OnPropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private void OpenKspInstallFolderDialog(object arg)
+        {
+            var dlg = new FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = dlg.ShowDialog();
+
+            InstallPath = dlg.SelectedPath;
         }
     }
 }
