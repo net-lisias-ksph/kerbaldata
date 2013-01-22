@@ -53,16 +53,28 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Gets or sets the active vessel count
+        /// </summary>
         [JsonProperty("activeVessel")]
         public int ActiveVessel { get; set; }
 
-        [JsonProperty("CREW")] //, ItemConverterType = typeof(Newtonsoft.Json.Converters.KeyValuePairConverter))]
+        /// <summary>
+        /// Gets or sets the crew collection
+        /// </summary>
+        [JsonProperty("CREW")] 
         public IList<Crew> Crew { get; set; }
 
+        /// <summary>
+        /// Gets or sets the vessel collection
+        /// </summary>
         [JsonProperty("VESSEL")]
         public IList<Vessel> Vessels { get; set; }
 
-
+        /// <summary>
+        /// Refills the resources of all vessels contained within this flightstate.
+        /// </summary>
+        /// <returns>number of vessels re-filled</returns>
         public int FillResources()
         {
             if (Vessels == null)
@@ -81,6 +93,10 @@ namespace KerbalData
             return count;
         }
 
+        /// <summary>
+        /// Empties the resources of all vessels contained within this flightstate
+        /// </summary>
+        /// <returns>number of vessels emptied</returns>
         public int EmptyResources()
         {
             if (Vessels == null)
@@ -99,6 +115,10 @@ namespace KerbalData
             return count;
         }
 
+        /// <summary>
+        /// Deletes all vessels with the type of Debris or Unknown
+        /// </summary>
+        /// <returns>number of vessel objects removed</returns>
         public int ClearDebris()
         {
             var count = 0;

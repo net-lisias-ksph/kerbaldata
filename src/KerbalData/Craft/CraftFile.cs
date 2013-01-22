@@ -15,7 +15,7 @@ namespace KerbalData
     /// <summary>
     /// Represents a loaded craft file
     /// </summary>
-    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartFile>))]
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<CraftFile>))]
     public class CraftFile : StorableObject
     {
         /// <summary>
@@ -24,6 +24,30 @@ namespace KerbalData
         public CraftFile()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the ship name
+        /// </summary>
+        [JsonProperty("ship")]
+        public string Ship { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the parts collection
+        /// </summary>
+        [JsonProperty("PART")]
+        public IList<Part> Parts { get; set; }
 
         /// <summary>
         /// Restores the object to the state it was in when it's data was first loaded or last saved. 

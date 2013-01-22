@@ -36,6 +36,9 @@ namespace KerbalData
             get { return base.Keys; }
         }
 
+        /// <summary>
+        /// Gets the values collection
+        /// </summary>
         [JsonIgnore]
         public new ValueCollection Values
         {

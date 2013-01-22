@@ -21,11 +21,11 @@ namespace KerbalData
     public static class KerbalDataExtension
     {
         /// <summary>
-        /// Writes provided content to file, returns provided contennt string unchanged to allow simple chaining.
+        /// Writes string content directly to file
         /// </summary>
-        /// <param name="str">location of the file reletaive to the current working directory</param>
-        /// <param name="content">content you with to write to the file</param>
-        /// <returns>value provided for content parameter</returns>
+        /// <param name="str">string instance to use</param>
+        /// <param name="filePath">file path (relative to run path or absloute) to store the data, exsiting files will be overwritten</param>
+        /// <returns>string provided and written to file. Used for debugging and convienance methods.</returns>
         public static string WriteToFile(this string str, string filePath)
         {
             using (var file = File.CreateText(filePath.Trim()))

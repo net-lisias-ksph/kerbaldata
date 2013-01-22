@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Data model for presets found in KSP configuration. 
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PresetConfig>))]
     public class PresetConfig : KerbalDataObject
@@ -25,6 +25,9 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the planet config collection
+        /// </summary>
         [JsonProperty("PLANET")]
         public IList<PlanetConfig> Planets { get; set; }
 

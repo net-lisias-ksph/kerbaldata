@@ -25,15 +25,27 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets flight parameters
+        /// </summary>
         [JsonProperty("FLIGHT")]
         public FlightGameParameters Flight { get; set; }
 
+        /// <summary>
+        /// Gets or sets editor parameters
+        /// </summary>
         [JsonProperty("EDITOR")]
         public EditorGameParameters Editor { get; set; }
 
+        /// <summary>
+        /// Gets or sets tracking station parameters
+        /// </summary>
         [JsonProperty("TRACKINGSTATION")]
         public TrackingStationGameParameters TrackingStation { get; set; }
 
+        /// <summary>
+        /// Gets or sets space center parameters
+        /// </summary>
         [JsonProperty("SPACECENTER")]
         public SpaceCenterGameParameters SpaceCenter { get; set; }
     }

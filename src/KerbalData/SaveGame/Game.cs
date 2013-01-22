@@ -16,9 +16,8 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Game data model
     /// </summary>
-    ///
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<Game>))]
     public class Game : KerbalDataObject
     {
@@ -29,27 +28,51 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
         [JsonProperty("version")]  
         public string Version { get; set; }
 
+        /// <summary>
+        /// Gets or sets the title
+        /// </summary>
         [JsonProperty("Title")]
         public string Title { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description
+        /// </summary>
         [JsonProperty("Description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mode
+        /// </summary>
         [JsonProperty("Mode")]
         public int Mode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the status
+        /// </summary>
         [JsonProperty("Status")]
         public int Status { get; set; }
 
+        /// <summary>
+        /// Gets or sets the scene
+        /// </summary>
         [JsonProperty("scene")]
         public int Scene { get; set; }
 
+        /// <summary>
+        /// Gets or sets game parameters
+        /// </summary>
         [JsonProperty("PARAMETERS")]
         public GameParameters Parameters { get; set; }
 
+        /// <summary>
+        /// Gets or sets the flight state
+        /// </summary>
         [JsonProperty("FLIGHTSTATE")]
         public FlightState FlightState { get; set; }
     }

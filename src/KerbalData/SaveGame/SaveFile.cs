@@ -27,6 +27,9 @@ namespace KerbalData
         private StorableObjects<CraftFile> craftInVab;
         private StorableObjects<CraftFile> craftInSph;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SaveFile" /> class.
+        /// </summary>	
         public SaveFile()
         {
 
@@ -47,6 +50,9 @@ namespace KerbalData
             Game = Original["GAME"].ToObject<Game>();
         }
 
+        /// <summary>
+        /// Gets or sets the craft in VAP collection
+        /// </summary>
         [JsonIgnore]
         public StorableObjects<CraftFile> CraftInVab
         {
@@ -61,6 +67,9 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Gets or sets the craft in the space plane hanger collection 
+        /// </summary>
         [JsonIgnore]
         public StorableObjects<CraftFile> CraftInSph
         {

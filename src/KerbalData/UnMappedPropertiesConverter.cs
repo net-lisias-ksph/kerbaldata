@@ -22,8 +22,15 @@ namespace KerbalData
     {
         // TODO: This class takes over much of what JSON.NET does for us. While this makes for good code to start breaking dependency on JSON.NET analysis should be done to see if 
         // this was even neccassary to achieve what I needed. 
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnMappedPropertiesConverter{T}" /> class.
+        /// </summary>	
         public UnMappedPropertiesConverter() : base() { }
 
+        /// <summary>
+        /// Gets the canread flag
+        /// </summary>
         public override bool CanRead
         {
             get
@@ -31,7 +38,10 @@ namespace KerbalData
                 return true;
             }
         }
-
+        
+        /// <summary>
+        /// Gets the can write flag
+        /// </summary>
         public override bool CanWrite
         {
             get
@@ -40,22 +50,45 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Tells if the provided type can be converted
+        /// </summary>
+        /// <param name="objectType">type to convert</param>
+        /// <returns>true=can convert;false=cannot convert</returns>
         public override bool CanConvert(Type objectType)
         {
             return base.CanConvert(objectType);
         }
 
-        
+        /// <summary>
+        /// Creates a new instance of the generic type parameter
+        /// </summary>
+        /// <param name="objectType">compataible type</param>
+        /// <returns>new instance of type</returns>
         public override T Create(Type objectType)
         {
             return new T();
         }
 
+        /// <summary>
+        /// Reads provided json and creates new object instance
+        /// </summary>
+        /// <param name="reader">json reader with data</param>
+        /// <param name="objectType">type to build</param>
+        /// <param name="existingValue">existing value of object if any</param>
+        /// <param name="serializer">serializer to use</param>
+        /// <returns>de-serialized object instance</returns>
         public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
             return BuildObject(objectType, JObject.Load(reader));
         }
 
+        /// <summary>
+        /// Writes json data based upon provided object instance
+        /// </summary>
+        /// <param name="writer">json writer instance to use</param>
+        /// <param name="value">value data</param>
+        /// <param name="serializer">serializer to use</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

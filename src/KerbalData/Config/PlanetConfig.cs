@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Data model for planets found in KSP configuration. 
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PlanetConfig>))]
     public class PlanetConfig : KerbalDataObject
@@ -25,15 +25,27 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the name
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the minimum distance
+        /// </summary>
         [JsonProperty("minDistance")]
         public int MinDistance { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Minimum subdivision
+        /// </summary>
         [JsonProperty("minSubdivision")]
         public int MinSubdivision { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Maximum subdivision
+        /// </summary>
         [JsonProperty("maxSubdivision")]
         public int MaxSubdivision { get; set; }
     }

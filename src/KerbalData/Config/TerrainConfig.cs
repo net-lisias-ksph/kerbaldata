@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Data model for terrain found in KSP configuration. 
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<TerrainConfig>))]
     public class TerrainConfig : KerbalDataObject
@@ -25,12 +25,21 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
 
+        /// <summary>
+        /// Gets or sets the preset
+        /// </summary>
         [JsonProperty("preset")]
         public string Preset { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Preset collection
+        /// </summary>
         [JsonProperty("PRESET")]
         public IList<PresetConfig> Presets { get; set; }
     }

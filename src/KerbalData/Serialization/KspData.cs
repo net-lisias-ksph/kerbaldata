@@ -67,6 +67,11 @@ namespace KerbalData
             return jobj;
         }
 
+        /// <summary>
+        /// Loads the JSON file found at the provided path
+        /// </summary>
+        /// <param name="path">relative or absloute path</param>
+        /// <returns>de-serialized JObject instance</returns>
         public static JObject LoadJsonFile(string path)
         {
             if (!File.Exists(path))

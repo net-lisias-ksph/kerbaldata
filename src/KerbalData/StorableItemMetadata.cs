@@ -17,10 +17,8 @@ namespace KerbalData
     /// </summary>
     public class StorableItemMetadata<T> where T : class, IStorable, new()
     {
-        private T obj;
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorableItemMetadata" /> class.
+        /// Initializes a new instance of the <see cref="StorableItemMetadata{T}" /> class.
         /// </summary>	
         public StorableItemMetadata()
         {

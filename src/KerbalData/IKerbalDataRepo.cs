@@ -51,7 +51,7 @@ using Newtonsoft.Json.Linq;
         /// </summary>
         /// <param name="predicate">filter to use</param>
         /// <returns>data matching requirement</returns>
-        IList<T> Get(Func<T, bool> predicte);
+        IList<T> Get(Func<T, bool> predicate);
 
         /// <summary>
         /// Gets all data elements available to the repository that match the predicate

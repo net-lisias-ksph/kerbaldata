@@ -25,7 +25,7 @@ namespace KerbalData
         private IDictionary<string, StorableItemMetadata<T>> objects = new Dictionary<string, StorableItemMetadata<T>>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorableDictionary" /> class.
+        /// Initializes a new instance of the <see cref="StorableObjects{T}" /> class.
         /// </summary>	
         public StorableObjects(IKerbalDataRepo<T> repo)
         {
@@ -85,6 +85,11 @@ namespace KerbalData
         /// </summary>
         public IKerbalDataRepo<T> Repo { get; private set; }
 
+        /// <summary>
+        /// Checks if provided id exists as an available object instance
+        /// </summary>
+        /// <param name="id">id to lookup</param>
+        /// <returns>true=id available;false=id not available</returns>
         public bool ContainsId(string id)
         {
             return objects.ContainsKey(id);

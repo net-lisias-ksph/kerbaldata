@@ -18,14 +18,14 @@ namespace KerbalData
     public class KerbalDataException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListenerException" /> class.
+        /// Initializes a new instance of the <see cref="KerbalDataException" /> class.
         /// </summary>
         public KerbalDataException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListenerException" /> class.
+        /// Initializes a new instance of the <see cref="KerbalDataException" /> class.
         /// </summary>
         /// <param name="message">error message to surface, BE DESCRIPTIVE!</param>
         public KerbalDataException(string message)
@@ -34,7 +34,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListenerException" /> class.
+        /// Initializes a new instance of the <see cref="KerbalDataException" /> class.
         /// </summary>
         /// <param name="message">error message to surface, BE DESCRIPTIVE!</param>
         /// <param name="inner">Underlying exception.</param>
@@ -44,7 +44,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListenerException" /> class.
+        /// Initializes a new instance of the <see cref="KerbalDataException" /> class.
         /// </summary>
         /// <param name="info">serialization meta-data <see cref="SerializationInfo" /></param>
         /// <param name="context">serialization stream <see cref="StreamingContext" /></param>

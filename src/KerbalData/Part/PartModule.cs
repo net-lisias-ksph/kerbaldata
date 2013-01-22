@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Data model for a module found in a part file
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartModule>))]
     public class PartModule : KerbalDataObject
@@ -25,7 +25,28 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the name
+        /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }  
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource colletion
+        /// </summary>
+        [JsonProperty("RESOURCE")]
+        public IList<PartResource> Resources { get; set; }
+
+        /// <summary>
+        /// Gets or sets the events
+        /// </summary>
+        [JsonProperty("EVENTS")]
+        public VesselEvents Events { get; set; }
+
+        /// <summary>
+        /// Gets or sets actions
+        /// </summary>
+        [JsonProperty("ACTIONS")]
+        public VesselActions Actions { get; set; }
     }
 }

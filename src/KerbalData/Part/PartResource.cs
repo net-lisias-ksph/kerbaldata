@@ -13,7 +13,7 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Data model for resource data found in part
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartResource>))]
     public class PartResource : KerbalDataObject
@@ -25,13 +25,28 @@ namespace KerbalData
         {
         }
 
+        /// <summary>
+        /// Gets or sets the name
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the amount
+        /// </summary>
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
+        /// <summary>
+        /// Gets or sets the max amount
+        /// </summary>
         [JsonProperty("maxAmount")]
-        public int MaxAmount { get; set; }  
+        public int MaxAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource collection
+        /// </summary>
+        [JsonProperty("RESOURCE")]
+        public IList<PartResource> Resources { get; set; }
     }
 }

@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\KerbalData.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\KerbalData.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
@@ -57,11 +59,13 @@
     <Compile Include="Config\PresetConfig.cs" />
     <Compile Include="Config\TerrainConfig.cs" />
     <Compile Include="Craft\CraftFile.cs" />
+    <Compile Include="Craft\CraftPart.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
     <Compile Include="Part\PartFile.cs" />
     <Compile Include="Part\PartModule.cs" />
+    <Compile Include="Part\PartPropellant.cs" />
     <Compile Include="Part\PartResource.cs" />
     <Compile Include="RepoFactory.cs" />
     <Compile Include="SaveGame\ActionGroups.cs" />

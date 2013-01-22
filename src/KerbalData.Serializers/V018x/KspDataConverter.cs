@@ -28,7 +28,7 @@ namespace KerbalData.Serializers.V018x
         {
             //var json = "{" + BuildJson(context.Data) + "}";
             var jobj = BuildJson(context.Data);
-            var json = jobj.ToString(Formatting.Indented, new JsonConverter[] { }).WriteToFile("jsonoutput.txt");
+            var json = jobj.ToString(Formatting.Indented, new JsonConverter[] { });//.WriteToFile("jsonoutput.txt");
             return json;
         }
             
