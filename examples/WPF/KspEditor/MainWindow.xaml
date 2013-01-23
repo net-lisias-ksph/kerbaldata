@@ -7,38 +7,312 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-
+        <local:VisibilityConverter x:Key="VisibilityConverter" />
+        <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="TitleText">
+            <Setter Property="FontSize" Value="26"/>
+        </Style>
     </Window.Resources>
     <Grid Margin="0,0,2,0">
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="10,43,0,0" VerticalAlignment="Top" Width="152" ItemsSource="{Binding Path=KerbalData.Saves.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="167,43,0,0" VerticalAlignment="Top" Width="160" ItemsSource="{Binding Path=KerbalData.Scenarios.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="332,43,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Path=KerbalData.TrainingScenarios.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="819,43,0,0" VerticalAlignment="Top" Width="230" ItemsSource="{Binding Path=KerbalData.Parts.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="639,43,0,0" VerticalAlignment="Top" Width="175" ItemsSource="{Binding Path=KerbalData.CraftInSph.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="437,43,0,0" VerticalAlignment="Top" Width="197" ItemsSource="{Binding Path=KerbalData.CraftInVab.Names}"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="1054,43,0,0" VerticalAlignment="Top" Width="85" ItemsSource="{Binding Path=KerbalData.KspSettings.Names}"/>
         <TextBox HorizontalAlignment="Left" Height="28" Margin="50,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="999" Text="{Binding Path=InstallPath}"/>
         <Button Content="Load" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="35"/>
         <Button Content="Open Install" HorizontalAlignment="Left" Margin="1054,10,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=OpenKspInstallFolderCommand}" />
-        <!--Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,322,0,270" Grid.RowSpan="2"/>
-        <DataGrid Name="grdData" Grid.Row="1" Grid.Column="0" Margin="10,348,0,10"
-                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
-                  ItemsSource="{Binding Vessels}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="200">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="200">
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid-->
+        
+        <Label Content="Games" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Scenarios" HorizontalAlignment="Left" Margin="167,38,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Training Scenarios" HorizontalAlignment="Left" Margin="332,38,0,0" VerticalAlignment="Top" Width="115"/>
+        <Label Content="VAB" HorizontalAlignment="Left" Margin="447,38,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="SPH" HorizontalAlignment="Left" Margin="639,38,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Parts" HorizontalAlignment="Left" Margin="819,38,0,0" VerticalAlignment="Top" Width="95"/>
+        <!--Label Content="Settings" HorizontalAlignment="Left" Margin="1054,38,0,0" VerticalAlignment="Top" Width="95"/-->
+        
+        <ComboBox Name="SavesList" HorizontalAlignment="Left" Height="24" Margin="10,61,0,0" VerticalAlignment="Top" Width="152" ItemsSource="{Binding Path=KerbalData.Saves.Names}" SelectedItem="{Binding Path=SelectedSave}"/>
+        <ComboBox Name="ScenarioList" HorizontalAlignment="Left" Height="24" Margin="167,61,0,0" VerticalAlignment="Top" Width="160" ItemsSource="{Binding Path=KerbalData.Scenarios.Names}" SelectedItem="{Binding Path=SelectedScenario}"/>
+        <ComboBox Name="TrainingList" HorizontalAlignment="Left" Height="24" Margin="332,61,0,0" VerticalAlignment="Top" Width="110" ItemsSource="{Binding Path=KerbalData.TrainingScenarios.Names}" SelectedItem="{Binding Path=SelectedTrainingScenario}"/>
+        <ComboBox Name="VabCraftList" HorizontalAlignment="Left" Height="24" Margin="447,61,0,0" VerticalAlignment="Top" Width="187" ItemsSource="{Binding Path=KerbalData.CraftInVab.Names}" SelectedItem="{Binding Path=SelectedVabCraft}"/>
+        <ComboBox Name="SphCraftList" HorizontalAlignment="Left" Height="24" Margin="639,61,0,0" VerticalAlignment="Top" Width="175" ItemsSource="{Binding Path=KerbalData.CraftInSph.Names}" SelectedItem="{Binding Path=SelectedSphCraft}"/>
+        <ComboBox Name="PartsList" HorizontalAlignment="Left" Height="24" Margin="819,61,0,0" VerticalAlignment="Top" Width="230" ItemsSource="{Binding Path=KerbalData.Parts.Names}" SelectedItem="{Binding Path=SelectedPart}"/>
+        <!--ComboBox Name="SettingsList" HorizontalAlignment="Left" Height="24" Margin="1054,61,0,0" VerticalAlignment="Top" Width="85" ItemsSource="{Binding Path=KerbalData.KspSettings.Names}" SelectedItem="{Binding Path=SelectedSetting}"/-->
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySave, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedSave}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=Save.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Save.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="{Binding Path=Save.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Save.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,322,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="saveVessels" Grid.Row="1" Grid.Column="0" Margin="601,64,10,215"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding Save.Game.FlightState.Crew}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>            
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,300,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="saveCrew" Grid.Row="1" Grid.Column="0" Margin="10,293,10,10"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding Save.Game.FlightState.Vessels}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayScenario, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedScenario}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=Scenario.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Scenario.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="{Binding Path=Scenario.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Scenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,322,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="scenarioVessels" Grid.Row="1" Grid.Column="0" Margin="601,64,10,215"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding Scenario.Game.FlightState.Crew}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,300,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="scenarioCrew" Grid.Row="1" Grid.Column="0" Margin="10,293,10,10"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding Scenario.Game.FlightState.Vessels}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayTrainingScenario, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedTrainingScenario}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=TrainingScenario.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=TrainingScenario.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="{Binding Path=TrainingScenario.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=TrainingScenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,322,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="trainingVessels" Grid.Row="1" Grid.Column="0" Margin="601,64,10,215"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding TrainingScenario.Game.FlightState.Crew}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,300,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="trainingCrew" Grid.Row="1" Grid.Column="0" Margin="10,293,10,10"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding TrainingScenario.Game.FlightState.Vessels}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayVabCraft, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedVabCraft}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=VabCraft.Ship}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=VabCraft.Type}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="{Binding Path=VabCraft.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,300,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="vabParts" Grid.Row="1" Grid.Column="0" Margin="10,293,10,10"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding VabCraft.Parts}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part}" MinWidth="150">
+                        </DataGridTextColumn>                        
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Module Count" Binding="{Binding Path=Modules.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Resource Count" Binding="{Binding Path=Resources.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Action Count" Binding="{Binding Path=Actions.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Event Count" Binding="{Binding Path=Events.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySphCraft, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedSphCraft}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=SphCraft.Ship}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=SphCraft.Type}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <Label Content="{Binding Path=SphCraft.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Data grid:" RenderTransformOrigin="0.499,5.562" Height="21" Margin="0,300,0,270" Grid.RowSpan="2"/>
+                <DataGrid Name="sphParts" Grid.Row="1" Grid.Column="0" Margin="10,293,10,10"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding SphCraft.Parts}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Module Count" Binding="{Binding Path=Modules.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Resource Count" Binding="{Binding Path=Resources.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Action Count" Binding="{Binding Path=Actions.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Event Count" Binding="{Binding Path=Events.Count}" MinWidth="100">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayPart, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedPart}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
+            <Label Content="{Binding Path=Part.Name}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="101"/>
+            
+            <Label Content="Author" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Author}" HorizontalAlignment="Left" Margin="62,211,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Category" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Category}" HorizontalAlignment="Left" Margin="73,242,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Mesh" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Mesh}" HorizontalAlignment="Left" Margin="54,273,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Cost" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Cost}" HorizontalAlignment="Left" Margin="49,304,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Mass" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Mass}" HorizontalAlignment="Left" Margin="52,335,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Manufacturer" HorizontalAlignment="Left" Margin="10,366,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.Manufacturer}" HorizontalAlignment="Left" Margin="96,366,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Crash Tolerance" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=Part.CrashTolerance}" HorizontalAlignment="Left" Margin="109,397,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+        <!--Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySetting, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedSetting}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="70"/>
+            <Label Content="{Binding Path=Setting.SettingsVersion}" HorizontalAlignment="Left" Margin="34,91,0,0" VerticalAlignment="Top"/>
+        </Grid-->
     </Grid>
 </Window>

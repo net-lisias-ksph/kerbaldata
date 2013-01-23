@@ -80,7 +80,7 @@
     </Compile>
     <Compile Include="netfx\System\Guard.cs" />
     <Compile Include="netfx\System\Windows\Input\DelegateCommand.cs" />
-    <Compile Include="WpfExtensions.cs" />
+    <Compile Include="VisibilityConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />

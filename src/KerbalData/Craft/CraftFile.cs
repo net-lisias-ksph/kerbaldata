@@ -47,7 +47,7 @@ namespace KerbalData
         /// Gets or sets the parts collection
         /// </summary>
         [JsonProperty("PART")]
-        public IList<Part> Parts { get; set; }
+        public IList<CraftPart> Parts { get; set; }
 
         /// <summary>
         /// Restores the object to the state it was in when it's data was first loaded or last saved. 

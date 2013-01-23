@@ -26,6 +26,12 @@ namespace KerbalData
         }
 
         /// <summary>
+        /// Gets or sets name
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or setss resource collection
         /// </summary>
         [JsonProperty("RESOURCE")]
