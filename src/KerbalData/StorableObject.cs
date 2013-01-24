@@ -182,8 +182,12 @@ namespace KerbalData
         private bool PutToParentRepo(string id)
         {
             var parentType = GetParentType();
-                
+
+#if NET45
             var repo = parentType.GetProperty("Repo").GetValue(parent);
+#elif NET40 || NET35 || MONO210
+            var repo = parentType.GetProperty("Repo").GetValue(parent, null);
+#endif
             var result = repo.GetType().GetMethod("Put").Invoke(repo, new object[] { id, this });
 
             return (bool)result;

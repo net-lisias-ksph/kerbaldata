@@ -110,6 +110,7 @@ namespace KerbalData
                 WriteToken(writer, prop.Value);
             }
 
+#if NET45
             // Mapped properties
             var props = typeof(T).GetProperties();
             for (var i = 0; i < props.Count(); i++)
@@ -127,6 +128,25 @@ namespace KerbalData
                     }
                 }
             }
+#elif NET40 || NET35 || MONO210
+            // Mapped Properties
+            var props = typeof(T).GetProperties();
+            for (var i = 0; i < props.Count(); i++)
+            {
+                if (props[i].GetCustomAttributes(typeof(JsonPropertyAttribute), true).Count() > 0)
+                {
+                    var val = props[i].GetValue(value, null);
+
+                    if (val != null)
+                    {
+                        var name = GetJsonPropName(props[i]);
+
+                        writer.WritePropertyName(name);
+                        WriteToken(writer, JToken.FromObject(val, serializer));
+                    }
+                }
+            }            
+#endif
 
             writer.WriteEndObject();
         }
@@ -149,7 +169,11 @@ namespace KerbalData
 
                 if (jProp != null)
                 {
+#if NET45
                     prop.SetValue(obj, ConvertToken(prop.PropertyType, jProp.Value));
+#elif NET40 || NET35 || MONO210
+                    prop.SetValue(obj, ConvertToken(prop.PropertyType, jProp.Value), BindingFlags.SetProperty, null, null, null);
+#endif
                 }
             }
 
@@ -368,8 +392,11 @@ namespace KerbalData
             for (var i = 0; i < infoArray.Count(); i++)
             {
                 var propInfo = infoArray[i];
-
+#if NET45
                 list.AddRange(propInfo.CustomAttributes.Where(ca => ca.AttributeType.Equals(typeof(JsonPropertyAttribute))).Select(a => ((JsonPropertyAttribute)(a.Constructor.Invoke(a.ConstructorArguments.Select(ar => ar.Value).ToArray<object>()))).PropertyName).ToList<string>());
+#elif NET40 || NET35 || MONO210
+                list.AddRange(((JsonPropertyAttribute[])propInfo.GetCustomAttributes(typeof(JsonPropertyAttribute), true)).Select(p => p.PropertyName));            
+#endif
             }
 
             return list;
@@ -419,13 +446,17 @@ namespace KerbalData
 
         private string GetJsonPropName(PropertyInfo propInfo)
         {
+#if NET45
             var name = 
                 propInfo.CustomAttributes.Where(
                 ca => ca.AttributeType.Equals(typeof(JsonPropertyAttribute)))
                     .Select(
                     a => ((JsonPropertyAttribute)(a.Constructor.Invoke(a.ConstructorArguments.Select(ar => ar.Value).ToArray<object>()))).PropertyName
                 ).ToList<string>().FirstOrDefault();
-
+#elif NET40 || NET35 || MONO210
+            var prop = ((JsonPropertyAttribute[])propInfo.GetCustomAttributes(typeof(JsonPropertyAttribute), true)).FirstOrDefault();
+            var name = prop != null ? prop.PropertyName : null;
+#endif
             name = string.IsNullOrEmpty(name) ? propInfo.Name : name;
 
             return name;
