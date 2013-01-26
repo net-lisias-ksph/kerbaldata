@@ -18,11 +18,5 @@ namespace KerbalData
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ActionGroups>))]
     public class ActionGroups : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ActionGroups" /> class.
-        /// </summary>	
-        public ActionGroups()
-        {
-        }
     }
 }

@@ -19,18 +19,9 @@ namespace KerbalData
     public class PresetConfig : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PresetConfig" /> class.
-        /// </summary>	
-        public PresetConfig()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the planet config collection
+        /// Gets or sets the planet config collection. - File Property: PLANET
         /// </summary>
         [JsonProperty("PLANET")]
         public IList<PlanetConfig> Planets { get; set; }
-
-
     }
 }

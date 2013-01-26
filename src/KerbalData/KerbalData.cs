@@ -12,15 +12,34 @@ namespace KerbalData
     using System.Text;
 
     /// <summary>
-    /// Top level consumer API class. For easiest access use this class to edit and manage KSP data. 
+    /// Top level consumer API class used for accessing and loading KSP data. 
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Classes starting with the word "Kerbal" are "top level" consumer API's. For most development, this is the easiest way to use KerbalData. The top level API provides the following features:
+    /// <list type="bullet">
+    ///   <item>KSP Install Aware</item>
+    ///   <item>Specialized Models with extended properties to translate KSP data to standard formats (TimeSpan for game and mission time for example)</item>
+    ///   <item>Utilizes configured repos allowing for easy integration with multiple data stores</item>
+    ///   <item>Provides lazy loading of data</item>
+    ///   <item>Maintains data used to initialize the object and state can be restored to time of load or last save</item>
+    ///   <item>All operations with the top level API start with a KerbalData instance. This class will maintain all the references necessary. The constructor accepts the root path for a KSP install. Once initialized KerbalData will scan the KSP install and load initial meta-data (currently only names) but not the actual files into memory. KSP files are only serilized and loaded on initial access of pariticular named data. Once loaded the data will be maintained and no additional calls will be made to the data until Save() is called.</item>
+    /// </list>      
+    /// </para>
+    /// </remarks>
+    /// <threadsafety static="false" instance="false" />
     public class KerbalData
     {
         private string installPath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalData" /> class.
-        /// </summary>	
+        /// </summary>
+        /// <example>
+        /// <code language="cs" title="Starting Kerbal Data API">
+        ///  var kd = new KerbalData(@"C:\KSP");
+        /// </code>
+        /// </example>
         /// <param name="installPath">path of a valid KSP install currently only tested support of 0.18.x</param>
         public KerbalData(string installPath)
         {

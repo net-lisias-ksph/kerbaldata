@@ -15,7 +15,11 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// base class for top level consumer models. Contains functionality for saving/updating data store model is loaded from.
+    /// Base class for top level consumer models that can be serialized/deserialized. 
+    /// Contains functionality for saving/updating data store model is loaded from.
+    /// </summary>
+    /// <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
+    /// <seealos cref="UnMappedPropertiesConverter{T}" />
     /// </summary>
     [JsonObject]
     public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable 

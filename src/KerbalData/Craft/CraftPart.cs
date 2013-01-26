@@ -19,38 +19,31 @@ using Newtonsoft.Json;
     public class CraftPart : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CraftPart" /> class.
-        /// </summary>	
-        public CraftPart()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the part 
+        /// Gets or sets the part. - File Property: part
         /// </summary>
         [JsonProperty("part")]
         public string Part { get; set; }
 
         /// <summary>
-        /// Gets or sets the part name
+        /// Gets or sets the part name. - File Property: partName
         /// </summary>
         [JsonProperty("partName")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets and sets events
+        /// Gets and sets events. - File Property: EVENTS
         /// </summary>
         [JsonProperty("EVENTS")]
         public VesselEvents Events { get; set; }
 
         /// <summary>
-        /// Gets and sets actions
+        /// Gets and sets actions. - File Property: ACTIONS
         /// </summary>
         [JsonProperty("ACTIONS")]
         public VesselActions Actions { get; set; }
 
         /// <summary>
-        /// Gets and sets module collection
+        /// Gets and sets module collection. - File Property: MODULE
         /// </summary>
         [JsonProperty("MODULE")]
         public IList<Module> Modules { get; set; }

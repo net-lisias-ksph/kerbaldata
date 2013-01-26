@@ -21,54 +21,49 @@ namespace KerbalData
     public class Vessel : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vessel" /> class.
-        /// </summary>	
-        public Vessel() : base() { }
-
-        /// <summary>
-        /// Gets or sets the Pid
+        /// Gets or sets the Pid. - File Property: GAME
         /// </summary>
         [JsonProperty("pid")]
         public string Pid { get; set; }
 
         /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: GAME
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the type
+        /// Gets or sets the type. - File Property: GAME
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the situation
+        /// Gets or sets the situation. - File Property: GAME
         /// </summary>
         [JsonProperty("sit")]
         public string Situation { get; set; }
 
         /// <summary>
-        /// Gets or sets the landed flag
+        /// Gets or sets the landed flag. - File Property: GAME
         /// </summary>
         [JsonProperty("landed")]
         public bool Landed { get; set; }
 
         /// <summary>
-        /// Gets or sets the landed at value
+        /// Gets or sets the landed at value. - File Property: GAME
         /// </summary>
         [JsonProperty("landedAt")]
         public string LandedAt { get; set; }
 
         /// <summary>
-        /// Gets or sets the splashed flag
+        /// Gets or sets the splashed flag. - File Property: GAME
         /// </summary>
         [JsonProperty("splashed")]
         public bool Splashed { get; set; }
 
         /// <summary>
-        /// Gets or sets the Met
+        /// Gets or sets the Met. - File Property: GAME
         /// </summary>
         [JsonProperty("met")]
         public decimal Met { get; set; }
@@ -89,97 +84,97 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets or sets lct
+        /// Gets or sets lct. - File Property: lct
         /// </summary>
         [JsonProperty("lct")]
         public decimal Lct { get; set; }
 
         /// <summary>
-        /// Gets or sets root
+        /// Gets or sets root. - File Property: root
         /// </summary>
         [JsonProperty("root")]
         public int Root { get; set; }
 
         /// <summary>
-        /// Gets or sets latitude
+        /// Gets or sets latitude. - File Property: lat
         /// </summary>
         [JsonProperty("lat")]
         public decimal Latitude { get; set; }
 
         /// <summary>
-        /// Gets or sets longitude
+        /// Gets or sets longitude. - File Property: lon
         /// </summary>
         [JsonProperty("lon")]
         public decimal Longitude { get; set; }
 
         /// <summary>
-        /// Gets or sets altitude
+        /// Gets or sets altitude. - File Property: alt
         /// </summary>
         [JsonProperty("alt")]
         public decimal Altitude { get; set; }
 
         /// <summary>
-        /// Gets or sets hgt
+        /// Gets or sets hgt. - File Property: hgt
         /// </summary>
         [JsonProperty("hgt")]
         public decimal Hgt { get; set; }
 
         /// <summary>
-        /// Gets or sets nrm
+        /// Gets or sets nrm. - File Property: nrm
         /// </summary>
         [JsonProperty("nrm")]
         public decimal[] Nrm { get; set; }
         
         /// <summary>
-        /// Gets or sets Rot
+        /// Gets or sets Rot. - File Property: rot
         /// </summary>
         [JsonProperty("rot")]
         public decimal[] Rot { get; set; }
 
         /// <summary>
-        /// Gets or sets Com
+        /// Gets or sets Com. - File Property: CoM
         /// </summary>
         [JsonProperty("CoM")]
         public float[] Com { get; set; }
 
         /// <summary>
-        /// Gets or sets stage
+        /// Gets or sets stage. - File Property: stg
         /// </summary>
         [JsonProperty("stg")]
         public int Stage { get; set; }
 
         /// <summary>
-        /// Gets or sets prst
+        /// Gets or sets prst. - File Property: Prst
         /// </summary>
         [JsonProperty("prst")]
         public bool Prst { get; set; }
 
         /// <summary>
-        /// Gets or sets eva
+        /// Gets or sets eva. - File Property: Eva
         /// </summary>
         [JsonProperty("eva")]
         public bool Eva { get; set; }
 
         /// <summary>
-        /// Gets or sets ref
+        /// Gets or sets ref. - File Property: ref
         /// </summary>
         [JsonProperty("ref")]
         public string Ref { get; set; }
 
         /// <summary>
-        /// Gets or sets orbit
+        /// Gets or sets orbit. - File Property: ORBIT
         /// </summary>
         [JsonProperty("ORBIT")]
         public Orbit Orbit { get; set; }
 
         /// <summary>
-        /// Gets or sets part collection
+        /// Gets or sets part collection. - File Property: PART
         /// </summary>
         [JsonProperty("PART")]
         public IList<Part> Parts { get; set; }
 
         /// <summary>
-        /// Gets or sets vessel action groups
+        /// Gets or sets vessel action groups. - File Property: ACTIONGROUPS
         /// </summary>
         [JsonProperty("ACTIONGROUPS")]
         public ActionGroups ActionGroups { get; set; }

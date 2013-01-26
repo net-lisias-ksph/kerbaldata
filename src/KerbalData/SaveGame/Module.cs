@@ -15,38 +15,31 @@ namespace KerbalData
     // TODO: Possible merge with PartModule. 
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model container for a save data module instance
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<Module>))]
     public class Module : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Module" /> class.
-        /// </summary>	
-        public Module()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource list
+        /// Gets or sets the resource list. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
         public IList<PartResource> Resources { get; set; }
 
         /// <summary>
-        /// Gets or sets module events
+        /// Gets or sets module events. - File Property: EVENTS
         /// </summary>
         [JsonProperty("EVENTS")]
         public VesselEvents Events { get; set; }
 
         /// <summary>
-        /// Gets or sets module actions
+        /// Gets or sets module actions. - File Property: ACTIONS
         /// </summary>
         [JsonProperty("ACTIONS")]
         public VesselActions Actions { get; set; }

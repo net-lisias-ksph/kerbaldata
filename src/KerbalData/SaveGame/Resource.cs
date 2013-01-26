@@ -19,36 +19,31 @@ namespace KerbalData
     public class Resource : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Resource" /> class.
-        /// </summary>	
-        public Resource() { }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the current resource amount
+        /// Gets or sets the current resource amount. - File Property: amount
         /// </summary>
         [JsonProperty("amount")]
         public decimal Amount { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum resource amount
+        /// Gets or sets the maximum resource amount. - File Property: maxAmount
         /// </summary>
         [JsonProperty("maxAmount")]
         public decimal MaxAmount { get; set; }
 
         /// <summary>
-        /// Gets or sets the flow state
+        /// Gets or sets the flow state. - File Property: flowState
         /// </summary>
         [JsonProperty("flowState")]
         public bool FlowState { get; set; }
 
         /// <summary>
-        /// Gets or sets the flow mode
+        /// Gets or sets the flow mode. - File Property: flowMode
         /// </summary>
         [JsonProperty("flowMode")]
         public string FlowMode { get; set; }

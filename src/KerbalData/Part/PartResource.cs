@@ -19,32 +19,25 @@ namespace KerbalData
     public class PartResource : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PartResource" /> class.
-        /// </summary>	
-        public PartResource()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the amount
+        /// Gets or sets the amount. - File Property: name
         /// </summary>
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
         /// <summary>
-        /// Gets or sets the max amount
+        /// Gets or sets the max amount. - File Property: maxAmount
         /// </summary>
         [JsonProperty("maxAmount")]
         public int MaxAmount { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource collection
+        /// Gets or sets the resource collection. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
         public IList<PartResource> Resources { get; set; }

@@ -13,16 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model for tracking station params in the save
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<TrackingStationGameParameters>))]
     public class TrackingStationGameParameters : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TrackingStationGameParameters" /> class.
-        /// </summary>	
-        public TrackingStationGameParameters()
-        {
-        }
     }
 }

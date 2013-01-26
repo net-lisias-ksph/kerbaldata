@@ -13,38 +13,31 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model container save game parameter sets
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<GameParameters>))]
     public class GameParameters : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameParameters" /> class.
-        /// </summary>	
-        public GameParameters()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets flight parameters
+        /// Gets or sets flight parameters. - File Property: FLIGHT
         /// </summary>
         [JsonProperty("FLIGHT")]
         public FlightGameParameters Flight { get; set; }
 
         /// <summary>
-        /// Gets or sets editor parameters
+        /// Gets or sets editor parameters. - File Property: EDITOR
         /// </summary>
         [JsonProperty("EDITOR")]
         public EditorGameParameters Editor { get; set; }
 
         /// <summary>
-        /// Gets or sets tracking station parameters
+        /// Gets or sets tracking station parameters. - File Property: TRACKINGSTATION
         /// </summary>
         [JsonProperty("TRACKINGSTATION")]
         public TrackingStationGameParameters TrackingStation { get; set; }
 
         /// <summary>
-        /// Gets or sets space center parameters
+        /// Gets or sets space center parameters. - File Property: SPACECENTER
         /// </summary>
         [JsonProperty("SPACECENTER")]
         public SpaceCenterGameParameters SpaceCenter { get; set; }

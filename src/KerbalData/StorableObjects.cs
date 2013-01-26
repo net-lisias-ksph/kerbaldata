@@ -20,6 +20,7 @@ namespace KerbalData
     /// even if another value with the same name already exists. The previous value will be overwritten by the latest addition to the
     /// list. 
     /// </summary>
+    /// <typeparam name="T">model type being managed</typeparam>
     public class StorableObjects<T> where T : class, IStorable, new()
     {
         private IDictionary<string, StorableItemMetadata<T>> objects = new Dictionary<string, StorableItemMetadata<T>>();
@@ -35,7 +36,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets or sets the value of a particular KSP data object. 
+        /// Gets or sets the value of an unmapped property using a unique name. 
         /// </summary>
         /// <param name="id">Id to lookup</param>
         /// <returns>object for the associtated ID</returns>
@@ -56,8 +57,9 @@ namespace KerbalData
                 if (objects.ContainsKey(id))
                 {
                     Load(id);
-                    Add(value, id); // Run The add method as it handles both updates and new objects. 
                 }
+
+                Add(value, id); // Run The add method as it handles both updates and new objects. 
             }
         }
 

@@ -19,32 +19,25 @@ namespace KerbalData
     public class CraftFile : StorableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CraftFile" /> class.
-        /// </summary>	
-        public CraftFile()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the ship name
+        /// Gets or sets the ship name. - File Property: ship
         /// </summary>
         [JsonProperty("ship")]
         public string Ship { get; set; }
 
         /// <summary>
-        /// Gets or sets the version
+        /// Gets or sets the version. - File Property: version
         /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
 
         /// <summary>
-        /// Gets or sets the type
+        /// Gets or sets the type. - File Property: type
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the parts collection
+        /// Gets or sets the parts collection. - File Property: PART
         /// </summary>
         [JsonProperty("PART")]
         public IList<CraftPart> Parts { get; set; }

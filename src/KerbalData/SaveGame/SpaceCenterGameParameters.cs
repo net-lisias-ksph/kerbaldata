@@ -13,16 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model for Space Center params in a save file
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<SpaceCenterGameParameters>))]
     public class SpaceCenterGameParameters : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceCenterGameParameters" /> class.
-        /// </summary>	
-        public SpaceCenterGameParameters()
-        {
-        }
     }
 }

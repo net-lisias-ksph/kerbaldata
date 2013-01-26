@@ -19,26 +19,19 @@ namespace KerbalData
     public class TerrainConfig : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TerrainConfig" /> class.
-        /// </summary>	
-        public TerrainConfig()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the version
+        /// Gets or sets the version. - File Property: version
         /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
 
         /// <summary>
-        /// Gets or sets the preset
+        /// Gets or sets the preset. - File Property: preset
         /// </summary>
         [JsonProperty("preset")]
         public string Preset { get; set; }
 
         /// <summary>
-        /// Gets or sets the Preset collection
+        /// Gets or sets the Preset collection. - File Property: PRESET
         /// </summary>
         [JsonProperty("PRESET")]
         public IList<PresetConfig> Presets { get; set; }

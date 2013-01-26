@@ -19,62 +19,55 @@ namespace KerbalData
     public class Orbit : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Orbit" /> class.
-        /// </summary>	
-        public Orbit()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets SMA
+        /// Gets or sets SMA. - File Property: SMA
         /// </summary>
         [JsonProperty("SMA")]
         public decimal Sma { get; set; }
 
         /// <summary>
-        /// Gets or sets ECC
+        /// Gets or sets ECC. - File Property: ECC
         /// </summary>
         [JsonProperty("ECC")]
         public decimal Ecc { get; set; }
 
         /// <summary>
-        /// Gets or sets INC
+        /// Gets or sets INC. - File Property: INC
         /// </summary>
         [JsonProperty("INC")]
         public decimal Inc { get; set; }
 
         /// <summary>
-        /// Gets or sets LPE
+        /// Gets or sets LPE. - File Property: LPE
         /// </summary>
         [JsonProperty("LPE")]
         public decimal Lpe { get; set; }
 
         /// <summary>
-        /// Gets or sets LAN
+        /// Gets or sets LAN. - File Property: LAN
         /// </summary>
         [JsonProperty("LAN")]
         public decimal Lan { get; set; }
 
         /// <summary>
-        /// Gets or sets mna
+        /// Gets or sets mna. - File Property: MNA
         /// </summary>
         [JsonProperty("MNA")]
         public decimal Mna { get; set; }
 
         /// <summary>
-        /// Gets or sets Eph
+        /// Gets or sets Eph. - File Property: EPH
         /// </summary>
         [JsonProperty("EPH")]
         public decimal Eph { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference body integer
+        /// Gets or sets the reference body integer. - File Property: REF
         /// </summary>
         [JsonProperty("REF")]
         public int Ref { get; set; }
 
         /// <summary>
-        /// Gets or sets the obj
+        /// Gets or sets the obj. - File Property: OBJ
         /// </summary>
         [JsonProperty("OBJ")]
         public decimal Obj { get; set; }

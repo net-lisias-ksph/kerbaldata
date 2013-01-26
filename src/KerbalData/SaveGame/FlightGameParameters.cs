@@ -13,16 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model container for game flight options
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<FlightGameParameters>))]
     public class FlightGameParameters : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FlightGameParameters" /> class.
-        /// </summary>	
-        public FlightGameParameters()
-        {
-        }
     }
 }

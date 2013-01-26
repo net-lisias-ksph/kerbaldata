@@ -20,20 +20,13 @@ namespace KerbalData
     public class FlightState : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FlightState" /> class.
-        /// </summary>	
-        public FlightState() : base()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the game version
+        /// Gets or sets the game version. - File Property: version
         /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
 
         /// <summary>
-        /// Gets or sets the raw universe time
+        /// Gets or sets the raw universe time. - File Property: UT
         /// </summary>
         [JsonProperty("UT")]
         public decimal Ut { get; set; }
@@ -54,19 +47,19 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets or sets the active vessel count
+        /// Gets or sets the active vessel count. - File Property: activeVessel
         /// </summary>
         [JsonProperty("activeVessel")]
         public int ActiveVessel { get; set; }
 
         /// <summary>
-        /// Gets or sets the crew collection
+        /// Gets or sets the crew collection. - File Property: CREW
         /// </summary>
         [JsonProperty("CREW")] 
         public IList<Crew> Crew { get; set; }
 
         /// <summary>
-        /// Gets or sets the vessel collection
+        /// Gets or sets the vessel collection. - File Property: VESSEL
         /// </summary>
         [JsonProperty("VESSEL")]
         public IList<Vessel> Vessels { get; set; }

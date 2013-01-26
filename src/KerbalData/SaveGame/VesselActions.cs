@@ -13,16 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Vessel actions 
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<VesselActions>))]
     public class VesselActions : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VesselActions" /> class.
-        /// </summary>	
-        public VesselActions()
-        {
-        }
     }
 }

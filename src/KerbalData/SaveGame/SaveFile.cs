@@ -17,8 +17,9 @@ namespace KerbalData
     using NAnt.Core.Functions;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Instances of this class contains reference and management of a KSP save file.
     /// </summary>
+    /// <threadsafety static="false" instance="false" />
     [JsonObject]
     public class SaveFile : StorableObject
     {
@@ -28,19 +29,14 @@ namespace KerbalData
         private StorableObjects<CraftFile> craftInSph;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SaveFile" /> class.
-        /// </summary>	
-        public SaveFile()
-        {
-
-        }
-
-        /// <summary>
-        /// Gets the KSP Game definition. Contains all de-serialized save data. 
+        /// Gets the KSP Game definition. Contains all de-serialized save data. - File Property: GAME
         /// </summary>
         [JsonProperty("GAME")]
         public Game Game 
-        { get; private set; }
+        { 
+            get;
+            private set; 
+        }
 
         /// <summary>
         /// Restores the object to the state it was in when it's data was first loaded or last saved. 

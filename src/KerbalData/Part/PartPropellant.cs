@@ -19,14 +19,7 @@ using Newtonsoft.Json;
     public class PartPropellant : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PartPropellant" /> class.
-        /// </summary>	
-        public PartPropellant()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }  

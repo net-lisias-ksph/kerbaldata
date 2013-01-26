@@ -18,7 +18,8 @@ namespace KerbalData
     public interface IStorable
     {
         /// <summary>
-        /// Gets the Orignal data // TODO: Break JSON.Net Dependency
+        /// Gets the Orignal data 
+        /// <see href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JObject.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
         /// </summary>
         JObject Original { get; }
 

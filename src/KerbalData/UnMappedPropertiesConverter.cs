@@ -18,15 +18,13 @@ namespace KerbalData
     /// <summary>
     /// JSON.NET implmentation class for de-serializing to classes while storing unmapped properties to the the <see cref="IKerbalDataObject"/> implmentation.
     /// </summary>
+    /// <typeparam name="T">model type being processed</typeparam>
+    /// <threadsafety static="false" instance="false" />    
     public class UnMappedPropertiesConverter<T> : CustomCreationConverter<T> where T : class, IKerbalDataObject, new()
     {
-        // TODO: This class takes over much of what JSON.NET does for us. While this makes for good code to start breaking dependency on JSON.NET analysis should be done to see if 
+        // TODO: This class takes over much of what JSON.NET does for us with regards to mapping to models. 
+        // While this makes for good code to start breaking dependency on JSON.NET analysis should be done to see if 
         // this was even neccassary to achieve what I needed. 
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnMappedPropertiesConverter{T}" /> class.
-        /// </summary>	
-        public UnMappedPropertiesConverter() : base() { }
 
         /// <summary>
         /// Gets the canread flag

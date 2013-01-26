@@ -19,32 +19,25 @@ namespace KerbalData
     public class PartModule : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PartModule" /> class.
-        /// </summary>	
-        public PartModule()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource colletion
+        /// Gets or sets the resource colletion. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
         public IList<PartResource> Resources { get; set; }
 
         /// <summary>
-        /// Gets or sets the events
+        /// Gets or sets the events. - File Property: EVENTS
         /// </summary>
         [JsonProperty("EVENTS")]
         public VesselEvents Events { get; set; }
 
         /// <summary>
-        /// Gets or sets actions
+        /// Gets or sets actions. - File Property: ACTIONS
         /// </summary>
         [JsonProperty("ACTIONS")]
         public VesselActions Actions { get; set; }

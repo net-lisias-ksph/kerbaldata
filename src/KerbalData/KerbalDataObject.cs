@@ -15,8 +15,10 @@ namespace KerbalData
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Base implmentation for consumer data model. Provides wireup override for base dictionary. Used for storing properties that have not been mapped.
+    /// <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
     /// </summary>
+    /// <threadsafety static="false" instance="false" />
     [JsonObject]
     public class KerbalDataObject : Dictionary<string, JToken>, IKerbalDataObject
     {

@@ -13,16 +13,10 @@ namespace KerbalData
     using Newtonsoft.Json;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Model for Editor prefs
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<EditorGameParameters>))]
     public class EditorGameParameters : KerbalDataObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EditorGameParameters" /> class.
-        /// </summary>	
-        public EditorGameParameters()
-        {
-        }
     }
 }

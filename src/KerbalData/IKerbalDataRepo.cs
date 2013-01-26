@@ -10,11 +10,12 @@ namespace KerbalData
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Requirements for data loading repository. Additonal implmentations may be provided to store/load KSP data from any desired store. 
     /// </summary>
+    /// <typeparam name="T">model type being stored</typeparam>
     public interface IKerbalDataRepo<T> where T : class, IStorable, new()
     {
         /// <summary>
@@ -90,8 +91,5 @@ using Newtonsoft.Json.Linq;
         /// <param name="Id">Id/name to delete</param>
         /// <returns>true=success;false=failure;</returns>
         bool Delete(string Id);
-
     }
-
-
 }

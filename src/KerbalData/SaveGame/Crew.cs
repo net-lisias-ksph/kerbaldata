@@ -19,51 +19,44 @@ namespace KerbalData
     public class Crew : KerbalDataObject 
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Crew" /> class.
-        /// </summary>	
-        public Crew()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the crew memeber's name
+        /// Gets or sets the crew memeber's name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the bravery level
+        /// Gets or sets the bravery level. - File Property: brave
         /// </summary>
         [JsonProperty("brave")]
         public decimal Brave { get; set; }
 
 
         /// <summary>
-        /// Gets or sets the dumbness level
+        /// Gets or sets the dumbness level. - File Property: dumb
         /// </summary>
         [JsonProperty("dumb")]
         public decimal Dumb { get; set; }
 
         /// <summary>
-        /// Gets or sets the BadS level
+        /// Gets or sets the BadS level. - File Property: badS
         /// </summary>
         [JsonProperty("badS")]
         public bool BadS { get; set; }
 
         /// <summary>
-        /// Gets or sets the state
+        /// Gets or sets the state. - File Property: state
         /// </summary>
         [JsonProperty("state")]
         public int State { get; set; }
 
         /// <summary>
-        /// Gets or sets the ToD
+        /// Gets or sets the ToD. - File Property: ToD
         /// </summary>
         [JsonProperty("ToD")]
         public decimal ToD { get; set; }
 
         /// <summary>
-        /// Gets or sets the index
+        /// Gets or sets the index. - File Property: idx
         /// </summary>
         [JsonProperty("idx")]
         public decimal Index { get; set; }

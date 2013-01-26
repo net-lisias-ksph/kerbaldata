@@ -19,32 +19,25 @@ namespace KerbalData
     public class PlanetConfig : KerbalDataObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlanetConfig" /> class.
-        /// </summary>	
-        public PlanetConfig()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum distance
+        /// Gets or sets the minimum distance. - File Property: minDistance
         /// </summary>
         [JsonProperty("minDistance")]
         public int MinDistance { get; set; }
 
         /// <summary>
-        /// Gets or sets the Minimum subdivision
+        /// Gets or sets the Minimum subdivision. - File Property: minSubdivision
         /// </summary>
         [JsonProperty("minSubdivision")]
         public int MinSubdivision { get; set; }
 
         /// <summary>
-        /// Gets or sets the Maximum subdivision
+        /// Gets or sets the Maximum subdivision. - File Property: maxSubdivision
         /// </summary>
         [JsonProperty("maxSubdivision")]
         public int MaxSubdivision { get; set; }
