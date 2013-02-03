@@ -8,14 +8,13 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using KerbalData;
+using System.Collections.Generic;
 
 namespace KerbalData.Tests
 {
     [TestClass]
     public class KerbalDataToJsonTests
     {
-        private KspToJson kspToJson = new KspToJson();
-
         /// <summary>
         /// Processes all files under Data/ by reading the file into JSON.Net and then writing them back out to KSP data. Resulting files are compared
         /// using a diff engine to the orignal KSP data file.
@@ -29,7 +28,8 @@ namespace KerbalData.Tests
         [TestMethod]
         public void TestProcessing()
         {
-            Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\Parts\dockingPort1"));
+            //Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\Parts\dockingPort1"));
+            Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\saves\temp"));
         }
 
         private bool AllFilesMatch(string dirPath)
@@ -49,22 +49,24 @@ namespace KerbalData.Tests
                 }
             }
 
+            var files = new List<string>();
+
             foreach (var file in dirInfo.EnumerateFiles())
             {
-                var orignal = file.OpenText().ReadToEnd();
-                var outputFile = dirInfo.FullName + "\\" + file.Name;
+                files.Add(file.FullName);
+            }
 
+            foreach (var file in files)
+            {                
                 try
                 {
-                    var processedName = outputFile + ".kspd";
-                    // Uses API to convert to JSON then back to KSP format this is equivilant to KSP>JSON>Object Model>JSON>KSP. Writing results to files for post test review
-                    // and for comparision using beyond compare
-                    var processed =
-                        kspToJson.ToKspData(
-                            kspToJson.ToJson(orignal).WriteToFile(outputFile + ".json")
-                        ).WriteToFile(processedName);
+                    var processedName = file + ".kspd";
+                    var jobj = KspData.LoadKspFile<JObject>(file);
 
-                    if (!FilesAreEqual(file.FullName, processedName))
+                    jobj.ToString(Formatting.Indented, null).WriteToFile(file + ".json");
+                    KspData.SaveFile(processedName, jobj);
+
+                    if (!FilesAreEqual(file, processedName))
                     {
                         allFilesMatch = false;
                     }

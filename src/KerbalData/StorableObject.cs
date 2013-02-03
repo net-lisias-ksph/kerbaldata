@@ -147,23 +147,21 @@ namespace KerbalData
                     Uri = savePath;
                     return true;
                 }
-
-                // If we have the repo then we are loaded as part of a managed repo/storableobjects pattern and we want the repo to save the data.
-                // In this case we take the name paramter if it is provided as a new ID. the underlying repo will add the new object instance
-                // into the collection using the provided ID. It will be immideitaly available as part of the StorableObjects collection. 
-                var id = !string.IsNullOrEmpty(name) ? name : Id;
-
-                var result = PutToParentRepo(id);
-                Original = JObject.FromObject(this);
-
-                // I am not really fond of this pattern but i am not sure I want to use a messaging pattern, need to think on this. 
-                RefreshParent();
-                Id = id;
-
-                return result;
             }
 
-            return false;
+            // If we have the repo then we are loaded as part of a managed repo/storableobjects pattern and we want the repo to save the data.
+            // In this case we take the name paramter if it is provided as a new ID. the underlying repo will add the new object instance
+            // into the collection using the provided ID. It will be immideitaly available as part of the StorableObjects collection. 
+            var id = !string.IsNullOrEmpty(name) ? name : Id;
+
+            var result = PutToParentRepo(id);
+            Original = JObject.FromObject(this);
+
+            // I am not really fond of this pattern but i am not sure I want to use a messaging pattern, need to think on this. 
+            RefreshParent();
+            Id = id;
+
+            return result;
         }
 
         /// <summary>

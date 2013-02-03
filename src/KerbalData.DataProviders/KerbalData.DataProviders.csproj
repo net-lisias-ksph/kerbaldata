@@ -43,6 +43,8 @@
     <OutputPath>bin\NET 4.5 Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 4.0 Release|AnyCPU'">
     <OutputPath>bin\NET 4.0 Release\</OutputPath>

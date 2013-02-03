@@ -116,12 +116,12 @@ namespace KerbalData.DataProviders
 
             foreach (var path in files.FileNames)
             {
-                var jobj = KspData.LoadKspFile(path);
+                T obj = KspData.LoadKspFile<T>(path);
 
-                if (jobj != null)
+                if (obj != null)
                 {
-                    result.Add(jobj.ToObject<T>());
-                    data.Add(jobj);
+                    result.Add(obj);
+                    data.Add(JObject.FromObject(obj));
                 }
             }
 
@@ -152,10 +152,10 @@ namespace KerbalData.DataProviders
                 return null;
             }
 
-            var jobj = KspData.LoadKspFile(GetFileInfo(id));
-            data = jobj;
+            T obj = KspData.LoadKspFile<T>(GetFileInfo(id));
+            data = JObject.FromObject(obj);
 
-            return jobj != null ? jobj.ToObject<T>() : null;
+            return obj;
         }
 
         public bool Put(string id, T obj)

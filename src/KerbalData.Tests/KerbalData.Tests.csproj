@@ -41,6 +41,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 4.5 Debug|AnyCPU'">
     <OutputPath>bin\NET 4.5 Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 4.0 Release|AnyCPU'">
     <OutputPath>bin\NET 4.0 Release\</OutputPath>

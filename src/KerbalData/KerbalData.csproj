@@ -9,15 +9,16 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KerbalData</RootNamespace>
     <AssemblyName>KerbalData</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -27,7 +28,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\Release\</OutputPath>
     <DefineConstants>TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -39,13 +40,15 @@
     <OutputPath>bin\NET 4.5 Release\</OutputPath>
     <Prefer32Bit>false</Prefer32Bit>
     <DefineConstants>TRACE;NET45</DefineConstants>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <DocumentationFile>bin\NET 4.5 Release\KerbalData.XML</DocumentationFile>
+    <DebugType>none</DebugType>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 4.5 Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\NET 4.5 Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -57,15 +60,17 @@
     <OutputPath>bin\NET 4.0 Release\</OutputPath>
     <DefineConstants>TRACE;NET40</DefineConstants>
     <DocumentationFile>bin\NET 4.0 Release\KerbalData.XML</DocumentationFile>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 4.0 Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\NET 4.0 Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -74,9 +79,9 @@
     <DocumentationFile>bin\NET 4.0 Debug\KerbalData.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NET 3.5 Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\NET 3.5 Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NET35</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -88,24 +93,27 @@
     <OutputPath>bin\NET 3.5 Release\</OutputPath>
     <DefineConstants>TRACE;NET35</DefineConstants>
     <DocumentationFile>bin\NET 3.5 Release\KerbalData.XML</DocumentationFile>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mono 2.10 Release|AnyCPU'">
     <OutputPath>bin\Mono 2.10 Release\</OutputPath>
     <DefineConstants>TRACE;MONO210</DefineConstants>
     <DocumentationFile>bin\Mono 2.10 Release\KerbalData.XML</DocumentationFile>
-    <Optimize>true</Optimize>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Optimize>True</Optimize>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mono 2.10 Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath Condition=" '$(OutputPath)' == '' ">bin\Mono 2.10 Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;MONO210</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -120,28 +128,24 @@
     <Reference Include="NAnt.Core">
       <HintPath>..\..\lib\NAnt.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" Condition="$(Configuration.Contains('4.5'))">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" Condition="$(Configuration.Contains('4.0'))">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" Condition="$(Configuration.Contains('3.5'))">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" Condition="$(Configuration.Contains('Mono'))">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json" Condition="$(Configuration.Contains('4.5'))">
+      <HintPath>..\..\lib\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json" Condition="$(Configuration.Contains('4.0'))">
+      <HintPath>..\..\lib\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json" Condition="$(Configuration.Contains('3.5'))">
+      <HintPath>..\..\lib\Net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json" Condition="$(Configuration.Contains('Mono'))">
+      <HintPath>..\..\lib\Net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfigFile.cs" />
@@ -150,9 +154,11 @@
     <Compile Include="Config\TerrainConfig.cs" />
     <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="Craft\CraftPart.cs" />
+    <Compile Include="IKerbalDataObjectExtensions.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
+    <Compile Include="Serialization\KspProcessor.cs" />
     <Compile Include="Part\PartFile.cs" />
     <Compile Include="Part\PartModule.cs" />
     <Compile Include="Part\PartPropellant.cs" />
@@ -168,8 +174,8 @@
     <Compile Include="SaveGame\GameParameters.cs" />
     <Compile Include="IKerbalDataObject.cs" />
     <Compile Include="SaveGame\Module.cs" />
-    <Compile Include="Serialization\IKspDataConverter.cs" />
-    <Compile Include="Serialization\IKspFileConverter.cs" />
+    <Compile Include="Serialization\IKspConverter.cs" />
+    <Compile Include="Serialization\IKspSerializer.cs" />
     <Compile Include="KerbalDataException.cs" />
     <Compile Include="KerbalDataExtension.cs" />
     <Compile Include="KerbalDataObject.cs" />
@@ -177,7 +183,6 @@
     <Compile Include="Serialization\KspDataContext.cs" />
     <Compile Include="Serialization\KspDataField.cs" />
     <Compile Include="Serialization\KspDataObject.cs" />
-    <Compile Include="Serialization\KspToJson.cs" />
     <Compile Include="SaveGame\Orbit.cs" />
     <Compile Include="SaveGame\Part.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

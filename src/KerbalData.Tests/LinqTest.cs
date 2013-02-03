@@ -46,6 +46,9 @@ namespace KerbalData.Tests
             var part = kd.Parts["liquidEngine1"];
             //var craft = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
             //var settings = kd.KspSettings["settings"];
+
+            part.Cost = 12345678;
+            part.Save();
             Console.WriteLine();
             /*
             var sf = kd.Saves["testing"];

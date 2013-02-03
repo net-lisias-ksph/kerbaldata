@@ -15,7 +15,7 @@ namespace KerbalData
     /// <summary>
     /// Reperesents a data element that can be saved as a unit. 
     /// </summary>
-    public interface IStorable
+    public interface IStorable : IKerbalDataObject
     {
         /// <summary>
         /// Gets the Orignal data 

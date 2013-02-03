@@ -1424,6 +1424,11 @@
             </summary>
             <returns>number of resource objects emptied</returns>
         </member>
+        <member name="P:KerbalData.Part.Name">
+            <summary>
+            Gets or sets name
+            </summary>
+        </member>
         <member name="P:KerbalData.Part.Resources">
             <summary>
             Gets or setss resource collection

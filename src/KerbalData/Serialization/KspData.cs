@@ -14,47 +14,30 @@ namespace KerbalData
 
     using Newtonsoft.Json.Linq;
 
+    using Serialization;
+
     /// <summary>
-    /// Top level data conversion/access class. 
-    /// This core class is used by higher level clasess to load and convert data as needed. KspData and the underlying converters are 
-    /// netural to context and only deal with data format conversion. Any vaild JSON or KSP data file can be converted even if the fields 
-    /// in the data do not match a particular game or even are used at all. Note that when adding data and fields not supported by KSP you 
-    /// may have unpredictable behavior up to and including deletion of your save file on attempted load.
+    /// Single file loading helper method class. Can be used to load/save and convert individual data items/files
+    /// This permanat helper class is also consumed by the KspInstallFileRepo and may be used by other
+    /// file system based repositories. 
     /// </summary>
     public static class KspData
     {
-        /// <summary>
-        /// Internal converter instance 
-        /// </summary>
-        private static KspToJson kspToJson = new KspToJson(); 
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KspData" /> class.
-        /// </summary>	
-        static KspData()
-        {
-        }
-
-        /// <summary>
-        /// Loads a the KSP data file found at the provided path.
-        /// </summary>
-        /// <param name="path">path to KSP data file</param>
-        /// <returns>de-serialized JSON object containing KSP data</returns>
-        public static JObject LoadKspFile(string path)
+        public static T LoadKspFile<T>(string path, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
         {
             if (!File.Exists(path))
             {
                 throw new KerbalDataException("The KSP Data file cannot be found. Path: " + path);
             }
 
-            JObject jobj;
+            T obj;
 
             using (var file = File.Open(path, FileMode.Open))
             {
                 try
                 {
-                    var json = kspToJson.ToJson(file);
-                    jobj = JObject.Parse(json);
+                    var processor = KspProcessor.Create<T>(serializer, converter);
+                    obj = processor.Process(file);
                 }
                 catch (Exception ex)
                 {
@@ -64,7 +47,7 @@ namespace KerbalData
                 file.Close();
             }
 
-            return jobj;
+            return obj;
         }
 
         /// <summary>
@@ -72,20 +55,20 @@ namespace KerbalData
         /// </summary>
         /// <param name="path">relative or absloute path</param>
         /// <returns>de-serialized JObject instance</returns>
-        public static JObject LoadJsonFile(string path)
+        public static T LoadJsonFile<T>(string path) where T : class, new()
         {
             if (!File.Exists(path))
             {
                 throw new KerbalDataException("The KSP Data file cannot be found. Path: " + path);
             }
 
-            JObject jobj;
+            T obj;
 
             using (var file = File.Open(path, FileMode.Open))
             {
                 try
                 {
-                    jobj = JObject.Parse((new StreamReader(file)).ReadToEnd());
+                    obj = JObject.Parse((new StreamReader(file)).ReadToEnd()).ToObject<T>();
                 }
                 catch (Exception ex)
                 {
@@ -95,7 +78,7 @@ namespace KerbalData
                 file.Close();
             }
 
-            return jobj;
+            return obj;
         }
 
         /// <summary>
@@ -103,7 +86,7 @@ namespace KerbalData
         /// </summary>
         /// <param name="path">path to save file to</param>
         /// <param name="obj">JObject to use when serializing data</param>
-        public static void SaveFile(string path, JToken obj)
+        public static void SaveFile<T>(string path, T obj) where T : class, new()
         {
             Convert(obj).WriteToFile(path);
         }
@@ -113,30 +96,46 @@ namespace KerbalData
         /// </summary>
         /// <param name="kspDataString">KSP string to use</param>
         /// <returns>de-serialized JObject instance</returns>
-        public static JObject Convert(string kspDataString)
+        public static T Convert<T>(string kspDataString, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
         {
-            JObject jobj;
+            T obj;
 
             try
             {
-                jobj = JObject.Parse(kspToJson.ToJson(kspDataString));
+                var processor = KspProcessor.Create<T>(serializer, converter);
+                obj = processor.Process(new MemoryStream(Encoding.ASCII.GetBytes(kspDataString)));
             }
             catch (Exception ex)
             {
                 throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
             }
 
-            return jobj;
+            return obj;
         }
 
         /// <summary>
-        /// Converts a JSON object to a KSP string
+        /// Converts an object instance to a KSP string
         /// </summary>
         /// <param name="jobj">object instance to serialize</param>
         /// <returns>serilaized KSP data string</returns>
-        public static string Convert(JToken jobj)
+        public static string Convert<T>(T obj, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
         {
-            return kspToJson.ToKspData(jobj.ToString());
+           // return kspToJson.ToKspData(jobj.ToString());
+
+            //JObject jobj;
+            string kspData;
+            try
+            {
+                var processor = KspProcessor.Create<T>(serializer, converter);
+                var stream = processor.Process(obj);
+                kspData = (new StreamReader(stream)).ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
+            }
+
+            return kspData;
         }
     }
 }
