@@ -47,7 +47,7 @@ namespace KerbalData.Tests
             //var craft = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
             //var settings = kd.KspSettings["settings"];
 
-            part.Cost = 12345678;
+            part.Cost = 98765432;
             part.Save();
             Console.WriteLine();
             /*

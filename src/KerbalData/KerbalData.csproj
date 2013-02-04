@@ -129,6 +129,7 @@
       <HintPath>..\..\lib\NAnt.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -148,6 +149,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\LibraryConfiguration.csd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryConfiguration.csd</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\ProcessorMetaData.cs" />
     <Compile Include="Config\ConfigFile.cs" />
     <Compile Include="Config\PlanetConfig.cs" />
     <Compile Include="Config\PresetConfig.cs" />
@@ -199,9 +206,27 @@
     <Compile Include="SaveGame\VesselEvents.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Configuration\LibraryConfiguration.csd">
+      <Generator>CsdFileGenerator</Generator>
+      <LastGenOutput>LibraryConfiguration.csd.cs</LastGenOutput>
+    </None>
+    <None Include="Configuration\LibraryConfiguration.csd.config">
+      <DependentUpon>LibraryConfiguration.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\LibraryConfiguration.csd.diagram">
+      <DependentUpon>LibraryConfiguration.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\LibraryConfiguration.csd.xsd">
+      <DependentUpon>LibraryConfiguration.csd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Design\HighLevel.dgml" />
     <None Include="packages.config" />
     <None Include="Design\SaveFileModel.dgml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

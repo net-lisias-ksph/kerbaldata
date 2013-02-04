@@ -18,7 +18,7 @@ namespace KerbalData.Serializers.V018x
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
-    public class ConsumerAPIConverter<T> : IKspConverter<T> where T : class, IKerbalDataObject, new()
+    public class JsonModelConverter<T> : IKspConverter<T> where T : class, new()
     {
         private IKspConverter<JObject> converter = new JsonObjectConverter<JObject>();
 

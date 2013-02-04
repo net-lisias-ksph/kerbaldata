@@ -23,7 +23,19 @@ namespace KerbalData
     /// </summary>
     public static class KspData
     {
-        public static T LoadKspFile<T>(string path, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
+        public static T LoadKspFile<T>(string path, string processorName = null) where T : class, new()
+        {
+            var processor = KspProcessor.Create<T>(processorName);
+            return LoadKspFile<T>(path, processor);
+        }
+
+        public static T LoadKspFile<T>(string path, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
+        {
+            var processor = KspProcessor.Create<T>(serializer, converter);
+            return LoadKspFile<T>(path, processor);
+        }
+
+        public static T LoadKspFile<T>(string path, KspProcessor<T> processor) where T : class, new()
         {
             if (!File.Exists(path))
             {
@@ -36,7 +48,6 @@ namespace KerbalData
             {
                 try
                 {
-                    var processor = KspProcessor.Create<T>(serializer, converter);
                     obj = processor.Process(file);
                 }
                 catch (Exception ex)
@@ -91,19 +102,50 @@ namespace KerbalData
             Convert(obj).WriteToFile(path);
         }
 
+        public static T Convert<T>(string data, string configName = null) where T : class, new()
+        {
+            KspProcessor<T> processor;
+
+            try
+            {
+                processor = KspProcessor.Create<T>(configName);
+            }
+            catch (Exception ex)
+            {
+                throw new KerbalDataException("An error has occured while attempting to load the processor. See inner exception for details.", ex);
+            }
+
+            return Convert<T>(data, processor);
+        }
+
         /// <summary>
         /// Converts a KSP data string to JSON
         /// </summary>
         /// <param name="kspDataString">KSP string to use</param>
         /// <returns>de-serialized JObject instance</returns>
-        public static T Convert<T>(string kspDataString, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
+        public static T Convert<T>(string data, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
+        {
+            KspProcessor<T> processor;
+
+            try
+            {
+                processor = KspProcessor.Create<T>(serializer, converter);
+            }
+            catch (Exception ex)
+            {
+                throw new KerbalDataException("An error has occured while attempting to load the processor. See inner exception for details.", ex);
+            }
+
+            return Convert<T>(data, processor);
+        }
+
+        private static T Convert<T>(string data, KspProcessor<T> processor) where T : class, new()
         {
             T obj;
 
             try
             {
-                var processor = KspProcessor.Create<T>(serializer, converter);
-                obj = processor.Process(new MemoryStream(Encoding.ASCII.GetBytes(kspDataString)));
+                obj = processor.Process(new MemoryStream(Encoding.ASCII.GetBytes(data)));
             }
             catch (Exception ex)
             {
@@ -113,26 +155,56 @@ namespace KerbalData
             return obj;
         }
 
+        public static string Convert<T>(T obj, string configName = null) where T : class, new()
+        {
+            KspProcessor<T> processor;
+
+            try
+            {
+                processor = KspProcessor.Create<T>(configName);
+
+            }
+            catch (Exception ex)
+            {
+                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
+            }
+
+            return Convert<T>(obj, processor);
+        }
+
         /// <summary>
         /// Converts an object instance to a KSP string
         /// </summary>
         /// <param name="jobj">object instance to serialize</param>
         /// <returns>serilaized KSP data string</returns>
-        public static string Convert<T>(T obj, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
+        public static string Convert<T>(T obj, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
         {
-           // return kspToJson.ToKspData(jobj.ToString());
+            KspProcessor<T> processor;
 
-            //JObject jobj;
+            try
+            {
+                processor = KspProcessor.Create<T>(serializer, converter);
+
+            }
+            catch (Exception ex)
+            {
+                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
+            }
+
+            return Convert<T>(obj, processor);
+        }
+
+        public static string Convert<T>(T obj, KspProcessor<T> processor) where T : class, new()
+        {
             string kspData;
             try
             {
-                var processor = KspProcessor.Create<T>(serializer, converter);
                 var stream = processor.Process(obj);
                 kspData = (new StreamReader(stream)).ReadToEnd();
             }
             catch (Exception ex)
             {
-                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
+                throw new KerbalDataException("An error has occured while attempting to load or read the KSP Data file. See inner exception for details.", ex);
             }
 
             return kspData;
