@@ -25,22 +25,26 @@ namespace KerbalData.Models
     {
         private bool isLoaded = false;
 
+        private Game game;
+        // private StorableObjects<CraftFile> craftInVab;
+        // private StorableObjects<CraftFile> craftInSph;
+
         /// <summary>
         /// Gets the KSP Game definition. Contains all de-serialized save data. - File Property: GAME
         /// </summary>
         [JsonProperty("GAME")]
         public Game Game 
-        { 
-            get;
-            private set; 
-        }
-
-        /// <summary>
-        /// Restores the object to the state it was in when it's data was first loaded or last saved. 
-        /// </summary>
-        public override void Revert()
         {
-            Game = Original["GAME"].ToObject<Game>();
+            get
+            {
+                return game;
+            }
+            set
+            {
+                game = value;
+                OnPropertyChanged("Game", game);
+            }
+
         }
 
         /// <summary>
@@ -62,5 +66,14 @@ namespace KerbalData.Models
             get;
             set;
         }
+
+        /// <summary>
+        /// Restores the object to the state it was in when it's data was first loaded or last saved. 
+        /// </summary>
+        public override void Revert()
+        {
+            Game = Original["GAME"].ToObject<Game>();
+        }
+
     }
 }

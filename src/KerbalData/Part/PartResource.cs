@@ -18,28 +18,76 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartResource>))]
     public class PartResource : KerbalDataObject
     {
+        private string name;
+        private int amount, maxAmount;
+        private IList<PartResource> resources;
+
         /// <summary>
         /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name", name);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the amount. - File Property: name
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount", amount);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the max amount. - File Property: maxAmount
         /// </summary>
         [JsonProperty("maxAmount")]
-        public int MaxAmount { get; set; }
+        public int MaxAmount
+        {
+            get
+            {
+                return maxAmount;
+            }
+            set
+            {
+                maxAmount = value;
+                OnPropertyChanged("MaxAmount", maxAmount);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the resource collection. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
-        public IList<PartResource> Resources { get; set; }
+        public IList<PartResource> Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                resources = value;
+                OnPropertyChanged("Resources", resources);
+            }
+        }
     }
 }

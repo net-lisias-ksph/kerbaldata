@@ -18,10 +18,23 @@ using Newtonsoft.Json;
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartPropellant>))]
     public class PartPropellant : KerbalDataObject
     {
+        private string name;
+
         /// <summary>
         /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }  
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name", name);
+            }
+        }
     }
 }

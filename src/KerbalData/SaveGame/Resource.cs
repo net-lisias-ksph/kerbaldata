@@ -18,35 +18,93 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<Resource>))]
     public class Resource : KerbalDataObject
     {
+        private string name, flowMode;
+        private decimal amount, maxAmount;
+        private bool flowState;
         /// <summary>
         /// Gets or sets the name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name", name);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the current resource amount. - File Property: amount
         /// </summary>
         [JsonProperty("amount")]
-        public decimal Amount { get; set; }
+        public decimal Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount", amount);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the maximum resource amount. - File Property: maxAmount
         /// </summary>
         [JsonProperty("maxAmount")]
-        public decimal MaxAmount { get; set; }
+        public decimal MaxAmount
+        {
+            get
+            {
+                return maxAmount;
+            }
+            set
+            {
+                maxAmount = value;
+                OnPropertyChanged("MaxAmount", maxAmount);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the flow state. - File Property: flowState
         /// </summary>
         [JsonProperty("flowState")]
-        public bool FlowState { get; set; }
+        public bool FlowState
+        {
+            get
+            {
+                return flowState;
+            }
+            set
+            {
+                flowState = value;
+                OnPropertyChanged("FlowState", flowState);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the flow mode. - File Property: flowMode
         /// </summary>
         [JsonProperty("flowMode")]
-        public string FlowMode { get; set; }
+        public string FlowMode
+        {
+            get
+            {
+                return flowMode;
+            }
+            set
+            {
+                flowMode = value;
+                OnPropertyChanged("FlowMode", flowMode);
+            }
+        }
 
         /// <summary>
         /// Gets the isfull flag

@@ -8,6 +8,7 @@ namespace KerbalData
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
     using Newtonsoft.Json;
@@ -20,13 +21,29 @@ namespace KerbalData
     /// </summary>
     /// <threadsafety static="false" instance="false" />
     [JsonObject]
-    public class KerbalDataObject : Dictionary<string, JToken>, IKerbalDataObject
+    public class KerbalDataObject : Dictionary<string, JToken>, IKerbalDataObject, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalDataObject" /> class.
         /// </summary>	
         public KerbalDataObject() : base()
         {
+        }
+
+        [JsonIgnore]
+        public new JToken this[string key]
+        {
+            get
+            {
+                return base[key];
+            }
+            set
+            {
+                base[key] = value;
+                OnPropertyChanged(key, base[key]);
+            }
         }
 
         /// <summary>
@@ -63,6 +80,25 @@ namespace KerbalData
         public new int Count
         {
             get { return base.Count; }
+        }
+
+        protected void OnPropertyChanged(string propertyName, object value = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+            /*
+            if (ParentObj != null && !IsNotificationDisabled)
+            {
+                if (PropertyFilters != null && !PropertyFilters.Contains(propertyName))
+                {
+                    return;
+                }
+
+                ParentObj.OnChildPropertyChanged(propertyName, value);
+            }*/
         }
     }
 }

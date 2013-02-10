@@ -18,10 +18,23 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PresetConfig>))]
     public class PresetConfig : KerbalDataObject
     {
+        private IList<PlanetConfig> planets;
+
         /// <summary>
         /// Gets or sets the planet config collection. - File Property: PLANET
         /// </summary>
         [JsonProperty("PLANET")]
-        public IList<PlanetConfig> Planets { get; set; }
+        public IList<PlanetConfig> Planets
+        {
+            get
+            {
+                return planets;
+            }
+            set
+            {
+                planets = value;
+                OnPropertyChanged("Planets", planets);
+            }
+        }
     }
 }

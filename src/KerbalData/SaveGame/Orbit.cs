@@ -18,59 +18,161 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<Orbit>))]
     public class Orbit : KerbalDataObject
     {
+        private decimal sma, ecc, inc, lpe, lan, mna, eph, obj;
+        private int reference;
+        
         /// <summary>
         /// Gets or sets SMA. - File Property: SMA
         /// </summary>
         [JsonProperty("SMA")]
-        public decimal Sma { get; set; }
+        public decimal Sma
+        {
+            get
+            {
+                return sma;
+            }
+            set
+            {
+                sma = value;
+                OnPropertyChanged("Sma", sma);
+            }
+        }
 
         /// <summary>
         /// Gets or sets ECC. - File Property: ECC
         /// </summary>
         [JsonProperty("ECC")]
-        public decimal Ecc { get; set; }
+        public decimal Ecc
+        {
+            get
+            {
+                return ecc;
+            }
+            set
+            {
+                ecc = value;
+                OnPropertyChanged("Ecc", ecc);
+            }
+        }
 
         /// <summary>
         /// Gets or sets INC. - File Property: INC
         /// </summary>
         [JsonProperty("INC")]
-        public decimal Inc { get; set; }
+        public decimal Inc
+        {
+            get
+            {
+                return inc;
+            }
+            set
+            {
+                inc = value;
+                OnPropertyChanged("Inc", inc);
+            }
+        }
 
         /// <summary>
         /// Gets or sets LPE. - File Property: LPE
         /// </summary>
         [JsonProperty("LPE")]
-        public decimal Lpe { get; set; }
+        public decimal Lpe
+        {
+            get
+            {
+                return lpe;
+            }
+            set
+            {
+                lpe = value;
+                OnPropertyChanged("Lpe", lpe);
+            }
+        }
 
         /// <summary>
         /// Gets or sets LAN. - File Property: LAN
         /// </summary>
         [JsonProperty("LAN")]
-        public decimal Lan { get; set; }
+        public decimal Lan
+        {
+            get
+            {
+                return lan;
+            }
+            set
+            {
+                lan = value;
+                OnPropertyChanged("Lan", lan);
+            }
+        }
 
         /// <summary>
         /// Gets or sets mna. - File Property: MNA
         /// </summary>
         [JsonProperty("MNA")]
-        public decimal Mna { get; set; }
+        public decimal Mna
+        {
+            get
+            {
+                return mna;
+            }
+            set
+            {
+                mna = value;
+                OnPropertyChanged("Mna", mna);
+            }
+        }
 
         /// <summary>
         /// Gets or sets Eph. - File Property: EPH
         /// </summary>
         [JsonProperty("EPH")]
-        public decimal Eph { get; set; }
+        public decimal Eph
+        {
+            get
+            {
+                return eph;
+            }
+            set
+            {
+                eph = value;
+                OnPropertyChanged("Eph", eph);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the reference body integer. - File Property: REF
         /// </summary>
         [JsonProperty("REF")]
-        public int Ref { get; set; }
+        public int Ref
+        {
+            get
+            {
+                return reference;
+            }
+            set
+            {
+                reference = value;
+                OnPropertyChanged("Ref", reference);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the obj. - File Property: OBJ
         /// </summary>
         [JsonProperty("OBJ")]
-        public decimal Obj { get; set; }
+        public decimal Obj
+        {
+            get
+            {
+                return obj;
+            }
+            set
+            {
+                obj = value;
+                OnPropertyChanged("Obj", obj);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the reference body.

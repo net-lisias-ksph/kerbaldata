@@ -19,17 +19,46 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<FlightState>))]
     public class FlightState : KerbalDataObject
     {
+        private string version;
+        private decimal ut;
+        private TimeSpan universeTime;
+        private int activeVessel;
+        private IList<Crew> crew;
+        private IList<Vessel> vessels;
+
         /// <summary>
         /// Gets or sets the game version. - File Property: version
         /// </summary>
         [JsonProperty("version")]
-        public string Version { get; set; }
+        public string Version
+        {
+            get
+            {
+                return version;
+            }
+            set
+            {
+                version = value;
+                OnPropertyChanged("Version", version);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the raw universe time. - File Property: UT
         /// </summary>
         [JsonProperty("UT")]
-        public decimal Ut { get; set; }
+        public decimal Ut
+        {
+            get
+            {
+                return ut;
+            }
+            set
+            {
+                ut = value;
+                OnPropertyChanged("Ut", ut);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the universe time translated into a standard .NET timespan. Value changes mapped to FlightState.Ut.
@@ -38,11 +67,14 @@ namespace KerbalData.Models
         {
             get
             {
+                //return universeTime;
                 return new TimeSpan((long)Ut * 1000000L);
             }
             set
             {
-                Ut = value.Ticks / 1000000L;
+                universeTime = value;
+                //OnPropertyChanged("UniverseTime", universeTime);
+                Ut = universeTime.Ticks / 1000000m;
             }
         }
 
@@ -50,19 +82,52 @@ namespace KerbalData.Models
         /// Gets or sets the active vessel count. - File Property: activeVessel
         /// </summary>
         [JsonProperty("activeVessel")]
-        public int ActiveVessel { get; set; }
+        public int ActiveVessel
+        {
+            get
+            {
+                return activeVessel;
+            }
+            set
+            {
+                activeVessel = value;
+                OnPropertyChanged("ActiveVessel", activeVessel);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the crew collection. - File Property: CREW
         /// </summary>
         [JsonProperty("CREW")] 
-        public IList<Crew> Crew { get; set; }
+        public IList<Crew> Crew
+        {
+            get
+            {
+                return crew;
+            }
+            set
+            {
+                crew = value;
+                OnPropertyChanged("Crew", crew);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the vessel collection. - File Property: VESSEL
         /// </summary>
         [JsonProperty("VESSEL")]
-        public IList<Vessel> Vessels { get; set; }
+        public IList<Vessel> Vessels
+        {
+            get
+            {
+                return vessels;
+            }
+            set
+            {
+                vessels = value;
+                OnPropertyChanged("Vessel", vessels);
+            }
+        }
 
         /// <summary>
         /// Refills the resources of all vessels contained within this flightstate.

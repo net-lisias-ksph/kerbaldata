@@ -18,22 +18,58 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<TerrainConfig>))]
     public class TerrainConfig : KerbalDataObject
     {
+        private string version, preset;
+        private IList<PresetConfig> presets;
+
         /// <summary>
         /// Gets or sets the version. - File Property: version
         /// </summary>
         [JsonProperty("version")]
-        public string Version { get; set; }
+        public string Version
+        {
+            get
+            {
+                return version;
+            }
+            set
+            {
+                version = value;
+                OnPropertyChanged("Version", version);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the preset. - File Property: preset
         /// </summary>
         [JsonProperty("preset")]
-        public string Preset { get; set; }
+        public string Preset
+        {
+            get
+            {
+                return preset;
+            }
+            set
+            {
+                preset = value;
+                OnPropertyChanged("Preset", preset);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Preset collection. - File Property: PRESET
         /// </summary>
         [JsonProperty("PRESET")]
-        public IList<PresetConfig> Presets { get; set; }
+        public IList<PresetConfig> Presets
+        {
+            get
+            {
+                return presets;
+            }
+            set
+            {
+                presets = value;
+                OnPropertyChanged("Presets", presets);
+            }
+        }
     }
 }

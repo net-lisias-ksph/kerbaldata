@@ -8,9 +8,11 @@ namespace KerbalData
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.IO;
     using System.Linq;
     using System.Text;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -22,14 +24,30 @@ namespace KerbalData
     /// <seeals0 cref="UnMappedPropertiesConverter{T}" />
     /// </summary>
     [JsonObject]
-    public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable 
+    public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable, INotifyPropertyChanged
     {
         private object parent;
         private IKerbalDataManager dataManager;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         internal void SetParent<T>(StorableObjects<T> parent) where T : class, IStorable, new()
         {
             this.parent = parent;
+        }
+
+        [JsonIgnore]
+        public new JToken this[string key]
+        {
+            get
+            {
+                return base[key];
+            }
+            set
+            {
+                base[key] = value;
+                OnPropertyChanged(key, base[key]);
+            }
         }
 
         /// <summary>
@@ -240,5 +258,25 @@ namespace KerbalData
                 prop.SetMethod.Invoke(this, new object[] { Activator.CreateInstance(prop.PropertyType, new object[] { repo, DataManager }) });
             }
         }
+
+        protected void OnPropertyChanged(string propertyName, object value = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+            /*
+            if (ParentObj != null && !IsNotificationDisabled)
+            {
+                if (PropertyFilters != null && !PropertyFilters.Contains(propertyName))
+                {
+                    return;
+                }
+
+                ParentObj.OnChildPropertyChanged(propertyName, value);
+            }*/
+        }
+
     }
 }
