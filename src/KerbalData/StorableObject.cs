@@ -19,12 +19,14 @@ namespace KerbalData
     /// Contains functionality for saving/updating data store model is loaded from.
     /// </summary>
     /// <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
-    /// <seealos cref="UnMappedPropertiesConverter{T}" />
+    /// <seeals0 cref="UnMappedPropertiesConverter{T}" />
     /// </summary>
     [JsonObject]
     public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable 
     {
         private object parent;
+
+        private IKerbalDataManager dataManager;
 
         internal void SetParent<T>(StorableObjects<T> parent) where T : class, IStorable, new()
         {
@@ -58,7 +60,7 @@ namespace KerbalData
         public string Uri
         {
             get;
-            internal set; 
+            set; 
         }
 
         /// <summary>
@@ -70,6 +72,20 @@ namespace KerbalData
             get
             {
                 return !JToken.DeepEquals(Original, JObject.FromObject(this));
+            }
+        }
+
+        [JsonIgnore]
+        public IKerbalDataManager DataManager
+        {
+            get 
+            { 
+                return dataManager; 
+            }
+            internal set
+            {
+                dataManager = value;
+                Init();
             }
         }
 
@@ -198,6 +214,32 @@ namespace KerbalData
         private Type GetParentType()
         {
             return Type.GetType("KerbalData.StorableObjects`1").MakeGenericType(new Type[] { this.GetType() });
+        }
+
+        /// <summary>
+        /// Handles inital setup and population of data properties. 
+        /// This is some of the "magic" that allows developers creating custom models to easily map
+        /// StorableObjects instances with the correct repositories to custom properties without
+        /// a ton of wireup code. 
+        /// </summary>
+        private void Init()
+        {
+            var procRegistry = DataManager.ProcRegistry;
+            var repoFactory = DataManager.RepositoryFactory;
+
+            var managerType = this.GetType();
+            var method = repoFactory.GetType().GetMethod("Create");
+
+            foreach (var prop in managerType.GetProperties().Where(p => p.PropertyType.FullName.Contains("StorableObjects")))
+            {
+                var modelType = prop.PropertyType.GetGenericArguments()[0];
+                var repo =
+                    method.MakeGenericMethod(new[] { modelType }).Invoke(
+                        repoFactory,
+                        new object[] { new Dictionary<string, object>() { { "BaseUri", Uri.EndsWith("\\") ? Uri : Uri + "\\" } }, prop.Name });
+
+                prop.SetMethod.Invoke(this, new object[] { Activator.CreateInstance(prop.PropertyType, new object[] { repo, DataManager }) });
+            }
         }
     }
 }

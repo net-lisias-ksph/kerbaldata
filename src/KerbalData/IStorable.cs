@@ -38,6 +38,8 @@ namespace KerbalData
         /// </summary>
         bool IsDirty { get; }
 
+        IKerbalDataManager DataManager { get; }
+
         /// <summary>
         /// Saves the object 
         /// </summary>

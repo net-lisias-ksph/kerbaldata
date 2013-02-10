@@ -20,6 +20,7 @@ namespace KerbalData
     /// </summary>
     public static class IKerbalDataObjectExtensions
     {
+        /*
         public static string ToKspString<T>(this T obj, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, IKerbalDataObject, new()
         {
             return (new StreamReader(KspProcessor.Create<T>(serializer, converter).Process(obj))).ReadToEnd();
@@ -43,7 +44,7 @@ namespace KerbalData
         public static T ToDataObject<T>(this Stream stream, IKspSerializer serializer = null, IKspConverter<T> converter = null) where T : class, new()
         {
             return KspProcessor.Create<T>(serializer, converter).Process(stream);
-        }
+        }*/
 
         /*
         public static string FromStream<T>(this T obj) where T : class, IKerbalDataObject, new()

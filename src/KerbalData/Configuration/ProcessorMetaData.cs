@@ -64,7 +64,7 @@ namespace KerbalData.Configuration
                 Converter = config.Converter;
                 Index = config.Index;
                 ModelType = config.ModelType;
-                Name = config.Name;
+                //Name = config.Name;
                 Serializer = config.Serializer;
 
                 Model = Type.GetType(ModelType);

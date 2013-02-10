@@ -16,6 +16,11 @@
 					<xs:documentation>The Processors.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="repositories" type="tns:KerbalData.Configuration.RepositoriesConfigCT">
+				<xs:annotation>
+					<xs:documentation>The Repositories.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="KerbalData.Configuration.ProcessorsConfigCT">
@@ -40,11 +45,6 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
-		<xs:attribute name="name" use="optional" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The Name.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="index" use="required" type="xs:int">
 			<xs:annotation>
 				<xs:documentation>The Index.</xs:documentation>
@@ -67,6 +67,60 @@
 		<xs:attribute name="type" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Type.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="KerbalData.Configuration.RepositoriesConfigCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="repositoryConfig" type="tns:KerbalData.Configuration.RepositoryConfigCT">
+				<xs:annotation>
+					<xs:documentation>The RepositoryConfig Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="KerbalData.Configuration.RepositoryConfigCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" name="parameters" type="tns:KerbalData.Configuration.RepoParametersConfigCT">
+				<xs:annotation>
+					<xs:documentation>The Parameters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="index" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The Index.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Type.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="KerbalData.Configuration.RepoParametersConfigCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="repoParameterConfig" type="tns:KerbalData.Configuration.RepoParameterConfigCT">
+				<xs:annotation>
+					<xs:documentation>The RepoParameterConfig Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="KerbalData.Configuration.RepoParameterConfigCT">
+		<xs:attribute name="value" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Value.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="key" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Key.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

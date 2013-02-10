@@ -18,6 +18,11 @@
             <configurationElementCollectionMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/ProcessorsConfig" />
           </type>
         </elementProperty>
+        <elementProperty name="Repositories" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="repositories" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/RepositoriesConfig" />
+          </type>
+        </elementProperty>
       </elementProperties>
     </configurationSection>
     <configurationElementCollection name="ProcessorsConfig" xmlItemName="processor" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
@@ -27,11 +32,6 @@
     </configurationElementCollection>
     <configurationElement name="ProcessorConfig">
       <attributeProperties>
-        <attributeProperty name="Name" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="name" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="Index" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="index" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/Int32" />
@@ -68,6 +68,56 @@
     <configurationElement name="ConverterConfig">
       <attributeProperties>
         <attributeProperty name="Type" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="type" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="RepositoriesConfig" xmlItemName="repositoryConfig" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/RepositoryConfig" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="RepositoryConfig">
+      <attributeProperties>
+        <attributeProperty name="Index" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="index" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/Int32" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="Type" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="type" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="Name" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Parameters" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="parameters" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/RepoParametersConfig" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="RepoParametersConfig" xmlItemName="repoParameterConfig" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/RepoParameterConfig" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="RepoParameterConfig">
+      <attributeProperties>
+        <attributeProperty name="Value" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="value" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="Key" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="key" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/27844ced-a126-486a-ad68-977fcfb447ce/String" />
           </type>

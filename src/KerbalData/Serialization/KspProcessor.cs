@@ -23,7 +23,7 @@ namespace KerbalData.Serialization
         /// <summary>
         /// Initializes a new instance of the <see cref="KspProcessor" /> class.
         /// </summary>	
-        internal KspProcessor(IKspSerializer serializer, IKspConverter<T> converter)
+        public KspProcessor(IKspSerializer serializer, IKspConverter<T> converter)
         {
             Serializer = serializer;
             Converter = converter;
@@ -36,7 +36,7 @@ namespace KerbalData.Serialization
         public T Process(Stream data)
         {
             var dc = new KspDataContext();
-            Serializer.DeSerialize(dc, new StreamReader(data));
+            Serializer.DeSerialize(dc, new StreamReader(data, true));
 
             var obj = Converter.Convert(dc);
             return obj;
@@ -57,14 +57,16 @@ namespace KerbalData.Serialization
         }
     }
 
+    /*
     /// <summary>
     /// Factory class for processor creation
     /// </summary>
     public static class KspProcessor
     {
-        private static ApiConfig config;
-        private static List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
-        private static List<ProcLookUp> lookups = new List<ProcLookUp>();
+
+
+        //private static List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
+        //private static List<ProcLookUp> lookups = new List<ProcLookUp>();
 
         /// <summary>
         /// Creates a new instance of <see cref="KspProcessor{T}"/> based upon context and configuration. 
@@ -83,19 +85,15 @@ namespace KerbalData.Serialization
             return new KspProcessor<T>(serializer, converter);
         }
 
-        public static KspProcessor<T> Create<T>(string name = null) where T : class, new()
+        public static KspProcessor<T> Create<T>(ProcessorConfig config) where T : class, new()
         {
-            InitConfig();
-
-            var processorConfig = GetConfig<T>(name);
-
-            if (processorConfig == null)
+            if (config == null)
             {
                 throw new KerbalDataException("An error has occured while loading the configuration for the procssor named " + name + " check application configuration.");
             }
 
-            var serializerType = Type.GetType(processorConfig.Serializer.Type);
-            var converterType = Type.GetType(processorConfig.Converter.Type);
+            var serializerType = Type.GetType(config.Serializer.Type);
+            var converterType = Type.GetType(config.Converter.Type);
 
             var serializer = Activator.CreateInstance(serializerType) as IKspSerializer;
 
@@ -114,156 +112,36 @@ namespace KerbalData.Serialization
             return Create<T>(serializer, converter);
         }
 
-        private static void InitConfig()
+        public static KspProcessor<T> Create<T>(ApiConfig config, string configName = "kerbalData", bool addToManager = false) where T : class, new()
         {
-            if (config == null || processorConfigs.Count <= 0)
+            var registry = new ProcessorRegistry(config);
+
+            if (addToManager)
             {
-                config = ConfigurationManager.GetSection("kerbalData") as ApiConfig;
-
-                if (config == null)
-                {
-                    throw new KerbalDataException("There has been an error attempting to load KerbalData configuration. Ensure that a config section exists with the following config: <section name=\"kerbalData\" type=\"KerbalData.Configuration.ApiConfig, KerbalData\"/>");     
-                }
-
-                if (config.Processors.Count <= 0)
-                {
-                    throw new KerbalDataException("No processor configurations were found in the application config. Ensure that at least one processor configuration exisits");
-                }
-
-                foreach (var proc in config.Processors)
-                {
-                    processorConfigs.Add(new ProcessorMetaData(proc));
-                }
+                registries[configName] = registry;
             }
+
+            return Create<T>(registry.GetProcessorConfig<T>());
         }
 
-        private static ProcessorConfig GetConfig<T>(string name = null)
+        public static KspProcessor<T> Create<T>(string configSectionName = "kerbalData") where T : class, new()
         {
-            var type = typeof(T);
-            List<ProcessorMetaData> configs = new List<ProcessorMetaData>();
-
-            // First a quick search of the lookup cache before running through a logic search of configured processors. 
-            var cached = lookups.Where(l => l.Name == name && l.Type == type).ToList();
-
-            if (cached.Count == 1)
+            if (!registries.ContainsKey(configSectionName))
             {
-                return cached[0].Config;
+                registries[configSectionName] = new ProcessorRegistry(configSectionName);
             }
 
-            // If no cached lookup is found, run through the lookup process on config information
-            // First we look for a named configuration
-            if (name != null)
-            {
-                configs = processorConfigs.Where(c => c.Name == name).ToList();
-
-                // If there are no results we have a bad config
-                if (configs.Count() == 0)
-                {
-                    throw new KerbalDataException("The processor configuration named " + name + " cannot be located, check application config");
-                }
-                else if (configs.Count() == 1)
-                {
-                    // If we find a single config this is the one we want
-                    lookups.Add(new ProcLookUp() { Name = name, Type = type, Config = configs[0] });
-                    return configs[0];
-                }
-            }
-
-            // Now search by model
-            // If the configs have no valid values we populate any matching models.
-            if (configs.Count() == 0)
-            {
-                configs = processorConfigs.Where(c => string.IsNullOrEmpty(c.Name) && c.Model == type).ToList();
-
-                if (configs.Count == 0)
-                {
-                    var types = type.GetNestedTypes();
-
-                    foreach (var t in types)
-                    {
-                        configs = processorConfigs.Where(c => string.IsNullOrEmpty(c.Name) && c.Model == t).ToList();
-
-                        if (configs.Count == 1)
-                        {
-                            lookups.Add(new ProcLookUp() { Type = type, Config = configs[0] });
-                            return configs[0];
-                        }
-                    }
-
-                    var interfaces = type.GetInterfaces();
-
-                    foreach (var i in interfaces)
-                    {
-                        configs = processorConfigs.Where(c => string.IsNullOrEmpty(c.Name) && c.Model == i).ToList();
-
-                        if (configs.Count == 1)
-                        {
-                            lookups.Add(new ProcLookUp() { Type = type, Config = configs[0] });
-                            return configs[0];
-                        }
-                    }
-                }
-            }
-            else
-            {
-                // If we have some configs we want to filter the matching set. 
-                var namedConfigs = configs.Where(c => c.Model == type).ToList();
-
-                if (namedConfigs.Count == 0)
-                {
-                    var types = type.GetNestedTypes();
-
-                    foreach (var t in types)
-                    {
-                        namedConfigs = configs.Where(c => c.Model == t).ToList();
-
-                        if (namedConfigs.Count == 1)
-                        {
-                            lookups.Add(new ProcLookUp() { Name = name, Type = type, Config = namedConfigs[0] });
-                            return namedConfigs[0];
-                        }
-                    }
-
-                    var interfaces = type.GetInterfaces();
-
-                    foreach (var i in interfaces)
-                    {
-                        namedConfigs = configs.Where(c => c.Model == i).ToList();
-
-                        if (namedConfigs.Count == 1)
-                        {
-                            lookups.Add(new ProcLookUp() { Name = name, Type = type, Config = namedConfigs[0] });
-                            return namedConfigs[0];
-                        }
-                    }
-                }
-
-                configs = namedConfigs;
-            }
-
-            if (configs.Count == 1)
-            {
-                lookups.Add(new ProcLookUp() { Name = name, Type = type, Config = configs[0] });
-                return configs[0];
-            }
-
-            // At this point the configuration is ambigious. Lets see if we can find a default processor config. 
-            configs = processorConfigs.Where(c => string.IsNullOrEmpty(c.Name) && c.Model == null).ToList();
-
-            if (configs.Count == 1)
-            {
-                lookups.Add(new ProcLookUp() { Name = name, Type = type, Config = configs[0] });
-                return configs[0];
-            }
-
-            throw new KerbalDataException("Ambigious configration information. Cannot find a matching processor config of " + name == null ? "NULL" : name + " and using model type " + type.FullName);
+            return Create<T>(registries[configSectionName].GetProcessorConfig<T>());
         }
 
-        private class ProcLookUp
+        public static void AddToRegistry(ApiConfig config, string configName = "kerbalData")
         {
-            public string Name { get; set; }
-            public Type Type { get; set; }
-            public ProcessorConfig Config { get; set; }
+            if (registries.ContainsKey(configName))
+            {
+                throw new KerbalDataException("Configuration named " + configName + " has already been registered";
+            }
+
+             registries[configName] = new ProcessorRegistry(config);
         }
-    }
+    }*/
 }

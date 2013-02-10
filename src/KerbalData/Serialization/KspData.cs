@@ -23,17 +23,18 @@ namespace KerbalData
     /// </summary>
     public static class KspData
     {
-        public static T LoadKspFile<T>(string path, string processorName = null) where T : class, new()
+        
+        public static T LoadKspFile<T>(string path, string configSectionName = "kerbalData") where T : class, new()
         {
-            var processor = KspProcessor.Create<T>(processorName);
-            return LoadKspFile<T>(path, processor);
+            return LoadKspFile<T>(path, ProcessorRegistry.Create(configSectionName).Create<T>());
         }
 
+        /*
         public static T LoadKspFile<T>(string path, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
         {
             var processor = KspProcessor.Create<T>(serializer, converter);
             return LoadKspFile<T>(path, processor);
-        }
+        }*/
 
         public static T LoadKspFile<T>(string path, KspProcessor<T> processor) where T : class, new()
         {
@@ -97,55 +98,29 @@ namespace KerbalData
         /// </summary>
         /// <param name="path">path to save file to</param>
         /// <param name="obj">JObject to use when serializing data</param>
-        public static void SaveFile<T>(string path, T obj) where T : class, new()
+        public static void SaveFile<T>(string path, T obj, string configSectionName = "kerbalData") where T : class, new()
         {
-            Convert(obj).WriteToFile(path);
+            SaveFile<T>(path, obj, ProcessorRegistry.Create(configSectionName).Create<T>());
+
         }
 
-        public static T Convert<T>(string data, string configName = null) where T : class, new()
+        public static void SaveFile<T>(string path, T obj, KspProcessor<T> processor) where T : class, new()
         {
-            KspProcessor<T> processor;
-
-            try
-            {
-                processor = KspProcessor.Create<T>(configName);
-            }
-            catch (Exception ex)
-            {
-                throw new KerbalDataException("An error has occured while attempting to load the processor. See inner exception for details.", ex);
-            }
-
-            return Convert<T>(data, processor);
+            Convert(obj, processor).WriteToFile(path);
         }
 
-        /// <summary>
-        /// Converts a KSP data string to JSON
-        /// </summary>
-        /// <param name="kspDataString">KSP string to use</param>
-        /// <returns>de-serialized JObject instance</returns>
-        public static T Convert<T>(string data, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
+        public static T Convert<T>(string data, string configSectionName = "kerbalData") where T : class, new()
         {
-            KspProcessor<T> processor;
-
-            try
-            {
-                processor = KspProcessor.Create<T>(serializer, converter);
-            }
-            catch (Exception ex)
-            {
-                throw new KerbalDataException("An error has occured while attempting to load the processor. See inner exception for details.", ex);
-            }
-
-            return Convert<T>(data, processor);
+            return Convert<T>(data, ProcessorRegistry.Create(configSectionName).Create<T>());
         }
 
-        private static T Convert<T>(string data, KspProcessor<T> processor) where T : class, new()
+        public static T Convert<T>(string data, KspProcessor<T> processor) where T : class, new()
         {
             T obj;
 
             try
             {
-                obj = processor.Process(new MemoryStream(Encoding.ASCII.GetBytes(data)));
+                obj = processor.Process(new MemoryStream(Encoding.UTF8.GetBytes(data)));
             }
             catch (Exception ex)
             {
@@ -155,43 +130,9 @@ namespace KerbalData
             return obj;
         }
 
-        public static string Convert<T>(T obj, string configName = null) where T : class, new()
+        public static string Convert<T>(T obj, string configSectionName = "kerbalData") where T : class, new()
         {
-            KspProcessor<T> processor;
-
-            try
-            {
-                processor = KspProcessor.Create<T>(configName);
-
-            }
-            catch (Exception ex)
-            {
-                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
-            }
-
-            return Convert<T>(obj, processor);
-        }
-
-        /// <summary>
-        /// Converts an object instance to a KSP string
-        /// </summary>
-        /// <param name="jobj">object instance to serialize</param>
-        /// <returns>serilaized KSP data string</returns>
-        public static string Convert<T>(T obj, IKspSerializer serializer, IKspConverter<T> converter) where T : class, new()
-        {
-            KspProcessor<T> processor;
-
-            try
-            {
-                processor = KspProcessor.Create<T>(serializer, converter);
-
-            }
-            catch (Exception ex)
-            {
-                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
-            }
-
-            return Convert<T>(obj, processor);
+            return Convert<T>(obj, ProcessorRegistry.Create(configSectionName).Create<T>());
         }
 
         public static string Convert<T>(T obj, KspProcessor<T> processor) where T : class, new()

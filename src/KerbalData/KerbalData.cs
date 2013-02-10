@@ -10,6 +10,7 @@ namespace KerbalData
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Configuration;
 
     /// <summary>
     /// Top level consumer API class used for accessing and loading KSP data. 
@@ -28,25 +29,18 @@ namespace KerbalData
     /// </para>
     /// </remarks>
     /// <threadsafety static="false" instance="false" />
-    public class KerbalData
+    public class KerbalData : KerbalDataManager
     {
-        private string installPath;
+        private const string defaultRepoType = "KerbalData.Providers.FileSystemRepository`1, KerbalData";
 
+        private readonly string installPath;
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalData" /> class.
         /// </summary>
-        /// <example>
-        /// <code language="cs" title="Starting Kerbal Data API">
-        ///  var kd = new KerbalData(@"C:\KSP");
-        /// </code>
-        /// </example>
         /// <param name="installPath">path of a valid KSP install currently only tested support of 0.18.x</param>
-        public KerbalData(string installPath)
-        {
-            this.installPath = installPath.EndsWith("\\") ? installPath : installPath + "\\";
-            Init();
-
-        }
+        public KerbalData(string installPath, ApiConfig configuration)
+            : base(installPath.EndsWith("\\") ? installPath : installPath + "\\", configuration)
+        { }
 
         /// <summary>
         /// Gets the saves stored in this installation
@@ -54,7 +48,7 @@ namespace KerbalData
         public StorableObjects<SaveFile> Saves
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace KerbalData
         public StorableObjects<SaveFile> Scenarios
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace KerbalData
         public StorableObjects<SaveFile> TrainingScenarios
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -81,7 +75,7 @@ namespace KerbalData
         public StorableObjects<PartFile> Parts
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -90,7 +84,7 @@ namespace KerbalData
         public StorableObjects<CraftFile> CraftInVab
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace KerbalData
         public StorableObjects<CraftFile> CraftInSph
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -108,19 +102,175 @@ namespace KerbalData
         public StorableObjects<ConfigFile> KspSettings
         {
             get;
-            private set;
+            protected set;
         }
 
-        private void Init()
+        /// <summary>
+        /// Allows easy creation of KerbalData model instance with configuration. 
+        /// </summary>
+        /// <remarks>
+        /// This method has a hard wired default configuration should no configuration be available. 
+        /// The types used in the hard-wired configuration are static and will always be part of the KerbalData API
+        /// and mainly represent the inital serializer and converters created for the API and serve as a starting point
+        /// for all future configuratiions. 
+        /// 
+        /// TODO: Add sample .NET config to show current default config
+        /// 
+        /// If another configuration section name is provided it will be used. 
+        /// 
+        /// This is the reccomeded way to qucickly start using the API with minimal configuration/setup.
+        /// </remarks>
+        /// <example>
+        /// <code language="cs" title="Starting Kerbal Data API">
+        ///  var kd = KerbalData.Create(@"C:\KSP");
+        /// </code>
+        /// </example>
+        /// <param name="installPath">root path of KSP installation</param>
+        /// <param name="configSectionName">application confiiguration section name</param>
+        /// <returns>properly cofigured KerbalData instance</returns>
+        public static KerbalData Create(string installPath, string configSectionName = "kerbalData")
         {
-            Saves = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new[] { installPath + @"Saves\**\persistent.sfs", null, "persistent.sfs" }));
-            Scenarios = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new object[] { installPath + @"Saves\scenarios\*.sfs", null, ".sfs", true }));
-            TrainingScenarios = new StorableObjects<SaveFile>(RepoFactory.Create<SaveFile>(new object[] { installPath + @"Saves\training\*.sfs", null, ".sfs", true }));
-            Parts = new StorableObjects<PartFile>(RepoFactory.Create<PartFile>(new[] { installPath + @"Parts\**\part.cfg", null, "part.cfg" }));
-            CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\VAB\**\*.craft", null, ".craft", true }));
-            CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { installPath + @"Ships\SPH\**\*.craft", null, ".craft", true }));
-            KspSettings = new StorableObjects<ConfigFile>(RepoFactory.Create<ConfigFile>(new object[] { installPath + @"*.cfg", null, ".cfg", true }));
+            var config = ApiConfigManager.GetConfig(configSectionName);
+
+            if (config == null)
+            {
+                config = new ApiConfig()
+                {
+                    Processors = new ProcessorsConfig()
+                {
+                    { new ProcessorConfig()
+                        {
+                            Index = 0,
+                            Serializer = new SerializerConfig()
+                            {
+                                Type = "KerbalData.Serializers.V018x.DataSerializer, KerbalData.Serializers"
+                            },
+                            Converter = new ConverterConfig()
+                            {
+                                Type = "KerbalData.Serializers.V018x.JsonModelConverter`1, KerbalData.Serializers"
+                            }
+                        } },
+                    { new ProcessorConfig()
+                        {
+                            Index = 1,
+                            ModelType = "Newtonsoft.Json.Linq.JObject, Newtonsoft.Json",
+                            Serializer = new SerializerConfig()
+                            {
+                                Type = "KerbalData.Serializers.V018x.DataSerializer, KerbalData.Serializers"
+                            },
+                            Converter = new ConverterConfig()
+                            {
+                                Type = "KerbalData.Serializers.V018x.JsonObjectConverter`1, KerbalData.Serializers"
+                            }
+                        } }
+                },
+                    Repositories = new RepositoriesConfig()
+                {
+                    { new RepositoryConfig()
+                        {
+                            Index = 0,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "Saves",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\**\persistent.sfs" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = "persistent.sfs" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "DirPerFile" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 1,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "Scenarios",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\scenarios\*.sfs" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".sfs" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 2,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "TrainingScenarios",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\training\*.sfs" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".sfs" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 3,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "Parts",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Parts\**\part.cfg" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = "part.cfg" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "DirPerFile" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 4,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "CraftInVab",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Ships\VAB\**\*.craft" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 5,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "CraftInSph",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"Ships\SPH\**\*.craft" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 6,
+                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Name = "KspSettings",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="Include", Value = @"*.cfg" } },
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".cfg" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } }
+                    }
+                };
+            }
+
+            return Create(installPath, config);
         }
 
+        /// <summary>
+        /// Creates a KerbalData instance based upon the provided configuration. 
+        /// </summary>
+        /// <remarks>
+        /// Unlike the Create() method that accepts a configuration name. This version of the method will not
+        /// use a default configuration if the configuration property is null or not avaialble. This method allows
+        /// developers to programmatily build or source configuration data from alternate stores.
+        /// </remarks>
+        /// <param name="installPath">KSP game installation root path</param>
+        /// <param name="configuration">configuration to use</param>
+        /// <returns>properly configured KerbalData instance.</returns>
+        public static KerbalData Create(string installPath, ApiConfig configuration)
+        {
+            return KerbalDataManager.Create<KerbalData>(installPath, configuration);
+        }
     }
 }

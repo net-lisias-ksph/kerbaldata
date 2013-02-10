@@ -25,9 +25,6 @@ namespace KerbalData
     {
         private bool isLoaded = false;
 
-        private StorableObjects<CraftFile> craftInVab;
-        private StorableObjects<CraftFile> craftInSph;
-
         /// <summary>
         /// Gets the KSP Game definition. Contains all de-serialized save data. - File Property: GAME
         /// </summary>
@@ -52,15 +49,8 @@ namespace KerbalData
         [JsonIgnore]
         public StorableObjects<CraftFile> CraftInVab
         {
-            get
-            {
-                LoadCraft();
-                return craftInVab;
-            }
-            private set
-            {
-                craftInVab = value;
-            }
+            get;
+            set;
         }
 
         /// <summary>
@@ -69,25 +59,8 @@ namespace KerbalData
         [JsonIgnore]
         public StorableObjects<CraftFile> CraftInSph
         {
-            get
-            {
-                LoadCraft();
-                return craftInSph;
-            }
-            private set
-            {
-                craftInSph = value;
-            }
-        }
-
-        private void LoadCraft()
-        {
-            if (!isLoaded)
-            {
-                CraftInVab = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { Uri + @"\Ships\VAB\**\*.craft", null, ".craft", true }));
-                CraftInSph = new StorableObjects<CraftFile>(RepoFactory.Create<CraftFile>(new object[] { Uri + @"\Ships\SPH\**\*.craft", null, ".craft", true }));
-                isLoaded = true;
-            }
+            get;
+            set;
         }
     }
 }

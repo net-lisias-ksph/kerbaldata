@@ -15,7 +15,7 @@ namespace KerbalData
     /// <summary>
     /// Represents a KSP configuration file.
     /// </summary>
-    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartFile>))]
+    [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ConfigFile>))]
     public class ConfigFile : StorableObject
     {
         // Current implmentation only provides strongly typed properties for core settings. Presets and Terrain collections have a high likelyhood of being migrated elsewhere in the future

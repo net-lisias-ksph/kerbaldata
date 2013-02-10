@@ -38,17 +38,18 @@ namespace KerbalData.Tests
             //Console.WriteLine();
             
             
-            var kd = new KerbalData(@"C:\games\KSP_win_test");
+            var kd = KerbalData.Create(@"C:\games\KSP_win_test");
             //var training = kd.TrainingScenarios["C_Orbit101"];
             //var scenario = kd.Scenarios["Impending Impact"];
+            var save = kd.Saves["testing"];
             //var craft = kd.Saves["testing"].CraftInSph["Goose Mk1_4"];
             //var part = kd.Parts["fuelTank2-2"];
-            var part = kd.Parts["liquidEngine1"];
-            //var craft = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
+            //var part2 = kd.Parts["liquidEngine1"];
+            //var craft2 = kd.CraftInVab["MechJeb Pod 2.0 Kit"];
             //var settings = kd.KspSettings["settings"];
 
-            part.Cost = 98765432;
-            part.Save();
+            //part.Cost = 43434343;
+            //part.Save();
             Console.WriteLine();
             /*
             var sf = kd.Saves["testing"];

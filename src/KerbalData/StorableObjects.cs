@@ -28,11 +28,13 @@ namespace KerbalData
         /// <summary>
         /// Initializes a new instance of the <see cref="StorableObjects{T}" /> class.
         /// </summary>	
-        public StorableObjects(IKerbalDataRepo<T> repo)
+        public StorableObjects(IKerbalDataRepo<T> repo, IKerbalDataManager dataManager)
         {
             Repo = repo;
             var ids = Repo.GetIds();
             objects = ids.ToDictionary(k => k.Id, v => v);
+
+            DataManager = dataManager;
         }
 
         /// <summary>
@@ -61,6 +63,12 @@ namespace KerbalData
 
                 Add(value, id); // Run The add method as it handles both updates and new objects. 
             }
+        }
+
+        public IKerbalDataManager DataManager
+        {
+            get;
+            private set;
         }
 
         /// <summary>
@@ -204,12 +212,12 @@ namespace KerbalData
                 var obj = Repo.Get(id, out data);
                 (obj as StorableObject).Original = data;
                 (obj as StorableObject).SetParent(this);
+                (obj as StorableObject).DataManager = DataManager;
                 objects[id] = new StorableItemMetadata<T>() 
                 { 
                     Id = id, 
                     Loaded = true,
                     Object = obj,  
-                    Uri = Repo.BaseUri + "\\" + id
                 };
             }
             else if (!objects[id].Loaded || objects[id].Object == null)
@@ -219,7 +227,7 @@ namespace KerbalData
                 (objects[id].Object as StorableObject).Id = id;
                 (objects[id].Object as StorableObject).SetParent(this);
                 (objects[id].Object as StorableObject).Original = data;
-                (objects[id].Object as StorableObject).Uri = Repo.BaseUri  + "\\" + id;
+                (objects[id].Object as StorableObject).DataManager = DataManager;
                 objects[id].Loaded = true;
             }
         }

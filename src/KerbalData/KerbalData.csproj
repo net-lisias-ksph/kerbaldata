@@ -149,6 +149,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ApiConfigManager.cs" />
     <Compile Include="Configuration\LibraryConfiguration.csd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,10 +162,14 @@
     <Compile Include="Config\TerrainConfig.cs" />
     <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="Craft\CraftPart.cs" />
+    <Compile Include="IKerbalDataManager.cs" />
     <Compile Include="IKerbalDataObjectExtensions.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
+    <Compile Include="KerbalDataManager.cs" />
+    <Compile Include="ProcessorRegistry.cs" />
+    <Compile Include="Providers\FileSystemRepository.cs" />
     <Compile Include="Serialization\KspProcessor.cs" />
     <Compile Include="Part\PartFile.cs" />
     <Compile Include="Part\PartModule.cs" />
