@@ -80,6 +80,13 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ContentLayout Include="Layout.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QuickStart.aml" />
+    <None Include="WhatIsKerbalData.aml" />
+  </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
 </Project>

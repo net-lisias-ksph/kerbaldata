@@ -14,14 +14,18 @@ namespace KerbalData
     using Configuration;
 
     /// <summary>
-    /// Basic reposiotry placeholder
+    /// Provides lookup and object creation of <see cref="IKerbalDataRepo{T}"/> instance based on configuration
     /// </summary>
     public class RepoFactory
     {
         private List<RepoLookUp> lookups = new List<RepoLookUp>();
-
         private ProcessorRegistry registry;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RepoFactory"/> class.
+        /// </summary>
+        /// <param name="config">configuration data to use</param>
+        /// <param name="registry">processor registry to pass to created repositories</param>
         public RepoFactory(RepositoriesConfig config, ProcessorRegistry registry)
         {
             this.registry = registry;
@@ -29,6 +33,13 @@ namespace KerbalData
             InitConfig(config);
         }
 
+        /// <summary>
+        /// Creates a new <see cref="IKerbalDataRepo{T}"/> instance
+        /// </summary>
+        /// <typeparam name="T">model type handled by the repo</typeparam>
+        /// <param name="parameters">configuration parameters required by the repository. See the documentation for the specific repository type in use for required and optional parameters</param>
+        /// <param name="name">name of repository to lookup</param>
+        /// <returns>properly configured <see cref="IkerbalDataRepo{T}"/> instance</returns>
         public IKerbalDataRepo<T> Create<T>(IDictionary<string, object> parameters = null, string name = null) where T : class, IStorable, new()
         {
             var lookup = lookups.Where(c => c.Name == name).FirstOrDefault();

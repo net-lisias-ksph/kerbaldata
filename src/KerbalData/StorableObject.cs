@@ -25,7 +25,6 @@ namespace KerbalData
     public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable 
     {
         private object parent;
-
         private IKerbalDataManager dataManager;
 
         internal void SetParent<T>(StorableObjects<T> parent) where T : class, IStorable, new()

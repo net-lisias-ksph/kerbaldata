@@ -12,7 +12,7 @@ namespace KerbalData.Configuration
     using System.Text;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Wrapper used for managing the <see cref="ProcessorRegistry"/>
     /// </summary>
     internal class ProcessorMetaData : ProcessorConfig
     {

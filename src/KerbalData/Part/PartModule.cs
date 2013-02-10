@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace KerbalData
+namespace KerbalData.Models
 {
     using System;
     using System.Collections.Generic;

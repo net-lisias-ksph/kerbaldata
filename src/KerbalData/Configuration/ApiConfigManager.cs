@@ -13,24 +13,30 @@ namespace KerbalData.Configuration
     using System.Text;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Configuration loading wrapper
     /// </summary>
     internal static class ApiConfigManager 
     {
         private static IDictionary<string, ApiConfig> configurations = new Dictionary<string, ApiConfig>();
 
+        /// <summary>
+        /// Retrieves a configuration section
+        /// </summary>
+        /// <param name="configSectionName">name of configuration to retrieve</param>
+        /// <returns>de-serialized configuration section</returns>
         public static ApiConfig GetConfig(string configSectionName = "kerbalData")
         {
             if (!configurations.ContainsKey(configSectionName))
             {
-                try
+                var apiConfig = (ApiConfig)ConfigurationManager.GetSection(configSectionName);
+
+                if (apiConfig != null)
                 {
-                    configurations[configSectionName] = (ApiConfig)ConfigurationManager.GetSection(configSectionName);
+                    configurations[configSectionName] = apiConfig;
                 }
-                catch (Exception ex)
+                else
                 {
-                    // If exceptuion .NET confugration cannot locate the configuration or it is not properly formatted.
-                    return null;
+                    return null; 
                 }
             }
 

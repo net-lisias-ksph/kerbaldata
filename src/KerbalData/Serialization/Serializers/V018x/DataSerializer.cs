@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace KerbalData.Serializers.V018x
+namespace KerbalData.Serialization.Serializers.V018x
 {
     using System;
     using System.Collections.Generic;
@@ -30,6 +30,9 @@ namespace KerbalData.Serializers.V018x
                 "0.18.2" 
             };
 
+        /// <summary>
+        /// Gets a flag indicating if this type can serialize data
+        /// </summary>
         public bool CanSerialize
         {
             get 
@@ -38,6 +41,9 @@ namespace KerbalData.Serializers.V018x
             }
         }
 
+        /// <summary>
+        /// Gets a flag indicating if this type can de-serialize data
+        /// </summary>
         public bool CanDeSerialize
         {
             get
@@ -46,6 +52,9 @@ namespace KerbalData.Serializers.V018x
             }
         }
 
+        /// <summary>
+        /// Gets a list of supported KSP versions
+        /// </summary>
         public IList<string> Versions
         {
             get
@@ -54,16 +63,31 @@ namespace KerbalData.Serializers.V018x
             }
         }
 
+        /// <summary>
+        /// Checks if this type supports a particular version
+        /// </summary>
+        /// <param name="version">version to check</param>
+        /// <returns>true=supported;false=not supported</returns>
         public bool SupportsVersion(string version)
         {
             return versions.Contains(version.Trim());
         }
 
+        /// <summary>
+        /// Serializes data 
+        /// </summary>
+        /// <param name="context">context to serialize data from</param>
+        /// <param name="writer">stream writer to serialize to</param>
         public void Serialize(KspDataContext context, StreamWriter writer)
         {
             BuildKspData(context.Data, writer);
         }
 
+        /// <summary>
+        /// De-Serializes data
+        /// </summary>
+        /// <param name="context">context to de-serialize to</param>
+        /// <param name="reader">stream reader to read from</param>
         public void DeSerialize(KspDataContext context, StreamReader reader)
         {
             var lineList = reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();

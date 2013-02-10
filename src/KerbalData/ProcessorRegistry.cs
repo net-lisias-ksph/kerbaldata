@@ -15,23 +15,37 @@ namespace KerbalData
     using Configuration;
     using Serialization;
 
+    /// <summary>
+    /// The registry is used to retrieve/create the correct type of processor for the desired model and underlying data
+    /// </summary>
     public class ProcessorRegistry
     {
-        //private static IDictionary<string, ProcessorRegistry> registries = new Dictionary<string, ProcessorRegistry>();
-
         private List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
         private List<ProcLookUp> lookups = new List<ProcLookUp>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProcessorRegistry" /> class.
+        /// </summary>
+        /// <param name="configSectionName">configuration section name to load</param>
         public ProcessorRegistry(string configSectionName = "kerbalData")
         {
             Init(ApiConfigManager.GetConfig(configSectionName));
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProcessorRegistry" /> class.
+        /// </summary>
+        /// <param name="config">configuration data to use</param>
         public ProcessorRegistry(ApiConfig config)
         {
             Init(config);
         }
 
+        /// <summary>
+        /// Looks up and creates a new KspProcessor instance for the requested type
+        /// </summary>
+        /// <typeparam name="T">model type to lookup</typeparam>
+        /// <returns>configured <see cref="KspProcessor"/> instance</returns>
         public KspProcessor<T> Create<T>() where T : class, new()
         {
             var config = GetConfig<T>();
@@ -60,6 +74,11 @@ namespace KerbalData
             return Create<T>(serializer, converter);
         }
 
+        /// <summary>
+        /// Gets the processor onfiguration that is used for a particular model type
+        /// </summary>
+        /// <typeparam name="T">model type to lookup</typeparam>
+        /// <returns>configuration used by the registry when creating the processor instance</returns>
         public ProcessorConfig GetConfig<T>()
         {
             var type = typeof(T);
@@ -116,11 +135,21 @@ namespace KerbalData
             throw new KerbalDataException("Ambigious configration information. Cannot find a matching processor config using model type " + type.FullName);
         }
 
+        /// <summary>
+        /// Creates a properly configured <seealso cref="ProcessorRegistry"/> instance 
+        /// </summary>
+        /// <param name="config">configuration data to use</param>
+        /// <returns>registry instance</returns>
         public static ProcessorRegistry Create(ApiConfig config)
         {
             return new ProcessorRegistry(config);
         }
 
+        /// <summary>
+        /// Creates a properly configured <seealso cref="ProcessorRegistry"/> instance 
+        /// </summary>
+        /// <param name="configSectionName">configuration section to lookup and load</param>
+        /// <returns>registry instance</returns>
         public static ProcessorRegistry Create(string configSectionName = "kerbalData")
         {
             return new ProcessorRegistry(configSectionName);

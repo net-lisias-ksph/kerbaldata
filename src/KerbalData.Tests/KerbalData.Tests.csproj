@@ -107,14 +107,6 @@
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KerbalData.DataProviders\KerbalData.DataProviders.csproj">
-      <Project>{f46f937f-8bbc-4b9a-8b36-4a662bf6af13}</Project>
-      <Name>KerbalData.DataProviders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KerbalData.Serializers\KerbalData.Serializers.csproj">
-      <Project>{f285877a-8c4b-4a02-9d8b-ac0fc539f2fc}</Project>
-      <Name>KerbalData.Serializers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KerbalData\KerbalData.csproj">
       <Project>{23bf8f66-05a3-4d84-b632-f08fd63bcf7b}</Project>
       <Name>KerbalData</Name>

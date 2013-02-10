@@ -163,7 +163,6 @@
     <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="Craft\CraftPart.cs" />
     <Compile Include="IKerbalDataManager.cs" />
-    <Compile Include="IKerbalDataObjectExtensions.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
@@ -202,6 +201,9 @@
     <Compile Include="SaveGame\SaveFile.cs" />
     <Compile Include="SaveGame\SpaceCenterGameParameters.cs" />
     <Compile Include="SaveGame\TrackingStationGameParameters.cs" />
+    <Compile Include="Serialization\Serializers\V018x\DataSerializer.cs" />
+    <Compile Include="Serialization\Serializers\V018x\JsonModelConverter.cs" />
+    <Compile Include="Serialization\Serializers\V018x\JsonObjectConverter.cs" />
     <Compile Include="StorableItemMetadata.cs" />
     <Compile Include="StorableObject.cs" />
     <Compile Include="StorableObjects.cs" />

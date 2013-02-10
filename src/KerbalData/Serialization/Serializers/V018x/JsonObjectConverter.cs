@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace KerbalData.Serializers.V018x
+namespace KerbalData.Serialization.Serializers.V018x
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace KerbalData.Serializers.V018x
     using Serialization;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Converts data context to <see cref="JObject"/> instances. Used as mid step to final object mapping and for saving data in Json format.
     /// </summary>
     public class JsonObjectConverter<T> : IKspConverter<T> where T : JObject
     {
@@ -29,22 +29,41 @@ namespace KerbalData.Serializers.V018x
                 "0.18.2" 
             };
 
+        /// <summary>
+        /// Gets the list of versions supported by this converter
+        /// </summary>
         public virtual IList<string> Versions
         {
             get { return versions;  }
         }
 
+        /// <summary>
+        /// Checks if this type supports a particular version
+        /// </summary>
+        /// <param name="version">version to check</param>
+        /// <returns>true=supported;false=not supported</returns>
         public virtual bool SupportsVersion(string version)
         {
             return versions.Contains(version.Trim());
         }
 
+        /// <summary>
+        /// Converts a <see cref="KspDataContext"/> instance into a specific object type
+        /// </summary>
+        /// <param name="context">data to map</param>
+        /// <returns>object constructed based on context</returns>
         public T Convert(KspDataContext context)
         {
             var obj = (T)BuildJson(context.Data);
             return obj;
         }
 
+
+        /// <summary>
+        /// Converts an object instance into a <see cref="KspDataContext"/> instance
+        /// </summary>
+        /// <param name="obj">object to convert</param>
+        /// <returns>data context instance based on object data</returns>
         public KspDataContext Convert(T obj)
         {
             var context = new KspDataContext();

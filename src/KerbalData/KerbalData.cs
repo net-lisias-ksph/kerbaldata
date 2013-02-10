@@ -12,6 +12,8 @@ namespace KerbalData
     using System.Text;
     using Configuration;
 
+    using Models;
+
     /// <summary>
     /// Top level consumer API class used for accessing and loading KSP data. 
     /// </summary>
@@ -143,11 +145,11 @@ namespace KerbalData
                             Index = 0,
                             Serializer = new SerializerConfig()
                             {
-                                Type = "KerbalData.Serializers.V018x.DataSerializer, KerbalData.Serializers"
+                                Type = "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
                             },
                             Converter = new ConverterConfig()
                             {
-                                Type = "KerbalData.Serializers.V018x.JsonModelConverter`1, KerbalData.Serializers"
+                                Type = "KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1, KerbalData"
                             }
                         } },
                     { new ProcessorConfig()
@@ -156,11 +158,11 @@ namespace KerbalData
                             ModelType = "Newtonsoft.Json.Linq.JObject, Newtonsoft.Json",
                             Serializer = new SerializerConfig()
                             {
-                                Type = "KerbalData.Serializers.V018x.DataSerializer, KerbalData.Serializers"
+                                Type = "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
                             },
                             Converter = new ConverterConfig()
                             {
-                                Type = "KerbalData.Serializers.V018x.JsonObjectConverter`1, KerbalData.Serializers"
+                                Type = "KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1, KerbalData"
                             }
                         } }
                 },
@@ -169,7 +171,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 0,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "Saves",
                             Parameters = new RepoParametersConfig()
                             {
@@ -181,7 +183,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 1,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "Scenarios",
                             Parameters = new RepoParametersConfig()
                             {
@@ -193,7 +195,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 2,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "TrainingScenarios",
                             Parameters = new RepoParametersConfig()
                             {
@@ -205,7 +207,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 3,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "Parts",
                             Parameters = new RepoParametersConfig()
                             {
@@ -217,7 +219,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 4,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "CraftInVab",
                             Parameters = new RepoParametersConfig()
                             {
@@ -229,7 +231,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 5,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "CraftInSph",
                             Parameters = new RepoParametersConfig()
                             {
@@ -241,7 +243,7 @@ namespace KerbalData
                     { new RepositoryConfig()
                         {
                             Index = 6,
-                            Type = "KerbalData.Providers.FileSystemRepository`1",
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
                             Name = "KspSettings",
                             Parameters = new RepoParametersConfig()
                             {

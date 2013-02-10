@@ -48,8 +48,11 @@ namespace KerbalData.Providers
         private ProcessorRegistry registry; 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSystemRepository" /> class.
+        /// Initializes a new instance of the <see cref="FileSystemRepository{T}" /> class.
         /// </summary>	
+        /// <remarks>
+        /// Required constructor signature for all classes implmenting <see cref="IKerbalDataRepo{T}"/>
+        /// </remarks>
         public FileSystemRepository(ProcessorRegistry registry, IDictionary<string, object> parameters)
         {
             if (parameters == null 
@@ -79,16 +82,26 @@ namespace KerbalData.Providers
                 ? (bool)GetParameter(BackupParamName, parameters) : true;
         }
 
+        /// <summary>
+        /// Gets the BaseUri of the repo
+        /// </summary>
         public string BaseUri
         {
             get; private set;
         }
 
+        /// <summary>
+        /// Gets a value indicating whether data is backed up before a modified copy is saved.
+        /// </summary>
         public bool BackupBeforeSave
         {
             get { return backup; } 
         }
 
+        /// <summary>
+        /// Gets a list of the available object ID's managed by the repository
+        /// </summary>
+        /// <returns>object ids</returns>
         public IList<StorableItemMetadata<T>> GetIds()
         {
             var result = new List<StorableItemMetadata<T>>();
@@ -125,12 +138,21 @@ namespace KerbalData.Providers
             return result;
         }
 
+        /// <summary>
+        /// Gets all objects managed by the repository
+        /// </summary>
+        /// <returns>object list</returns>
         public IList<T> Get()
         {
             IList<JObject> list;
             return Get(out list);
         }
 
+        /// <summary>
+        /// Gets all objects managed by the repository along with soure copies for backup/reversion
+        /// </summary>
+        /// <param name="data">data list to populate with source data</param>
+        /// <returns>de-serialized object list</returns>
         public IList<T> Get(out IList<JObject> data)
         {
             data = new List<JObject>();
@@ -151,22 +173,44 @@ namespace KerbalData.Providers
             return result;
         }
 
+        /// <summary>
+        /// NOT YET IMPLMENTED
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
         public IList<T> Get(Func<T, bool> func)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// NOT YET IMPLMENTED
+        /// </summary>
+        /// <param name="func"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public IList<T> Get(Func<T, bool> func, out IList<JObject> data)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets an object with a particular Id
+        /// </summary>
+        /// <param name="id">object id to retrieve</param>
+        /// <returns>de-serialized object</returns>
         public T Get(string id)
         {
             JObject jobj;
             return Get(id, out jobj);
         }
 
+        /// <summary>
+        /// Gets an object with a particular Id along with a copy of the source data for backup/reversion
+        /// </summary>
+        /// <param name="id">object id to retrieve</param>
+        /// <param name="data">source data object to populate</param>
+        /// <returns>de-serialized data object</returns>
         public T Get(string id, out JObject data)
         {
             data = null;
@@ -182,6 +226,12 @@ namespace KerbalData.Providers
             return obj;
         }
 
+        /// <summary>
+        /// Adds/Updates an object of a particular ID
+        /// </summary>
+        /// <param name="id">Id to put</param>
+        /// <param name="obj">object data</param>
+        /// <returns>true=success;false=failure</returns>
         public bool Put(string id, T obj)
         {
             var savePath = GetFileInfo(id).FullName;
@@ -216,6 +266,11 @@ namespace KerbalData.Providers
             return true;
         }
 
+        /// <summary>
+        /// Deletes an object with a matching ID
+        /// </summary>
+        /// <param name="id">id to delete</param>
+        /// <returns>true=success;false=failure</returns>
         public bool Delete(string id)
         {
             if (NameExists(id))

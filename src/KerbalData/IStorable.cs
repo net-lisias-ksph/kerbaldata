@@ -38,6 +38,9 @@ namespace KerbalData
         /// </summary>
         bool IsDirty { get; }
 
+        /// <summary>
+        /// Gets the data manager instance responsible for this object
+        /// </summary>
         IKerbalDataManager DataManager { get; }
 
         /// <summary>

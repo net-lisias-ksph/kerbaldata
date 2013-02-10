@@ -65,6 +65,9 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Gets the data manager instance that manages this object
+        /// </summary>
         public IKerbalDataManager DataManager
         {
             get;
