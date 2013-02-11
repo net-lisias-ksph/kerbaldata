@@ -21,7 +21,7 @@ namespace KerbalData
     /// </summary>
     /// <threadsafety static="false" instance="false" />
     [JsonObject]
-    public class KerbalDataObject : Dictionary<string, JToken>, IKerbalDataObject, INotifyPropertyChanged
+    public class KerbalDataObject : ObservableDictionary<string, JToken>, IKerbalDataObject, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,6 +32,7 @@ namespace KerbalData
         {
         }
 
+        /*
         [JsonIgnore]
         public new JToken this[string key]
         {
@@ -44,8 +45,9 @@ namespace KerbalData
                 base[key] = value;
                 OnPropertyChanged(key, base[key]);
             }
-        }
+        }*/
 
+        /*
         /// <summary>
         /// Gets the keys for unmapped properties stored by this object
         /// </summary>
@@ -80,7 +82,7 @@ namespace KerbalData
         public new int Count
         {
             get { return base.Count; }
-        }
+        }*/
 
         protected void OnPropertyChanged(string propertyName, object value = null)
         {

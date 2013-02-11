@@ -24,7 +24,7 @@ namespace KerbalData
     /// <seeals0 cref="UnMappedPropertiesConverter{T}" />
     /// </summary>
     [JsonObject]
-    public abstract class StorableObject : Dictionary<string, JToken>, IKerbalDataObject, IStorable, INotifyPropertyChanged
+    public abstract class StorableObject : ObservableDictionary<string, JToken>, IKerbalDataObject, IStorable, INotifyPropertyChanged
     {
         private object parent;
         private IKerbalDataManager dataManager;
@@ -36,6 +36,7 @@ namespace KerbalData
             this.parent = parent;
         }
 
+        /*
         [JsonIgnore]
         public new JToken this[string key]
         {
@@ -48,7 +49,7 @@ namespace KerbalData
                 base[key] = value;
                 OnPropertyChanged(key, base[key]);
             }
-        }
+        }*/
 
         /// <summary>
         /// Gets the orginal base data
@@ -106,6 +107,7 @@ namespace KerbalData
             }
         }
 
+        /*
         /// <summary>
         /// Gets the key collection for unmapped children
         /// </summary>
@@ -140,7 +142,7 @@ namespace KerbalData
         public new int Count
         {
             get { return base.Count; }
-        }
+        }*/
 
         /// <summary>
         /// Reverts the object state and data to it's orginal state after the last load or save.
