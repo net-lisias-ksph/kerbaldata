@@ -10,15 +10,17 @@ namespace KSPEditor
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-
-    using Newtonsoft.Json.Linq;
-
-    using KerbalData;
     using System.ComponentModel;
     using System.Windows.Input;
     using System.Windows.Forms;
 
-    /// <summary>
+    using Newtonsoft.Json.Linq;
+
+    using KerbalData;
+    using KerbalData.Models;
+
+
+    /// <summary
     /// TODO: Class Summary
     /// </summary>
     public class MainWindowViewModel : INotifyPropertyChanged
@@ -88,7 +90,7 @@ namespace KSPEditor
         /// </summary>	
         public MainWindowViewModel()
         {
-            this.OpenKspInstallFolderCommand = new DelegateCommand(OpenKspInstallFolderDialog);
+            Init();
         }
 
         public KerbalData KerbalData
@@ -404,13 +406,54 @@ namespace KSPEditor
         }
         #endregion 
 
-
         public ICommand OpenKspInstallFolderCommand { get; private set; }
+        public ICommand SaveCommand { get; set; }
+
+        private void Init()
+        {
+            OpenKspInstallFolderCommand = new DelegateCommand(
+                () =>
+                {
+                    var dlg = new FolderBrowserDialog();
+                    System.Windows.Forms.DialogResult result = dlg.ShowDialog();
+
+                    if (result.ToString() == "OK")
+                    {
+                        InstallPath = dlg.SelectedPath;
+                    }
+                });
+
+            SaveCommand = new DelegateCommand<string>(
+                (arg) =>
+                    {
+                        switch (arg)
+                        {
+                            case "Save":
+                                Save.Save();
+                                break;
+                            case "Scenario":
+                                Scenario.Save();
+                                break;
+                            case "TrainingScenario":
+                                TrainingScenario.Save();
+                                break;
+                            case "VabCraft":
+                                VabCraft.Save();
+                                break;
+                            case "SphCraft":
+                                SphCraft.Save();
+                                break;
+                            case "Part":
+                                Part.Save();
+                                break;
+                        }
+                    });
+        }
 
         private void UpdateInstallPath()
         {
             KerbalData = null;
-            KerbalData = new KerbalData(installPath);
+            KerbalData = KerbalData.Create(installPath);
         }
 
         private void OnPropertyChanged(string name, object value = null)
@@ -508,17 +551,6 @@ namespace KSPEditor
                     break;
             }
             
-        }
-
-        private void OpenKspInstallFolderDialog()
-        {
-            var dlg = new FolderBrowserDialog();
-            System.Windows.Forms.DialogResult result = dlg.ShowDialog();
-
-            if (result.ToString() == "OK")
-            {
-                InstallPath = dlg.SelectedPath;
-            }
         }
     }
 }

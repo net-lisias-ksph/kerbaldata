@@ -4,19 +4,521 @@
         <name>KerbalData</name>
     </assembly>
     <members>
-        <member name="T:KerbalData.ConfigFile">
+        <member name="T:KerbalData.Configuration.ApiConfigManager">
+            <summary>
+            Configuration loading wrapper
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.ApiConfigManager.GetConfig(System.String)">
+            <summary>
+            Retrieves a configuration section
+            </summary>
+            <param name="configSectionName">name of configuration to retrieve</param>
+            <returns>de-serialized configuration section</returns>
+        </member>
+        <member name="T:KerbalData.Configuration.ApiConfig">
+            <summary>
+            The ApiConfig Configuration Section.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ApiConfig.ApiConfigSectionName">
+            <summary>
+            The XML name of the ApiConfig Configuration Section.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ApiConfig.XmlnsPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ApiConfig.Xmlns"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ApiConfig.ProcessorsPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ApiConfig.Processors"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ApiConfig.RepositoriesPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ApiConfig.Repositories"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.ApiConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ApiConfig.Instance">
+            <summary>
+            Gets the ApiConfig instance.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ApiConfig.Xmlns">
+            <summary>
+            Gets the XML namespace of this Configuration Section.
+            </summary>
+            <remarks>
+            This property makes sure that if the configuration file contains the XML namespace,
+            the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
+            </remarks>
+        </member>
+        <member name="P:KerbalData.Configuration.ApiConfig.Processors">
+            <summary>
+            Gets or sets the Processors.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ApiConfig.Repositories">
+            <summary>
+            Gets or sets the Repositories.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.ProcessorsConfig">
+            <summary>
+            A collection of ProcessorConfig instances.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ProcessorsConfig.ProcessorConfigPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:KerbalData.Configuration.ProcessorConfig"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:KerbalData.Configuration.ProcessorConfig"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:KerbalData.Configuration.ProcessorConfig"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.Add(KerbalData.Configuration.ProcessorConfig)">
+            <summary>
+            Adds the specified <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="processor">The <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to add.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.Remove(KerbalData.Configuration.ProcessorConfig)">
+            <summary>
+            Removes the specified <see cref="T:KerbalData.Configuration.ProcessorConfig"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="processor">The <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to remove.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.GetItemByKey(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> with the specified key.
+            </summary>
+            <param name="index">The key of the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorsConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorsConfig.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorsConfig.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorsConfig.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to retrieve.</param>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorsConfig.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> with the specified key.
+            </summary>
+            <param name="index">The key of the <see cref="T:KerbalData.Configuration.ProcessorConfig"/> to retrieve.</param>
+        </member>
+        <member name="T:KerbalData.Configuration.ProcessorConfig">
+            <summary>
+            The ProcessorConfig Configuration Element.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ProcessorConfig.IndexPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ProcessorConfig.Index"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ProcessorConfig.ModelTypePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ProcessorConfig.ModelType"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ProcessorConfig.SerializerPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ProcessorConfig.Serializer"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ProcessorConfig.ConverterPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ProcessorConfig.Converter"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.ProcessorConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorConfig.Index">
+            <summary>
+            Gets or sets the Index.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorConfig.ModelType">
+            <summary>
+            Gets or sets the ModelType.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorConfig.Serializer">
+            <summary>
+            Gets or sets the Serializer.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ProcessorConfig.Converter">
+            <summary>
+            Gets or sets the Converter.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.SerializerConfig">
+            <summary>
+            The SerializerConfig Configuration Element.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.SerializerConfig.TypePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.SerializerConfig.Type"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.SerializerConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.SerializerConfig.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.ConverterConfig">
+            <summary>
+            The ConverterConfig Configuration Element.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.ConverterConfig.TypePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.ConverterConfig.Type"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.ConverterConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.ConverterConfig.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.RepositoriesConfig">
+            <summary>
+            A collection of RepositoryConfig instances.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepositoriesConfig.RepositoryConfigPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:KerbalData.Configuration.RepositoryConfig"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:KerbalData.Configuration.RepositoryConfig"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:KerbalData.Configuration.RepositoryConfig"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.Add(KerbalData.Configuration.RepositoryConfig)">
+            <summary>
+            Adds the specified <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="repositoryConfig">The <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to add.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.Remove(KerbalData.Configuration.RepositoryConfig)">
+            <summary>
+            Removes the specified <see cref="T:KerbalData.Configuration.RepositoryConfig"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="repositoryConfig">The <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to remove.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.GetItemByKey(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> with the specified key.
+            </summary>
+            <param name="index">The key of the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoriesConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoriesConfig.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoriesConfig.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoriesConfig.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to retrieve.</param>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoriesConfig.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> with the specified key.
+            </summary>
+            <param name="index">The key of the <see cref="T:KerbalData.Configuration.RepositoryConfig"/> to retrieve.</param>
+        </member>
+        <member name="T:KerbalData.Configuration.RepositoryConfig">
+            <summary>
+            The RepositoryConfig Configuration Element.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepositoryConfig.IndexPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepositoryConfig.Index"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepositoryConfig.TypePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepositoryConfig.Type"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepositoryConfig.NamePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepositoryConfig.Name"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepositoryConfig.ParametersPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepositoryConfig.Parameters"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.RepositoryConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoryConfig.Index">
+            <summary>
+            Gets or sets the Index.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoryConfig.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoryConfig.Name">
+            <summary>
+            Gets or sets the Name.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepositoryConfig.Parameters">
+            <summary>
+            Gets or sets the Parameters.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.RepoParametersConfig">
+            <summary>
+            A collection of RepoParameterConfig instances.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepoParametersConfig.RepoParameterConfigPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:KerbalData.Configuration.RepoParameterConfig"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:KerbalData.Configuration.RepoParameterConfig"/>.
+            </returns>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.Add(KerbalData.Configuration.RepoParameterConfig)">
+            <summary>
+            Adds the specified <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="repoParameterConfig">The <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to add.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.Remove(KerbalData.Configuration.RepoParameterConfig)">
+            <summary>
+            Removes the specified <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="repoParameterConfig">The <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to remove.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.GetItemByKey(System.String)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> with the specified key.
+            </summary>
+            <param name="key">The key of the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to retrieve.</param>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParametersConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParametersConfig.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParametersConfig.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParametersConfig.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to retrieve.</param>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParametersConfig.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> with the specified key.
+            </summary>
+            <param name="key">The key of the <see cref="T:KerbalData.Configuration.RepoParameterConfig"/> to retrieve.</param>
+        </member>
+        <member name="T:KerbalData.Configuration.RepoParameterConfig">
+            <summary>
+            The RepoParameterConfig Configuration Element.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepoParameterConfig.ValuePropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepoParameterConfig.Value"/> property.
+            </summary>
+        </member>
+        <member name="F:KerbalData.Configuration.RepoParameterConfig.KeyPropertyName">
+            <summary>
+            The XML name of the <see cref="P:KerbalData.Configuration.RepoParameterConfig.Key"/> property.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Configuration.RepoParameterConfig.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParameterConfig.Value">
+            <summary>
+            Gets or sets the Value.
+            </summary>
+        </member>
+        <member name="P:KerbalData.Configuration.RepoParameterConfig.Key">
+            <summary>
+            Gets or sets the Key.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Configuration.ProcessorMetaData">
+            <summary>
+            Wrapper used for managing the <see cref="T:KerbalData.ProcessorRegistry"/>
+            </summary>
+        </member>
+        <member name="T:KerbalData.Models.ConfigFile">
             <summary>
             Represents a KSP configuration file.
             </summary>
         </member>
-        <member name="T:KerbalData.StorableObject">
-            <summary>
-            base class for top level consumer models. Contains functionality for saving/updating data store model is loaded from.
-            </summary>
-        </member>
+        <!-- Badly formed XML comment ignored for member "T:KerbalData.StorableObject" -->
         <member name="T:KerbalData.IKerbalDataObject">
             <summary>
             Base data object. Included dictionary requirment to provide storage for root level values not mapped to strongly typed properties. 
+            <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
             </summary>
         </member>
         <member name="T:KerbalData.IStorable">
@@ -39,11 +541,7 @@
             <typeparam name="T">type to convert to</typeparam>
             <returns>cloned instance</returns>
         </member>
-        <member name="P:KerbalData.IStorable.Original">
-            <summary>
-            Gets the Orignal data // TODO: Break JSON.Net Dependency
-            </summary>
-        </member>
+        <!-- Badly formed XML comment ignored for member "P:KerbalData.IStorable.Original" -->
         <member name="P:KerbalData.IStorable.Id">
             <summary>
             Gets the id/name of the data
@@ -57,6 +555,11 @@
         <member name="P:KerbalData.IStorable.IsDirty">
             <summary>
             Gets if the objest has been altered since is was orignally loaded or last saved
+            </summary>
+        </member>
+        <member name="P:KerbalData.IStorable.DataManager">
+            <summary>
+            Gets the data manager instance responsible for this object
             </summary>
         </member>
         <member name="M:KerbalData.StorableObject.Revert">
@@ -81,6 +584,14 @@
             <typeparam name="T">compatible object type to clone to</typeparam>
             <returns>cloned object instance</returns>
         </member>
+        <member name="M:KerbalData.StorableObject.Init">
+            <summary>
+            Handles inital setup and population of data properties. 
+            This is some of the "magic" that allows developers creating custom models to easily map
+            StorableObjects instances with the correct repositories to custom properties without
+            a ton of wireup code. 
+            </summary>
+        </member>
         <member name="P:KerbalData.StorableObject.Original">
             <summary>
             Gets the orginal base data
@@ -101,320 +612,274 @@
             Gets the is dirty flag
             </summary>
         </member>
-        <member name="P:KerbalData.StorableObject.Keys">
-            <summary>
-            Gets the key collection for unmapped children
-            </summary>
-        </member>
-        <member name="P:KerbalData.StorableObject.Values">
-            <summary>
-            Gets the values collection for unmapped children
-            </summary>
-        </member>
-        <member name="P:KerbalData.StorableObject.Comparer">
-            <summary>
-            Gets the comparer
-            </summary>
-        </member>
-        <member name="P:KerbalData.StorableObject.Count">
-            <summary>
-            Gets the number of children
-            </summary>
-        </member>
-        <member name="M:KerbalData.ConfigFile.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.ConfigFile"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.ConfigFile.Revert">
+        <member name="M:KerbalData.Models.ConfigFile.Revert">
             <summary>
             Restores the object to the state it was in when it's data was first loaded or last saved. 
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.SettingsVersion">
+        <member name="P:KerbalData.Models.ConfigFile.SettingsVersion">
             <summary>
-            Gets or sets the settings version
+            Gets or sets the settings version. - File Property: SETTINGS_FILE_VERSION
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.CallHome">
+        <member name="P:KerbalData.Models.ConfigFile.CallHome">
             <summary>
-            Gets or sets call home
+            Gets or sets call home. - File Property: CALL_HOME
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.DontSendIp">
+        <member name="P:KerbalData.Models.ConfigFile.DontSendIp">
             <summary>
-            Gets or sets DontSendIp flag
+            Gets or sets DontSendIp flag. - File Property: VERBOSE_DEBUG_LOG
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.CheckForUpdtes">
+        <member name="P:KerbalData.Models.ConfigFile.CheckForUpdates">
             <summary>
-            Gets or sets check for updates flag
+            Gets or sets check for updates flag. - File Property: VERBOSE_DEBUG_LOG
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.VerboseDebugLog">
+        <member name="P:KerbalData.Models.ConfigFile.VerboseDebugLog">
             <summary>
-            Gets or sets verbose debug log flag
+            Gets or sets verbose debug log flag. - File Property: VERBOSE_DEBUG_LOG
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ShowConsoleOnError">
+        <member name="P:KerbalData.Models.ConfigFile.ShowConsoleOnError">
             <summary>
-            Gets or sets show console on error flag
+            Gets or sets show console on error flag. - File Property: SHOW_CONSOLE_ON_ERROR
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.AutosaveInterval">
+        <member name="P:KerbalData.Models.ConfigFile.AutosaveInterval">
             <summary>
-            Gets or sets autosave interval 
+            Gets or sets autosave interval . - File Property: AUTOSAVE_INTERVAL
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.AutosaveShortInterval">
+        <member name="P:KerbalData.Models.ConfigFile.AutosaveShortInterval">
             <summary>
-            Gets or sets autosave short interval
+            Gets or sets autosave short interval. - File Property: AUTOSAVE_SHORT_INTERVAL
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ShowSpaceCenterCrew">
+        <member name="P:KerbalData.Models.ConfigFile.ShowSpaceCenterCrew">
             <summary>
-            Gets or sets show space center flag
+            Gets or sets show space center flag. - File Property: SHOW_SPACE_CENTER_CREW
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.UiSize">
+        <member name="P:KerbalData.Models.ConfigFile.UiSize">
             <summary>
-            Gets or sets UI size
+            Gets or sets UI size. - File Property: UI_SIZE
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ResloutionWidth">
+        <member name="P:KerbalData.Models.ConfigFile.ResloutionWidth">
             <summary>
-            Gets or sets resloution width
+            Gets or sets resloution width. - File Property: SCREEN_RESOLUTION_WIDTH
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ResloutionHeight">
+        <member name="P:KerbalData.Models.ConfigFile.ResloutionHeight">
             <summary>
-            Gets or sets resloution height
+            Gets or sets resloution height. - File Property: SCREEN_RESOLUTION_HEIGHT
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.FullScreen">
+        <member name="P:KerbalData.Models.ConfigFile.FullScreen">
             <summary>
-            Gets or sets full screen flag
+            Gets or sets full screen flag. - File Property: FULLSCREEN
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.QualityPreset">
+        <member name="P:KerbalData.Models.ConfigFile.QualityPreset">
             <summary>
-            Gets or sets quality preset
+            Gets or sets quality preset. - File Property: QUALITY_PRESET
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.AntiAliasing">
+        <member name="P:KerbalData.Models.ConfigFile.AntiAliasing">
             <summary>
-            Gets or sets antialiasing multiplier
+            Gets or sets antialiasing multiplier. - File Property: ANTI_ALIASING
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.TextureQuality">
+        <member name="P:KerbalData.Models.ConfigFile.TextureQuality">
             <summary>
-            Gets or sets texture quality
+            Gets or sets texture quality. - File Property: TEXTURE_QUALITY
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.LightQuality">
+        <member name="P:KerbalData.Models.ConfigFile.LightQuality">
             <summary>
-            Gets or sets light quality
+            Gets or sets light quality. - File Property: LIGHT_QUALITY
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ShadowsQuality">
+        <member name="P:KerbalData.Models.ConfigFile.ShadowsQuality">
             <summary>
-            Gets or sets shadows quality
+            Gets or sets shadows quality. - File Property: SHADOWS_QUALITY
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.FramerateLimit">
+        <member name="P:KerbalData.Models.ConfigFile.FramerateLimit">
             <summary>
-            Gets or sets framerate limit
+            Gets or sets framerate limit. - File Property: FRAMERATE_LIMIT
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ConicPatchDrawMode">
+        <member name="P:KerbalData.Models.ConfigFile.ConicPatchDrawMode">
             <summary>
-            Gets or sets conic patch draw mode
+            Gets or sets conic patch draw mode. - File Property: CONIC_PATCH_DRAW_MODE
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.ConicPatchLimit">
+        <member name="P:KerbalData.Models.ConfigFile.ConicPatchLimit">
             <summary>
-            Gets or sets conic patch limit
+            Gets or sets conic patch limit. - File Property: CONIC_PATCH_LIMIT
             </summary>
         </member>
-        <member name="P:KerbalData.ConfigFile.Terrain">
+        <member name="P:KerbalData.Models.ConfigFile.Terrain">
             <summary>
-            Gets or sets terrain configuration
+            Gets or sets terrain configuration. - File Property: TERRAIN
             </summary>
         </member>
-        <member name="T:KerbalData.PlanetConfig">
+        <member name="T:KerbalData.Models.PlanetConfig">
             <summary>
             Data model for planets found in KSP configuration. 
             </summary>
         </member>
         <member name="T:KerbalData.KerbalDataObject">
             <summary>
-            TODO: Class Summary
+            Base implmentation for consumer data model. Provides wireup override for base dictionary. Used for storing properties that have not been mapped.
+            <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
             </summary>
+            <threadsafety static="false" instance="false" />
         </member>
         <member name="M:KerbalData.KerbalDataObject.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:KerbalData.KerbalDataObject"/> class.
             </summary>	
         </member>
-        <member name="P:KerbalData.KerbalDataObject.Keys">
+        <member name="P:KerbalData.Models.PlanetConfig.Name">
             <summary>
-            Gets the keys for unmapped properties stored by this object
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.KerbalDataObject.Values">
+        <member name="P:KerbalData.Models.PlanetConfig.MinDistance">
             <summary>
-            Gets the values collection
+            Gets or sets the minimum distance. - File Property: minDistance
             </summary>
         </member>
-        <member name="P:KerbalData.KerbalDataObject.Comparer">
+        <member name="P:KerbalData.Models.PlanetConfig.MinSubdivision">
             <summary>
-            Gets the comparer
+            Gets or sets the Minimum subdivision. - File Property: minSubdivision
             </summary>
         </member>
-        <member name="P:KerbalData.KerbalDataObject.Count">
+        <member name="P:KerbalData.Models.PlanetConfig.MaxSubdivision">
             <summary>
-            Gets the count of unmapped elements
+            Gets or sets the Maximum subdivision. - File Property: maxSubdivision
             </summary>
         </member>
-        <member name="M:KerbalData.PlanetConfig.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PlanetConfig"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.PlanetConfig.Name">
-            <summary>
-            Gets or sets the name
-            </summary>
-        </member>
-        <member name="P:KerbalData.PlanetConfig.MinDistance">
-            <summary>
-            Gets or sets the minimum distance
-            </summary>
-        </member>
-        <member name="P:KerbalData.PlanetConfig.MinSubdivision">
-            <summary>
-            Gets or sets the Minimum subdivision
-            </summary>
-        </member>
-        <member name="P:KerbalData.PlanetConfig.MaxSubdivision">
-            <summary>
-            Gets or sets the Maximum subdivision
-            </summary>
-        </member>
-        <member name="T:KerbalData.PresetConfig">
+        <member name="T:KerbalData.Models.PresetConfig">
             <summary>
             Data model for presets found in KSP configuration. 
             </summary>
         </member>
-        <member name="M:KerbalData.PresetConfig.#ctor">
+        <member name="P:KerbalData.Models.PresetConfig.Planets">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PresetConfig"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.PresetConfig.Planets">
-            <summary>
-            Gets or sets the planet config collection
+            Gets or sets the planet config collection. - File Property: PLANET
             </summary>
         </member>
-        <member name="T:KerbalData.TerrainConfig">
+        <member name="T:KerbalData.Models.TerrainConfig">
             <summary>
             Data model for terrain found in KSP configuration. 
             </summary>
         </member>
-        <member name="M:KerbalData.TerrainConfig.#ctor">
+        <member name="P:KerbalData.Models.TerrainConfig.Version">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.TerrainConfig"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.TerrainConfig.Version">
-            <summary>
-            Gets or sets the version
+            Gets or sets the version. - File Property: version
             </summary>
         </member>
-        <member name="P:KerbalData.TerrainConfig.Preset">
+        <member name="P:KerbalData.Models.TerrainConfig.Preset">
             <summary>
-            Gets or sets the preset
+            Gets or sets the preset. - File Property: preset
             </summary>
         </member>
-        <member name="P:KerbalData.TerrainConfig.Presets">
+        <member name="P:KerbalData.Models.TerrainConfig.Presets">
             <summary>
-            Gets or sets the Preset collection
+            Gets or sets the Preset collection. - File Property: PRESET
             </summary>
         </member>
-        <member name="T:KerbalData.CraftFile">
+        <member name="T:KerbalData.Models.CraftFile">
             <summary>
             Represents a loaded craft file
             </summary>
         </member>
-        <member name="M:KerbalData.CraftFile.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.CraftFile"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.CraftFile.Revert">
+        <member name="M:KerbalData.Models.CraftFile.Revert">
             <summary>
             Restores the object to the state it was in when it's data was first loaded or last saved. 
             </summary>
         </member>
-        <member name="P:KerbalData.CraftFile.Ship">
+        <member name="P:KerbalData.Models.CraftFile.Ship">
             <summary>
-            Gets or sets the ship name
+            Gets or sets the ship name. - File Property: ship
             </summary>
         </member>
-        <member name="P:KerbalData.CraftFile.Version">
+        <member name="P:KerbalData.Models.CraftFile.Version">
             <summary>
-            Gets or sets the version
+            Gets or sets the version. - File Property: version
             </summary>
         </member>
-        <member name="P:KerbalData.CraftFile.Type">
+        <member name="P:KerbalData.Models.CraftFile.Type">
             <summary>
-            Gets or sets the type
+            Gets or sets the type. - File Property: type
             </summary>
         </member>
-        <member name="P:KerbalData.CraftFile.Parts">
+        <member name="P:KerbalData.Models.CraftFile.Parts">
             <summary>
-            Gets or sets the parts collection
+            Gets or sets the parts collection. - File Property: PART
             </summary>
         </member>
-        <member name="T:KerbalData.CraftPart">
+        <member name="T:KerbalData.Models.CraftPart">
             <summary>
             Data model for part object in a craft file
             </summary>
         </member>
-        <member name="M:KerbalData.CraftPart.#ctor">
+        <member name="P:KerbalData.Models.CraftPart.Part">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.CraftPart"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.CraftPart.Part">
-            <summary>
-            Gets or sets the part 
+            Gets or sets the part. - File Property: part
             </summary>
         </member>
-        <member name="P:KerbalData.CraftPart.Name">
+        <member name="P:KerbalData.Models.CraftPart.Name">
             <summary>
-            Gets or sets the part name
+            Gets or sets the part name. - File Property: partName
             </summary>
         </member>
-        <member name="P:KerbalData.CraftPart.Events">
+        <member name="P:KerbalData.Models.CraftPart.Events">
             <summary>
-            Gets and sets events
+            Gets and sets events. - File Property: EVENTS
             </summary>
         </member>
-        <member name="P:KerbalData.CraftPart.Actions">
+        <member name="P:KerbalData.Models.CraftPart.Actions">
             <summary>
-            Gets and sets actions
+            Gets and sets actions. - File Property: ACTIONS
             </summary>
         </member>
-        <member name="P:KerbalData.CraftPart.Modules">
+        <member name="P:KerbalData.Models.CraftPart.Modules">
             <summary>
-            Gets and sets module collection
+            Gets and sets module collection. - File Property: MODULE
+            </summary>
+        </member>
+        <member name="T:KerbalData.IKerbalDataManager">
+            <summary>
+            Base interface for top-level consumer API classes. Allows consumers to create custom models that leverage API features.
+            </summary>
+        </member>
+        <member name="P:KerbalData.IKerbalDataManager.BaseUri">
+            <summary>
+            Gets the Base data URI location of resource store
+            </summary>
+        </member>
+        <member name="P:KerbalData.IKerbalDataManager.ApiConfig">
+            <summary>
+            Gets the configuration used by this instance  
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:KerbalData.IKerbalDataManager.RepositoryFactory" -->
+        <member name="P:KerbalData.IKerbalDataManager.ProcRegistry">
+            <summary>
+            Gets the configured <see cref="T:KerbalData.ProcessorRegistry"/>
             </summary>
         </member>
         <member name="T:KerbalData.IKerbalDataRepo`1">
             <summary>
             Requirements for data loading repository. Additonal implmentations may be provided to store/load KSP data from any desired store. 
             </summary>
+            <typeparam name="T">model type being stored</typeparam>
         </member>
         <member name="M:KerbalData.IKerbalDataRepo`1.Get">
             <summary>
@@ -492,14 +957,132 @@
         </member>
         <member name="T:KerbalData.KerbalData">
             <summary>
-            Top level consumer API class. For easiest access use this class to edit and manage KSP data. 
+            Top level consumer API class used for accessing and loading KSP data. 
+            </summary>
+            <remarks>
+            <para>
+            Classes starting with the word "Kerbal" are "top level" consumer API's. For most development, this is the easiest way to use KerbalData. The top level API provides the following features:
+            <list type="bullet">
+              <item>KSP Install Aware</item>
+              <item>Specialized Models with extended properties to translate KSP data to standard formats (TimeSpan for game and mission time for example)</item>
+              <item>Utilizes configured repos allowing for easy integration with multiple data stores</item>
+              <item>Provides lazy loading of data</item>
+              <item>Maintains data used to initialize the object and state can be restored to time of load or last save</item>
+              <item>All operations with the top level API start with a KerbalData instance. This class will maintain all the references necessary. The constructor accepts the root path for a KSP install. Once initialized KerbalData will scan the KSP install and load initial meta-data (currently only names) but not the actual files into memory. KSP files are only serilized and loaded on initial access of pariticular named data. Once loaded the data will be maintained and no additional calls will be made to the data until Save() is called.</item>
+            </list>      
+            </para>
+            </remarks>
+            <threadsafety static="false" instance="false" />
+        </member>
+        <member name="T:KerbalData.KerbalDataManager">
+            <summary>
+            TODO: Class Summary
             </summary>
         </member>
-        <member name="M:KerbalData.KerbalData.#ctor(System.String)">
+        <member name="M:KerbalData.KerbalDataManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.KerbalDataManager"/> class.
+            </summary>
+            <remarks>
+            This constructor should never be used. It exists to support use of generics elsewhere in the code. TODO: This should be fixed. 
+            </remarks>
+        </member>
+        <member name="M:KerbalData.KerbalDataManager.#ctor(System.String,KerbalData.Configuration.ApiConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.KerbalDataManager"/> class.
+            </summary>	
+            <param name="location">base location/path of managed data</param>
+            <param name="configuration">configuration to use</param>
+        </member>
+        <member name="M:KerbalData.KerbalDataManager.Create``1(System.String,System.String)">
+            <summary>
+            Creates a properly conigured instance of the <see cref="T:KerbalData.KerbalDataManager"/> class
+            </summary>
+            <typeparam name="T">model type handled by the manager</typeparam>
+            <param name="baseUri">root Uri for the manager</param>
+            <param name="configSectionName">configuratiion section to use</param>
+            <returns>configured instance</returns>
+        </member>
+        <member name="M:KerbalData.KerbalDataManager.Create``1(System.String,KerbalData.Configuration.ApiConfig)">
+            <summary>
+            Creates a properly conigured instance of the <see cref="T:KerbalData.KerbalDataManager"/> class
+            </summary>
+            <typeparam name="T">model type handled by the manager</typeparam>
+            <param name="baseUri">root Uri for the manager</param>
+            <param name="config">configuration data to use</param>
+            <returns>configured instance</returns>
+        </member>
+        <member name="M:KerbalData.KerbalDataManager.Init">
+            <summary>
+            Handles inital setup and population of data properties. 
+            This is some of the "magic" that allows developers creating custom models to easily map
+            StorableObjects instances with the correct repositories to custom properties without
+            a ton of wireup code. 
+            </summary>
+        </member>
+        <member name="P:KerbalData.KerbalDataManager.BaseUri">
+            <summary>
+            Gets the root Uri of the data 
+            </summary>
+        </member>
+        <member name="P:KerbalData.KerbalDataManager.ApiConfig">
+            <summary>
+            Gets the configuration of the manager instance
+            </summary>
+        </member>
+        <member name="P:KerbalData.KerbalDataManager.RepositoryFactory">
+            <summary>
+            Gets the configured factory used by the manager instnace
+            </summary>
+        </member>
+        <member name="P:KerbalData.KerbalDataManager.ProcRegistry">
+            <summary>
+            Gets the configured processor registry used by the manager instance
+            </summary>
+        </member>
+        <member name="M:KerbalData.KerbalData.#ctor(System.String,KerbalData.Configuration.ApiConfig)">
             <summary>
             Initializes a new instance of the <see cref="T:KerbalData.KerbalData"/> class.
-            </summary>	
+            </summary>
             <param name="installPath">path of a valid KSP install currently only tested support of 0.18.x</param>
+        </member>
+        <member name="M:KerbalData.KerbalData.Create(System.String,System.String)">
+            <summary>
+            Allows easy creation of KerbalData model instance with configuration. 
+            </summary>
+            <remarks>
+            This method has a hard wired default configuration should no configuration be available. 
+            The types used in the hard-wired configuration are static and will always be part of the KerbalData API
+            and mainly represent the inital serializer and converters created for the API and serve as a starting point
+            for all future configuratiions. 
+            
+            TODO: Add sample .NET config to show current default config
+            
+            If another configuration section name is provided it will be used. 
+            
+            This is the reccomeded way to qucickly start using the API with minimal configuration/setup.
+            </remarks>
+            <example>
+            <code language="cs" title="Starting Kerbal Data API">
+             var kd = KerbalData.Create(@"C:\KSP");
+            </code>
+            </example>
+            <param name="installPath">root path of KSP installation</param>
+            <param name="configSectionName">application confiiguration section name</param>
+            <returns>properly cofigured KerbalData instance</returns>
+        </member>
+        <member name="M:KerbalData.KerbalData.Create(System.String,KerbalData.Configuration.ApiConfig)">
+            <summary>
+            Creates a KerbalData instance based upon the provided configuration. 
+            </summary>
+            <remarks>
+            Unlike the Create() method that accepts a configuration name. This version of the method will not
+            use a default configuration if the configuration property is null or not avaialble. This method allows
+            developers to programmatily build or source configuration data from alternate stores.
+            </remarks>
+            <param name="installPath">KSP game installation root path</param>
+            <param name="configuration">configuration to use</param>
+            <returns>properly configured KerbalData instance.</returns>
         </member>
         <member name="P:KerbalData.KerbalData.Saves">
             <summary>
@@ -536,593 +1119,759 @@
             Gets the settings and configuration files for this installation
             </summary>
         </member>
-        <member name="T:KerbalData.PartFile">
+        <member name="T:KerbalData.ProcessorRegistry">
+            <summary>
+            The registry is used to retrieve/create the correct type of processor for the desired model and underlying data
+            </summary>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.ProcessorRegistry"/> class.
+            </summary>
+            <param name="configSectionName">configuration section name to load</param>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.#ctor(KerbalData.Configuration.ApiConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.ProcessorRegistry"/> class.
+            </summary>
+            <param name="config">configuration data to use</param>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.Create``1">
+            <summary>
+            Looks up and creates a new KspProcessor instance for the requested type
+            </summary>
+            <typeparam name="T">model type to lookup</typeparam>
+            <returns>configured <see cref="!:KspProcessor"/> instance</returns>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.GetConfig``1">
+            <summary>
+            Gets the processor onfiguration that is used for a particular model type
+            </summary>
+            <typeparam name="T">model type to lookup</typeparam>
+            <returns>configuration used by the registry when creating the processor instance</returns>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.Create(KerbalData.Configuration.ApiConfig)">
+            <summary>
+            Creates a properly configured <seealso cref="T:KerbalData.ProcessorRegistry"/> instance 
+            </summary>
+            <param name="config">configuration data to use</param>
+            <returns>registry instance</returns>
+        </member>
+        <member name="M:KerbalData.ProcessorRegistry.Create(System.String)">
+            <summary>
+            Creates a properly configured <seealso cref="T:KerbalData.ProcessorRegistry"/> instance 
+            </summary>
+            <param name="configSectionName">configuration section to lookup and load</param>
+            <returns>registry instance</returns>
+        </member>
+        <member name="T:KerbalData.Providers.FileSystemRepository`1">
+            <summary>
+            Exposes collection of files defined by Ant style include/exclude filters as a data set that acts as the primary store for the files. 
+            This implmentation allows consumers complete abstraction from the underlying data store. 
+            
+            TODO: Implmentations for HTTP publishing, SQL database, file store with JSON objects, others?
+            </summary>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.#ctor(KerbalData.ProcessorRegistry,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.Providers.FileSystemRepository`1"/> class.
+            </summary>	
+            <remarks>
+            Required constructor signature for all classes implmenting <see cref="T:KerbalData.IKerbalDataRepo`1"/>
+            </remarks>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.GetIds">
+            <summary>
+            Gets a list of the available object ID's managed by the repository
+            </summary>
+            <returns>object ids</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get">
+            <summary>
+            Gets all objects managed by the repository
+            </summary>
+            <returns>object list</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get(System.Collections.Generic.IList{Newtonsoft.Json.Linq.JObject}@)">
+            <summary>
+            Gets all objects managed by the repository along with soure copies for backup/reversion
+            </summary>
+            <param name="data">data list to populate with source data</param>
+            <returns>de-serialized object list</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get(System.Func{`0,System.Boolean})">
+            <summary>
+            NOT YET IMPLMENTED
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get(System.Func{`0,System.Boolean},System.Collections.Generic.IList{Newtonsoft.Json.Linq.JObject}@)">
+            <summary>
+            NOT YET IMPLMENTED
+            </summary>
+            <param name="func"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get(System.String)">
+            <summary>
+            Gets an object with a particular Id
+            </summary>
+            <param name="id">object id to retrieve</param>
+            <returns>de-serialized object</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Get(System.String,Newtonsoft.Json.Linq.JObject@)">
+            <summary>
+            Gets an object with a particular Id along with a copy of the source data for backup/reversion
+            </summary>
+            <param name="id">object id to retrieve</param>
+            <param name="data">source data object to populate</param>
+            <returns>de-serialized data object</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Put(System.String,`0)">
+            <summary>
+            Adds/Updates an object of a particular ID
+            </summary>
+            <param name="id">Id to put</param>
+            <param name="obj">object data</param>
+            <returns>true=success;false=failure</returns>
+        </member>
+        <member name="M:KerbalData.Providers.FileSystemRepository`1.Delete(System.String)">
+            <summary>
+            Deletes an object with a matching ID
+            </summary>
+            <param name="id">id to delete</param>
+            <returns>true=success;false=failure</returns>
+        </member>
+        <member name="P:KerbalData.Providers.FileSystemRepository`1.BaseUri">
+            <summary>
+            Gets the BaseUri of the repo
+            </summary>
+        </member>
+        <member name="P:KerbalData.Providers.FileSystemRepository`1.BackupBeforeSave">
+            <summary>
+            Gets a value indicating whether data is backed up before a modified copy is saved.
+            </summary>
+        </member>
+        <member name="T:KerbalData.Serialization.KspProcessor`1">
+            <summary>
+            The Processor is responsible for managing the serialization/de-serialization process for object data.
+            </summary>
+            <typeparam name="T">model type to process</typeparam>
+        </member>
+        <member name="M:KerbalData.Serialization.KspProcessor`1.#ctor(KerbalData.Serialization.IKspSerializer,KerbalData.Serialization.IKspConverter{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:KerbalData.Serialization.KspProcessor`1"/> class.
+            </summary>	
+            <param name="serializer">serializer instance to use</param>
+            <param name="converter">object converter to use</param>
+        </member>
+        <member name="M:KerbalData.Serialization.KspProcessor`1.Process(System.IO.Stream)">
+            <summary>
+            Processes data for de-serialization into a typed object instance
+            </summary>
+            <param name="data">data stream to de-serialize</param>
+            <returns>de-serialized object instance</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.KspProcessor`1.Process(`0)">
+            <summary>
+            Processes an object for serilaization. 
+            </summary>
+            <param name="obj">object to serialize</param>
+            <returns>serialized object data in KSP formatted stream</returns>
+        </member>
+        <member name="P:KerbalData.Serialization.KspProcessor`1.Serializer">
+            <summary>
+            Gets the serializer instance used for processing
+            </summary>
+        </member>
+        <member name="P:KerbalData.Serialization.KspProcessor`1.Converter">
+            <summary>
+            Gets the converter instance used for processing
+            </summary>
+        </member>
+        <member name="T:KerbalData.Models.PartFile">
             <summary>
             Represents a loaded part file
             </summary>
         </member>
-        <member name="M:KerbalData.PartFile.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PartFile"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.PartFile.Revert">
+        <member name="M:KerbalData.Models.PartFile.Revert">
             <summary>
             Restores the object to the state it was in when it's data was first loaded or last saved. 
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Name">
+        <member name="P:KerbalData.Models.PartFile.Name">
             <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Title">
+        <member name="P:KerbalData.Models.PartFile.Title">
             <summary>
-            Gets or sets the title
+            Gets or sets the title. - File Property: title
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Author">
+        <member name="P:KerbalData.Models.PartFile.Author">
             <summary>
-            Gets or sets the author
+            Gets or sets the author. - File Property: author
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Manufacturer">
+        <member name="P:KerbalData.Models.PartFile.Manufacturer">
             <summary>
-            Gets or sets the manufacturer
+            Gets or sets the manufacturer. - File Property: manufacturer
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Description">
+        <member name="P:KerbalData.Models.PartFile.Description">
             <summary>
-            Gets or sets the description
+            Gets or sets the description. - File Property: description
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.VesselType">
+        <member name="P:KerbalData.Models.PartFile.VesselType">
             <summary>
-            Gets or sets the vessel type
+            Gets or sets the vessel type. - File Property: vesselType
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Module">
+        <member name="P:KerbalData.Models.PartFile.Module">
             <summary>
-            Gets or sets the module
+            Gets or sets the module. - File Property: module
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Mesh">
+        <member name="P:KerbalData.Models.PartFile.Mesh">
             <summary>
-            Gets or sets the mesh file name
+            Gets or sets the mesh file name. - File Property: mesh
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.RescaleFactor">
+        <member name="P:KerbalData.Models.PartFile.RescaleFactor">
             <summary>
-            Gets or sets the rescale factor
+            Gets or sets the rescale factor. - File Property: rescaleFactor
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Cost">
+        <member name="P:KerbalData.Models.PartFile.Cost">
             <summary>
-            Gets or sets the cost
+            Gets or sets the cost. - File Property: cost
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Category">
+        <member name="P:KerbalData.Models.PartFile.Category">
             <summary>
-            Gets or sets the category
+            Gets or sets the category. - File Property: category
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.SubCategory">
+        <member name="P:KerbalData.Models.PartFile.SubCategory">
             <summary>
-            Gets or sets the sub category
+            Gets or sets the sub category. - File Property: subcategory
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Mass">
+        <member name="P:KerbalData.Models.PartFile.Mass">
             <summary>
-            Gets or sets the mass
+            Gets or sets the mass. - File Property: mass
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.DragModelType">
+        <member name="P:KerbalData.Models.PartFile.DragModelType">
             <summary>
-            Gets or sets the drag model type
+            Gets or sets the drag model type. - File Property: dragModelType
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.MaxDrag">
+        <member name="P:KerbalData.Models.PartFile.MaxDrag">
             <summary>
-            Gets or sets maximum drag
+            Gets or sets maximum drag. - File Property: maximum_drag
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.MinDrag">
+        <member name="P:KerbalData.Models.PartFile.MinDrag">
             <summary>
-            Gets or set minimum drag
+            Gets or set minimum drag. - File Property: minimum_drag
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.AngularDrag">
+        <member name="P:KerbalData.Models.PartFile.AngularDrag">
             <summary>
-            Gets or sets angular drag
+            Gets or sets angular drag. - File Property: angularDrag
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.CrashTolerance">
+        <member name="P:KerbalData.Models.PartFile.CrashTolerance">
             <summary>
-            Gets or sets the crash tolerance
+            Gets or sets the crash tolerance. - File Property: crashTolerance
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.BreakingForce">
+        <member name="P:KerbalData.Models.PartFile.BreakingForce">
             <summary>
-            Gets or sets the breaking force
+            Gets or sets the breaking force. - File Property: breakingForce
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.BreakingTorque">
+        <member name="P:KerbalData.Models.PartFile.BreakingTorque">
             <summary>
-            Gets or sets the breaking torque 
+            Gets or sets the breaking torque. - File Property: breakingTorque
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.MaxTemp">
+        <member name="P:KerbalData.Models.PartFile.MaxTemp">
             <summary>
-            Gets or sets the maximum temp
+            Gets or sets the maximum temp. - File Property: maxTemp
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.ExplosionPotential">
+        <member name="P:KerbalData.Models.PartFile.ExplosionPotential">
             <summary>
-            Gets or sets the explosion potential
+            Gets or sets the explosion potential. - File Property: explosionPotential
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Modules">
+        <member name="P:KerbalData.Models.PartFile.Modules">
             <summary>
-            Gets or sets the module collection
+            Gets or sets the module collection. - File Property: MODULE
             </summary>
         </member>
-        <member name="P:KerbalData.PartFile.Resources">
+        <member name="P:KerbalData.Models.PartFile.Resources">
             <summary>
-            Gets or sets the resource collection
+            Gets or sets the resource collection. - File Property: RESOURCE
             </summary>
         </member>
-        <member name="T:KerbalData.PartModule">
+        <member name="T:KerbalData.Models.PartModule">
             <summary>
             Data model for a module found in a part file
             </summary>
         </member>
-        <member name="M:KerbalData.PartModule.#ctor">
+        <member name="P:KerbalData.Models.PartModule.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PartModule"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.PartModule.Name">
-            <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.PartModule.Resources">
+        <member name="P:KerbalData.Models.PartModule.Resources">
             <summary>
-            Gets or sets the resource colletion
+            Gets or sets the resource colletion. - File Property: RESOURCE
             </summary>
         </member>
-        <member name="P:KerbalData.PartModule.Events">
+        <member name="P:KerbalData.Models.PartModule.Events">
             <summary>
-            Gets or sets the events
+            Gets or sets the events. - File Property: EVENTS
             </summary>
         </member>
-        <member name="P:KerbalData.PartModule.Actions">
+        <member name="P:KerbalData.Models.PartModule.Actions">
             <summary>
-            Gets or sets actions
+            Gets or sets actions. - File Property: ACTIONS
             </summary>
         </member>
-        <member name="T:KerbalData.PartPropellant">
+        <member name="T:KerbalData.Models.PartPropellant">
             <summary>
             Data model for propellent data found in part file. 
             </summary>
         </member>
-        <member name="M:KerbalData.PartPropellant.#ctor">
+        <member name="P:KerbalData.Models.PartPropellant.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PartPropellant"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.PartPropellant.Name">
-            <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="T:KerbalData.PartResource">
+        <member name="T:KerbalData.Models.PartResource">
             <summary>
             Data model for resource data found in part
             </summary>
         </member>
-        <member name="M:KerbalData.PartResource.#ctor">
+        <member name="P:KerbalData.Models.PartResource.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.PartResource"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.PartResource.Name">
-            <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.PartResource.Amount">
+        <member name="P:KerbalData.Models.PartResource.Amount">
             <summary>
-            Gets or sets the amount
+            Gets or sets the amount. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.PartResource.MaxAmount">
+        <member name="P:KerbalData.Models.PartResource.MaxAmount">
             <summary>
-            Gets or sets the max amount
+            Gets or sets the max amount. - File Property: maxAmount
             </summary>
         </member>
-        <member name="P:KerbalData.PartResource.Resources">
+        <member name="P:KerbalData.Models.PartResource.Resources">
             <summary>
-            Gets or sets the resource collection
+            Gets or sets the resource collection. - File Property: RESOURCE
             </summary>
         </member>
         <member name="T:KerbalData.RepoFactory">
             <summary>
-            Basic reposiotry placeholder
+            Provides lookup and object creation of <see cref="T:KerbalData.IKerbalDataRepo`1"/> instance based on configuration
             </summary>
         </member>
-        <member name="M:KerbalData.RepoFactory.Create``1(System.Object[])">
+        <member name="M:KerbalData.RepoFactory.#ctor(KerbalData.Configuration.RepositoriesConfig,KerbalData.ProcessorRegistry)">
             <summary>
-            Creates a new reposiotry instance
+            Initializes a new instance of the <see cref="T:KerbalData.RepoFactory"/> class.
             </summary>
-            <typeparam name="T">model type to be managed by the repository</typeparam>
-            <param name="parameters">paramerter data used to init the reposiotry</param>
-            <returns>new repository instance for the requested type</returns>
+            <param name="config">configuration data to use</param>
+            <param name="registry">processor registry to pass to created repositories</param>
         </member>
-        <member name="T:KerbalData.ActionGroups">
+        <member name="M:KerbalData.RepoFactory.Create``1(System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Creates a new <see cref="T:KerbalData.IKerbalDataRepo`1"/> instance
+            </summary>
+            <typeparam name="T">model type handled by the repo</typeparam>
+            <param name="parameters">configuration parameters required by the repository. See the documentation for the specific repository type in use for required and optional parameters</param>
+            <param name="name">name of repository to lookup</param>
+            <returns>properly configured <see cref="!:IkerbalDataRepo&lt;T&gt;"/> instance</returns>
+        </member>
+        <member name="T:KerbalData.Models.ActionGroups">
             <summary>
             ActionGroups assigned to the Vessel
             </summary>
         </member>
-        <member name="M:KerbalData.ActionGroups.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.ActionGroups"/> class.
-            </summary>	
-        </member>
-        <member name="T:KerbalData.Body">
+        <member name="T:KerbalData.Models.Body">
             <summary>
             Provides list of bodies in the Kerbol system. 
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Kerbol">
+        <member name="F:KerbalData.Models.Body.Kerbol">
             <summary>
             Enum for Kerbol 0
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Kerbin">
+        <member name="F:KerbalData.Models.Body.Kerbin">
             <summary>
             Enum for Kerbin 1
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Mun">
+        <member name="F:KerbalData.Models.Body.Mun">
             <summary>
             Enum for Mun 2
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Minmus">
+        <member name="F:KerbalData.Models.Body.Minmus">
             <summary>
             Enum for Minmus 3
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Moho">
+        <member name="F:KerbalData.Models.Body.Moho">
             <summary>
             Enum for Moho 4
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Eve">
+        <member name="F:KerbalData.Models.Body.Eve">
             <summary>
             Enum for Eve 5
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Duna">
+        <member name="F:KerbalData.Models.Body.Duna">
             <summary>
             Enum for Duna 6
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Ike">
+        <member name="F:KerbalData.Models.Body.Ike">
             <summary>
             Enum for Ike 7
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Jool">
+        <member name="F:KerbalData.Models.Body.Jool">
             <summary>
             Enum for Jool 8
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Laythe">
+        <member name="F:KerbalData.Models.Body.Laythe">
             <summary>
             Enum for Laythe 9
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Vall">
+        <member name="F:KerbalData.Models.Body.Vall">
             <summary>
             Enum for Vall 10
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Bop">
+        <member name="F:KerbalData.Models.Body.Bop">
             <summary>
             Enum for Bop 11
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Tylo">
+        <member name="F:KerbalData.Models.Body.Tylo">
             <summary>
             Enum for Tylo 12
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Gilly">
+        <member name="F:KerbalData.Models.Body.Gilly">
             <summary>
             Enum for Gilly 13
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Pol">
+        <member name="F:KerbalData.Models.Body.Pol">
             <summary>
             Enum for Pol 14
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Dres">
+        <member name="F:KerbalData.Models.Body.Dres">
             <summary>
             Enum for Dres 15
             </summary>
         </member>
-        <member name="F:KerbalData.Body.Eeloo">
+        <member name="F:KerbalData.Models.Body.Eeloo">
             <summary>
             Enum for Eeloo 16
             </summary>
         </member>
-        <member name="T:KerbalData.Crew">
+        <member name="T:KerbalData.Models.Crew">
             <summary>
             Crew data 
             </summary>
         </member>
-        <member name="M:KerbalData.Crew.#ctor">
+        <member name="P:KerbalData.Models.Crew.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Crew"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.Crew.Name">
-            <summary>
-            Gets or sets the crew memeber's name
+            Gets or sets the crew memeber's name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.Brave">
+        <member name="P:KerbalData.Models.Crew.Brave">
             <summary>
-            Gets or sets the bravery level
+            Gets or sets the bravery level. - File Property: brave
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.Dumb">
+        <member name="P:KerbalData.Models.Crew.Dumb">
             <summary>
-            Gets or sets the dumbness level
+            Gets or sets the dumbness level. - File Property: dumb
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.BadS">
+        <member name="P:KerbalData.Models.Crew.BadS">
             <summary>
-            Gets or sets the BadS level
+            Gets or sets the BadS level. - File Property: badS
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.State">
+        <member name="P:KerbalData.Models.Crew.State">
             <summary>
-            Gets or sets the state
+            Gets or sets the state. - File Property: state
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.ToD">
+        <member name="P:KerbalData.Models.Crew.ToD">
             <summary>
-            Gets or sets the ToD
+            Gets or sets the ToD. - File Property: ToD
             </summary>
         </member>
-        <member name="P:KerbalData.Crew.Index">
+        <member name="P:KerbalData.Models.Crew.Index">
             <summary>
-            Gets or sets the index
+            Gets or sets the index. - File Property: idx
             </summary>
         </member>
-        <member name="T:KerbalData.EditorGameParameters">
+        <member name="T:KerbalData.Models.EditorGameParameters">
             <summary>
-            TODO: Class Summary
+            Model for Editor prefs
             </summary>
         </member>
-        <member name="M:KerbalData.EditorGameParameters.#ctor">
+        <member name="T:KerbalData.Models.FlightGameParameters">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.EditorGameParameters"/> class.
-            </summary>	
-        </member>
-        <member name="T:KerbalData.FlightGameParameters">
-            <summary>
-            TODO: Class Summary
+            Model container for game flight options
             </summary>
         </member>
-        <member name="M:KerbalData.FlightGameParameters.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.FlightGameParameters"/> class.
-            </summary>	
-        </member>
-        <member name="T:KerbalData.FlightState">
+        <member name="T:KerbalData.Models.FlightState">
             <summary>
             Container for flights, crew and key universe variables
             </summary>
         </member>
-        <member name="M:KerbalData.FlightState.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.FlightState"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.FlightState.FillResources">
+        <member name="M:KerbalData.Models.FlightState.FillResources">
             <summary>
             Refills the resources of all vessels contained within this flightstate.
             </summary>
             <returns>number of vessels re-filled</returns>
         </member>
-        <member name="M:KerbalData.FlightState.EmptyResources">
+        <member name="M:KerbalData.Models.FlightState.EmptyResources">
             <summary>
             Empties the resources of all vessels contained within this flightstate
             </summary>
             <returns>number of vessels emptied</returns>
         </member>
-        <member name="M:KerbalData.FlightState.ClearDebris">
+        <member name="M:KerbalData.Models.FlightState.ClearDebris">
             <summary>
             Deletes all vessels with the type of Debris or Unknown
             </summary>
             <returns>number of vessel objects removed</returns>
         </member>
-        <member name="P:KerbalData.FlightState.Version">
+        <member name="P:KerbalData.Models.FlightState.Version">
             <summary>
-            Gets or sets the game version
+            Gets or sets the game version. - File Property: version
             </summary>
         </member>
-        <member name="P:KerbalData.FlightState.Ut">
+        <member name="P:KerbalData.Models.FlightState.Ut">
             <summary>
-            Gets or sets the raw universe time
+            Gets or sets the raw universe time. - File Property: UT
             </summary>
         </member>
-        <member name="P:KerbalData.FlightState.UniverseTime">
+        <member name="P:KerbalData.Models.FlightState.UniverseTime">
             <summary>
             Gets or sets the universe time translated into a standard .NET timespan. Value changes mapped to FlightState.Ut.
             </summary>
         </member>
-        <member name="P:KerbalData.FlightState.ActiveVessel">
+        <member name="P:KerbalData.Models.FlightState.ActiveVessel">
             <summary>
-            Gets or sets the active vessel count
+            Gets or sets the active vessel count. - File Property: activeVessel
             </summary>
         </member>
-        <member name="P:KerbalData.FlightState.Crew">
+        <member name="P:KerbalData.Models.FlightState.Crew">
             <summary>
-            Gets or sets the crew collection
+            Gets or sets the crew collection. - File Property: CREW
             </summary>
         </member>
-        <member name="P:KerbalData.FlightState.Vessels">
+        <member name="P:KerbalData.Models.FlightState.Vessels">
             <summary>
-            Gets or sets the vessel collection
+            Gets or sets the vessel collection. - File Property: VESSEL
             </summary>
         </member>
-        <member name="T:KerbalData.Game">
+        <member name="T:KerbalData.Models.Game">
             <summary>
             Game data model
             </summary>
         </member>
-        <member name="M:KerbalData.Game.#ctor">
+        <member name="P:KerbalData.Models.Game.Version">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Game"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.Game.Version">
-            <summary>
-            Gets or sets the version
+            Gets or sets the version. - File Property: version
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Title">
+        <member name="P:KerbalData.Models.Game.Title">
             <summary>
-            Gets or sets the title
+            Gets or sets the title. - File Property: Title
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Description">
+        <member name="P:KerbalData.Models.Game.Description">
             <summary>
-            Gets or sets the description
+            Gets or sets the description. - File Property: Description
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Mode">
+        <member name="P:KerbalData.Models.Game.Mode">
             <summary>
-            Gets or sets the mode
+            Gets or sets the mode. - File Property: Mode
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Status">
+        <member name="P:KerbalData.Models.Game.Status">
             <summary>
-            Gets or sets the status
+            Gets or sets the status. - File Property: Status
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Scene">
+        <member name="P:KerbalData.Models.Game.Scene">
             <summary>
-            Gets or sets the scene
+            Gets or sets the scene. - File Property: scene
             </summary>
         </member>
-        <member name="P:KerbalData.Game.Parameters">
+        <member name="P:KerbalData.Models.Game.Parameters">
             <summary>
-            Gets or sets game parameters
+            Gets or sets game parameters. - File Property: PARAMETERS
             </summary>
         </member>
-        <member name="P:KerbalData.Game.FlightState">
+        <member name="P:KerbalData.Models.Game.FlightState">
             <summary>
-            Gets or sets the flight state
+            Gets or sets the flight state. - File Property: FLIGHTSTATE
             </summary>
         </member>
-        <member name="T:KerbalData.GameParameters">
+        <member name="T:KerbalData.Models.GameParameters">
             <summary>
-            TODO: Class Summary
+            Model container save game parameter sets
             </summary>
         </member>
-        <member name="M:KerbalData.GameParameters.#ctor">
+        <member name="P:KerbalData.Models.GameParameters.Flight">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.GameParameters"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.GameParameters.Flight">
-            <summary>
-            Gets or sets flight parameters
+            Gets or sets flight parameters. - File Property: FLIGHT
             </summary>
         </member>
-        <member name="P:KerbalData.GameParameters.Editor">
+        <member name="P:KerbalData.Models.GameParameters.Editor">
             <summary>
-            Gets or sets editor parameters
+            Gets or sets editor parameters. - File Property: EDITOR
             </summary>
         </member>
-        <member name="P:KerbalData.GameParameters.TrackingStation">
+        <member name="P:KerbalData.Models.GameParameters.TrackingStation">
             <summary>
-            Gets or sets tracking station parameters
+            Gets or sets tracking station parameters. - File Property: TRACKINGSTATION
             </summary>
         </member>
-        <member name="P:KerbalData.GameParameters.SpaceCenter">
+        <member name="P:KerbalData.Models.GameParameters.SpaceCenter">
             <summary>
-            Gets or sets space center parameters
+            Gets or sets space center parameters. - File Property: SPACECENTER
             </summary>
         </member>
-        <member name="T:KerbalData.Module">
+        <member name="T:KerbalData.Models.Module">
             <summary>
-            TODO: Class Summary
+            Model container for a save data module instance
             </summary>
         </member>
-        <member name="M:KerbalData.Module.#ctor">
+        <member name="P:KerbalData.Models.Module.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Module"/> class.
-            </summary>	
-        </member>
-        <member name="P:KerbalData.Module.Name">
-            <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.Module.Resources">
+        <member name="P:KerbalData.Models.Module.Resources">
             <summary>
-            Gets or sets the resource list
+            Gets or sets the resource list. - File Property: RESOURCE
             </summary>
         </member>
-        <member name="P:KerbalData.Module.Events">
+        <member name="P:KerbalData.Models.Module.Events">
             <summary>
-            Gets or sets module events
+            Gets or sets module events. - File Property: EVENTS
             </summary>
         </member>
-        <member name="P:KerbalData.Module.Actions">
+        <member name="P:KerbalData.Models.Module.Actions">
             <summary>
-            Gets or sets module actions
+            Gets or sets module actions. - File Property: ACTIONS
             </summary>
         </member>
-        <member name="T:KerbalData.IKspDataConverter">
+        <member name="T:KerbalData.Serialization.IKspConverter`1">
             <summary>
-            Instances of IKspDataConverter provide intenral KSP>JSON parsing. The interface will be used to swap out converters as the KSP data format evolves. Converter pattern may be made more general to provide support for any type of data format. 
-            As long as KSP uses the ASCII format they have JSON will be hard-wired as a base "gateway" converter for all other converters. TODO: POC converter stack processor (publish to multiple endpoints/formats)
+            Interface for Converter implmentations
+            </summary>
+            <remarks>
+            Implmentations of this interface are responsible for converting internal DataContex definitions to desired objects types. 
+            THis interim step in between serialization and data mapping allows for custom object type mappings used in highly advanced scenarios
+            and to support core API use-cases.
+            </remarks>
+            <typeparam name="T">Model type handled by the converter instance</typeparam>
+        </member>
+        <member name="M:KerbalData.Serialization.IKspConverter`1.SupportsVersion(System.String)">
+            <summary>
+            Tells if a specified version is supported by the implmentation
+            </summary>
+            <param name="version">KSP version to check</param>
+            <returns>true=supported;false=notsupported</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.IKspConverter`1.Convert(KerbalData.KspDataContext)">
+            <summary>
+            Converts data contex
+            </summary>
+            <param name="context">data context to convert</param>
+            <returns>converted object instance of desired type</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.IKspConverter`1.Convert(`0)">
+            <summary>
+            Converts data object
+            </summary>
+            <param name="obj">data object to convert</param>
+            <returns>data context instance populated with object data</returns>
+        </member>
+        <member name="P:KerbalData.Serialization.IKspConverter`1.Versions">
+            <summary>
+            Gets the list of KSP versions this serializer supports
             </summary>
         </member>
-        <member name="M:KerbalData.IKspDataConverter.BuildJson(KerbalData.KspDataContext)">
+        <member name="T:KerbalData.Serialization.IKspSerializer">
             <summary>
-            Builds a JSON string using the given data context
-            </summary>
-            <param name="context">data context holding de-serilaized KSP data</param>
-            <returns>JSON string veresion of provided data</returns>
-        </member>
-        <member name="M:KerbalData.IKspDataConverter.BuildKsp(System.String)">
-            <summary>
-            Builds a KSP data string from JSON
-            </summary>
-            <param name="json">JSON string to convert</param>
-            <returns>KSP string version of provided data</returns>
-        </member>
-        <member name="T:KerbalData.IKspFileConverter">
-            <summary>
-            Instances of this class are responsible for de-serialzing KSP data.
+            Base serilaization class interface. Provides support for parsing and writing KSP data files. 
             </summary>
         </member>
-        <member name="M:KerbalData.IKspFileConverter.Parse(System.IO.StreamReader,KerbalData.KspDataContext)">
+        <member name="M:KerbalData.Serialization.IKspSerializer.SupportsVersion(System.String)">
             <summary>
-            Accepts stream of formatted data and de-serializes the data into the provided context.
+            Tells if a specified version is supported by the implmentation
             </summary>
-            <param name="reader">data to de-serialize</param>
-            <param name="context">context instance to populate</param>
+            <param name="version">KSP version to check</param>
+            <returns>true=supported;false=notsupported</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.IKspSerializer.Serialize(KerbalData.KspDataContext,System.IO.StreamWriter)">
+            <summary>
+            Serializes the provided context into the writer
+            </summary>
+            <param name="context">data context to use</param>
+            <param name="writer">writer to populate</param>
+        </member>
+        <member name="M:KerbalData.Serialization.IKspSerializer.DeSerialize(KerbalData.KspDataContext,System.IO.StreamReader)">
+            <summary>
+            De-Serializes the provided reader into context. 
+            </summary>
+            <param name="context">data context to populate</param>
+            <param name="reader">reader to use</param>
+        </member>
+        <member name="P:KerbalData.Serialization.IKspSerializer.CanSerialize">
+            <summary>
+            Gets the value indicating whether the implmentation can serialize KSP data for the supported versions
+            </summary>
+        </member>
+        <member name="P:KerbalData.Serialization.IKspSerializer.CanDeSerialize">
+            <summary>
+            Gets the value indicating whether the implmentation can sde-erialize KSP data for the supported versions
+            </summary>
+        </member>
+        <member name="P:KerbalData.Serialization.IKspSerializer.Versions">
+            <summary>
+            Gets the list of KSP versions this serializer supports
+            </summary>
         </member>
         <member name="T:KerbalData.KerbalDataException">
             <summary>
@@ -1193,57 +1942,97 @@
         </member>
         <member name="T:KerbalData.KspData">
             <summary>
-            Top level data conversion/access class. 
-            This core class is used by higher level clasess to load and convert data as needed. KspData and the underlying converters are 
-            netural to context and only deal with data format conversion. Any vaild JSON or KSP data file can be converted even if the fields 
-            in the data do not match a particular game or even are used at all. Note that when adding data and fields not supported by KSP you 
-            may have unpredictable behavior up to and including deletion of your save file on attempted load.
+            Single file loading helper method class. Can be used to load/save and convert individual data items/files
+            This permenant helper class is also consumed by the <seealso cref="!:FileSystemRepository&lt;T&gt;"/> and may be used by other
+            file system based repositories. 
             </summary>
         </member>
-        <member name="F:KerbalData.KspData.kspToJson">
+        <member name="M:KerbalData.KspData.LoadKspFile``1(System.String,System.String)">
             <summary>
-            Internal converter instance 
+            Loads and de-serializes a KSP data file into the requested type
             </summary>
+            <typeparam name="T">model type to de-serialize to</typeparam>
+            <param name="path">full path of file location</param>
+            <param name="configSectionName">configuration section name to use for processor lookup</param>
+            <returns>de-serialized object instance</returns>
         </member>
-        <member name="M:KerbalData.KspData.#cctor">
+        <member name="M:KerbalData.KspData.LoadKspFile``1(System.String,KerbalData.Serialization.KspProcessor{``0})">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.KspData"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.KspData.LoadKspFile(System.String)">
-            <summary>
-            Loads a the KSP data file found at the provided path.
+            Loads and de-serializes a KSP data files into the requested type
             </summary>
-            <param name="path">path to KSP data file</param>
-            <returns>de-serialized JSON object containing KSP data</returns>
+            <typeparam name="T">model type to de-serialize to</typeparam>
+            <param name="path">full path of file location</param>
+            <param name="processor">processor instance to use for de-serialization</param>
+            <returns>de-serialized object instance</returns>
         </member>
         <member name="M:KerbalData.KspData.LoadJsonFile(System.String)">
             <summary>
-            Loads the JSON file found at the provided path
+            Loads a JSON formatting file into JObject
             </summary>
-            <param name="path">relative or absloute path</param>
-            <returns>de-serialized JObject instance</returns>
+            <param name="path">full path of file location</param>
+            <returns>Json.NET JObject instance</returns>
         </member>
-        <member name="M:KerbalData.KspData.SaveFile(System.String,Newtonsoft.Json.Linq.JToken)">
+        <member name="M:KerbalData.KspData.LoadJsonFile``1(System.String)">
+            <summary>
+            Loads a JSON formatting file into requested type
+            </summary>
+            <typeparam name="T">model to map to</typeparam>
+            <param name="path">full path of file location</param>
+            <returns>object instance</returns>
+        </member>
+        <member name="M:KerbalData.KspData.SaveFile``1(System.String,``0,System.String)">
             <summary>
             Saves provided data to KSP data format at the provided path
             </summary>
+            <typeparam name="T">model type to save</typeparam>
             <param name="path">path to save file to</param>
-            <param name="obj">JObject to use when serializing data</param>
+            <param name="obj">object to use when serializing data</param>
+            <param name="configSectionName">config section name to use for processor lookup</param>
         </member>
-        <member name="M:KerbalData.KspData.Convert(System.String)">
+        <member name="M:KerbalData.KspData.SaveFile``1(System.String,``0,KerbalData.Serialization.KspProcessor{``0})">
             <summary>
-            Converts a KSP data string to JSON
+            Saves provided data to KSP data format at the provided path
             </summary>
-            <param name="kspDataString">KSP string to use</param>
-            <returns>de-serialized JObject instance</returns>
+            <typeparam name="T">model type to sae</typeparam>
+            <param name="path">path to save gile to</param>
+            <param name="obj">object data to use</param>
+            <param name="processor">processor to use for serialization</param>
         </member>
-        <member name="M:KerbalData.KspData.Convert(Newtonsoft.Json.Linq.JToken)">
+        <member name="M:KerbalData.KspData.Convert``1(System.String,System.String)">
             <summary>
-            Converts a JSON object to a KSP string
+            Converts and KSP formatting string into a de-serialized object
             </summary>
-            <param name="jobj">object instance to serialize</param>
-            <returns>serilaized KSP data string</returns>
+            <typeparam name="T">model type to convert to</typeparam>
+            <param name="data">data to parse</param>
+            <param name="configSectionName">configuration section to use for processor lookup</param>
+            <returns>de-serialized object instance</returns>
+        </member>
+        <member name="M:KerbalData.KspData.Convert``1(System.String,KerbalData.Serialization.KspProcessor{``0})">
+            <summary>
+            Converts and KSP formatting string into a de-serialized object
+            </summary>
+            <typeparam name="T">model type to convert to</typeparam>
+            <param name="data">data to parse</param>
+            <param name="processor">processor to use for de-serialization</param>
+            <returns>de-serialized object instance</returns>
+        </member>
+        <member name="M:KerbalData.KspData.Convert``1(``0,System.String)">
+            <summary>
+            Converts an object instannce to a KSP data string
+            </summary>
+            <typeparam name="T">model type to convert to</typeparam>
+            <param name="obj">object data</param>
+            <param name="configSectionName">configuration section to use for processor lookup</param>
+            <returns>KSP data as a string</returns>
+        </member>
+        <member name="M:KerbalData.KspData.Convert``1(``0,KerbalData.Serialization.KspProcessor{``0})">
+            <summary>
+            Converts an object instannce to a KSP data string
+            </summary>
+            <typeparam name="T">model type to convert to</typeparam>
+            <param name="obj">object data</param>
+            <param name="processor">processor to use for de-serialization</param>
+            <returns>KSP data as a string</returns>
         </member>
         <member name="T:KerbalData.KspDataContext">
             <summary>
@@ -1300,50 +2089,12 @@
             Gets or sets the child objects for this instance
             </summary>
         </member>
-        <member name="T:KerbalData.KspToJson">
-            <summary>
-            Primarey converter class, holds core references to file and data conveter. 
-            1-to-1 mapping between a single file/data converter pair and a KspToJson instance. 
-            TODO: Additional constructors to facilitate configuration injection
-            </summary>
-        </member>
-        <member name="M:KerbalData.KspToJson.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.KspToJson"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.KspToJson.ToKspData(System.String)">
-            <summary>
-            Converts a KSP string to a JSON string
-            </summary>
-            <param name="json"></param>
-            <returns></returns>
-        </member>
-        <member name="M:KerbalData.KspToJson.ToJson(System.IO.Stream)">
-            <summary>
-            Converts a stream containing KSP data to a JSON string
-            </summary>
-            <param name="stream">stream data to convert</param>
-            <returns>JSON string</returns>
-        </member>
-        <member name="M:KerbalData.KspToJson.ToJson(System.String)">
-            <summary>
-            Converts a JSON string to a KSP string
-            </summary>
-            <param name="ksp">KSP data string to convert</param>
-            <returns>JSON String</returns>
-        </member>
-        <member name="T:KerbalData.Orbit">
+        <member name="T:KerbalData.Models.Orbit">
             <summary>
             Orbit data model
             </summary>
         </member>
-        <member name="M:KerbalData.Orbit.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Orbit"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.Orbit.Change(KerbalData.Body)">
+        <member name="M:KerbalData.Models.Orbit.Change(KerbalData.Models.Body)">
             <summary>
             Changes the orbit configuration based upon the provided body. Target orbit is ~100km from surface. 
             MET should be changed if more than one craft are placed in orbit around the same body. Otherwise craft may spawn too close and collide.
@@ -1351,208 +2102,363 @@
             <param name="body">desired body to orbit</param>
             <returns>true=success;false=failure</returns>
         </member>
-        <member name="P:KerbalData.Orbit.Sma">
+        <member name="P:KerbalData.Models.Orbit.Sma">
             <summary>
-            Gets or sets SMA
+            Gets or sets SMA. - File Property: SMA
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Ecc">
+        <member name="P:KerbalData.Models.Orbit.Ecc">
             <summary>
-            Gets or sets ECC
+            Gets or sets ECC. - File Property: ECC
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Inc">
+        <member name="P:KerbalData.Models.Orbit.Inc">
             <summary>
-            Gets or sets INC
+            Gets or sets INC. - File Property: INC
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Lpe">
+        <member name="P:KerbalData.Models.Orbit.Lpe">
             <summary>
-            Gets or sets LPE
+            Gets or sets LPE. - File Property: LPE
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Lan">
+        <member name="P:KerbalData.Models.Orbit.Lan">
             <summary>
-            Gets or sets LAN
+            Gets or sets LAN. - File Property: LAN
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Mna">
+        <member name="P:KerbalData.Models.Orbit.Mna">
             <summary>
-            Gets or sets mna
+            Gets or sets mna. - File Property: MNA
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Eph">
+        <member name="P:KerbalData.Models.Orbit.Eph">
             <summary>
-            Gets or sets Eph
+            Gets or sets Eph. - File Property: EPH
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Ref">
+        <member name="P:KerbalData.Models.Orbit.Ref">
             <summary>
-            Gets or sets the reference body integer
+            Gets or sets the reference body integer. - File Property: REF
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Obj">
+        <member name="P:KerbalData.Models.Orbit.Obj">
             <summary>
-            Gets or sets the obj
+            Gets or sets the obj. - File Property: OBJ
             </summary>
         </member>
-        <member name="P:KerbalData.Orbit.Body">
+        <member name="P:KerbalData.Models.Orbit.Body">
             <summary>
             Gets or sets the reference body.
             This is the reccomended method to update the reference body.
             </summary>
         </member>
-        <member name="T:KerbalData.Part">
+        <member name="T:KerbalData.Models.Part">
             <summary>
             Part data model
             </summary>
         </member>
-        <member name="M:KerbalData.Part.#ctor">
+        <member name="M:KerbalData.Models.Part.FillResources">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Part"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.Part.FillResources">
-            <summary>
-            Fills all resources in this part
+            Fills all resources in this part.
             </summary>
             <returns>number of resource objects filled</returns>
         </member>
-        <member name="M:KerbalData.Part.EmptyResources">
+        <member name="M:KerbalData.Models.Part.EmptyResources">
             <summary>
             Empties all resoures in this part
             </summary>
             <returns>number of resource objects emptied</returns>
         </member>
-        <member name="P:KerbalData.Part.Name">
+        <member name="P:KerbalData.Models.Part.Name">
             <summary>
-            Gets or sets name
+            Gets or sets name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.Part.Resources">
+        <member name="P:KerbalData.Models.Part.Resources">
             <summary>
-            Gets or setss resource collection
+            Gets or setss resource collection. - File Property: RESOURCE
             </summary>
         </member>
-        <member name="P:KerbalData.Part.Events">
+        <member name="P:KerbalData.Models.Part.Events">
             <summary>
-            Gets or sets events
+            Gets or sets events. - File Property: EVENTS
             </summary>
         </member>
-        <member name="P:KerbalData.Part.Actions">
+        <member name="P:KerbalData.Models.Part.Actions">
             <summary>
-            Gets or sets actions
+            Gets or sets actions. - File Property: ACTIONS
             </summary>
         </member>
-        <member name="P:KerbalData.Part.Modules">
+        <member name="P:KerbalData.Models.Part.Modules">
             <summary>
-            Gets or sets part module list
+            Gets or sets part module list. - File Property: MODULE
             </summary>
         </member>
-        <member name="T:KerbalData.Resource">
+        <member name="T:KerbalData.Models.Resource">
             <summary>
             Resource model class
             </summary>
         </member>
-        <member name="M:KerbalData.Resource.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Resource"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.Resource.Fill">
+        <member name="M:KerbalData.Models.Resource.Fill">
             <summary>
             Fills the resource
             </summary>
         </member>
-        <member name="M:KerbalData.Resource.Empty">
+        <member name="M:KerbalData.Models.Resource.Empty">
             <summary>
             Empties the resource
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.Name">
+        <member name="P:KerbalData.Models.Resource.Name">
             <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: name
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.Amount">
+        <member name="P:KerbalData.Models.Resource.Amount">
             <summary>
-            Gets or sets the current resource amount
+            Gets or sets the current resource amount. - File Property: amount
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.MaxAmount">
+        <member name="P:KerbalData.Models.Resource.MaxAmount">
             <summary>
-            Gets or sets the maximum resource amount
+            Gets or sets the maximum resource amount. - File Property: maxAmount
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.FlowState">
+        <member name="P:KerbalData.Models.Resource.FlowState">
             <summary>
-            Gets or sets the flow state
+            Gets or sets the flow state. - File Property: flowState
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.FlowMode">
+        <member name="P:KerbalData.Models.Resource.FlowMode">
             <summary>
-            Gets or sets the flow mode
+            Gets or sets the flow mode. - File Property: flowMode
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.IsFull">
+        <member name="P:KerbalData.Models.Resource.IsFull">
             <summary>
             Gets the isfull flag
             </summary>
         </member>
-        <member name="P:KerbalData.Resource.IsEmpty">
+        <member name="P:KerbalData.Models.Resource.IsEmpty">
             <summary>
             Gets the isempty flag
             </summary>
         </member>
-        <member name="T:KerbalData.SaveFile">
+        <member name="T:KerbalData.Models.SaveFile">
             <summary>
-            TODO: Class Summary
+            Instances of this class contains reference and management of a KSP save file.
             </summary>
+            <threadsafety static="false" instance="false" />
         </member>
-        <member name="M:KerbalData.SaveFile.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.SaveFile"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.SaveFile.Revert">
+        <member name="M:KerbalData.Models.SaveFile.Revert">
             <summary>
             Restores the object to the state it was in when it's data was first loaded or last saved. 
             </summary>
         </member>
-        <member name="P:KerbalData.SaveFile.Game">
+        <member name="P:KerbalData.Models.SaveFile.Game">
             <summary>
-            Gets the KSP Game definition. Contains all de-serialized save data. 
+            Gets the KSP Game definition. Contains all de-serialized save data. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.SaveFile.CraftInVab">
+        <member name="P:KerbalData.Models.SaveFile.CraftInVab">
             <summary>
             Gets or sets the craft in VAP collection
             </summary>
         </member>
-        <member name="P:KerbalData.SaveFile.CraftInSph">
+        <member name="P:KerbalData.Models.SaveFile.CraftInSph">
             <summary>
             Gets or sets the craft in the space plane hanger collection 
             </summary>
         </member>
-        <member name="T:KerbalData.SpaceCenterGameParameters">
+        <member name="T:KerbalData.Models.SpaceCenterGameParameters">
             <summary>
-            TODO: Class Summary
+            Model for Space Center params in a save file
             </summary>
         </member>
-        <member name="M:KerbalData.SpaceCenterGameParameters.#ctor">
+        <member name="T:KerbalData.Models.TrackingStationGameParameters">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.SpaceCenterGameParameters"/> class.
-            </summary>	
-        </member>
-        <member name="T:KerbalData.TrackingStationGameParameters">
-            <summary>
-            TODO: Class Summary
+            Model for tracking station params in the save
             </summary>
         </member>
-        <member name="M:KerbalData.TrackingStationGameParameters.#ctor">
+        <member name="T:KerbalData.Serialization.Serializers.V018x.DataSerializer">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.TrackingStationGameParameters"/> class.
-            </summary>	
+            Serializer implmentation tested to support 0.18-0.18.2 KSP data formats
+            </summary>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.SupportsVersion(System.String)">
+            <summary>
+            Checks if this type supports a particular version
+            </summary>
+            <param name="version">version to check</param>
+            <returns>true=supported;false=not supported</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.Serialize(KerbalData.KspDataContext,System.IO.StreamWriter)">
+            <summary>
+            Serializes data 
+            </summary>
+            <param name="context">context to serialize data from</param>
+            <param name="writer">stream writer to serialize to</param>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.DeSerialize(KerbalData.KspDataContext,System.IO.StreamReader)">
+            <summary>
+            De-Serializes data
+            </summary>
+            <param name="context">context to de-serialize to</param>
+            <param name="reader">stream reader to read from</param>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.BuildKspData(KerbalData.KspDataObject,System.IO.StreamWriter,System.Int32)">
+            <summary>
+            Primary internal method to build the KSP data string. Contains version specific rules and formatting
+            </summary>
+            <param name="jobj">JSon Object data to use.</param>
+            <param name="tabCount">starting point for indented tabs (method will furhter indent children through recursive calls</param>
+            <param name="objectName">name of data object for header</param>
+            <returns>KSP data string</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.ParseData(System.Collections.Generic.List{System.String},KerbalData.KspDataObject)">
+            <summary>
+            Internal parsing method, recursviely calls itself as needed
+            </summary>
+            <param name="data">data to parse</param>
+            <param name="dataObj">data object to populate</param>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.DataSerializer.GetTabs(System.Int32)">
+            <summary>
+            Creates a tab substring 
+            </summary>
+            <param name="count">number of consecutive tabs to add</param>
+            <returns>tab string</returns>
+        </member>
+        <member name="P:KerbalData.Serialization.Serializers.V018x.DataSerializer.CanSerialize">
+            <summary>
+            Gets a flag indicating if this type can serialize data
+            </summary>
+        </member>
+        <member name="P:KerbalData.Serialization.Serializers.V018x.DataSerializer.CanDeSerialize">
+            <summary>
+            Gets a flag indicating if this type can de-serialize data
+            </summary>
+        </member>
+        <member name="P:KerbalData.Serialization.Serializers.V018x.DataSerializer.Versions">
+            <summary>
+            Gets a list of supported KSP versions
+            </summary>
+        </member>
+        <member name="T:KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1">
+            <summary>
+            Converts Json.Net objets into strongly typed object instances. Wrapse <see cref="T:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1"/>
+            </summary>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1.SupportsVersion(System.String)">
+            <summary>
+            Checks if this type supports a particular version
+            </summary>
+            <param name="version">version to check</param>
+            <returns>true=supported;false=not supported</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1.Convert(KerbalData.KspDataContext)">
+            <summary>
+            Converts a <see cref="T:KerbalData.KspDataContext"/> instance into a specific object type
+            </summary>
+            <param name="context">data to map</param>
+            <returns>object constructed based on context</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1.Convert(`0)">
+            <summary>
+            Converts an object instance into a <see cref="T:KerbalData.KspDataContext"/> instance
+            </summary>
+            <param name="obj">object to convert</param>
+            <returns>data context instance based on object data</returns>
+        </member>
+        <member name="P:KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1.Versions">
+            <summary>
+            Gets the list of versions supported by this converter
+            </summary>
+        </member>
+        <member name="T:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1">
+            <summary>
+            Converts data context to <see cref="T:Newtonsoft.Json.Linq.JObject"/> instances. Used as mid step to final object mapping and for saving data in Json format.
+            </summary>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.SupportsVersion(System.String)">
+            <summary>
+            Checks if this type supports a particular version
+            </summary>
+            <param name="version">version to check</param>
+            <returns>true=supported;false=not supported</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.Convert(KerbalData.KspDataContext)">
+            <summary>
+            Converts a <see cref="T:KerbalData.KspDataContext"/> instance into a specific object type
+            </summary>
+            <param name="context">data to map</param>
+            <returns>object constructed based on context</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.Convert(`0)">
+            <summary>
+            Converts an object instance into a <see cref="T:KerbalData.KspDataContext"/> instance
+            </summary>
+            <param name="obj">object to convert</param>
+            <returns>data context instance based on object data</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.BuildJson(KerbalData.KspDataObject)">
+            <summary>
+            Internal class that handles converting KSP data to JSON. Recursively calls itself to handle nested elements. Contains version specific rules and code.
+            </summary>
+            <param name="root">root data object (data context is stripped)</param>
+            <param name="tabCount">starting tab index for proper formatting</param>
+            <returns>JSON string</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.BuildProerties(KerbalData.KspDataObject,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Builds the child properties for the JObject
+            </summary>
+            <param name="root">data object to use</param>
+            <param name="jobj">jobkject instance to populate</param>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.BuildKspData(Newtonsoft.Json.Linq.JObject,KerbalData.KspDataObject)">
+            <summary>
+            Primary internal method to build the KSP data string. Contains version specific rules and formatting
+            </summary>
+            <param name="jobj">JSon Object data to use.</param>
+            <param name="root">data object to populate</param>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.BuildArrayField(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Builds a KSP data array field
+            </summary>
+            <param name="item">JSON object to serialize</param>
+            <returns>KSP data string fragment</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.BuildArrayField(System.String)">
+            <summary>
+            Builds a KSP data array field
+            </summary>
+            <param name="item">JSON object to serialize</param>
+            <returns>KSP data string fragment</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.IsArrayAllNumbers(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Tells if the provided JSON array is all number values or not
+            This is used to adhere to a small formatting rule used in KSP data. All number arrays are written differently than mixed arrays. 
+            I have not tested if the difference matters or not, I am going to contiune to strive for byte-to-byte compatibility as much as possible so as not
+            to scare end users with radically changed save files at minimum and to potentially keep things from breaking should something simple actually be important.
+            </summary>
+            <param name="array">array to validate</param>
+            <returns>true=all numbers;false=not numbers</returns>
+        </member>
+        <member name="M:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.IsNumber(System.String)">
+            <summary>
+            Tells if a string represents a number value
+            </summary>
+            <param name="str">string to validate</param>
+            <returns>true=is number; false=not nimber</returns>
+        </member>
+        <member name="P:KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1.Versions">
+            <summary>
+            Gets the list of versions supported by this converter
+            </summary>
         </member>
         <member name="T:KerbalData.StorableItemMetadata`1">
             <summary>
@@ -1592,8 +2498,9 @@
             even if another value with the same name already exists. The previous value will be overwritten by the latest addition to the
             list. 
             </summary>
+            <typeparam name="T">model type being managed</typeparam>
         </member>
-        <member name="M:KerbalData.StorableObjects`1.#ctor(KerbalData.IKerbalDataRepo{`0})">
+        <member name="M:KerbalData.StorableObjects`1.#ctor(KerbalData.IKerbalDataRepo{`0},KerbalData.IKerbalDataManager)">
             <summary>
             Initializes a new instance of the <see cref="T:KerbalData.StorableObjects`1"/> class.
             </summary>	
@@ -1645,10 +2552,15 @@
         </member>
         <member name="P:KerbalData.StorableObjects`1.Item(System.String)">
             <summary>
-            Gets or sets the value of a particular KSP data object. 
+            Gets or sets the value of an unmapped property using a unique name. 
             </summary>
             <param name="id">Id to lookup</param>
             <returns>object for the associtated ID</returns>
+        </member>
+        <member name="P:KerbalData.StorableObjects`1.DataManager">
+            <summary>
+            Gets the data manager instance that manages this object
+            </summary>
         </member>
         <member name="P:KerbalData.StorableObjects`1.Count">
             <summary>
@@ -1669,11 +2581,8 @@
             <summary>
             JSON.NET implmentation class for de-serializing to classes while storing unmapped properties to the the <see cref="T:KerbalData.IKerbalDataObject"/> implmentation.
             </summary>
-        </member>
-        <member name="M:KerbalData.UnMappedPropertiesConverter`1.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.UnMappedPropertiesConverter`1"/> class.
-            </summary>	
+            <typeparam name="T">model type being processed</typeparam>
+            <threadsafety static="false" instance="false"/>    
         </member>
         <member name="M:KerbalData.UnMappedPropertiesConverter`1.CanConvert(System.Type)">
             <summary>
@@ -1717,172 +2626,157 @@
             Gets the can write flag
             </summary>
         </member>
-        <member name="T:KerbalData.Vessel">
+        <member name="T:KerbalData.Models.Vessel">
             <summary>
             Vessel data model
             </summary>
         </member>
-        <member name="M:KerbalData.Vessel.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.Vessel"/> class.
-            </summary>	
-        </member>
-        <member name="M:KerbalData.Vessel.FillResources">
+        <member name="M:KerbalData.Models.Vessel.FillResources">
             <summary>
             Fills all resource parts in this vessel
             </summary>
             <returns>number of resource parts filed</returns>
         </member>
-        <member name="M:KerbalData.Vessel.EmptyResources">
+        <member name="M:KerbalData.Models.Vessel.EmptyResources">
             <summary>
             Emppties all resources in this vessel
             </summary>
             <returns>number of parts emptied</returns>
         </member>
-        <member name="P:KerbalData.Vessel.Pid">
+        <member name="P:KerbalData.Models.Vessel.Pid">
             <summary>
-            Gets or sets the Pid
+            Gets or sets the Pid. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Name">
+        <member name="P:KerbalData.Models.Vessel.Name">
             <summary>
-            Gets or sets the name
+            Gets or sets the name. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Type">
+        <member name="P:KerbalData.Models.Vessel.Type">
             <summary>
-            Gets or sets the type
+            Gets or sets the type. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Situation">
+        <member name="P:KerbalData.Models.Vessel.Situation">
             <summary>
-            Gets or sets the situation
+            Gets or sets the situation. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Landed">
+        <member name="P:KerbalData.Models.Vessel.Landed">
             <summary>
-            Gets or sets the landed flag
+            Gets or sets the landed flag. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.LandedAt">
+        <member name="P:KerbalData.Models.Vessel.LandedAt">
             <summary>
-            Gets or sets the landed at value
+            Gets or sets the landed at value. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Splashed">
+        <member name="P:KerbalData.Models.Vessel.Splashed">
             <summary>
-            Gets or sets the splashed flag
+            Gets or sets the splashed flag. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Met">
+        <member name="P:KerbalData.Models.Vessel.Met">
             <summary>
-            Gets or sets the Met
+            Gets or sets the Met. - File Property: GAME
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.MissionElapsedTime">
+        <member name="P:KerbalData.Models.Vessel.MissionElapsedTime">
             <summary>
             Gets or sets Mission Elapsed time
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Lct">
+        <member name="P:KerbalData.Models.Vessel.Lct">
             <summary>
-            Gets or sets lct
+            Gets or sets lct. - File Property: lct
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Root">
+        <member name="P:KerbalData.Models.Vessel.Root">
             <summary>
-            Gets or sets root
+            Gets or sets root. - File Property: root
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Latitude">
+        <member name="P:KerbalData.Models.Vessel.Latitude">
             <summary>
-            Gets or sets latitude
+            Gets or sets latitude. - File Property: lat
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Longitude">
+        <member name="P:KerbalData.Models.Vessel.Longitude">
             <summary>
-            Gets or sets longitude
+            Gets or sets longitude. - File Property: lon
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Altitude">
+        <member name="P:KerbalData.Models.Vessel.Altitude">
             <summary>
-            Gets or sets altitude
+            Gets or sets altitude. - File Property: alt
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Hgt">
+        <member name="P:KerbalData.Models.Vessel.Hgt">
             <summary>
-            Gets or sets hgt
+            Gets or sets hgt. - File Property: hgt
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Nrm">
+        <member name="P:KerbalData.Models.Vessel.Nrm">
             <summary>
-            Gets or sets nrm
+            Gets or sets nrm. - File Property: nrm
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Rot">
+        <member name="P:KerbalData.Models.Vessel.Rot">
             <summary>
-            Gets or sets Rot
+            Gets or sets Rot. - File Property: rot
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Com">
+        <member name="P:KerbalData.Models.Vessel.Com">
             <summary>
-            Gets or sets Com
+            Gets or sets Com. - File Property: CoM
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Stage">
+        <member name="P:KerbalData.Models.Vessel.Stage">
             <summary>
-            Gets or sets stage
+            Gets or sets stage. - File Property: stg
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Prst">
+        <member name="P:KerbalData.Models.Vessel.Prst">
             <summary>
-            Gets or sets prst
+            Gets or sets prst. - File Property: Prst
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Eva">
+        <member name="P:KerbalData.Models.Vessel.Eva">
             <summary>
-            Gets or sets eva
+            Gets or sets eva. - File Property: Eva
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Ref">
+        <member name="P:KerbalData.Models.Vessel.Ref">
             <summary>
-            Gets or sets ref
+            Gets or sets ref. - File Property: ref
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Orbit">
+        <member name="P:KerbalData.Models.Vessel.Orbit">
             <summary>
-            Gets or sets orbit
+            Gets or sets orbit. - File Property: ORBIT
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.Parts">
+        <member name="P:KerbalData.Models.Vessel.Parts">
             <summary>
-            Gets or sets part collection
+            Gets or sets part collection. - File Property: PART
             </summary>
         </member>
-        <member name="P:KerbalData.Vessel.ActionGroups">
+        <member name="P:KerbalData.Models.Vessel.ActionGroups">
             <summary>
-            Gets or sets vessel action groups
+            Gets or sets vessel action groups. - File Property: ACTIONGROUPS
             </summary>
         </member>
-        <member name="T:KerbalData.VesselActions">
+        <member name="T:KerbalData.Models.VesselActions">
             <summary>
-            TODO: Class Summary
+            Vessel actions 
             </summary>
         </member>
-        <member name="M:KerbalData.VesselActions.#ctor">
+        <member name="T:KerbalData.Models.VesselEvents">
             <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.VesselActions"/> class.
-            </summary>	
-        </member>
-        <member name="T:KerbalData.VesselEvents">
-            <summary>
-            TODO: Class Summary
+            Model for vessel events
             </summary>
-        </member>
-        <member name="M:KerbalData.VesselEvents.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KerbalData.VesselEvents"/> class.
-            </summary>	
         </member>
     </members>
 </doc>

@@ -34,12 +34,13 @@
         <!--ComboBox Name="SettingsList" HorizontalAlignment="Left" Height="24" Margin="1054,61,0,0" VerticalAlignment="Top" Width="85" ItemsSource="{Binding Path=KerbalData.KspSettings.Names}" SelectedItem="{Binding Path=SelectedSetting}"/-->
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySave, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="Save" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedSave}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=Save.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Save.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <TextBox Text="{Binding Path=Save.Game.Description, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
             <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
-            <Label Content="{Binding Path=Save.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <TextBox Text="{Binding Path=Save.Game.Version, Mode=TwoWay}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
             <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
             <Label Content="{Binding Path=Save.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
             
@@ -54,12 +55,16 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding Save.Game.FlightState.Crew}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="80">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
+                        <DataGridTextColumn Header="State" Binding="{Binding Path=State, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="ToD" Binding="{Binding Path=ToD, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>                        
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>            
@@ -75,15 +80,21 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding Save.Game.FlightState.Vessels}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Altitude" Binding="{Binding Path=Altitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Lat" Binding="{Binding Path=Latitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Long" Binding="{Binding Path=Longitude, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
                         </DataGridTextColumn>
@@ -93,14 +104,15 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayScenario, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="Scenario" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />            
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedScenario}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=Scenario.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Scenario.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <TextBox Text="{Binding Path=Scenario.Game.Description, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
             <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
-            <Label Content="{Binding Path=Scenario.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <TextBox Text="{Binding Path=Scenario.Game.Version, Mode=TwoWay}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
             <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Scenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Scenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -113,11 +125,15 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding Scenario.Game.FlightState.Crew}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="80">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="State" Binding="{Binding Path=State, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="ToD" Binding="{Binding Path=ToD, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
@@ -134,15 +150,21 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding Scenario.Game.FlightState.Vessels}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Altitude" Binding="{Binding Path=Altitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Lat" Binding="{Binding Path=Latitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Long" Binding="{Binding Path=Longitude, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
                         </DataGridTextColumn>
@@ -152,14 +174,15 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayTrainingScenario, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="TrainingScenario" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />            
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedTrainingScenario}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=TrainingScenario.Game.Title}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=TrainingScenario.Game.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <TextBox Text="{Binding Path=TrainingScenario.Game.Description, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
             <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
-            <Label Content="{Binding Path=TrainingScenario.Game.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <TextBox Text="{Binding Path=TrainingScenario.Game.Version, Mode=TwoWay}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
             <Label Content="Game Time Elapsed" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=TrainingScenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=TrainingScenario.Game.FlightState.UniverseTime}" HorizontalAlignment="Left" Margin="129,261,0,0" VerticalAlignment="Top"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -172,11 +195,15 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding TrainingScenario.Game.FlightState.Crew}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="80">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="80">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave}" MinWidth="10">
+                        <DataGridTextColumn Header="Brave" Binding="{Binding Path=Brave, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb}" MinWidth="10">
+                        <DataGridTextColumn Header="Dumb" Binding="{Binding Path=Dumb, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="State" Binding="{Binding Path=State, Mode=TwoWay}" MinWidth="10">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="ToD" Binding="{Binding Path=ToD, Mode=TwoWay}" MinWidth="10">
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
@@ -193,15 +220,21 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding TrainingScenario.Game.FlightState.Vessels}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MinWidth="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" MinWidth="100">
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation}" MinWidth="100">
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Situation, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body}" MinWidth="100">
+                        <DataGridTextColumn Header="Body" Binding="{Binding Path=Orbit.Body, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime}" MinWidth="100">
+                        <DataGridTextColumn Header="MET" Binding="{Binding Path=MissionElapsedTime, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Altitude" Binding="{Binding Path=Altitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Lat" Binding="{Binding Path=Latitude, Mode=TwoWay}" MinWidth="100">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Long" Binding="{Binding Path=Longitude, Mode=TwoWay}" MinWidth="100">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="# Parts" Binding="{Binding Path=Parts.Count}" MinWidth="100">
                         </DataGridTextColumn>
@@ -211,12 +244,13 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayVabCraft, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="VabCraft" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />            
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedVabCraft}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=VabCraft.Ship}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=VabCraft.Type}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <TextBox Text="{Binding Path=VabCraft.Type, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
             <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
-            <Label Content="{Binding Path=VabCraft.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <TextBox Text="{Binding Path=VabCraft.Version, Mode=TwoWay}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -229,9 +263,9 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding VabCraft.Parts}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part}" MinWidth="150">
-                        </DataGridTextColumn>                        
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name}" MinWidth="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part, Mode=TwoWay}" MinWidth="150">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Module Count" Binding="{Binding Path=Modules.Count}" MinWidth="100">
                         </DataGridTextColumn>
@@ -247,12 +281,13 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySphCraft, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="SphCraft" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />            
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedSphCraft}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=SphCraft.Ship}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=SphCraft.Type}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
+            <TextBox Text="{Binding Path=SphCraft.Type, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="64"/>
             <Label Content="Version" HorizontalAlignment="Left" Margin="473,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
-            <Label Content="{Binding Path=SphCraft.Version}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
+            <TextBox Text="{Binding Path=SphCraft.Version, Mode=TwoWay}" HorizontalAlignment="Left" Margin="528,74,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -265,9 +300,9 @@
                             AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" 
                             ItemsSource="{Binding SphCraft.Parts}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part}" MinWidth="150">
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Part, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name}" MinWidth="150">
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Name, Mode=TwoWay}" MinWidth="150">
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Module Count" Binding="{Binding Path=Modules.Count}" MinWidth="100">
                         </DataGridTextColumn>
@@ -283,31 +318,32 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplayPart, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
+            <Button Command="{Binding SaveCommand}" CommandParameter="Part" Content="Save" HorizontalAlignment="Left" Margin="1050,10,0,0" VerticalAlignment="Top" Width="75" />            
             <Label Style="{StaticResource TitleText}" Content="{Binding Path=SelectedPart}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="667" Height="50"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="4" Margin="20,65,0,0" VerticalAlignment="Top" Width="553"/>
             <Label Content="{Binding Path=Part.Name}" HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Description}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="101"/>
+            <TextBox Text="{Binding Path=Part.Description, Mode=TwoWay}" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.405,0.423" Width="503" Height="101"/>
             
             <Label Content="Author" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Author}" HorizontalAlignment="Left" Margin="62,211,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Author, Mode=TwoWay}" HorizontalAlignment="Left" Margin="62,211,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Category" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Category}" HorizontalAlignment="Left" Margin="73,242,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Category, Mode=TwoWay}" HorizontalAlignment="Left" Margin="73,242,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Mesh" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Mesh}" HorizontalAlignment="Left" Margin="54,273,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Mesh, Mode=TwoWay}" HorizontalAlignment="Left" Margin="54,273,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Cost" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Cost}" HorizontalAlignment="Left" Margin="49,304,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Cost, Mode=TwoWay}" HorizontalAlignment="Left" Margin="49,304,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Mass" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Mass}" HorizontalAlignment="Left" Margin="52,335,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Mass, Mode=TwoWay}" HorizontalAlignment="Left" Margin="52,335,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Manufacturer" HorizontalAlignment="Left" Margin="10,366,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.Manufacturer}" HorizontalAlignment="Left" Margin="96,366,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.Manufacturer, Mode=TwoWay}" HorizontalAlignment="Left" Margin="96,366,0,0" VerticalAlignment="Top"/>
             
             <Label Content="Crash Tolerance" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top"/>
-            <Label Content="{Binding Path=Part.CrashTolerance}" HorizontalAlignment="Left" Margin="109,397,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding Path=Part.CrashTolerance, Mode=TwoWay}" HorizontalAlignment="Left" Margin="109,397,0,0" VerticalAlignment="Top"/>
         </Grid>
 
         <!--Grid HorizontalAlignment="Left" Height="503" Margin="10,100,0,0" VerticalAlignment="Top" Width="1135" Visibility="{Binding Path=DisplaySetting, Converter={StaticResource VisibilityConverter}, ConverterParameter=Visible}" Background="LightGray">
