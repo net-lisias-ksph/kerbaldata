@@ -9,8 +9,8 @@ namespace KerbalData
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
-
     using Configuration;
     using Serialization;
 
@@ -136,8 +136,12 @@ namespace KerbalData
                     method.MakeGenericMethod(new[] { modelType }).Invoke(
                         repoFactory, 
                         new object[] { new Dictionary<string, object>() { { "BaseUri", BaseUri } }, prop.Name });
-
+#if NET45
                 prop.SetMethod.Invoke(this, new object[] { Activator.CreateInstance(prop.PropertyType, new object[] { repo, this }) });
+#elif NET40 || NET35 || MONO210
+                prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, new object[] { repo, this }), BindingFlags.SetProperty, null, null, null);
+#endif               
+
             }
         }
     }

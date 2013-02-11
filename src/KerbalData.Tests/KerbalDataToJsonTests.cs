@@ -39,8 +39,10 @@ namespace KerbalData.Tests
 
         private bool AllFilesMatch(DirectoryInfo dirInfo)
         {
+
             // Rigged to process all files possible before returing the result.
             var allFilesMatch = true;
+#if NET45 || NET40
             foreach (var dir in dirInfo.EnumerateDirectories())
             {
                 if (!AllFilesMatch(dir))
@@ -55,6 +57,23 @@ namespace KerbalData.Tests
             {
                 files.Add(file.FullName);
             }
+
+#elif NET35 || MONO210
+            foreach (var dir in dirInfo.GetDirectories())
+            {
+                if (!AllFilesMatch(dir))
+                {
+                    allFilesMatch = false;
+                }
+            }
+
+            var files = new List<string>();
+
+            foreach (var file in dirInfo.GetFiles())
+            {
+                files.Add(file.FullName);
+            }
+#endif
 
             foreach (var file in files)
             {                

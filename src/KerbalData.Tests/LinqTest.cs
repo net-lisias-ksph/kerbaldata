@@ -35,8 +35,7 @@ namespace KerbalData.Tests
             
             //var parts = vessel["PART"].Where(p => p["uid"].ToString().Equals("2910085908"));
 
-            //Console.WriteLine();
-            
+            //Console.WriteLine()
             
             var kd = KerbalData.Create(@"C:\games\KSP_win_test");
             //var training = kd.TrainingScenarios["C_Orbit101"];

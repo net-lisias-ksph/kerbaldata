@@ -11,8 +11,8 @@ namespace KerbalData
     using System.ComponentModel;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
-
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -256,8 +256,13 @@ namespace KerbalData
                     method.MakeGenericMethod(new[] { modelType }).Invoke(
                         repoFactory,
                         new object[] { new Dictionary<string, object>() { { "BaseUri", Uri.EndsWith("\\") ? Uri : Uri + "\\" } }, prop.Name });
-
+#if NET45
                 prop.SetMethod.Invoke(this, new object[] { Activator.CreateInstance(prop.PropertyType, new object[] { repo, DataManager }) });
+#elif NET40 || NET35 || MONO210
+                prop.SetValue(this, Activator.CreateInstance(prop.PropertyType, new object[] { repo, DataManager }), BindingFlags.SetProperty, null, null, null);
+#endif 
+
+
             }
         }
 
