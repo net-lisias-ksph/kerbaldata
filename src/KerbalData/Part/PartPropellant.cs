@@ -34,6 +34,7 @@ using Newtonsoft.Json;
             {
                 name = value;
                 OnPropertyChanged("Name", name);
+                DisplayName = name;
             }
         }
     }

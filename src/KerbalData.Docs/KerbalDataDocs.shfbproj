@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="QuickStart.aml" />
+    <None Include="QuickStartWPF.aml" />
     <None Include="WhatIsKerbalData.aml" />
   </ItemGroup>
   <!-- Import the SHFB build targets -->

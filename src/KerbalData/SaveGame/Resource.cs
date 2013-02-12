@@ -21,6 +21,13 @@ namespace KerbalData.Models
         private string name, flowMode;
         private decimal amount, maxAmount;
         private bool flowState;
+
+        public Resource()
+            : base()
+        {
+            DisplayName = "Resource";
+        }
+
         /// <summary>
         /// Gets or sets the name. - File Property: name
         /// </summary>
@@ -35,6 +42,7 @@ namespace KerbalData.Models
             {
                 name = value;
                 OnPropertyChanged("Name", name);
+                DisplayName = name;
             }
         }
 

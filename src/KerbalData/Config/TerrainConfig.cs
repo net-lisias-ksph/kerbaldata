@@ -52,6 +52,7 @@ namespace KerbalData.Models
             {
                 preset = value;
                 OnPropertyChanged("Preset", preset);
+                DisplayName = preset;
             }
         }
 

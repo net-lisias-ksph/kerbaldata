@@ -20,6 +20,11 @@ namespace KerbalData.Models
     {
         private IList<PlanetConfig> planets;
 
+        public PresetConfig() : base()
+        {
+            DisplayName = "Presets";
+        }
+
         /// <summary>
         /// Gets or sets the planet config collection. - File Property: PLANET
         /// </summary>

@@ -154,6 +154,7 @@ namespace KerbalData.Models
             {
                 reference = value;
                 OnPropertyChanged("Ref", reference);
+                DisplayName = "Orbit (" + Body + ")";
             }
         }
 

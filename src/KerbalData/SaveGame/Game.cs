@@ -61,6 +61,7 @@ namespace KerbalData.Models
             {
                 title = value;
                 OnPropertyChanged("Title", title);
+                DisplayName = title;
             }
         }
 

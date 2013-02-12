@@ -18,5 +18,6 @@ namespace KerbalData
     /// </summary>
     public interface IKerbalDataObject : IDictionary<string, JToken>
     {
+        string DisplayName { get; }
     }
 }

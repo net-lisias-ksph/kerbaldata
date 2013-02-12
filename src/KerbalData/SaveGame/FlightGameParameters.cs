@@ -18,5 +18,10 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<FlightGameParameters>))]
     public class FlightGameParameters : KerbalDataObject
     {
+        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            base.OnCollectionChanged(args);
+            DisplayName = "Flight (" + base.Count + ")";
+        }
     }
 }

@@ -43,6 +43,7 @@ namespace KerbalData.Models
             {
                 game = value;
                 OnPropertyChanged("Game", game);
+                DisplayName = game.DisplayName;
             }
 
         }

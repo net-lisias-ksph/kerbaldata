@@ -26,7 +26,12 @@ namespace KerbalData.Models
         private int autosaveInterval, autosaveShortInterval, uiSize, resloutionWidth, resloutionHeight, qualityPreset, 
             antiAliasing, textureQuality, lightQuality, shadowsQuality, framerateLimit, conicPatchDrawMode, conicPatchLimit;
         private TerrainConfig terrian;
-         
+
+        public ConfigFile()
+            : base()
+        {
+            DisplayName = "Configuration";
+        }
 
         /// <summary>
         /// Gets or sets the settings version. - File Property: SETTINGS_FILE_VERSION

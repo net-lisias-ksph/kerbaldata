@@ -26,6 +26,11 @@ namespace KerbalData.Models
         private IList<Crew> crew;
         private IList<Vessel> vessels;
 
+        public FlightState() : base()
+        {
+            DisplayName = "FlightState";
+        }
+
         /// <summary>
         /// Gets or sets the game version. - File Property: version
         /// </summary>

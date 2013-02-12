@@ -18,5 +18,10 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<TrackingStationGameParameters>))]
     public class TrackingStationGameParameters : KerbalDataObject
     {
+        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            base.OnCollectionChanged(args);
+            DisplayName = "Tracking Station (" + base.Count + ")";
+        }
     }
 }

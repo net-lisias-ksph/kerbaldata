@@ -23,6 +23,11 @@ namespace KerbalData.Models
         private TrackingStationGameParameters trackingStation;
         private SpaceCenterGameParameters spaceCenter;
 
+        public GameParameters() : base()
+        {
+            DisplayName = "Parameters";
+        }
+
         /// <summary>
         /// Gets or sets flight parameters. - File Property: FLIGHT
         /// </summary>

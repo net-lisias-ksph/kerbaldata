@@ -8,6 +8,7 @@ namespace KerbalData.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
     using System.Linq;
     using System.Text;
     using Newtonsoft.Json;
@@ -18,5 +19,17 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ActionGroups>))]
     public class ActionGroups : KerbalDataObject
     {
+        public ActionGroups()
+            : base()
+        {
+            DisplayName = "Actions (" + base.Count + ")";
+        }
+
+        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            base.OnCollectionChanged(args);
+            DisplayName = "Actions (" + base.Count + ")";
+        }
+
     }
 }

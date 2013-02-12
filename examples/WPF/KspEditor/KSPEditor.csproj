@@ -39,12 +39,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\KerbalData.dll</HintPath>
     </Reference>
-    <Reference Include="KerbalData.DataProviders">
-      <HintPath>..\..\lib\KerbalData.DataProviders.dll</HintPath>
-    </Reference>
-    <Reference Include="KerbalData.Serializers">
-      <HintPath>..\..\lib\KerbalData.Serializers.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\lib\log4net.dll</HintPath>
     </Reference>

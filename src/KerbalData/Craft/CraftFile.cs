@@ -34,6 +34,7 @@ namespace KerbalData.Models
             {
                 ship = value;
                 OnPropertyChanged("Ship", ship);
+                DisplayName = ship;
             }
         }
 

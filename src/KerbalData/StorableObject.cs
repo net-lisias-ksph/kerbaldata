@@ -26,6 +26,7 @@ namespace KerbalData
     [JsonObject]
     public abstract class StorableObject : ObservableDictionary<string, JToken>, IKerbalDataObject, IStorable, INotifyPropertyChanged
     {
+        private string displayName;
         private object parent;
         private IKerbalDataManager dataManager;
 
@@ -34,6 +35,21 @@ namespace KerbalData
         internal void SetParent<T>(StorableObjects<T> parent) where T : class, IStorable, new()
         {
             this.parent = parent;
+        }
+
+        [JsonIgnore]
+        public virtual string DisplayName
+        {
+            get
+            {
+                return displayName;
+            }
+
+            protected set
+            {
+                displayName = value;
+                OnPropertyChanged("DisplayName", displayName);
+            }
         }
 
         /*

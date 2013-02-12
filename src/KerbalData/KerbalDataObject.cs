@@ -23,6 +23,8 @@ namespace KerbalData
     [JsonObject]
     public class KerbalDataObject : ObservableDictionary<string, JToken>, IKerbalDataObject, INotifyPropertyChanged
     {
+        private string displayName;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -30,6 +32,21 @@ namespace KerbalData
         /// </summary>	
         public KerbalDataObject() : base()
         {
+        }
+
+        [JsonIgnore]
+        public virtual string DisplayName
+        {
+            get
+            {
+                return displayName;
+            }
+
+            protected set
+            {
+                displayName = value;
+                OnPropertyChanged("DisplayName", displayName);
+            }
         }
 
         /*

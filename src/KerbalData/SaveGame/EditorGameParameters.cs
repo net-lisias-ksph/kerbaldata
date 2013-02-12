@@ -18,5 +18,10 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<EditorGameParameters>))]
     public class EditorGameParameters : KerbalDataObject
     {
+        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            base.OnCollectionChanged(args);
+            DisplayName = "Editor (" + base.Count + ")";
+        }
     }
 }

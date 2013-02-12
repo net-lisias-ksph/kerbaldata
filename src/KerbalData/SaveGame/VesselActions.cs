@@ -18,5 +18,16 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<VesselActions>))]
     public class VesselActions : KerbalDataObject
     {
+        public VesselActions()
+            : base()
+        {
+            DisplayName = "Actions (" + base.Count + ")";
+        }
+
+        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            base.OnCollectionChanged(args);
+            DisplayName = "Actions (" + base.Count + ")";
+        }
     }
 }
