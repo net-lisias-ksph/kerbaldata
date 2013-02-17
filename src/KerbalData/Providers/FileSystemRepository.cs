@@ -144,8 +144,20 @@ namespace KerbalData.Providers
         /// <returns>object list</returns>
         public IList<T> Get()
         {
-            IList<JObject> list;
-            return Get(out list);
+            var result = new List<T>();
+            var files = GetFiles();
+
+            foreach (var path in files.FileNames)
+            {
+                T obj = KspData.LoadKspFile<T>(path, registry.Create<T>());
+
+                if (obj != null)
+                {
+                    result.Add(obj);
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -153,7 +165,7 @@ namespace KerbalData.Providers
         /// </summary>
         /// <param name="data">data list to populate with source data</param>
         /// <returns>de-serialized object list</returns>
-        public IList<T> Get(out IList<JObject> data)
+        /*public IList<T> Get(out IList<JObject> data)
         {
             data = new List<JObject>();
             var result = new List<T>();
@@ -171,7 +183,7 @@ namespace KerbalData.Providers
             }
 
             return result;
-        }
+        }*/
 
         /// <summary>
         /// NOT YET IMPLMENTED
@@ -189,10 +201,10 @@ namespace KerbalData.Providers
         /// <param name="func"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public IList<T> Get(Func<T, bool> func, out IList<JObject> data)
+        /*public IList<T> Get(Func<T, bool> func, out IList<JObject> data)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         /// <summary>
         /// Gets an object with a particular Id
@@ -201,8 +213,15 @@ namespace KerbalData.Providers
         /// <returns>de-serialized object</returns>
         public T Get(string id)
         {
-            JObject jobj;
-            return Get(id, out jobj);
+            if (!NameExists(id))
+            {
+                return null;
+            }
+
+            T obj = KspData.LoadKspFile<T>(GetFileInfo(id).FullName, registry.Create<T>());
+            (obj as StorableObject).Uri = GetFileInfo(id).DirectoryName;
+
+            return obj;
         }
 
         /// <summary>
@@ -211,7 +230,7 @@ namespace KerbalData.Providers
         /// <param name="id">object id to retrieve</param>
         /// <param name="data">source data object to populate</param>
         /// <returns>de-serialized data object</returns>
-        public T Get(string id, out JObject data)
+        /*public T Get(string id, out JObject data)
         {
             data = null;
             if (!NameExists(id))
@@ -224,7 +243,7 @@ namespace KerbalData.Providers
             data = JObject.FromObject(obj);
 
             return obj;
-        }
+        }*/
 
         /// <summary>
         /// Adds/Updates an object of a particular ID

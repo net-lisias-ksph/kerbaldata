@@ -144,12 +144,11 @@ namespace KerbalData.Serialization.Serializers.V018x
                     {
                         try
                         {
-                            
                             jobj[field.Name] = JArray.Parse(BuildArrayField(field.Value));
                         }
                         catch (Exception ex)
                         {
-                            var test = ex.Message;
+                            throw new KerbalDataException("An error has occured while converting de-serialized data to a JSON object", ex);
                         }
 
                     }
@@ -178,7 +177,7 @@ namespace KerbalData.Serialization.Serializers.V018x
                             }
                             catch (Exception ex)
                             {
-                                var test = ex.Message;
+                                throw new KerbalDataException("An error has occured while converting de-serialized data to a JSON object", ex);
                             }
 
                         }
@@ -222,24 +221,10 @@ namespace KerbalData.Serialization.Serializers.V018x
                         {
                             var itemName = key;
 
-                            /// foreach (var item in obj.Value)
-                            // {
-
                             if (obj.Value.Count() > 0)
                             {
                                 switch (obj.Value[0].Type)
                                 {
-                                        /*
-                                    case JTokenType.Array:
-                                        {
-                                            root.Values.Add(
-                                                new KspDataField()
-                                                {
-                                                    Name = itemName,
-                                                    Value = BuildArrayField(item)
-                                                });
-                                            break;
-                                        }*/
                                     case JTokenType.Object:
                                         {
                                             foreach (var item in obj.Value)
@@ -272,9 +257,7 @@ namespace KerbalData.Serialization.Serializers.V018x
                                             break;
                                         }
                                 }
-                                // }
                             }
-
                             break;
                         }
                 }  

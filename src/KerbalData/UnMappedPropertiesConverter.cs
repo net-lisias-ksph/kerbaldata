@@ -387,6 +387,7 @@ namespace KerbalData
         {
             var list = new List<string>();
 
+            // NOTE: We are only recgnonizing names that have had thier JSON Attribute explicitly set
             for (var i = 0; i < infoArray.Count(); i++)
             {
                 var propInfo = infoArray[i];

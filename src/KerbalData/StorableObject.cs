@@ -52,21 +52,6 @@ namespace KerbalData
             }
         }
 
-        /*
-        [JsonIgnore]
-        public new JToken this[string key]
-        {
-            get
-            {
-                return base[key];
-            }
-            set
-            {
-                base[key] = value;
-                OnPropertyChanged(key, base[key]);
-            }
-        }*/
-
         /// <summary>
         /// Gets the orginal base data
         /// </summary>
@@ -123,43 +108,6 @@ namespace KerbalData
             }
         }
 
-        /*
-        /// <summary>
-        /// Gets the key collection for unmapped children
-        /// </summary>
-        [JsonIgnore]
-        public new KeyCollection Keys
-        {
-            get { return base.Keys; }
-        }
-
-        /// <summary>
-        /// Gets the values collection for unmapped children
-        /// </summary>
-        [JsonIgnore]
-        public new ValueCollection Values
-        {
-            get { return base.Values; }
-        }
-
-        /// <summary>
-        /// Gets the comparer
-        /// </summary>
-        [JsonIgnore]
-        public new IEqualityComparer<string> Comparer
-        {
-            get { return base.Comparer; }
-        }
-
-        /// <summary>
-        /// Gets the number of children
-        /// </summary>
-        [JsonIgnore]
-        public new int Count
-        {
-            get { return base.Count; }
-        }*/
-
         /// <summary>
         /// Reverts the object state and data to it's orginal state after the last load or save.
         /// </summary>
@@ -206,7 +154,7 @@ namespace KerbalData
             var id = !string.IsNullOrEmpty(name) ? name : Id;
 
             var result = PutToParentRepo(id);
-            Original = JObject.FromObject(this);
+            //Original = JObject.FromObject(this);
 
             // I am not really fond of this pattern but i am not sure I want to use a messaging pattern, need to think on this. 
             RefreshParent();

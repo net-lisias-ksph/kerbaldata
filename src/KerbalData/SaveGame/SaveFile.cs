@@ -73,7 +73,7 @@ namespace KerbalData.Models
         /// </summary>
         public override void Revert()
         {
-            Game = Original["GAME"].ToObject<Game>();
+            // TODO: IMPL
         }
 
     }

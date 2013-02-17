@@ -211,9 +211,9 @@ namespace KerbalData
         {
             if (!objects.ContainsKey(id) || objects[id] == null)
             {
-                JObject data;
-                var obj = Repo.Get(id, out data);
-                (obj as StorableObject).Original = data;
+                //JObject data;
+                var obj = Repo.Get(id);
+                //(obj as StorableObject).Original = data;
                 (obj as StorableObject).SetParent(this);
                 (obj as StorableObject).DataManager = DataManager;
                 objects[id] = new StorableItemMetadata<T>() 
@@ -225,11 +225,11 @@ namespace KerbalData
             }
             else if (!objects[id].Loaded || objects[id].Object == null)
             {
-                JObject data;
-                objects[id].Object = Repo.Get(id, out data);
+                //JObject data;
+                objects[id].Object = Repo.Get(id);
                 (objects[id].Object as StorableObject).Id = id;
                 (objects[id].Object as StorableObject).SetParent(this);
-                (objects[id].Object as StorableObject).Original = data;
+                //(objects[id].Object as StorableObject).Original = data;
                 (objects[id].Object as StorableObject).DataManager = DataManager;
                 objects[id].Loaded = true;
             }

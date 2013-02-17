@@ -39,7 +39,7 @@ namespace KerbalData
         /// </summary>
         /// <param name="data">base data definition // TODO: break JSON.NET dependency</param>
         /// <returns>all availablee data</returns>
-        IList<T> Get(out IList<JObject> data);
+        //IList<T> Get(out IList<JObject> data);
 
         /// <summary>
         /// Gets meta-data for all data elements (used for quick loading of needed data to lookup elements without de-serializing all data.
@@ -60,7 +60,7 @@ namespace KerbalData
         /// <param name="predicate">filter to use</param>
         /// <param name="data">base data definition // TODO: break JSON.NET dependency</param>
         /// <returns>data matching requirement</returns>
-        IList<T> Get(Func<T, bool> predicate, out IList<JObject> data);
+        //IList<T> Get(Func<T, bool> predicate, out IList<JObject> data);
 
         /// <summary>
         /// Gets data element by Id/Name
@@ -75,7 +75,7 @@ namespace KerbalData
         /// <param name="id">Id/Name to retrieve</param>
         /// <param name="data">base data definition // TODO: break JSON.NET dependency</param>
         /// <returns>requested data element</returns>
-        T Get(string id, out JObject data);
+        //T Get(string id, out JObject data);
 
         /// <summary>
         /// Puts/Updates a data elemetn
