@@ -108,6 +108,17 @@ namespace KerbalData
             return objects.ContainsKey(id);
         }
 
+        public void Add(object data, string id = null)
+        {
+            if (!(data is T))
+            {
+                return;
+            }
+
+            Add((T)data, id);
+
+        }
+
         /// <summary>
         /// Adds the object to the data collection. Saving the object after adding to the collection will store the object data
         /// with the configured reposiotry. 
@@ -172,6 +183,14 @@ namespace KerbalData
                 Repo.Delete(id);
                 objects.Remove(id);
             }
+        }
+
+        public void Remove(string id)
+        {
+            if (objects.ContainsKey(id))
+            {
+                objects.Remove(id);
+            }            
         }
 
         /// <summary>

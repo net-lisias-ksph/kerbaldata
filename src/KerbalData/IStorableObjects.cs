@@ -23,5 +23,7 @@ namespace KerbalData
         void Delete(string id);
         void Refresh();
         void Save();
+        void Add(object data, string id = null);
+        void Remove(string id);
     }
 }
