@@ -166,6 +166,7 @@
     <Compile Include="Craft\CraftFile.cs" />
     <Compile Include="Craft\CraftPart.cs" />
     <Compile Include="Data\ObservableDictionary.cs" />
+    <Compile Include="IStorableObjects.cs" />
     <Compile Include="IKerbalDataManager.cs" />
     <Compile Include="IKerbalDataRepo.cs" />
     <Compile Include="IStorable.cs" />

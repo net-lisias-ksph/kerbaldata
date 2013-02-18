@@ -205,7 +205,7 @@ namespace KerbalData
         /// StorableObjects instances with the correct repositories to custom properties without
         /// a ton of wireup code. 
         /// </summary>
-        private void Init()
+        protected virtual void Init()
         {
             var procRegistry = DataManager.ProcRegistry;
             var repoFactory = DataManager.RepositoryFactory;

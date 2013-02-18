@@ -35,7 +35,7 @@ namespace KerbalData
     {
         private const string defaultRepoType = "KerbalData.Providers.FileSystemRepository`1, KerbalData";
 
-        private readonly string installPath;
+        //private readonly string installPath;
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalData" /> class.
         /// </summary>
@@ -132,6 +132,7 @@ namespace KerbalData
         /// <returns>properly cofigured KerbalData instance</returns>
         public static KerbalData Create(string installPath, string configSectionName = "kerbalData")
         {
+            installPath = installPath.EndsWith("\\") ? installPath : installPath + "\\";
             var config = ApiConfigManager.GetConfig(configSectionName);
 
             if (config == null)
@@ -175,7 +176,8 @@ namespace KerbalData
                             Name = "Saves",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\**\persistent.sfs" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Saves\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath + @"Saves\**\persistent.sfs" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = "persistent.sfs" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "DirPerFile" } },
                             }
@@ -187,7 +189,8 @@ namespace KerbalData
                             Name = "Scenarios",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\scenarios\*.sfs" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Saves\\scenarios\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath +@"Saves\scenarios\*.sfs" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".sfs" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
@@ -199,7 +202,8 @@ namespace KerbalData
                             Name = "TrainingScenarios",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Saves\training\*.sfs" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Saves\\training\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath +@"Saves\training\*.sfs" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".sfs" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
@@ -211,7 +215,8 @@ namespace KerbalData
                             Name = "Parts",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Parts\**\part.cfg" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Parts\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath + @"Parts\**\part.cfg" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = "part.cfg" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "DirPerFile" } },
                             }
@@ -223,7 +228,8 @@ namespace KerbalData
                             Name = "CraftInVab",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Ships\VAB\**\*.craft" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Ships\\VAB\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath + @"Ships\VAB\**\*.craft" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
@@ -235,7 +241,8 @@ namespace KerbalData
                             Name = "CraftInSph",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"Ships\SPH\**\*.craft" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath + "Ships\\SPH\\" } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath + @"Ships\SPH\**\*.craft" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
@@ -247,7 +254,8 @@ namespace KerbalData
                             Name = "KspSettings",
                             Parameters = new RepoParametersConfig()
                             {
-                                { new RepoParameterConfig() { Key ="Include", Value = @"*.cfg" } },
+                                { new RepoParameterConfig() { Key ="BaseUri", Value = installPath } },
+                                { new RepoParameterConfig() { Key ="Include", Value = installPath + @"*.cfg" } },
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".cfg" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
@@ -255,6 +263,7 @@ namespace KerbalData
                     }
                 };
             }
+
 
             return Create(installPath, config);
         }

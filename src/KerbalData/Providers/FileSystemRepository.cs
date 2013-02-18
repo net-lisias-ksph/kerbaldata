@@ -68,10 +68,10 @@ namespace KerbalData.Providers
 
             BaseUri = GetParameter(UriParamName, parameters).ToString();
 
-            includes = GetParameter(IncludeParamName, parameters).ToString().Split(PathSeparator).Select(i => BaseUri +  i).ToArray();
+            includes = GetParameter(IncludeParamName, parameters).ToString().Split(PathSeparator).Select(i => i).ToArray();
 
             excludes = GetParameter(ExcludeParamName, parameters) != null 
-                ? GetParameter(ExcludeParamName, parameters).ToString().Split(PathSeparator).Select(i => BaseUri + i).ToArray() : null;
+                ? GetParameter(ExcludeParamName, parameters).ToString().Split(PathSeparator).Select(i => i).ToArray() : null;
 
             fileName = GetParameter(FileNameParamName, parameters).ToString();
 
@@ -161,31 +161,6 @@ namespace KerbalData.Providers
         }
 
         /// <summary>
-        /// Gets all objects managed by the repository along with soure copies for backup/reversion
-        /// </summary>
-        /// <param name="data">data list to populate with source data</param>
-        /// <returns>de-serialized object list</returns>
-        /*public IList<T> Get(out IList<JObject> data)
-        {
-            data = new List<JObject>();
-            var result = new List<T>();
-            var files = GetFiles();
-
-            foreach (var path in files.FileNames)
-            {
-                T obj = KspData.LoadKspFile<T>(path, registry.Create<T>());
-
-                if (obj != null)
-                {
-                    result.Add(obj);
-                    data.Add(JObject.FromObject(obj));
-                }
-            }
-
-            return result;
-        }*/
-
-        /// <summary>
         /// NOT YET IMPLMENTED
         /// </summary>
         /// <param name="func"></param>
@@ -194,17 +169,6 @@ namespace KerbalData.Providers
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// NOT YET IMPLMENTED
-        /// </summary>
-        /// <param name="func"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        /*public IList<T> Get(Func<T, bool> func, out IList<JObject> data)
-        {
-            throw new NotImplementedException();
-        }*/
 
         /// <summary>
         /// Gets an object with a particular Id
@@ -225,27 +189,6 @@ namespace KerbalData.Providers
         }
 
         /// <summary>
-        /// Gets an object with a particular Id along with a copy of the source data for backup/reversion
-        /// </summary>
-        /// <param name="id">object id to retrieve</param>
-        /// <param name="data">source data object to populate</param>
-        /// <returns>de-serialized data object</returns>
-        /*public T Get(string id, out JObject data)
-        {
-            data = null;
-            if (!NameExists(id))
-            {
-                return null;
-            }
-
-            T obj = KspData.LoadKspFile<T>(GetFileInfo(id).FullName, registry.Create<T>());
-            (obj as StorableObject).Uri = GetFileInfo(id).DirectoryName;
-            data = JObject.FromObject(obj);
-
-            return obj;
-        }*/
-
-        /// <summary>
         /// Adds/Updates an object of a particular ID
         /// </summary>
         /// <param name="id">Id to put</param>
@@ -253,12 +196,8 @@ namespace KerbalData.Providers
         /// <returns>true=success;false=failure</returns>
         public bool Put(string id, T obj)
         {
-            var savePath = GetFileInfo(id).FullName;
-
-            if (string.IsNullOrEmpty(savePath))
-            {
-                throw new KerbalDataException("Loaded Game was not loaded from a file, a file path is required in order to save");
-            }
+            var info = GetFileInfo(id);
+            var savePath = info != null ? info.FullName : null;
 
             if (savePath != null && backup)
             {
@@ -269,14 +208,14 @@ namespace KerbalData.Providers
                 if (mode == FileMode.DirPerFile)
                 {
                     var files = GetFiles();
-                    var saveDir = files.BaseDirectory + "\\" + id;
+                    var saveDir = BaseUri + "\\" + id;
                     Directory.CreateDirectory(saveDir);
                     savePath = saveDir + "\\" + fileName;
                 }
                 else
                 {
                     var files = GetFiles();
-                    savePath = files.BaseDirectory + "\\" + id + fileName;                   
+                    savePath = BaseUri + "\\" + id + fileName;                   
                 }
             }
      

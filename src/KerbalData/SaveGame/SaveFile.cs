@@ -23,11 +23,7 @@ namespace KerbalData.Models
     [JsonObject]
     public class SaveFile : StorableObject
     {
-        private bool isLoaded = false;
-
         private Game game;
-        // private StorableObjects<CraftFile> craftInVab;
-        // private StorableObjects<CraftFile> craftInSph;
 
         /// <summary>
         /// Gets the KSP Game definition. Contains all de-serialized save data. - File Property: GAME
@@ -74,6 +70,21 @@ namespace KerbalData.Models
         public override void Revert()
         {
             // TODO: IMPL
+        }
+
+        protected override void Init()
+        {
+            CraftInVab = 
+                new StorableObjects<CraftFile>(
+                    DataManager.RepositoryFactory.Create<CraftFile>(
+                    new Dictionary<string, object>() { { "BaseUri", (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\VAB\\" } }, 
+                    "CraftInVab"), DataManager);
+
+            CraftInSph =
+                new StorableObjects<CraftFile>(
+                    DataManager.RepositoryFactory.Create<CraftFile>(
+                    new Dictionary<string, object>() { { "BaseUri", (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\SPH\\" } }, 
+                    "CraftInSph"), DataManager);
         }
 
     }

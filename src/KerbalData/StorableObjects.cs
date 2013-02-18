@@ -21,7 +21,7 @@ namespace KerbalData
     /// list. 
     /// </summary>
     /// <typeparam name="T">model type being managed</typeparam>
-    public class StorableObjects<T> where T : class, IStorable, new()
+    public class StorableObjects<T> : IStorableObjects where T : class, IStorable, new()
     {
         private IDictionary<string, StorableItemMetadata<T>> objects = new Dictionary<string, StorableItemMetadata<T>>();
 

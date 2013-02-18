@@ -132,10 +132,11 @@ namespace KerbalData
             foreach (var prop in managerType.GetProperties().Where(p => p.PropertyType.FullName.Contains("StorableObjects")))
             {
                 var modelType = prop.PropertyType.GetGenericArguments()[0];
-                var repo = 
+                var repo =
                     method.MakeGenericMethod(new[] { modelType }).Invoke(
-                        repoFactory, 
-                        new object[] { new Dictionary<string, object>() { { "BaseUri", BaseUri } }, prop.Name });
+                        repoFactory,
+                        new object[] { null, prop.Name });
+                        //new object[] { new Dictionary<string, object>() { { "BaseUri", BaseUri } }, prop.Name });
 #if NET45
                 prop.SetMethod.Invoke(this, new object[] { Activator.CreateInstance(prop.PropertyType, new object[] { repo, this }) });
 #elif NET40 || NET35 || MONO210
