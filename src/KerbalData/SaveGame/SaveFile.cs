@@ -74,17 +74,19 @@ namespace KerbalData.Models
 
         protected override void Init()
         {
+            var vabUri = (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\VAB\\";
             CraftInVab = 
                 new StorableObjects<CraftFile>(
                     DataManager.RepositoryFactory.Create<CraftFile>(
-                    new Dictionary<string, object>() { { "BaseUri", (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\VAB\\" } }, 
-                    "CraftInVab"), DataManager);
+                    new Dictionary<string, object>() { { "BaseUri", vabUri }, { "Include", vabUri + "**\\*.craft" } }, 
+                    "CraftInVab-Save"), DataManager);
 
+            var sphUri = (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\SPH\\";
             CraftInSph =
                 new StorableObjects<CraftFile>(
                     DataManager.RepositoryFactory.Create<CraftFile>(
-                    new Dictionary<string, object>() { { "BaseUri", (Uri.EndsWith("\\") ? Uri : Uri + "\\") + "Ships\\SPH\\" } }, 
-                    "CraftInSph"), DataManager);
+                    new Dictionary<string, object>() { { "BaseUri", sphUri }, { "Include", sphUri + "**\\*.craft" } },
+                    "CraftInSph-Save"), DataManager);
         }
 
     }

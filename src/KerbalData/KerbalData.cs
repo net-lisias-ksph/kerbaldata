@@ -259,9 +259,30 @@ namespace KerbalData
                                 { new RepoParameterConfig() { Key ="FileName", Value = ".cfg" } },
                                 { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
                             }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 7,
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
+                            Name = "CraftInVab-Save",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
+                        } },
+                    { new RepositoryConfig()
+                        {
+                            Index = 8,
+                            Type = "KerbalData.Providers.FileSystemRepository`1, KerbalData",
+                            Name = "CraftInSph-Save",
+                            Parameters = new RepoParametersConfig()
+                            {
+                                { new RepoParameterConfig() { Key ="FileName", Value = ".craft" } },
+                                { new RepoParameterConfig() { Key ="FileMode", Value = "Flat" } },
+                            }
                         } }
-                    }
-                };
+                } };
             }
 
 
