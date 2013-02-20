@@ -7,22 +7,66 @@
 namespace KerbalData
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Text;
 
     using Newtonsoft.Json.Linq;
 
+    using Configuration;
+    using Providers;
     using Serialization;
 
     /// <summary>
     /// Single file loading helper method class. Can be used to load/save and convert individual data items/files
-    /// This permenant helper class is also consumed by the <seealso cref="FileSystemRepository{T}"/> and may be used by other
+    /// This permanent helper class is also consumed by the <seealso cref="FileSystemRepository{T}"/> and may be used by other
     /// file system based repositories. 
     /// </summary>
     public static class KspData
     {
+        private static readonly ProcessorRegistry DefaultRegistry;
+
+        private static readonly ApiConfig DefaultConfig = new ApiConfig()
+            {
+                Processors = new ProcessorsConfig()
+                    {
+                        new ProcessorConfig()
+                            {
+                                Index = 0,
+                                Serializer = new SerializerConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
+                                    },
+                                Converter = new ConverterConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1, KerbalData"
+                                    }
+                            },
+                        new ProcessorConfig()
+                            {
+                                Index = 1,
+                                ModelType = "Newtonsoft.Json.Linq.JObject, Newtonsoft.Json",
+                                Serializer = new SerializerConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
+                                    },
+                                Converter = new ConverterConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1, KerbalData"
+                                    }
+                            }
+                    }
+            };
+
+        static KspData()
+        {
+            DefaultRegistry = ProcessorRegistry.Create(DefaultConfig);
+
+        }
+
         /// <summary>
         /// Loads and de-serializes a KSP data file into the requested type
         /// </summary>
@@ -30,9 +74,11 @@ namespace KerbalData
         /// <param name="path">full path of file location</param>
         /// <param name="configSectionName">configuration section name to use for processor lookup</param>
         /// <returns>de-serialized object instance</returns>
-        public static T LoadKspFile<T>(string path, string configSectionName = "kerbalData") where T : class, new()
+        public static T LoadKspFile<T>(string path, string configSectionName = null) where T : class, new()
         {
-            return LoadKspFile<T>(path, ProcessorRegistry.Create(configSectionName).Create<T>());
+            return !string.IsNullOrEmpty(configSectionName)
+                       ? LoadKspFile<T>(path, ProcessorRegistry.Create(configSectionName).Create<T>())
+                       : LoadKspFile<T>(path, DefaultRegistry.Create<T>());
         }
 
         /// <summary>
@@ -59,7 +105,7 @@ namespace KerbalData
                 }
                 catch (Exception ex)
                 {
-                    throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                    throw new KerbalDataException("An error has occurred while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
                 }
 
                 file.Close();
@@ -90,7 +136,7 @@ namespace KerbalData
                 }
                 catch (Exception ex)
                 {
-                    throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                    throw new KerbalDataException("An error has occurred while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
                 }
 
                 file.Close();
@@ -122,7 +168,7 @@ namespace KerbalData
                 }
                 catch (Exception ex)
                 {
-                    throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
+                    throw new KerbalDataException("An error has occurred while attempting to load the KSP Data file. See inner exception for details. Path: " + path, ex);
                 }
 
                 file.Close();
@@ -137,7 +183,7 @@ namespace KerbalData
         /// <typeparam name="T">model type to save</typeparam>
         /// <param name="path">path to save file to</param>
         /// <param name="obj">object to use when serializing data</param>
-        /// <param name="configSectionName">config section name to use for processor lookup</param>
+        /// <param name="configSectionName">configuration section name to use for processor lookup</param>
         public static void SaveFile<T>(string path, T obj, string configSectionName = "kerbalData") where T : class, new()
         {
             SaveFile<T>(path, obj, ProcessorRegistry.Create(configSectionName).Create<T>());
@@ -147,8 +193,8 @@ namespace KerbalData
         /// <summary>
         /// Saves provided data to KSP data format at the provided path
         /// </summary>
-        /// <typeparam name="T">model type to sae</typeparam>
-        /// <param name="path">path to save gile to</param>
+        /// <typeparam name="T">model type to save</typeparam>
+        /// <param name="path">path to save file to</param>
         /// <param name="obj">object data to use</param>
         /// <param name="processor">processor to use for serialization</param>
         public static void SaveFile<T>(string path, T obj, KspProcessor<T> processor) where T : class, new()
@@ -185,14 +231,14 @@ namespace KerbalData
             }
             catch (Exception ex)
             {
-                throw new KerbalDataException("An error has occured while attempting to load the KSP Data file. See inner exception for details.", ex);
+                throw new KerbalDataException("An error has occurred while attempting to load the KSP Data file. See inner exception for details.", ex);
             }
 
             return obj;
         }
 
         /// <summary>
-        /// Converts an object instannce to a KSP data string
+        /// Converts an object instance to a KSP data string
         /// </summary>
         /// <typeparam name="T">model type to convert to</typeparam>
         /// <param name="obj">object data</param>
@@ -204,7 +250,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Converts an object instannce to a KSP data string
+        /// Converts an object instance to a KSP data string
         /// </summary>
         /// <typeparam name="T">model type to convert to</typeparam>
         /// <param name="obj">object data</param>
@@ -220,7 +266,7 @@ namespace KerbalData
             }
             catch (Exception ex)
             {
-                throw new KerbalDataException("An error has occured while attempting to load or read the KSP Data file. See inner exception for details.", ex);
+                throw new KerbalDataException("An error has occurred while attempting to load or read the KSP Data file. See inner exception for details.", ex);
             }
 
             return kspData;

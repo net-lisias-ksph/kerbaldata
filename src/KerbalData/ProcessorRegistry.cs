@@ -20,8 +20,8 @@ namespace KerbalData
     /// </summary>
     public class ProcessorRegistry
     {
-        private List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
-        private List<ProcLookUp> lookups = new List<ProcLookUp>();
+        private readonly List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
+        private readonly List<ProcLookUp> lookups = new List<ProcLookUp>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessorRegistry" /> class.

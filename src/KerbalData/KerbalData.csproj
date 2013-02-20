@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
   </PropertyGroup>
@@ -172,6 +172,7 @@
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
     <Compile Include="KerbalDataManager.cs" />
+    <Compile Include="KspData.cs" />
     <Compile Include="ProcessorRegistry.cs" />
     <Compile Include="Providers\FileSystemRepository.cs" />
     <Compile Include="Serialization\KspProcessor.cs" />
@@ -195,7 +196,6 @@
     <Compile Include="KerbalDataException.cs" />
     <Compile Include="KerbalDataExtension.cs" />
     <Compile Include="KerbalDataObject.cs" />
-    <Compile Include="Serialization\KspData.cs" />
     <Compile Include="Serialization\KspDataContext.cs" />
     <Compile Include="Serialization\KspDataField.cs" />
     <Compile Include="Serialization\KspDataObject.cs" />
@@ -236,7 +236,6 @@
     <None Include="packages.config" />
     <None Include="Design\SaveFileModel.dgml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
