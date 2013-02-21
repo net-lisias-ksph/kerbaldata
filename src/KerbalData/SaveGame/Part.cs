@@ -6,10 +6,8 @@
 
 namespace KerbalData.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+
     using Newtonsoft.Json;
 
     /// <summary>
@@ -43,7 +41,7 @@ namespace KerbalData.Models
         }
 
         /// <summary>
-        /// Gets or setss resource collection. - File Property: RESOURCE
+        /// Gets or sets resource collection. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
         public IList<Resource> Resources
@@ -133,7 +131,7 @@ namespace KerbalData.Models
         }
 
         /// <summary>
-        /// Empties all resoures in this part
+        /// Empties all resources in this part
         /// </summary>
         /// <returns>number of resource objects emptied</returns>
         public int EmptyResources()

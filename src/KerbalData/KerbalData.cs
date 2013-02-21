@@ -7,7 +7,6 @@
 namespace KerbalData
 {
     using Configuration;
-
     using Models;
 
     /// <summary>
@@ -29,13 +28,11 @@ namespace KerbalData
     /// <threadsafety static="false" instance="false" />
     public class KerbalData : KerbalDataManager
     {
-        private const string defaultRepoType = "KerbalData.Providers.FileSystemRepository`1, KerbalData";
-
-        //private readonly string installPath;
         /// <summary>
         /// Initializes a new instance of the <see cref="KerbalData" /> class.
         /// </summary>
-        /// <param name="installPath">path of a valid KSP install currently only tested support of 0.18.x</param>
+        /// <param name="installPath">path of a valid KSP 0.18.x install </param>
+        /// <param name="configuration">Configuration to use when creating Processors and Repositories</param>
         public KerbalData(string installPath, ApiConfig configuration)
             : base(installPath.EndsWith("\\") ? installPath : installPath + "\\", configuration)
         { }
@@ -109,14 +106,14 @@ namespace KerbalData
         /// <remarks>
         /// This method has a hard wired default configuration should no configuration be available. 
         /// The types used in the hard-wired configuration are static and will always be part of the KerbalData API
-        /// and mainly represent the inital serializer and converters created for the API and serve as a starting point
-        /// for all future configuratiions. 
+        /// and mainly represent the initial serializer and converters created for the API and serve as a starting point
+        /// for all future configurations. 
         /// 
         /// TODO: Add sample .NET config to show current default config
         /// 
         /// If another configuration section name is provided it will be used. 
         /// 
-        /// This is the reccomeded way to qucickly start using the API with minimal configuration/setup.
+        /// This is the recommended way to quickly start using the API with minimal configuration/setup.
         /// </remarks>
         /// <example>
         /// <code language="cs" title="Starting Kerbal Data API">
@@ -124,8 +121,8 @@ namespace KerbalData
         /// </code>
         /// </example>
         /// <param name="installPath">root path of KSP installation</param>
-        /// <param name="configSectionName">application confiiguration section name</param>
-        /// <returns>properly cofigured KerbalData instance</returns>
+        /// <param name="configSectionName">application configuration section name</param>
+        /// <returns>properly configured KerbalData instance</returns>
         public static KerbalData Create(string installPath, string configSectionName = "kerbalData")
         {
             installPath = installPath.EndsWith("\\") ? installPath : installPath + "\\";
@@ -290,7 +287,7 @@ namespace KerbalData
         /// </summary>
         /// <remarks>
         /// Unlike the Create() method that accepts a configuration name. This version of the method will not
-        /// use a default configuration if the configuration property is null or not avaialble. This method allows
+        /// use a default configuration if the configuration property is null or not available. This method allows
         /// developers to programmatily build or source configuration data from alternate stores.
         /// </remarks>
         /// <param name="installPath">KSP game installation root path</param>

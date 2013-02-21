@@ -1,55 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="(@1 @2 Type=IKspDataConverter)" Category="CodeSchema_Interface" Bounds="-9706.09287109375,-9438.6259765625,139.956666666665,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKspDataConverter" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKspDataConverter" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
-      <Category Ref="Category5" />
-      <Category Ref="Category8" />
-      <Category Ref="Category9" />
-    </Node>
-    <Node Id="(@1 @2 Type=KspDataContext)" Category="CodeSchema_Class" Bounds="-9922.91155598958,-9494.74652226563,125.966666666667,26" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="KspDataContext" Icon="Microsoft.VisualStudio.Class.Public" Label="KspDataContext" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
-      <Category Ref="Category8" />
-      <Category Ref="Category9" />
-    </Node>
-    <Node Id="@3" Category="CodeSchema_Interface" Bounds="-9790.31554036458,-9611.78822749023,152.606666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKerbalDataRepo‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKerbalDataRepo‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+    <Node Id="(@1 @4 Type=(Name=IKerbalDataRepo @2))" Category="CodeSchema_Interface" Bounds="-10090.3331560822,-9433.11058977288,152.606666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKerbalDataRepo‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKerbalDataRepo‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
       <Category Ref="Category7" />
     </Node>
-    <Node Id="@4" Category="CodeSchema_Interface" Bounds="-9869.30620442708,-9438.6259765625,133.213333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKspFileConverter" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKspFileConverter" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+    <Node Id="(@1 @4 Type=IKerbalDataManager)" Category="CodeSchema_Interface" Bounds="-9823.51551742547,-9628.33092937864,149.66,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKerbalDataManager" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKerbalDataManager" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="(@1 @4 Type=KspDataContext)" Category="CodeSchema_Class" Bounds="-9638.19627147891,-9510.2412109375,125.966666666667,26" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="KspDataContext" Icon="Microsoft.VisualStudio.Class.Public" Label="KspDataContext" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
       <Category Ref="Category8" />
       <Category Ref="Category9" />
     </Node>
-    <Node Id="@5" Category="CodeSchema_Class" Bounds="-9764.31546875,-9725.2881359375,99.1699999999983,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KerbalData" Icon="Microsoft.VisualStudio.Class.Public" Label="KerbalData" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
-      <Category Ref="Category2" />
+    <Node Id="(@1 Namespace=KerbalData.Serialization.Serializers.V018x Type=(Name=JsonObjectConverter @2))" Category="CodeSchema_Class" Bounds="-9470.288203125,-9511.41059453125,173.760000000002,26" CodeSchemaProperty_IsPublic="True" CommonLabel="JsonObjectConverter‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Class.Public" Label="JsonObjectConverter‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
     </Node>
-    <Node Id="@6" Category="CodeSchema_Class" Bounds="-9756.00009765625,-9550.62639730469,84.7999999999993,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="KspData" Icon="Microsoft.VisualStudio.Class.Public" Label="KspData" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+    <Node Id="(@1 Namespace=KerbalData.Serialization.Serializers.V018x Type=DataSerializer)" Category="CodeSchema_Class" Bounds="-9775.89346679688,-9452.1630859375,113.220000000001,26" CodeSchemaProperty_IsPublic="True" CommonLabel="DataSerializer" Icon="Microsoft.VisualStudio.Class.Public" Label="DataSerializer" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
+    </Node>
+    <Node Id="@10" Category="CodeSchema_Class" Bounds="-9968.88677083333,-9769.15278203125,140.976666666669,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsInternal="True" CommonLabel="ApiConfigManager" Icon="Microsoft.VisualStudio.Class.Internal" Label="ApiConfigManager" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category10" />
+    </Node>
+    <Node Id="@11" Category="CodeSchema_Interface" Bounds="-9779.02293814557,-9510.2412109375,110.826666666668,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKspSerializer" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKspSerializer" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
+    </Node>
+    <Node Id="@12" Category="CodeSchema_Class" Bounds="-9966.68962374633,-9656.2734375,99.1699999999983,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KerbalData" Icon="Microsoft.VisualStudio.Class.Public" Label="KerbalData" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category4" />
+    </Node>
+    <Node Id="@13" Category="CodeSchema_Class" Bounds="-9795.77824869792,-9817.89443068075,134.063333333332,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KerbalDataObject" Icon="Microsoft.VisualStudio.Class.Public" Label="KerbalDataObject" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="@14" Category="CodeSchema_Class" Bounds="-9933.31219401042,-9567.708984375,84.7999999999993,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="KspData" Icon="Microsoft.VisualStudio.Class.Public" Label="KspData" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
       <Category Ref="Category4" />
       <Category Ref="Category9" />
     </Node>
-    <Node Id="@7" Category="CodeSchema_Class" Bounds="-9761.94507161458,-9494.62629730469,96.6200000000026,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KspToJson" Icon="Microsoft.VisualStudio.Class.Public" Label="KspToJson" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
-      <Category Ref="Category9" />
+    <Node Id="@15" Category="CodeSchema_Class" Bounds="-9818.51219401042,-9566.2412109375,134.700000000001,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ProcessorRegistry" Icon="Microsoft.VisualStudio.Class.Public" Label="ProcessorRegistry" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
     </Node>
-    <Node Id="@8" Category="CodeSchema_Class" Bounds="-9768.31557291667,-9669.2880359375,107.123333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="RepoFactory" Icon="Microsoft.VisualStudio.Class.Public" Label="RepoFactory" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+    <Node Id="@16" Category="CodeSchema_Class" Bounds="-10070.4355273437,-9566.50891437136,107.123333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="RepoFactory" Icon="Microsoft.VisualStudio.Class.Public" Label="RepoFactory" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
       <Category Ref="Category7" />
     </Node>
-    <Node Id="ConsumerAPI" Category="Comment" Bounds="-9891.31546875,-9725.74852749023,94.8600000000006,25.9599999999991" Label="Consumer API" UseManualLocation="True" />
-    <Node Id="JSONDataAPI" Category="Comment" Bounds="-9886.0001953125,-9550.70662226562,97.5999999999985,25.9599999999991" Label="JSON Data API" UseManualLocation="True" />
-    <Node Id="SerializationAPI" Category="Comment" Bounds="-10004.2228710937,-9437.6821484375,104.916666666664,25.9599999999991" Label="Serialization API" UseManualLocation="True" />
+    <Node Id="@17" Category="CodeSchema_Class" Bounds="-9781.42486328125,-9761.89433068075,119.879999999997,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="StorableObject" Icon="Microsoft.VisualStudio.Class.Public" Label="StorableObject" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="-10101.2644726563,-9496.416641746,176.223333333335,26" CodeSchemaProperty_IsPublic="True" CommonLabel="FileSystemRepository‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Class.Public" Label="FileSystemRepository‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category7" />
+    </Node>
+    <Node Id="@5" Category="CodeSchema_Interface" Bounds="-9478.57630859375,-9567.41069453125,137.970000000001,26" CodeSchemaProperty_IsPublic="True" CommonLabel="IKspConverter‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Interface.Public" Label="IKspConverter‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
+    </Node>
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="-9551.30308285407,-9793.61800776547,172.923333333332,26" CodeSchemaProperty_IsPublic="True" CommonLabel="JsonModelConverter‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Class.Public" Label="JsonModelConverter‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
+    </Node>
+    <Node Id="@7" Category="CodeSchema_Class" Bounds="-9653.81219401042,-9566.2421875,133.946666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="KspProcessor‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Class.Public" Label="KspProcessor‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category8" />
+    </Node>
+    <Node Id="@8" Category="CodeSchema_Class" Bounds="-9816.0558203125,-9705.89423068075,147.68,26" CodeSchemaProperty_IsPublic="True" CommonLabel="StorableObjects‎&lt;T‎&gt;" Icon="Microsoft.VisualStudio.Class.Public" Label="StorableObjects‎&lt;T‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="-9945.82725498727,-9834.89486903707,93.6800000000003,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ApiConfig" Icon="Microsoft.VisualStudio.Class.Public" Label="ApiConfig" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" UseManualLocation="True">
+      <Category Ref="Category10" />
+    </Node>
+    <Node Id="Configuration" Category="Comment" Bounds="-10117.4276807872,-9833.80397006463,92.8433333333342,25.9599999999991" UseManualLocation="True" />
+    <Node Id="ConsumerAPI" Category="Comment" Bounds="-9900.75346679688,-9429.65138671875,94.8600000000006,25.9599999999991" Label="Consumer API" UseManualLocation="True" />
+    <Node Id="ConsumerAPI1" Category="Comment" Bounds="-10132.6495354838,-9658.58791825626,94.8600000000006,25.9599999999991" Label="Consumer API" UseManualLocation="True" />
+    <Node Id="DataLoading" Category="Comment" Bounds="-10249.5533795536,-9564.67167331758,90.5966666666645,25.9599999999991" Label="Data Loading" UseManualLocation="True" />
+    <Node Id="DataModels" Category="Comment" Bounds="-9612.52572456537,-9701.49088365286,87.1299999999974,25.9599999999991" Label="Data Models" UseManualLocation="True" />
+    <Node Id="Serialization" Category="Comment" Bounds="-9607.65473106246,-9630.83147809192,83.9766666666692,25.9599999999991" UseManualLocation="True" />
   </Nodes>
   <Links>
-    <Link Source="@3" Target="@6" Bounds="-9713.92461322637,-9585.7880859375,0.176281276844747,26.1623136700309" />
-    <Link Source="@5" Target="@8" Bounds="-9714.74469866104,-9699.2880859375,0.00878906283105607,21.0000007882409" />
-    <Link Source="@6" Target="@7" Bounds="-9713.62144252343,-9524.6259765625,0.0131835948632215,21.000001773542" />
-    <Link Source="@7" Target="(@1 @2 Type=IKspDataConverter)" Bounds="-9695.6393733724,-9468.6259765625,34.2334145518835,24.7297923731639" />
-    <Link Source="@7" Target="(@1 @2 Type=KspDataContext)" Bounds="-9787.94489237832,-9481.6872078554,25.9996384720725,0.0214237548643723" />
-    <Link Source="@7" Target="@4" Bounds="-9774.40481661715,-9468.6259765625,40.0939253876131,25.2094299144937" />
-    <Link Source="@8" Target="@3" Bounds="-9714.58621773098,-9643.2880859375,0.290239785988888,22.5007486490467" />
-    <Link Source="ConsumerAPI" Target="@5" Bounds="-9796.45525390625,-9712.59180136423,23.1398473052504,0.0859950697376917" />
-    <Link Source="JSONDataAPI" Target="@6" Bounds="-9788.4001953125,-9537.68688515857,23.4001006400194,0.0190543504977541" />
-    <Link Source="SerializationAPI" Target="@4" Bounds="-9899.30620442708,-9425.15740643917,21.0001728347215,0.130148259448106" />
+    <Link Source="@10" Target="@12" Bounds="-9913.47876568499,-9743.15234375,12.9259955553061,77.9999986555358" />
+    <Link Source="@11" Target="(@1 Namespace=KerbalData.Serialization.Serializers.V018x Type=DataSerializer)" Bounds="-9722.64117108594,-9484.2412109375,1.72124313860331,23.1029996409106" />
+    <Link Source="@12" Target="(@1 @4 Type=IKerbalDataManager)" Bounds="-9867.5194921875,-9635.04679144669,36.137692746579,5.99560365855359" />
+    <Link Source="@12" Target="@15" Bounds="-9893.14358796122,-9630.2734375,110.110075080158,59.7402736776585" />
+    <Link Source="@12" Target="@16" Bounds="-9995.7346055351,-9630.2734375,64.181157165167,57.7450047333805" />
+    <Link Source="@12" Target="@8" Bounds="-9871.286220913,-9677.4379322157,74.5938892516697,21.1644947157001" />
+    <Link Source="@14" Target="@15" Bounds="-9848.51247721354,-9554.26366529437,21.0010627556258,0.220570140534619" />
+    <Link Source="@15" Target="@7" Bounds="-9683.81191080729,-9553.2417359956,21.0000000001564,0.000124801586935064" />
+    <Link Source="@16" Target="@3" Bounds="-10016.1839578359,-9540.5087890625,1.86379064456014,35.1054307422764" />
+    <Link Source="@17" Target="@13" Bounds="-9725.90345412099,-9782.96925867256,2.73283470134993,21.074727422556" />
+    <Link Source="@3" Target="(@1 @4 Type=(Name=IKerbalDataRepo @2))" Bounds="-10013.7250381504,-9470.416015625,0.39212127529936,28.3065274736182" />
+    <Link Source="@3" Target="@14" Bounds="-9990.86277116701,-9537.17480498067,69.8858381146838,40.7587893556738" />
+    <Link Source="@5" Target="(@1 Namespace=KerbalData.Serialization.Serializers.V018x Type=(Name=JsonObjectConverter @2))" Bounds="-9403.51309853531,-9541.41069453125,10.2147724378192,21.8472281172999" />
+    <Link Source="@5" Target="@6" Bounds="-9459.53111531889,-9758.87420047033,46.7645824500523,191.463505939084" />
+    <Link Source="@6" Target="@13" Bounds="-9652.75275739956,-9797.90364549411,101.449293857899,9.33260599547248" />
+    <Link Source="@6" Target="@17" Bounds="-9652.61283848661,-9769.93957835051,101.386902388955,12.5320426449616" />
+    <Link Source="@7" Target="(@1 @4 Type=KspDataContext)" Bounds="-9584.13983989149,-9540.2421875,4.39870482209881,21.1888562484764" />
+    <Link Source="@7" Target="@11" Bounds="-9683.53094908808,-9540.2421875,64.9424837424722,26.5907171724502" />
+    <Link Source="@7" Target="@5" Bounds="-9519.86524414062,-9553.89657776723,32.2891311167296,0.212866900466906" />
+    <Link Source="@8" Target="@17" Bounds="-9737.40327671596,-9727.45431224083,7.98133738078468,21.5597809908286" />
+    <Link Source="@9" Target="@10" Bounds="-9898.87086083723,-9808.89453125,0.275367747450218,30.7425485212698" />
+    <Link Source="Configuration" Target="@9" Bounds="-10024.5841927083,-9821.54725011931,69.7570620708902,0.433835725267272" />
+    <Link Source="ConsumerAPI" Target="@14" Bounds="-9885.00773027587,-9533.02519428243,28.149883901373,103.373807563685" />
+    <Link Source="ConsumerAPI1" Target="@12" Bounds="-10037.7902148437,-9644.94894164985,62.1015898756086,0.862168856918288" />
+    <Link Source="DataLoading" Target="@16" Bounds="-10158.9570377604,-9552.90217983547,79.5216502610783,0.771061507195554" />
+    <Link Source="DataModels" Target="@8" Bounds="-9659.37869925653,-9690.79878082594,46.8532500377805,1.18537097117587" />
+    <Link Source="Serialization" Target="@15" Bounds="-9705.34009488136,-9604.87205078125,102.408866092615,35.670454266321" />
   </Links>
   <Categories>
-    <Category Id="Category2" Label="Category 2" Background="#FF339933" IsTag="True" />
+    <Category Id="Category10" Label="Category 10" Background="#FF672878" IsTag="True" />
     <Category Id="Category4" Label="Category 4" Background="#FF1BA1E2" IsTag="True" />
-    <Category Id="Category5" Label="Category 5" Background="#FF9B4F96" IsTag="True" />
     <Category Id="Category7" Label="Category 7" Background="#FF347A30" IsTag="True" />
     <Category Id="Category8" Label="Category 8" Background="#FF44CCCC" IsTag="True" />
     <Category Id="Category9" Label="Category 9" Background="#FF00539C" IsTag="True" />
@@ -64,6 +113,7 @@
     <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_IsAbstract" Label="Is Abstract" Description="Flag to indicate member is 'Abstract' does not provide a full implementation" DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_IsFinal" Label="Is Final" Description="Flag to indicate the member is 'Final' and cannot be derived from" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="Is Internal" Description="Flag to indicate the method is 'Internal'" DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
     <Property Id="CommonLabel" DataType="System.String" />
     <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
@@ -90,38 +140,35 @@
   </QualifiedNames>
   <IdentifierAliases>
     <Alias n="1" Uri="Assembly=$(23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPathUri)" />
-    <Alias n="2" Id="Namespace=KerbalData" />
-    <Alias n="3" Id="(@1 @2 Type=(Name=IKerbalDataRepo GenericParameterCount=1))" />
-    <Alias n="4" Id="(@1 @2 Type=IKspFileConverter)" />
-    <Alias n="5" Id="(@1 @2 Type=KerbalData)" />
-    <Alias n="6" Id="(@1 @2 Type=KspData)" />
-    <Alias n="7" Id="(@1 @2 Type=KspToJson)" />
-    <Alias n="8" Id="(@1 @2 Type=RepoFactory)" />
+    <Alias n="2" Id="GenericParameterCount=1" />
+    <Alias n="3" Id="(@1 Namespace=KerbalData.Providers Type=(Name=FileSystemRepository @2))" />
+    <Alias n="4" Id="Namespace=KerbalData" />
+    <Alias n="5" Id="(@1 Namespace=KerbalData.Serialization Type=(Name=IKspConverter @2))" />
+    <Alias n="6" Id="(@1 Namespace=KerbalData.Serialization.Serializers.V018x Type=(Name=JsonModelConverter @2))" />
+    <Alias n="7" Id="(@1 Namespace=KerbalData.Serialization Type=(Name=KspProcessor @2))" />
+    <Alias n="8" Id="(@1 @4 Type=(Name=StorableObjects @2))" />
+    <Alias n="9" Id="(@1 Namespace=KerbalData.Configuration Type=ApiConfig)" />
+    <Alias n="10" Id="(@1 Namespace=KerbalData.Configuration Type=ApiConfigManager)" />
+    <Alias n="11" Id="(@1 Namespace=KerbalData.Serialization Type=IKspSerializer)" />
+    <Alias n="12" Id="(@1 @4 Type=KerbalData)" />
+    <Alias n="13" Id="(@1 @4 Type=KerbalDataObject)" />
+    <Alias n="14" Id="(@1 @4 Type=KspData)" />
+    <Alias n="15" Id="(@1 @4 Type=ProcessorRegistry)" />
+    <Alias n="16" Id="(@1 @4 Type=RepoFactory)" />
+    <Alias n="17" Id="(@1 @4 Type=StorableObject)" />
   </IdentifierAliases>
   <Styles>
+    <Style TargetType="Node" GroupLabel="Category 10" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category10')" />
+      <Setter Property="Background" Value="#FF672878" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Category 3" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category3')" />
+      <Setter Property="Background" Value="#FF3EBCED" />
+    </Style>
     <Style TargetType="Node" GroupLabel="Category 8" ValueLabel="Has category">
       <Condition Expression="HasCategory('Category8')" />
       <Setter Property="Background" Value="#FF44CCCC" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Category 5" ValueLabel="Has category">
-      <Condition Expression="HasCategory('Category5')" />
-      <Setter Property="Background" Value="#FF9B4F96" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Category 7" ValueLabel="Has category">
-      <Condition Expression="HasCategory('Category7')" />
-      <Setter Property="Background" Value="#FF347A30" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Category 2" ValueLabel="Has category">
-      <Condition Expression="HasCategory('Category2')" />
-      <Setter Property="Background" Value="#FF339933" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Category 9" ValueLabel="Has category">
-      <Condition Expression="HasCategory('Category9')" />
-      <Setter Property="Background" Value="#FF00539C" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Category 4" ValueLabel="Has category">
-      <Condition Expression="HasCategory('Category4')" />
-      <Setter Property="Background" Value="#FF1BA1E2" />
     </Style>
     <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
       <Condition Expression="HasCategory('Comment')" />
@@ -131,8 +178,29 @@
       <Setter Property="NodeRadius" Value="2" />
       <Setter Property="MaxWidth" Value="250" />
     </Style>
+    <Style TargetType="Node" GroupLabel="Category 5" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category5')" />
+      <Setter Property="Background" Value="#FF9B4F96" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Category 4" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category4')" />
+      <Setter Property="Background" Value="#FF1BA1E2" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Category 7" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category7')" />
+      <Setter Property="Background" Value="#FF347A30" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Category 9" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category9')" />
+      <Setter Property="Background" Value="#FF00539C" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Category 2" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category2')" />
+      <Setter Property="Background" Value="#FF339933" />
+    </Style>
   </Styles>
   <Paths>
-    <Path Id="23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPathUri" Value="file:///C:/dev/KspData/src/KerbalData/bin/Debug/KerbalData.dll" />
+    <Path Id="23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPath" Value="C:\dev\KspData\src\KerbalData\bin\NET 4.0 Debug\KerbalData.dll" />
+    <Path Id="23bf8f66-05a3-4d84-b632-f08fd63bcf7b.OutputPathUri" Value="file:///C:/dev/KspData/src/KerbalData/bin/NET 4.0 Debug/KerbalData.dll" />
   </Paths>
 </DirectedGraph>

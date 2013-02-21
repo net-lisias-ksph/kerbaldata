@@ -6,10 +6,8 @@
 
 namespace KerbalData.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+
     using Newtonsoft.Json;
 
     /// <summary>
@@ -42,7 +40,7 @@ namespace KerbalData.Models
         }
 
         /// <summary>
-        /// Gets or sets the resource colletion. - File Property: RESOURCE
+        /// Gets or sets the resource collection. - File Property: RESOURCE
         /// </summary>
         [JsonProperty("RESOURCE")]
         public IList<PartResource> Resources

@@ -9,9 +9,8 @@ namespace KerbalData.Models
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Container for flights, crew and key universe variables
@@ -26,6 +25,9 @@ namespace KerbalData.Models
         private IList<Crew> crew;
         private IList<Vessel> vessels;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FlightState" /> class.
+        /// </summary>
         public FlightState() : base()
         {
             DisplayName = "FlightState";

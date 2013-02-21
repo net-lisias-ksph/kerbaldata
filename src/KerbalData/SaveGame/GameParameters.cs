@@ -6,10 +6,6 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -23,6 +19,9 @@ namespace KerbalData.Models
         private TrackingStationGameParameters trackingStation;
         private SpaceCenterGameParameters spaceCenter;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameParameters" /> class.
+        /// </summary>
         public GameParameters() : base()
         {
             DisplayName = "Parameters";

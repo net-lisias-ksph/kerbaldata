@@ -10,14 +10,11 @@ namespace KerbalData.Serialization.Serializers.V018x
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Web;
-    using Serialization;
 
     using Serialization;
 
     /// <summary>
-    /// Serializer implmentation tested to support 0.18-0.18.2 KSP data formats
+    /// Serializer implementation tested to support 0.18-0.18.2 KSP data formats
     /// </summary>
     public class DataSerializer : IKspSerializer
     {
@@ -98,7 +95,7 @@ namespace KerbalData.Serialization.Serializers.V018x
         /// Primary internal method to build the KSP data string. Contains version specific rules and formatting
         /// </summary>
         /// <param name="jobj">JSon Object data to use.</param>
-        /// <param name="tabCount">starting point for indented tabs (method will furhter indent children through recursive calls</param>
+        /// <param name="tabCount">starting point for indented tabs (method will further indent children through recursive calls</param>
         /// <param name="objectName">name of data object for header</param>
         /// <returns>KSP data string</returns>
         private static void BuildKspData(KspDataObject dataObj, StreamWriter writer, int tabCount = 0)
@@ -133,11 +130,11 @@ namespace KerbalData.Serialization.Serializers.V018x
         }
 
         /// <summary>
-        /// Internal parsing method, recursviely calls itself as needed
+        /// Internal parsing method, recursively calls itself as needed
         /// </summary>
         /// <param name="data">data to parse</param>
         /// <param name="dataObj">data object to populate</param>
-        private static void ParseData(List<string> data, KspDataObject dataObj)
+        private static void ParseData(IList<string> data, KspDataObject dataObj)
         {
             for (var i = 0; i < data.Count; i++)
             {
@@ -180,7 +177,7 @@ namespace KerbalData.Serialization.Serializers.V018x
                         objectData.Add(data[x]);
                     }
 
-                    // Push the primay loop counter up to account for the object data we just pulled out
+                    // Push the primary loop counter up to account for the object data we just pulled out
                     i += objectData.Count + 2;
 
                     if (objectData.Count > 0)
@@ -193,8 +190,8 @@ namespace KerbalData.Serialization.Serializers.V018x
                     }
                     else
                     {
-                        // In this case we have an object with no children and no properrties. 
-                        // This is another thing we do to try and remain compatble. There are a number of empty objects that are stored in the 
+                        // In this case we have an object with no children and no properties. 
+                        // This is another thing we do to try and remain compatible. There are a number of empty objects that are stored in the 
                         // KSP data file. To remain as close to 100% we even track these empty objects to make sure they are shown to the consumer and 
                         // written back on save. 
                         dataObj.Children.Add(new KspDataObject { Name = objectName });

@@ -6,11 +6,6 @@
 
 namespace KerbalData
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Model class used by KspDataObject as a key component in data serilaization/de-serialization.
     /// </summary>

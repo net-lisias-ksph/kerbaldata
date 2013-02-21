@@ -6,19 +6,15 @@
 
 namespace KerbalData
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Reperesents a data element that can be saved as a unit. 
+    /// Represents a data element that can be saved as a unit. 
     /// </summary>
     public interface IStorable : IKerbalDataObject
     {
         /// <summary>
-        /// Gets the Orignal data 
+        /// Gets the Original data 
         /// <see href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JObject.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
         /// </summary>
         JObject Original { get; }
@@ -34,7 +30,7 @@ namespace KerbalData
         string Uri { get; }
 
         /// <summary>
-        /// Gets if the objest has been altered since is was orignally loaded or last saved
+        /// Gets if the object has been altered since is was originally loaded or last saved
         /// </summary>
         bool IsDirty { get; }
 
@@ -47,7 +43,7 @@ namespace KerbalData
         /// Saves the object 
         /// </summary>
         /// <param name="id">id to save, using a new id creates a new file // TODO: WORK FLOW Clone? Orignal object remain changed? or revert?</param>
-        /// <param name="backup">backup the data on save, may be overriden by reposiotry in use</param>
+        /// <param name="backup">backup the data on save, may be overridden by repository in use</param>
         /// <returns>true=success;false=failure</returns>
         bool Save(string id = null, bool backup = true);
 

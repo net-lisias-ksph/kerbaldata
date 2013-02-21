@@ -6,10 +6,6 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -21,7 +17,7 @@ namespace KerbalData.Models
         protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
         {
             base.OnCollectionChanged(args);
-            DisplayName = "Editor (" + base.Count + ")";
+            DisplayName = "Editor (" + Count + ")";
         }
     }
 }

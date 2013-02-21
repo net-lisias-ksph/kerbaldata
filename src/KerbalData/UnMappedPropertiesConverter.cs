@@ -10,13 +10,13 @@ namespace KerbalData
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// JSON.NET implmentation class for de-serializing to classes while storing unmapped properties to the the <see cref="IKerbalDataObject"/> implmentation.
+    /// JSON.NET implementation class for de-serializing to classes while storing unmapped properties to the the <see cref="IKerbalDataObject"/> implmentation.
     /// </summary>
     /// <typeparam name="T">model type being processed</typeparam>
     /// <threadsafety static="false" instance="false" />    
@@ -24,10 +24,10 @@ namespace KerbalData
     {
         // TODO: This class takes over much of what JSON.NET does for us with regards to mapping to models. 
         // While this makes for good code to start breaking dependency on JSON.NET analysis should be done to see if 
-        // this was even neccassary to achieve what I needed. 
+        // this was even necessary to achieve what I needed. 
 
         /// <summary>
-        /// Gets the canread flag
+        /// Gets the can read flag
         /// </summary>
         public override bool CanRead
         {
@@ -49,19 +49,9 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Tells if the provided type can be converted
-        /// </summary>
-        /// <param name="objectType">type to convert</param>
-        /// <returns>true=can convert;false=cannot convert</returns>
-        public override bool CanConvert(Type objectType)
-        {
-            return base.CanConvert(objectType);
-        }
-
-        /// <summary>
         /// Creates a new instance of the generic type parameter
         /// </summary>
-        /// <param name="objectType">compataible type</param>
+        /// <param name="objectType">compatible type</param>
         /// <returns>new instance of type</returns>
         public override T Create(Type objectType)
         {
@@ -180,7 +170,7 @@ namespace KerbalData
 
             foreach (var pr in ((JObject)value).Properties())
             {
-                if (objProps.Where(p => p.Equals(pr.Name)).Count() == 0)
+                if (!objProps.Any(p => p.Equals(pr.Name)))
                 {
                     ((IDictionary<string, JToken>)obj).Add(pr.Name, pr.Value);
                 }
@@ -288,7 +278,7 @@ namespace KerbalData
             {
                 return value.ToObject<JToken>();
             }
-            else if (type.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0) // KerbalData Types
+            else if (type.GetInterfaces().Any(i => i == typeof(IKerbalDataObject))) // KerbalData Types
             {
                 return BuildObject(type, value);
             }
@@ -300,7 +290,7 @@ namespace KerbalData
 
                 var dict = dictType.GetConstructor(new Type[] { }).Invoke(new object[] { });
 
-                if (dictObjArgType.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
+                if (dictObjArgType.GetInterfaces().Any(i => i == typeof(IKerbalDataObject)))
                 {
                     foreach (JProperty jp in value)
                     {
@@ -324,7 +314,7 @@ namespace KerbalData
 
                 var list = listType.GetConstructor(new Type[] { }).Invoke(new object[] { });
 
-                if (garg.GetInterfaces().Where(i => i.Equals(typeof(IKerbalDataObject))).Count() > 0)
+                if (garg.GetInterfaces().Any(i => i == typeof(IKerbalDataObject)))
                 {
                     if (value.Type.Equals(JTokenType.Array))
                     {
@@ -461,7 +451,7 @@ namespace KerbalData
             return name;
         }
 
-        private void ThrowTypeException()
+        private static void ThrowTypeException()
         {
             throw new KerbalDataException("ReadJSON can only work with instances of the following types: JObject, JArray, JToken or instances that inherit the following types KerbalJObject, IDictionary<string, VALIDOBJECT/TYPE>, IList<VALIDOBJECT/TYPE>");
         }

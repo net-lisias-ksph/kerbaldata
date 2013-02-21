@@ -10,16 +10,15 @@ namespace KerbalData.Providers
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
+
     using NAnt.Core.Functions;
     using NAnt.Core.Types;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Exposes collection of files defined by Ant style include/exclude filters as a data set that acts as the primary store for the files. 
-    /// This implmentation allows consumers complete abstraction from the underlying data store. 
+    /// This implementation allows consumers complete abstraction from the underlying data store. 
     /// 
-    /// TODO: Implmentations for HTTP publishing, SQL database, file store with JSON objects, others?
+    /// TODO: Implementations for HTTP publishing, SQL database, file store with JSON objects, others?
     /// </summary>
     public class FileSystemRepository<T> : IKerbalDataRepo<T> where T : class, IStorable, new()
     {
@@ -40,18 +39,17 @@ namespace KerbalData.Providers
 
         private readonly string[] includes;
         private readonly string[] excludes;
-        private FileMode mode;
-        private bool backup = false;
+        private readonly FileMode mode;
+        private readonly bool backup;
 
-        private string fileName;
-
-        private ProcessorRegistry registry; 
+        private readonly  string fileName;
+        private readonly ProcessorRegistry registry; 
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSystemRepository{T}" /> class.
         /// </summary>	
         /// <remarks>
-        /// Required constructor signature for all classes implmenting <see cref="IKerbalDataRepo{T}"/>
+        /// Required constructor signature for all classes implementing <see cref="IKerbalDataRepo{T}"/>
         /// </remarks>
         public FileSystemRepository(ProcessorRegistry registry, IDictionary<string, object> parameters)
         {
@@ -78,8 +76,7 @@ namespace KerbalData.Providers
             mode = GetParameter(FileModeParamName, parameters) != null
                 ? (FileMode)Enum.Parse(typeof(FileMode), GetParameter(FileModeParamName, parameters).ToString()) : FileMode.Flat;
 
-            backup = GetParameter(BackupParamName, parameters) != null 
-                ? (bool)GetParameter(BackupParamName, parameters) : true;
+            backup = GetParameter(BackupParamName, parameters) == null || (bool)GetParameter(BackupParamName, parameters);
         }
 
         /// <summary>
@@ -144,20 +141,11 @@ namespace KerbalData.Providers
         /// <returns>object list</returns>
         public IList<T> Get()
         {
-            var result = new List<T>();
             var files = GetFiles();
 
-            foreach (var path in files.FileNames)
-            {
-                T obj = KspData.LoadKspFile<T>(path, registry.Create<T>());
-
-                if (obj != null)
-                {
-                    result.Add(obj);
-                }
-            }
-
-            return result;
+            return files != null 
+                ? files.FileNames.Cast<string>().Select(p => KspData.LoadKspFile(p, registry.Create<T>())).Where(obj => obj != null).ToList() 
+                : null;
         }
 
         /// <summary>
@@ -245,7 +233,7 @@ namespace KerbalData.Providers
             var files = new FileSet();
             files.Includes.AddRange(includes);
 
-            if (excludes != null && excludes.Count() > 0)
+            if (excludes != null && excludes.Any())
             {
                 files.Excludes.AddRange(excludes);
             }
@@ -280,18 +268,12 @@ namespace KerbalData.Providers
 
         private bool NameExists(string name)
         {
-            return GetFileInfo(name) != null ? true : false;
+            return GetFileInfo(name) != null;
         }
 
         private object GetParameter(string name, IDictionary<string, object> parameters)
         {
-            if (parameters.ContainsKey(name))
-            {
-                // All parameters in this repo are parsed as strings
-                return parameters[name];
-            }
-
-            return null;
+            return parameters.ContainsKey(name) ?  parameters[name] : null;
         }
     }
 }

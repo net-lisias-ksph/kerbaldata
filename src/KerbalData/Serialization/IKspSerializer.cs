@@ -6,37 +6,34 @@
 
 namespace KerbalData.Serialization
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
-    /// Base serilaization class interface. Provides support for parsing and writing KSP data files. 
+    /// Base serialization class interface. Provides support for parsing and writing KSP data files. 
     /// </summary>
     public interface IKspSerializer
     {
         /// <summary>
-        /// Gets the value indicating whether the implmentation can serialize KSP data for the supported versions
+        /// Gets the value indicating whether the implementation can serialize KSP data for the supported versions
         /// </summary>
         bool CanSerialize { get; }
 
         /// <summary>
-        /// Gets the value indicating whether the implmentation can sde-erialize KSP data for the supported versions
+        /// Gets the value indicating whether the implementation can sde-serialize KSP data for the supported versions
         /// </summary>
         bool CanDeSerialize { get; }
 
         /// <summary>
-        /// Gets the list of KSP versions this serializer supports
+        /// Gets the list of KSP versions this serialize supports
         /// </summary>
         IList<string> Versions { get; }
 
         /// <summary>
-        /// Tells if a specified version is supported by the implmentation
+        /// Tells if a specified version is supported by the implementation
         /// </summary>
         /// <param name="version">KSP version to check</param>
-        /// <returns>true=supported;false=notsupported</returns>
+        /// <returns>true=supported;false=not supported</returns>
         bool SupportsVersion(string version);
 
         /// <summary>

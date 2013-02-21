@@ -6,14 +6,10 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-using Newtonsoft.Json;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Data model for propellent data found in part file. 
+    /// Data model for propellant data found in part file. 
     /// </summary>
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<PartPropellant>))]
     public class PartPropellant : KerbalDataObject

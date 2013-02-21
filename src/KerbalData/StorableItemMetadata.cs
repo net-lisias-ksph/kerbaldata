@@ -6,12 +6,6 @@
 
 namespace KerbalData
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Newtonsoft.Json.Linq;
-
     /// <summary>
     /// Meta-data wrapper for storable data. Used for lazy loading. 
     /// </summary>
@@ -31,7 +25,7 @@ namespace KerbalData
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets the Absloute URI to data element
+        /// Gets the Absolute URI to data element
         /// </summary>
         public string Uri { get; set; }
 

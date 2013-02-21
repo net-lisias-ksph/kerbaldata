@@ -12,12 +12,12 @@ namespace KerbalData
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Base class for top level consumer models that can be serialized/deserialized. 
+    /// Base class for top level consumer models that can be serialized/desterilized. 
     /// Contains functionality for saving/updating data store model is loaded from.
     /// </summary>
     /// <seealso href="http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_Linq_JToken.htm" target="_blank" alt="Newtonsoft.Json.Linq.JToken">Newtonsoft.Json.Linq.JToken</seealso>
@@ -37,6 +37,9 @@ namespace KerbalData
             this.parent = parent;
         }
 
+        /// <summary>
+        /// Gets the instance display name
+        /// </summary>
         [JsonIgnore]
         public virtual string DisplayName
         {
@@ -53,7 +56,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets the orginal base data
+        /// Gets the original base data
         /// </summary>
         [JsonIgnore]
         public JObject Original
@@ -73,7 +76,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets the absloute URI of the data
+        /// Gets the absolute URI of the data
         /// </summary>
         [JsonIgnore]
         public string Uri
@@ -94,6 +97,9 @@ namespace KerbalData
             }
         }
 
+        /// <summary>
+        /// Gets the DataManager instance used by this instance
+        /// </summary>
         [JsonIgnore]
         public IKerbalDataManager DataManager
         {
@@ -109,21 +115,20 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Reverts the object state and data to it's orginal state after the last load or save.
+        /// Reverts the object state and data to it's original state after the last load or save.
         /// </summary>
         public abstract void Revert();
 
         /// <summary>
         /// Saves the object and all children to the name specified. 
         /// If class is loaded from KerbalData using the StorableObjects class then save will use the repo managed by
-        /// storable objects. Otherwise the local filesystem is used. 
+        /// storable objects. Otherwise the local file system is used. 
         /// </summary>
         /// <param name="name">ID or path to store object</param>
         /// <param name="backup">backup the data before saving</param>
         /// <returns>true=success;false=failure</returns>
         public bool Save(string name = null, bool backup = true)
         {
-            //if (IsDirty || !string.IsNullOrEmpty(name)) // IsDirty implmentation is very expensive right now, for most data operations it's just quicker to save. Re-evaluate when real Diff and deep change matching is implmented. 
             if (!string.IsNullOrEmpty(name)) // Don't waste cycles saving when we don't need to. Unless we get a name value
             {
                 if (parent == null) // If parent is null then this instance was loaded manually. Save using System.IO and lower level classes
@@ -149,12 +154,11 @@ namespace KerbalData
             }
 
             // If we have the repo then we are loaded as part of a managed repo/storableobjects pattern and we want the repo to save the data.
-            // In this case we take the name paramter if it is provided as a new ID. the underlying repo will add the new object instance
-            // into the collection using the provided ID. It will be immideitaly available as part of the StorableObjects collection. 
+            // In this case we take the name parameter if it is provided as a new ID. the underlying repo will add the new object instance
+            // into the collection using the provided ID. It will be immediately available as part of the StorableObjects collection. 
             var id = !string.IsNullOrEmpty(name) ? name : Id;
 
             var result = PutToParentRepo(id);
-            //Original = JObject.FromObject(this);
 
             // I am not really fond of this pattern but i am not sure I want to use a messaging pattern, need to think on this. 
             RefreshParent();
@@ -236,17 +240,6 @@ namespace KerbalData
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-
-            /*
-            if (ParentObj != null && !IsNotificationDisabled)
-            {
-                if (PropertyFilters != null && !PropertyFilters.Contains(propertyName))
-                {
-                    return;
-                }
-
-                ParentObj.OnChildPropertyChanged(propertyName, value);
-            }*/
         }
 
     }

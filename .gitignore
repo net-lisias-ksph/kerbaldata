@@ -1,4 +1,6 @@
 bin/
 obj/
+TestResults/
+target/
 *.user
 *.suo

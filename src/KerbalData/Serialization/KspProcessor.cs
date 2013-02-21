@@ -6,14 +6,7 @@
 
 namespace KerbalData.Serialization
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-
-    using Configuration;
 
     /// <summary>
     /// The Processor is responsible for managing the serialization/de-serialization process for object data.
@@ -73,7 +66,6 @@ namespace KerbalData.Serialization
             stream.Seek(0, SeekOrigin.Begin);
 
             return stream;
-            
         }
     }
 }

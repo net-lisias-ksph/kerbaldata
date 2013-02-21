@@ -6,11 +6,6 @@
 
 namespace KerbalData
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// Model object provided to de-serializer/serilaizer classes for defining the basic structure of the KSP data prior to conversion to JSON
     /// </summary>
@@ -25,7 +20,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets the Data object for this contenxt. This property is where de-serialized data is stored prior to conversion to JSON
+        /// Gets the Data object for this context. This property is where de-serialized data is stored prior to conversion to JSON
         /// </summary>
         public KspDataObject Data { get; internal set; }
     }

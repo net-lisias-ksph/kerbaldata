@@ -6,17 +6,14 @@
 
 namespace KerbalData.Serialization.Serializers.V018x
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     using Newtonsoft.Json.Linq;
 
     using Serialization;
 
     /// <summary>
-    /// Converts Json.Net objets into strongly typed object instances. Wrapse <see cref="JsonObjectConverter{JObject}"/>
+    /// Converts Json.Net objects into strongly typed object instances. Wrapse <see cref="JsonObjectConverter{JObject}"/>
     /// </summary>
     public class JsonModelConverter<T> : IKspConverter<T> where T : class, new()
     {

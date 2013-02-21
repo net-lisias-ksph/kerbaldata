@@ -9,7 +9,6 @@ namespace KerbalData.Serialization.Serializers.V018x
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using Newtonsoft.Json.Linq;
 
@@ -121,7 +120,7 @@ namespace KerbalData.Serialization.Serializers.V018x
         /// Builds the child properties for the JObject
         /// </summary>
         /// <param name="root">data object to use</param>
-        /// <param name="jobj">jobkject instance to populate</param>
+        /// <param name="jobj">JObject instance to populate</param>
         private static void BuildProerties(KspDataObject root, JObject jobj)
         {
             var fieldNames = root.Values.Select(f => f.Name).Distinct();

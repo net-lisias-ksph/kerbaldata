@@ -6,16 +6,13 @@
 
 namespace KerbalData.Serialization
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
-    /// Interface for Converter implmentations
+    /// Interface for Converter implementations
     /// </summary>
     /// <remarks>
-    /// Implmentations of this interface are responsible for converting internal DataContex definitions to desired objects types. 
+    /// Implementations of this interface are responsible for converting internal DataContex definitions to desired objects types. 
     /// THis interim step in between serialization and data mapping allows for custom object type mappings used in highly advanced scenarios
     /// and to support core API use-cases.
     /// </remarks>
@@ -31,11 +28,11 @@ namespace KerbalData.Serialization
         /// Tells if a specified version is supported by the implmentation
         /// </summary>
         /// <param name="version">KSP version to check</param>
-        /// <returns>true=supported;false=notsupported</returns>
+        /// <returns>true=supported;false=not supported</returns>
         bool SupportsVersion(string version);
 
         /// <summary>
-        /// Converts data contex
+        /// Converts data context
         /// </summary>
         /// <param name="context">data context to convert</param>
         /// <returns>converted object instance of desired type</returns>

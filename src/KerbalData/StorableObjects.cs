@@ -6,17 +6,15 @@
 
 namespace KerbalData
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.IO;
+
     using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Maintains the top level collection of Kerbal data objects. 
-    /// Works similar to a dictionary however it does not implment IDictionary in order to restrict usage.
-    /// It is important to note that unlike an IDictionary implmentation this class will accept a call to the Add method
+    /// Works similar to a dictionary however it does not implement IDictionary in order to restrict usage.
+    /// It is important to note that unlike an IDictionary implementation this class will accept a call to the Add method
     /// even if another value with the same name already exists. The previous value will be overwritten by the latest addition to the
     /// list. 
     /// </summary>
@@ -41,7 +39,7 @@ namespace KerbalData
         /// Gets or sets the value of an unmapped property using a unique name. 
         /// </summary>
         /// <param name="id">Id to lookup</param>
-        /// <returns>object for the associtated ID</returns>
+        /// <returns>object for the associated ID</returns>
         public T this[string id]
         {
             get
@@ -121,7 +119,7 @@ namespace KerbalData
 
         /// <summary>
         /// Adds the object to the data collection. Saving the object after adding to the collection will store the object data
-        /// with the configured reposiotry. 
+        /// with the configured repository. 
         /// The Save() method on the object is called after adding. 
         /// </summary>
         /// <param name="obj">object to add</param>
@@ -194,7 +192,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Refreshes list of availble data objects. (Does quick load of base meta-data only, objects are lazy loaded on first access)
+        /// Refreshes list of available data objects. (Does quick load of base meta-data only, objects are lazy loaded on first access)
         /// </summary>
         public void Refresh()
         {
@@ -232,7 +230,6 @@ namespace KerbalData
             {
                 //JObject data;
                 var obj = Repo.Get(id);
-                //(obj as StorableObject).Original = data;
                 (obj as StorableObject).SetParent(this);
                 (obj as StorableObject).DataManager = DataManager;
                 objects[id] = new StorableItemMetadata<T>() 
@@ -248,7 +245,6 @@ namespace KerbalData
                 objects[id].Object = Repo.Get(id);
                 (objects[id].Object as StorableObject).Id = id;
                 (objects[id].Object as StorableObject).SetParent(this);
-                //(objects[id].Object as StorableObject).Original = data;
                 (objects[id].Object as StorableObject).DataManager = DataManager;
                 objects[id].Loaded = true;
             }

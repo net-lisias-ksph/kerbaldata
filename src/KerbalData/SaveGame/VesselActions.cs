@@ -6,10 +6,6 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -18,6 +14,9 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<VesselActions>))]
     public class VesselActions : KerbalDataObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VesselActions" /> class.
+        /// </summary>
         public VesselActions()
             : base()
         {

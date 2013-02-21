@@ -6,10 +6,6 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -18,7 +14,7 @@ namespace KerbalData.Models
     [JsonConverterAttribute(typeof(UnMappedPropertiesConverter<ConfigFile>))]
     public class ConfigFile : StorableObject
     {
-        // Current implmentation only provides strongly typed properties for core settings. Presets and Terrain collections have a high likelyhood of being migrated elsewhere in the future
+        // Current implementation only provides strongly typed properties for core settings. Presets and Terrain collections have a high likelyhood of being migrated elsewhere in the future
         // they don't really belong in settings.cfg, it looks like a dumping ground for global settings ATM
 
         private string settingsVersion;
@@ -27,6 +23,9 @@ namespace KerbalData.Models
             antiAliasing, textureQuality, lightQuality, shadowsQuality, framerateLimit, conicPatchDrawMode, conicPatchLimit;
         private TerrainConfig terrian;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KerbalData" /> class.
+        /// </summary>
         public ConfigFile()
             : base()
         {
@@ -204,7 +203,7 @@ namespace KerbalData.Models
         }
 
         /// <summary>
-        /// Gets or sets resloution width. - File Property: SCREEN_RESOLUTION_WIDTH
+        /// Gets or sets resolution width. - File Property: SCREEN_RESOLUTION_WIDTH
         /// </summary>
         [JsonProperty("SCREEN_RESOLUTION_WIDTH")]
         public int ResloutionWidth
@@ -272,7 +271,7 @@ namespace KerbalData.Models
         }
 
         /// <summary>
-        /// Gets or sets antialiasing multiplier. - File Property: ANTI_ALIASING
+        /// Gets or sets anti-aliasing multiplier. - File Property: ANTI_ALIASING
         /// </summary>
         [JsonProperty("ANTI_ALIASING")]
         public int AntiAliasing

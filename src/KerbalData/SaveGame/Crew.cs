@@ -6,10 +6,6 @@
 
 namespace KerbalData.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -24,7 +20,7 @@ namespace KerbalData.Models
         private int state;
 
         /// <summary>
-        /// Gets or sets the crew memeber's name. - File Property: name
+        /// Gets or sets the crew member's name. - File Property: name
         /// </summary>
         [JsonProperty("name")]
         public string Name

@@ -7,20 +7,16 @@
 namespace KerbalData
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
+
     using Configuration;
-    using Serialization;
 
     /// <summary>
-    /// TODO: Class Summary
+    /// Recommended base to use when developing custom Data manager instances like KerbalData, provides key base functionality. 
     /// </summary>
     public abstract class KerbalDataManager : IKerbalDataManager
     {
-        private const string DefaultConfigSectionName = "kerbalData";
-
         private RepoFactory repoFactory;
         private ProcessorRegistry procRegistry;
 
@@ -32,7 +28,7 @@ namespace KerbalData
         /// </remarks>
         public KerbalDataManager() 
         {
-            throw new KerbalDataException("The kerbal data manager should never be constructed with it's default constructor. This is implmented only to satisfy generic requirments in the code base. TODO: this should be fixed");
+            throw new KerbalDataException("The kerbal data manager should never be constructed with it's default constructor. This is implemented only to satisfy generic requirements in the code base. TODO: this should be fixed");
         }
 
         /// <summary>
@@ -67,7 +63,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets the configured factory used by the manager instnace
+        /// Gets the configured factory used by the manager instance
         /// </summary>
         public RepoFactory RepositoryFactory
         {
@@ -83,11 +79,11 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Creates a properly conigured instance of the <see cref="KerbalDataManager"/> class
+        /// Creates a properly configured instance of the <see cref="KerbalDataManager"/> class
         /// </summary>
         /// <typeparam name="T">model type handled by the manager</typeparam>
         /// <param name="baseUri">root Uri for the manager</param>
-        /// <param name="configSectionName">configuratiion section to use</param>
+        /// <param name="configSectionName">configuration section to use</param>
         /// <returns>configured instance</returns>
         public static T Create<T>(string baseUri, string configSectionName = "kerbalData") where T : class, IKerbalDataManager
         {
@@ -95,7 +91,7 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Creates a properly conigured instance of the <see cref="KerbalDataManager"/> class
+        /// Creates a properly configured instance of the <see cref="KerbalDataManager"/> class
         /// </summary>
         /// <typeparam name="T">model type handled by the manager</typeparam>
         /// <param name="baseUri">root Uri for the manager</param>
@@ -116,10 +112,10 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Handles inital setup and population of data properties. 
+        /// Handles initial setup and population of data properties. 
         /// This is some of the "magic" that allows developers creating custom models to easily map
         /// StorableObjects instances with the correct repositories to custom properties without
-        /// a ton of wireup code. 
+        /// a ton of wire up code. 
         /// </summary>
         private void Init()
         {

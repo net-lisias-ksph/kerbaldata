@@ -172,7 +172,7 @@
     <Compile Include="IStorable.cs" />
     <Compile Include="KerbalData.cs" />
     <Compile Include="KerbalDataManager.cs" />
-    <Compile Include="KspData.cs" />
+    <Compile Include="Serialization\KspData.cs" />
     <Compile Include="ProcessorRegistry.cs" />
     <Compile Include="Providers\FileSystemRepository.cs" />
     <Compile Include="Serialization\KspProcessor.cs" />

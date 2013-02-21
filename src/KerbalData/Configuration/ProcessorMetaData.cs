@@ -7,22 +7,26 @@
 namespace KerbalData.Configuration
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
-    /// Wrapper used for managing the <see cref="ProcessorRegistry"/>
+    /// Wrapper used for data in the <see cref="ProcessorRegistry"/>
     /// </summary>
     internal class ProcessorMetaData : ProcessorConfig
     {
         private Type model;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProcessorMetaData" /> class.
+        /// </summary>
         public ProcessorMetaData()
         {
             Init();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProcessorMetaData" /> class.
+        /// </summary>
+        /// <param name="config"></param>
         public ProcessorMetaData(object config)
         {
             if (config is ProcessorConfig)
@@ -35,6 +39,10 @@ namespace KerbalData.Configuration
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProcessorMetaData" /> class.
+        /// </summary>
+        /// <param name="config"></param>
         public ProcessorMetaData(ProcessorConfig config)
         {
             Init(config);
@@ -59,16 +67,17 @@ namespace KerbalData.Configuration
 
         private void Init(ProcessorConfig config = null)
         {
-            if (config != null)
+            if (config == null)
             {
-                Converter = config.Converter;
-                Index = config.Index;
-                ModelType = config.ModelType;
-                //Name = config.Name;
-                Serializer = config.Serializer;
-
-                Model = Type.GetType(ModelType);
+                return;
             }
+
+            Converter = config.Converter;
+            Index = config.Index;
+            ModelType = config.ModelType;
+            Serializer = config.Serializer;
+
+            Model = Type.GetType(ModelType);  
         }
     }
 }

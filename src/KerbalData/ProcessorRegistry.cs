@@ -8,9 +8,7 @@ namespace KerbalData
 {
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Linq;
-    using System.Text;
 
     using Configuration;
     using Serialization;
@@ -75,14 +73,14 @@ namespace KerbalData
         }
 
         /// <summary>
-        /// Gets the processor onfiguration that is used for a particular model type
+        /// Gets the processor configuration that is used for a particular model type
         /// </summary>
         /// <typeparam name="T">model type to lookup</typeparam>
         /// <returns>configuration used by the registry when creating the processor instance</returns>
         public ProcessorConfig GetConfig<T>()
         {
             var type = typeof(T);
-            List<ProcessorMetaData> configs = new List<ProcessorMetaData>();
+            var configs = new List<ProcessorMetaData>();
 
             // First a quick search of the lookup cache before running through a logic search of configured processors. 
             var cached = lookups.Where(l => l.Type == type).ToList();
@@ -123,7 +121,7 @@ namespace KerbalData
                 }
             }
 
-            // At this point the configuration is ambigious. Lets see if we can find a default processor config. 
+            // At this point the configuration is ambiguous. Lets see if we can find a default processor configuration. 
             configs = processorConfigs.Where(c => c.Model == null).ToList();
 
             if (configs.Count == 1)
@@ -132,7 +130,7 @@ namespace KerbalData
                 return configs[0];
             }
 
-            throw new KerbalDataException("Ambigious configration information. Cannot find a matching processor config using model type " + type.FullName);
+            throw new KerbalDataException("Ambiguous configuration information. Cannot find a matching processor configuration using model type " + type.FullName);
         }
 
         /// <summary>
@@ -159,7 +157,7 @@ namespace KerbalData
         {
             if (config == null)
             {
-                throw new KerbalDataException("There has been an error attempting to load KerbalData configuration. Ensure that a config section exists with the following config: <section name=\"kerbalData\" type=\"KerbalData.Configuration.ApiConfig, KerbalData\"/>");
+                throw new KerbalDataException("There has been an error attempting to load KerbalData configuration. Ensure that a configuration section exists with the following configuration: <section name=\"kerbalData\" type=\"KerbalData.Configuration.ApiConfig, KerbalData\"/>");
             }
 
             if (config.Processors.Count <= 0)

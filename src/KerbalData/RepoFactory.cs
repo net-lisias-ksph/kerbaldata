@@ -8,9 +8,8 @@ namespace KerbalData
 {
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Linq;
-    using System.Text;
+
     using Configuration;
 
     /// <summary>
@@ -73,24 +72,26 @@ namespace KerbalData
                 Name = config.Name;
                 Parameters = new Dictionary<string, object>();
 
-                if (config.Parameters != null)
+                if (config.Parameters == null)
                 {
-                    foreach (RepoParameterConfig param in config.Parameters)
-                    {
-                        Parameters[param.Key] = param.Value;
-                    }
+                    return;
+                }
+
+                foreach (RepoParameterConfig param in config.Parameters)
+                {
+                    Parameters[param.Key] = param.Value;
                 }
             }
 
-            public string Name { get; set; }
-            public Type Type { get; set; }
-            public IDictionary<string, object> Parameters { get; set; }
+            internal string Name { get; set; }
+            private Type Type { get; set; }
+            private IDictionary<string, object> Parameters { get; set; }
 
             public IKerbalDataRepo<T> GetRepo<T>(ProcessorRegistry registry, IDictionary<string, object> parameters = null) where T : class, IStorable, new()
             {
                 var type = typeof(T);
 
-                // Accept runtime proviced values and overwrite any configured values of the same name (runtime values ALWAYS take precedence)
+                // Accept runtime provided values and overwrite any configured values of the same name (runtime values ALWAYS take precedence)
                 var paramList = new Dictionary<string, object>(Parameters);
 
                 if (parameters != null)
@@ -107,7 +108,7 @@ namespace KerbalData
                 }
                 catch (Exception ex)
                 {
-                    throw new KerbalDataException("An error has occured while creating an instance of the repository of type " + Type.FullName + " See inner exception for details", ex);
+                    throw new KerbalDataException("An error has occurred while creating an instance of the repository of type " + Type.FullName + " See inner exception for details", ex);
                 }
             }
         }

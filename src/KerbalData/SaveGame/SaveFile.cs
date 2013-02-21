@@ -6,15 +6,9 @@
 
 namespace KerbalData.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using Newtonsoft.Json.Linq;
 
     using Newtonsoft.Json;
-    using NAnt.Core.Functions;
 
     /// <summary>
     /// Instances of this class contains reference and management of a KSP save file.

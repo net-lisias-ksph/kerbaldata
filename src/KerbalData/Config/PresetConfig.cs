@@ -6,10 +6,8 @@
 
 namespace KerbalData.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+
     using Newtonsoft.Json;
 
     /// <summary>
@@ -20,13 +18,16 @@ namespace KerbalData.Models
     {
         private IList<PlanetConfig> planets;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PresetConfig" /> class.
+        /// </summary>
         public PresetConfig() : base()
         {
             DisplayName = "Presets";
         }
 
         /// <summary>
-        /// Gets or sets the planet config collection. - File Property: PLANET
+        /// Gets or sets the planet configuration collection. - File Property: PLANET
         /// </summary>
         [JsonProperty("PLANET")]
         public IList<PlanetConfig> Planets

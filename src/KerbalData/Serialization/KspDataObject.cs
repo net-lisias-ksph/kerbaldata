@@ -6,13 +6,10 @@
 
 namespace KerbalData
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
-    /// Core data context object used for data serilization/de-serilaization. Only inplmentations build on IKspDataConverter or IKspFileConverter
+    /// Core data context object used for data serilization/de-serilaization. Only implementation build on IKspDataConverter or IKspFileConverter
     /// </summary>
     public sealed class KspDataObject
     {
