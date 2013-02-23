@@ -24,7 +24,13 @@
       <DocumentationSource sourceFile="..\KerbalData\KerbalData.csproj" />
     </DocumentationSources>
     <HelpAttributes />
-    <NamespaceSummaries />
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="KerbalData" isDocumented="True">Top level namespace for Consumer API classes. Classes under this namespace are meant to be consumed by end developers. Provides all the core classes neccassary for loading individual files or wiring in a repoistory loading pattern with automatic save/backup capibilities.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="KerbalData.Configuration" isDocumented="True">Holds all classes responsible for KerbalData configuration info either injected into the library by the consumer or loaded from a .NET configuration section.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="KerbalData.Models" isDocumented="True">Default model implmentations for KSP data files. All models implement INotifyPropertyChanged and contain ObservableDictionaries for fields in the data that are not mapped to typed properties in the model.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="KerbalData.Providers" isDocumented="True">Build In data repository implmentations.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="KerbalData.Serialization" isDocumented="True">Main serialization processing classes responsible for handling base data processing.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="KerbalData.Serialization.Serializers.V018x" isDocumented="True">Builtin Serilaizer and data converter implmentations for KSP data for KerbalSpaceProgram v0.18 and higher.</NamespaceSummaryItem></NamespaceSummaries>
     <PlugInConfigurations />
     <BuildLogFile />
     <HtmlHelp1xCompilerPath />

@@ -25,7 +25,7 @@ namespace KerbalData
         /// Initializes a new instance of the <see cref="ProcessorRegistry" /> class.
         /// </summary>
         /// <param name="configSectionName">configuration section name to load</param>
-        public ProcessorRegistry(string configSectionName = "kerbalData")
+        public ProcessorRegistry(string configSectionName = null)
         {
             Init(ApiConfigManager.GetConfig(configSectionName));
         }
