@@ -1,31 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using KerbalData;
-using System.Collections.Generic;
 
 namespace KerbalData.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class KerbalDataToJsonTests
     {
         /// <summary>
         /// Processes all files under Data/ by reading the file into JSON.Net and then writing them back out to KSP data. Resulting files are compared
         /// using a diff engine to the orignal KSP data file.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void TestGeneralProcessing()
         {
             Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data"));
         }
 
-        [TestMethod]
+        [Test]
         public void TestProcessing()
         {
             //Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\Parts\dockingPort1"));

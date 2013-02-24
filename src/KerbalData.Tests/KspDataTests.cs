@@ -7,15 +7,12 @@
 namespace KerbalData.Tests
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Reflection;
+    using NUnit.Framework;
 
     using Models;
 
-    [TestClass]
+    [TestFixture]
     public class KspDataTests
     {
         /// <summary>
@@ -25,14 +22,13 @@ namespace KerbalData.Tests
         {
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Data\Saves\KspPersistentSfswMods.sfs")]
+        [Test]
         public void SaveFileLoadTest()
         {
             var save = 
                 KspData.LoadKspFile<SaveFile>(
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) 
-                + @"\KspPersistentSfswMods.sfs");
+                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
+                + @"\Data\saves\KspPersistentSfswMods.sfs");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(save);
@@ -44,14 +40,13 @@ namespace KerbalData.Tests
         }
 
 
-        [TestMethod]
-        [DeploymentItem(@"Data\Parts\mumech_MechJeb\part.cfg")]
+        [Test]
         public void PartFileLoadTest()
         {
             var part =
                 KspData.LoadKspFile<PartFile>(
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                + @"\part.cfg");
+                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
+                + @"\Data\Parts\mumech_MechJeb\part.cfg");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(part);
@@ -59,28 +54,26 @@ namespace KerbalData.Tests
         }
 
 
-        [TestMethod]
-        [DeploymentItem(@"Data\Ships\Custom\VAB\MultiSatMk1.craft")]
+        [Test]
         public void CraftFileLoadTest()
         {
             var craft =
                 KspData.LoadKspFile<CraftFile>(
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                + @"\MultiSatMk1.craft");
+                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
+                + @"\Data\Ships\Custom\VAB\MultiSatMk1.craft");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(craft);
             Assert.IsNotNull(craft.DisplayName);
         }
 
-        [TestMethod]
-        [DeploymentItem(@"Data\Config\settings.cfg")]
+        [Test]
         public void ConfigFileLoadTest()
         {
             var config =
                 KspData.LoadKspFile<ConfigFile>(
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                + @"\MultiSatMk1.craft");
+                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
+                + @"\Data\Config\settings.cfg");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(config);

@@ -10,12 +10,14 @@ namespace KerbalData.Tests
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using NUnit;
+    using NUnit.Framework;
 
     /// <summary>
     /// TODO: Class Summary
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class LinqTest
     {
         /// <summary>
@@ -25,7 +27,7 @@ namespace KerbalData.Tests
         {
         }
             
-        [TestMethod]
+        [Test]
         public void TestGameObject()
         {
             //var obj = KspData.LoadKspFile(@"C:\dev\KspData\src\KerbalData.Tests\bin\Debug\Data\Parts\dockingPort1\part.cfg");
