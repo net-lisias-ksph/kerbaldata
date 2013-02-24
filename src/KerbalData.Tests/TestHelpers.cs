@@ -11,6 +11,7 @@ namespace KerbalData.Tests
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
 
     /// <summary>
@@ -18,6 +19,8 @@ namespace KerbalData.Tests
     /// </summary>
     public static class TestHelpers
     {
+        private static string baseTestPath;
+
         public static void WriteToConsole(Exception ex)
         {
             Debug.WriteLine(ex.Message + Environment.NewLine + ex.StackTrace);
@@ -30,6 +33,22 @@ namespace KerbalData.Tests
                 return file.ReadToEnd();
             }
         }
+
+        public static string BaseTestPath()
+        {
+            if (string.IsNullOrEmpty(baseTestPath))
+            {
+                baseTestPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+            }
+
+            return baseTestPath;
+        }
+
+        public static string BaseDataPath()
+        {
+            return BaseTestPath() + @"\Data\";
+        }
+
     }
 
     public static class TestExtensions

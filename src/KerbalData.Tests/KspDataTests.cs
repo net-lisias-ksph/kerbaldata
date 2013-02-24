@@ -25,10 +25,8 @@ namespace KerbalData.Tests
         [Test]
         public void SaveFileLoadTest()
         {
-            var save = 
-                KspData.LoadKspFile<SaveFile>(
-                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-                + @"\Data\saves\KspPersistentSfswMods.sfs");
+            var save =
+                KspData.LoadKspFile<SaveFile>(TestHelpers.BaseDataPath() + @"saves\KspPersistentSfswMods\persistent.sfs");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(save);
@@ -44,9 +42,7 @@ namespace KerbalData.Tests
         public void PartFileLoadTest()
         {
             var part =
-                KspData.LoadKspFile<PartFile>(
-                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-                + @"\Data\Parts\mumech_MechJeb\part.cfg");
+                KspData.LoadKspFile<PartFile>(TestHelpers.BaseDataPath() + @"Parts\mumech_MechJeb\part.cfg");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(part);
@@ -57,10 +53,7 @@ namespace KerbalData.Tests
         [Test]
         public void CraftFileLoadTest()
         {
-            var craft =
-                KspData.LoadKspFile<CraftFile>(
-                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-                + @"\Data\Ships\Custom\VAB\MultiSatMk1.craft");
+            var craft = KspData.LoadKspFile<CraftFile>(TestHelpers.BaseDataPath() + @"Ships\VAB\MultiSatMk1.craft");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(craft);
@@ -71,16 +64,11 @@ namespace KerbalData.Tests
         public void ConfigFileLoadTest()
         {
             var config =
-                KspData.LoadKspFile<ConfigFile>(
-                System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-                + @"\Data\Config\settings.cfg");
+                KspData.LoadKspFile<ConfigFile>(TestHelpers.BaseDataPath() + @"settings.cfg");
 
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(config);
             Assert.IsNotNull(config.DisplayName);
         }
-
-
-
     }
 }

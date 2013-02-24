@@ -1,0 +1,37 @@
+KSPMM requires a file to be present in a dir as the stupid thing won't create empty directories :/
+
+So anyway, here's a pretty picture I made....
+
+
+
+                           *     .--.
+                                / /  `
+               +               | |
+                      '         \ \__,
+                  *          +   '--'  *
+                      +   /\
+         +              .'  '.   *
+                *      /======\      +
+                      ;:.  _   ;
+                      |:. (_)  |
+                      |:.  _   |
+            +         |:. (_)  |          *
+                      ;:.      ;
+                    .' \:.    / `.
+                   / .-'':._.'`-. \
+                   |/    /||\    \|
+             jgs _..--"""````"""--.._
+           _.-'``                    ``'-._
+         -'                                '-
+
+
+
+
+
+
+
+
+
+
+
+(and when I say 'made' I mean 'stole of off the internet')

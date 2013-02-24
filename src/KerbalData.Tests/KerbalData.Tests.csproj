@@ -129,6 +129,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="KerbalDataTests.cs" />
     <Compile Include="KerbalDataToJsonTests.cs" />
     <Compile Include="KspDataTests.cs" />
     <Compile Include="LinqTest.cs" />
