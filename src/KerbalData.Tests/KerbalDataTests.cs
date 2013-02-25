@@ -29,10 +29,12 @@ namespace KerbalData.Tests
             Assert.IsNotNull(Data);
             Assert.IsNotNull(Data.Saves);
             Assert.AreEqual(2, Data.Saves.Count);
+            Assert.AreEqual(2, Data.Saves.Names.Count());
             Assert.IsNotNull(Data.Saves["KspPersistentSfswMods"]);
 
             Assert.IsNotNull(Data.Scenarios);
             Assert.AreEqual(4, Data.Scenarios.Count);
+            Assert.AreEqual(4, Data.Scenarios.Names.Count());
             Assert.IsNotNull(Data.Scenarios["Impending Impact"]);
 
             Assert.IsNotNull(Data.TrainingScenarios);
@@ -41,18 +43,22 @@ namespace KerbalData.Tests
 
             Assert.IsNotNull(Data.CraftInSph);
             Assert.AreEqual(20, Data.CraftInSph.Count);
+            Assert.AreEqual(20, Data.CraftInSph.Names.Count());
             Assert.IsNotNull(Data.CraftInSph["Hopper Mk1"]);
 
             Assert.IsNotNull(Data.CraftInVab);
             Assert.AreEqual(19, Data.CraftInVab.Count); // There are 176 part folders but only 175 .cfg files.
+            Assert.AreEqual(19, Data.CraftInVab.Names.Count()); // There are 176 part folders but only 175 .cfg files.
             Assert.IsNotNull(Data.CraftInVab["Mun Sat Const Mk1.5"]);
 
             Assert.IsNotNull(Data.Parts);
             Assert.AreEqual(175, Data.Parts.Count);
+            Assert.AreEqual(175, Data.Parts.Names.Count());
             Assert.IsNotNull(Data.Parts["EngineerChip"]);
 
             Assert.IsNotNull(Data.KspSettings);
             Assert.AreEqual(1, Data.KspSettings.Count);
+            Assert.AreEqual(1, Data.KspSettings.Names.Count());
             Assert.IsNotNull(Data.KspSettings["settings"]);
         }
 

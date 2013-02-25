@@ -2,5 +2,6 @@ bin/
 obj/
 TestResults/
 target/
+packages/
 *.user
 *.suo

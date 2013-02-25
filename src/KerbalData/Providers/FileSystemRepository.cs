@@ -219,13 +219,21 @@ namespace KerbalData.Providers
         /// <returns>true=success;false=failure</returns>
         public bool Delete(string id)
         {
-            if (NameExists(id))
+            if (!NameExists(id))
             {
-                File.Delete(GetFileInfo(id).FullName);
-                return true;
+                return false;
             }
 
-            return false;
+            if (mode == FileMode.DirPerFile)
+            {
+                Directory.Delete(GetFileInfo(id).Directory.FullName, true);
+            }
+            else
+            {
+                File.Delete(GetFileInfo(id).FullName);
+            }
+
+            return true;
         }
 
         private FileSet GetFiles()
