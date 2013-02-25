@@ -189,7 +189,14 @@ namespace KerbalData.Providers
 
             if (savePath != null && backup)
             {
-                File.Copy(savePath, savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"));
+                var count = 0;
+                var backupPath = savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+
+                do
+                {
+                    count++;
+                } while (File.Exists(backupPath + "_" + count));
+                File.Copy(savePath, backupPath + "_" + count);
             }
             else if (savePath == null)
             {

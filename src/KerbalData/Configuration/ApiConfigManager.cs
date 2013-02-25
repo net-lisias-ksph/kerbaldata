@@ -21,8 +21,13 @@ namespace KerbalData.Configuration
         /// </summary>
         /// <param name="configSectionName">name of configuration to retrieve</param>
         /// <returns>de-serialized configuration section</returns>
-        public static ApiConfig GetConfig(string configSectionName = "kerbalData")
+        public static ApiConfig GetConfig(string configSectionName = null)
         {
+            if (string.IsNullOrEmpty(configSectionName))
+            {
+                return null;
+            }
+
             if (!configurations.ContainsKey(configSectionName))
             {
                 var apiConfig = (ApiConfig)ConfigurationManager.GetSection(configSectionName);

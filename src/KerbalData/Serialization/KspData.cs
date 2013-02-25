@@ -152,6 +152,12 @@ namespace KerbalData
                 try
                 {
                     obj = processor.Process(file);
+
+                    var storable = obj as StorableObject;
+                    if (storable != null)
+                    {
+                        storable.Uri = path;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -164,6 +170,7 @@ namespace KerbalData
             return obj;
         }
 
+        /*
         /// <summary>
         /// Loads a JSON formatting file into JObject
         /// </summary>
@@ -226,7 +233,9 @@ namespace KerbalData
             }
 
             return obj;
-        }
+        }*/
+
+        
 
         /// <summary>
         /// Saves provided data to KSP data format at the provided path

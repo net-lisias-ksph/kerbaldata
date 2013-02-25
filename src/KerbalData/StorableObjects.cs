@@ -6,6 +6,7 @@
 
 namespace KerbalData
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -44,21 +45,13 @@ namespace KerbalData
         {
             get
             {
-                if (objects.ContainsKey(id))
-                {
-                    Load(id);
-                    return objects[id].Object;
-                }
+                Load(id);
+                return objects[id].Object;
 
-                return null;
             }
             set
             {
-                if (objects.ContainsKey(id))
-                {
-                    Load(id);
-                }
-
+                //Load(id);
                 Add(value, id); // Run The add method as it handles both updates and new objects. 
             }
         }
@@ -127,24 +120,32 @@ namespace KerbalData
         /// is null a random ID will be generated. If the ID matches that of an existing object the existing object data will be overwritten.</param>
         public void Add(T obj, string id = null)
         {
-            if (obj == null)
+            var storable = obj as StorableObject;
+
+            if (storable == null)
             {
-                throw new KerbalDataException("Object cannot be null");
+                throw new KerbalDataException("Object Data cannot be null");
             }
 
-            (obj as StorableObject).Id = id != null ? id : obj.Id;
+            storable.Id = id ?? obj.Id;
 
-            if (obj.Id == null)
+            if (storable.Id == null)
             {
-                // TODO: Generae random ID 
+                storable.Id = Guid.NewGuid().ToString();
             }
 
-            (obj as StorableObject).Original = JObject.FromObject(obj);
-            (obj as StorableObject).SetParent(this);
+            storable.Original = JObject.FromObject(obj);
+            storable.SetParent(this);
             obj.Save();
 
+            objects[id].Object = obj;
+            objects[id].Loaded = true;
+            (objects[id].Object as StorableObject).Uri = Repo.BaseUri + "\\" + obj.Id;
+
+            /*
             if (!objects.ContainsKey(obj.Id))
             {
+                // Not sure this path ever will fire. TODO: Analysis for removal of this branch.
                 objects[obj.Id] = new StorableItemMetadata<T>()
                 {
                     Id = obj.Id,
@@ -158,7 +159,7 @@ namespace KerbalData
                 objects[id].Object = obj;
                 objects[id].Loaded = true;
                 (objects[id].Object as StorableObject).Uri = Repo.BaseUri + "\\" + obj.Id;
-            }
+            }*/
         }
 
         /// <summary>

@@ -35,6 +35,7 @@ namespace KerbalData
             return str;
         }
 
+        /*
         /// <summary>
         /// Deletes children from the provided object
         /// </summary>
@@ -80,6 +81,6 @@ namespace KerbalData
             }
 
             return count;
-        }
+        }*/
     }
 }

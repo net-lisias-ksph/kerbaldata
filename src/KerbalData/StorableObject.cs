@@ -129,26 +129,37 @@ namespace KerbalData
         /// <returns>true=success;false=failure</returns>
         public bool Save(string name = null, bool backup = true)
         {
-            if (!string.IsNullOrEmpty(name)) // Don't waste cycles saving when we don't need to. Unless we get a name value
+            if (parent == null) // File is not attached to a StorableObjects instance, save as individual file
             {
                 if (parent == null) // If parent is null then this instance was loaded manually. Save using System.IO and lower level classes
                 {
-                    var savePath = !string.IsNullOrEmpty(name) ? name : Uri;
+                    var path = !string.IsNullOrEmpty(name) ? name : Uri;
 
-                    if (string.IsNullOrEmpty(savePath))
+                    var saveMethod =
+                            typeof(KspData).GetMethods().Where(m => m.Name == "SaveFile").FirstOrDefault(m => m.GetParameters()[1].ParameterType != typeof(string))
+                            .MakeGenericMethod(new Type[] { GetType() });
+
+                    if (string.IsNullOrEmpty(path))
                     {
                         throw new KerbalDataException("Loaded Game was not loaded from a file, a file path is required in order to save");
                     }
 
-                    if (File.Exists(savePath) && backup)
+                    if (File.Exists(path) && backup)
                     {
-                        KspData.SaveFile(savePath + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss"), Original);
+                        var count = 0;
+                        var backupPath = path + "-BACKUP-" + DateTime.Now.ToString("yyyyMMdd_hhmmss");
+
+                        do
+                        {
+                            count++;
+                        } while (File.Exists(backupPath + "_" + count));
+                        File.Copy(path, backupPath + "_" + count);
                     }
 
-                    var data = JObject.FromObject(this);
-                    KspData.SaveFile(savePath, data);
-                    Original = data;
-                    Uri = savePath;
+
+                    saveMethod.Invoke(null, new object[] { path, this, null });
+                    Uri = path;
+
                     return true;
                 }
             }

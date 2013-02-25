@@ -18,6 +18,42 @@ namespace KerbalData
     /// </summary>
     public class ProcessorRegistry
     {
+        private static readonly ApiConfig DefaultConfig = new ApiConfig()
+        {
+            Processors = new ProcessorsConfig()
+                    {
+                        new ProcessorConfig()
+                            {
+                                Index = 0,
+                                Serializer = new SerializerConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
+                                    },
+                                Converter = new ConverterConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.JsonModelConverter`1, KerbalData"
+                                    }
+                            },
+                        new ProcessorConfig()
+                            {
+                                Index = 1,
+                                ModelType = "Newtonsoft.Json.Linq.JObject, Newtonsoft.Json",
+                                Serializer = new SerializerConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.DataSerializer, KerbalData"
+                                    },
+                                Converter = new ConverterConfig()
+                                    {
+                                        Type =
+                                            "KerbalData.Serialization.Serializers.V018x.JsonObjectConverter`1, KerbalData"
+                                    }
+                            }
+                    }
+        };
+
         private readonly List<ProcessorMetaData> processorConfigs = new List<ProcessorMetaData>();
         private readonly List<ProcLookUp> lookups = new List<ProcLookUp>();
 
@@ -27,7 +63,7 @@ namespace KerbalData
         /// <param name="configSectionName">configuration section name to load</param>
         public ProcessorRegistry(string configSectionName = null)
         {
-            Init(ApiConfigManager.GetConfig(configSectionName));
+            Init(string.IsNullOrEmpty(configSectionName) ? DefaultConfig : ApiConfigManager.GetConfig(configSectionName));
         }
 
         /// <summary>
@@ -148,7 +184,7 @@ namespace KerbalData
         /// </summary>
         /// <param name="configSectionName">configuration section to lookup and load</param>
         /// <returns>registry instance</returns>
-        public static ProcessorRegistry Create(string configSectionName = "kerbalData")
+        public static ProcessorRegistry Create(string configSectionName = null)
         {
             return new ProcessorRegistry(configSectionName);
         }

@@ -7,6 +7,7 @@
 namespace KerbalData.Tests
 {
     using System;
+    using System.IO;
     using System.Reflection;
     using NUnit.Framework;
 
@@ -69,6 +70,21 @@ namespace KerbalData.Tests
             // Just a simple test to see if we can load a game
             Assert.IsNotNull(config);
             Assert.IsNotNull(config.DisplayName);
+        }
+
+        [Test]
+        public void DataTypeConvertTest()
+        {
+            var data = (new StreamReader(File.Open(TestHelpers.BaseDataPath() + @"Ships\VAB\MultiSatMk1.craft", FileMode.Open))).ReadToEnd();
+
+            var convertedCraft = KspData.Convert(data, ProcessorRegistry.Create().Create<CraftFile>()); // Bit ugly to test this use case, would never be this way in the real world as this is what happens internally
+            var convertedCraft2 = KspData.Convert<CraftFile>(data);
+            var craft = KspData.LoadKspFile<CraftFile>(TestHelpers.BaseDataPath() + @"Ships\VAB\MultiSatMk1.craft");
+
+            Assert.NotNull(convertedCraft);
+            Assert.NotNull(convertedCraft2);
+            Assert.AreEqual(craft.Parts.Count, convertedCraft.Parts.Count);
+            Assert.AreEqual(craft.Parts.Count, convertedCraft2.Parts.Count);
         }
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="KspDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorableObjectsTests.cs" />
+    <Compile Include="StorableObjectTests.cs" />
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
