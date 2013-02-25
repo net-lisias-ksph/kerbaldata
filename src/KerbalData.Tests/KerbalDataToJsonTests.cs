@@ -13,7 +13,7 @@ using KerbalData;
 namespace KerbalData.Tests
 {
     [TestFixture]
-    public class KerbalDataToJsonTests
+    public class KerbalDataToJsonTests : BaseDataTest
     {
         /// <summary>
         /// Processes all files under Data/ by reading the file into JSON.Net and then writing them back out to KSP data. Resulting files are compared
@@ -22,14 +22,14 @@ namespace KerbalData.Tests
         [Test]
         public void TestGeneralProcessing()
         {
-            Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data"));
+            Assert.IsTrue(AllFilesMatch(TestHelpers.BaseDataTempPath()));
         }
 
         [Test]
         public void TestProcessing()
         {
-            //Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\Parts\dockingPort1"));
-            Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\saves\temp"));
+            Assert.IsTrue(AllFilesMatch(TestHelpers.BaseDataTempPath() + @"Parts\dockingPort1"));
+            //Assert.IsTrue(AllFilesMatch(Environment.CurrentDirectory + @"\Data\saves\temp"));
         }
 
         private bool AllFilesMatch(string dirPath)

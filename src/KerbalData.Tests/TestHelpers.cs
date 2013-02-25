@@ -49,6 +49,11 @@ namespace KerbalData.Tests
             return BaseTestPath() + @"\Data\";
         }
 
+        public static string BaseDataTempPath()
+        {
+            return BaseTestPath() + @"\TestData\";
+        }
+
     }
 
     public static class TestExtensions

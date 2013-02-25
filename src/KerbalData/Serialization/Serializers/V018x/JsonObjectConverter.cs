@@ -135,7 +135,8 @@ namespace KerbalData.Serialization.Serializers.V018x
                     if (!field.Value.Contains(',') 
                         || fieldName.ToUpper().Equals("CDATA")
                         || fieldName.ToUpper().Equals("DESCRIPTION") 
-                        || fieldName.ToUpper().Equals("TITLE"))
+                        || fieldName.ToUpper().Equals("TITLE")
+                        || fieldName.ToUpper().Contains("KCOM-"))
                     {
                         jobj[field.Name] = field.Value;
                     }
@@ -163,7 +164,8 @@ namespace KerbalData.Serialization.Serializers.V018x
                         if (!field.Value.Contains(',') 
                             || fieldName.ToUpper().Equals("CDATA") 
                             || fieldName.ToUpper().Equals("DESCRIPTION")
-                            || fieldName.ToUpper().Equals("TITLE"))
+                            || fieldName.ToUpper().Equals("TITLE")
+                            || fieldName.ToUpper().Contains("KCOM-"))
                         {
                             jobj[field.Name + "-KMULTI-" + Guid.NewGuid().ToString()] = field.Value;
                         }

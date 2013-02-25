@@ -235,10 +235,12 @@ namespace KerbalData
         /// <param name="path">path to save file to</param>
         /// <param name="obj">object to use when serializing data</param>
         /// <param name="configSectionName">configuration section name to use for processor lookup</param>
-        public static void SaveFile<T>(string path, T obj, string configSectionName = "kerbalData") where T : class, new()
+        public static void SaveFile<T>(string path, T obj, string configSectionName = null) where T : class, new()
         {
-            SaveFile<T>(path, obj, ProcessorRegistry.Create(configSectionName).Create<T>());
-
+            SaveFile<T>(path, obj,
+                        !string.IsNullOrEmpty(configSectionName)
+                            ? ProcessorRegistry.Create(configSectionName).Create<T>()
+                            : DefaultRegistry.Create<T>());
         }
 
         /// <summary>
@@ -260,9 +262,12 @@ namespace KerbalData
         /// <param name="data">data to parse</param>
         /// <param name="configSectionName">configuration section to use for processor lookup</param>
         /// <returns>de-serialized object instance</returns>
-        public static T Convert<T>(string data, string configSectionName = "kerbalData") where T : class, new()
+        public static T Convert<T>(string data, string configSectionName = null) where T : class, new()
         {
-            return Convert<T>(data, ProcessorRegistry.Create(configSectionName).Create<T>());
+            return Convert<T>(data,
+                        !string.IsNullOrEmpty(configSectionName)
+                            ? ProcessorRegistry.Create(configSectionName).Create<T>()
+                            : DefaultRegistry.Create<T>());
         }
 
         /// <summary>
@@ -295,9 +300,12 @@ namespace KerbalData
         /// <param name="obj">object data</param>
         /// <param name="configSectionName">configuration section to use for processor lookup</param>
         /// <returns>KSP data as a string</returns>
-        public static string Convert<T>(T obj, string configSectionName = "kerbalData") where T : class, new()
+        public static string Convert<T>(T obj, string configSectionName = null) where T : class, new()
         {
-            return Convert<T>(obj, ProcessorRegistry.Create(configSectionName).Create<T>());
+            return Convert<T>(obj,
+                        !string.IsNullOrEmpty(configSectionName)
+                            ? ProcessorRegistry.Create(configSectionName).Create<T>()
+                            : DefaultRegistry.Create<T>());
         }
 
         /// <summary>

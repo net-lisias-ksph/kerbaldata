@@ -13,7 +13,7 @@ namespace KerbalData.Tests
     using Models;
 
     [TestFixture]
-    public class KspDataTests
+    public class KspDataTests : BaseDataTest
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KspDataTests" /> class.
