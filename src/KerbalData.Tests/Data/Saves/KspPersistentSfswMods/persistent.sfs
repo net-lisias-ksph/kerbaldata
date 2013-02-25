@@ -18767,7 +18767,7 @@
 		{
 			pid = fa38bd172b3143a497c9525fb71ab794
 			name = GPS Kerbin 007
-			type = Probe
+			type = Debris
 			sit = ORBITING
 			landed = False
 			landedAt = 
@@ -20541,8 +20541,8 @@
 		VESSEL
 		{
 			pid = b2609f9a42374f47bb1046533fbe8b6d
-			name = GPS Kerbin 008
-			type = Probe
+			name = GPS Kerbin 008 UNKNOWN
+			type = UNKNOWN
 			sit = ORBITING
 			landed = False
 			landedAt = 

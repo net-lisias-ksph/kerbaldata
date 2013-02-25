@@ -135,6 +135,8 @@
     <Compile Include="KerbalDataToJsonTests.cs" />
     <Compile Include="KspDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveGame\FlightStateTests.cs" />
+    <Compile Include="SaveGame\VesselTests.cs" />
     <Compile Include="StorableObjectsTests.cs" />
     <Compile Include="StorableObjectTests.cs" />
     <Compile Include="TestHelpers.cs" />
