@@ -1,0 +1,74 @@
+<div class="wikidoc">API Reference: <a href="http://manitcor.com/ksp/KerbalData/0.2.0Alpha">http://manitcor.com/ksp/KerbalData/0.2.0Alpha</a><br /><br /><img src="http://i.imgur.com/VQ9h6IG.png" /><br />
+<h1>Consumer API</h1>Classes starting with the word &quot;Kerbal&quot; are &quot;top level&quot; consumer API&#39;s. For most development, this is the easiest way to use KerbalData. The top level API provides the following features:<br />
+<ul><li>KSP Install Aware</li>
+<li>Specialized Models with extended properties to translate KSP data to standard formats (TimeSpan for game and mission time for example)</li>
+<li>Utilizes configured repos allowing for easy integration with multiple data stores</li>
+<li>Provides lazy loading of data</li>
+<li>Maintains data used to initialize the object and state can be restored to time of load or last save</li></ul>
+All operations with the top level API start with a KerbalData instance. This class will maintain all the references necessary. The constructor accepts the root path for a KSP install. Once initialized KerbalData will scan the KSP install and load initial meta-data (currently only names) but not the actual files into memory. KSP files are only serilized and loaded on initial access of pariticular named data. Once loaded the data will be maintained and no additional calls will be made to the data until Save() is called. <br />
+<h2>Examples</h2><ul><li><a href="https://kerbaldata.codeplex.com/wikipage?title=Examples%20-%20KSPEditor&referringTitle=0.2.0%20Alpha%20Documentation">KSPEditor</a></li></ul>
+Simple WPF editor written in C# showing binding to KSP data elements and using many parts of the API. <br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">// Use your own install path</span>
+<span style="color:Blue;">var</span> kd = <span style="color:Blue;">new</span> KerbalData(<span style="color:#A31515;">@&quot;C:\KSP&quot;</span>);
+
+<span style="color:Green;">// Load a save file using the same short name provided in the game UI</span>
+<span style="color:Blue;">var</span> sf = kd.Saves[<span style="color:#A31515;">&quot;testing&quot;</span>];
+
+<span style="color:Green;">// One of many helper methods, this one re-fills all ships</span>
+sf.Game.FlightState.FillResources();
+
+<span style="color:Green;">// Setting the title of the save game, this will change in-game name display </span>
+<span style="color:Green;">// (still need to wire in dir name change)</span>
+sf.Game.Title = <span style="color:#A31515;">&quot;I AM IRON MAN&quot;</span>;
+
+<span style="color:Green;">// Another helper method, this clears all vessels marked as debris or unknown vessel types.</span>
+sf.Game.FlightState.ClearDebris();
+
+<span style="color:Green;">// Grabbing a vessel from the game</span>
+<span style="color:Blue;">var</span> sat = 
+     sf.Game.FlightState.Vessels.Where(v =&gt; v.Name.Contains(<span style="color:#A31515;">&quot;Beta Geo-Sat&quot;</span>)).FirstOrDefault();
+
+<span style="color:Green;">// Changing the orbit (currently defaults to 100km above target)</span>
+sat.Orbit.Change(Body.Bop);
+
+<span style="color:Green;">// Save file, includes data backup of original file</span>
+sf.Save();
+</pre></div>
+<h1>KSP Data Models</h1>Model classes for each type of KSP data are implemented to provide easier access to the data and to allow the API better control to provide additional features. When using the top level API loading and de-serialization of your data is handled by the API, models are exposed as properties off of Kerbal data as shown in the previous examples. <br /><br />Model data is split into 2 categories:<br /><b>Mapped Data</b><br />Mapped data are strongly typed properties found in the model. To decrease the impact of changes to the save file in future versions only properties that seem to be permanent (best guess) are implemented as mapped properties. <br /><br />All remaining properties are:<br /><br /><b>Unmapped Data</b><br />All models inherit Dictionary&lt;string, JToken&gt;, after processing all mapped properties the remaining properties are added as children to the dictionary and can be manipulated as JSON.Net objects. Note the JToken is the base data type for JSON.Net the actual type may be a JToken, JObject or a JArray.<br /><br />Values in the dictionary are either converted with .ToString() during serialization or they are treated as JSON objects if the value is complex.  <br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">var</span> kd = <span style="color:Blue;">new</span> KerbalData(<span style="color:#A31515;">&quot;C:\KSP&quot;</span>);
+kd.Saves[<span style="color:#A31515;">&quot;mysaves&quot;</span>].Game.Parameters.Flight[<span style="color:#A31515;">&quot;CanQuickSave&quot;</span>] = <span style="color:Blue;">true</span>;
+</pre></div>
+<h1>Model Reference</h1><h2>SaveFile Model</h2><img src="http://i.imgur.com/O2jRnOI.png" /><br />Green=Collection<br />
+<h1>JSON Data API</h1>The lower level serialization API allows more direct access to the KSP data while dumping features like KSP install aware and data repository loading provided by KerbalData. This is useful for advanced uses where the developer desires to take more direct control of data loading.  All lower level API classes start with the prefix &quot;Ksp&quot;.<br /><br />Loading KSP data directly from files as well as conversion of strings  between JSON and KSP format is provided by methods in the static KspData class. <br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">// Load a KSP file returns a Json.Net JObject</span>
+<span style="color:Blue;">var</span> jobj = KspData.LoadKspFile(<span style="color:#A31515;">&quot;C:\KSP\Saves\mygame\persistent.sfs&quot;</span>);
+
+<span style="color:Green;">// All objects are either JObject&#39;s, JArray&#39;s ,JToken&#39;s or JProperty&#39;s and values are all strings</span>
+<span style="color:Green;">// Matching case to the names used in the loaded file is required.</span>
+<span style="color:Blue;">var</span> activeVessel = jobj[<span style="color:#A31515;">&quot;GAME&quot;</span>][<span style="color:#A31515;">&quot;FLIGHTSTATE&quot;</span>][<span style="color:#A31515;">&quot;activeVessel&quot;</span>];
+
+<span style="color:Green;">// Collections are stored as JArrays. The name of the collection is the same as the </span>
+<span style="color:Green;">// object name in the file. The serializer looks for objects of the same name at the same </span>
+<span style="color:Green;">// level and creates collection. </span>
+<span style="color:Blue;">var</span> myVessel = jobj[<span style="color:#A31515;">&quot;GAME&quot;</span>][<span style="color:#A31515;">&quot;FLIGHTSTATE&quot;</span>][<span style="color:#A31515;">&quot;VESSEL&quot;</span>][0];
+
+<span style="color:Green;">// Json.Net also supports Linq</span>
+<span style="color:Blue;">var</span> probes = jobj[<span style="color:#A31515;">&quot;GAME&quot;</span>][<span style="color:#A31515;">&quot;FLIGHTSTATE&quot;</span>][<span style="color:#A31515;">&quot;VESSEL&quot;</span>].Where(v =&gt; v[<span style="color:#A31515;">&quot;type&quot;</span>] == <span style="color:#A31515;">&quot;Probe&quot;</span>);
+
+<span style="color:Green;">// Upper level API models can also be used if desired by using JSON.Net&#39;s ToObject&lt;T&gt;() </span>
+<span style="color:Green;">// method. This is the same method used by the upper level API. All child objects are </span>
+<span style="color:Green;">// automatically loaded and the data mapped to them.</span>
+<span style="color:Blue;">var</span> game = jobj[<span style="color:#A31515;">&quot;GAME&quot;</span>].ToObject&lt;Game&gt;();
+
+<span style="color:Green;">// To convert a model instance back to a Json.Net FromObject method</span>
+<span style="color:Blue;">var</span> jobj = JObject.FromObject(game);
+
+<span style="color:Green;">// To save the KspData class has what you need no automatic backups are done before</span>
+<span style="color:Green;">// the save executed. Existing files are automatically overwritten. </span>
+KspData.SaveFile(<span style="color:#A31515;">&quot;C:\KSP\Saves\mygame\persistent.sfs&quot;</span>, jobj);
+</pre></div>
+<h1>Serialization API</h1>KerbalData exposes the following interfaces for future expansion and developer customization. IKspFileConverter and IKspDataConverter work together to provide the primary serialization and deserialization methods. The serialization is split across two classes as to handle for out-of-sync changes from version to version (ie some versions may only need an updated FileConverter, others a DataConverter, others still, both)<br /><br />The IKerbalDataRepo provides the signature for data loading with the main API the abstract class KerbalDataObject allows for expansion of data models. <br />
+<h2>IKspFileConverter</h2>Provides base file conversion from KSP text to an internal API data context for construction into another format.<br />
+<h2>IKspDataConverter</h2>Provides mapping of data context to a specific format. (currently embeds JObject requirements. To be removed in the future. <br />
+<h2>IKerbalDataRepo</h2>Provides access to loading of KSP data for the upper level API, Currently KerbalData comes with the KspInstallFileRepo which provides repo access to a defiend directiory structure using Ant style paths <a href="https://kerbaldata.codeplex.com/wikipage?title=http%3a%2f%2fant.apache.org%2fmanual%2fdirtasks.html&referringTitle=0.2.0%20Alpha%20Documentation&ANCHOR#patterns">http&#58;&#47;&#47;ant.apache.org&#47;manual&#47;dirtasks.html</a>.<br />
+<h2>KerbalDataObject</h2>Provides the base infrastructure for the upper level API data objects. Custom Data object and mapping structures may be used. All mapping leverages JSON.Net <a href="https://kerbaldata.codeplex.com/wikipage?title=http%3a%2f%2fjames.newtonking.com%2fprojects%2fjson%2fhelp%2f&referringTitle=0.2.0%20Alpha%20Documentation">http&#58;&#47;&#47;james.newtonking.com&#47;projects&#47;json&#47;help&#47;</a> and all JSON.Net attributes are available to customize serialization into your custom object. <br /><br />Data objects inheriting this type will be pre-wired with future support of custom data model delivery through the top level consumer API while providing full upper layer capabilities such as repository loading, automatic backup and data change tracking. </div><div class="ClearBoth"></div>

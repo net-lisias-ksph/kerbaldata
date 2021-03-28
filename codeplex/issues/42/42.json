@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After investigation, instead of appending an arbitrary string to properties that exist multiple times in the KSP save files, how about they get parsed into JSON arrays? I think this will ease the work for API consumers, although as far as I can see right now it would require some magical values, for which properties actually are arrays, and which are just parsed as arrays. Another possible solution would be to parse any property with multiple entries into a 'special' structure and shielding that from API consumers a bit.\r\n\r\nSo if we have a part in a vessel like so:\r\n```\r\nPART\r\n{\r\n//...\r\nattN = bottom, 2\r\nattN = top, 0\r\n//...\r\n}\r\n```\r\n\r\nThe first solution would require somehow keeping track of what properties allow multiple entries and which are actually real arrays and parse this to \r\n```\r\n{ \"part\": {\r\n        \"attN\": [ [ \"bottom\", 2 ], [ \"top\", 0 ] ]\r\n} }\r\n```\r\n\r\nThe second solution would parse this into a special structure somehow denoting this is a workaround.\r\n```\r\n{ \"part\": {\r\n        \"attN\": {\r\n            \"workaround\": true,\r\n            \"entries\": [ [ \"bottom\", 2 ], [ \"top\", 0 ] ]\r\n        }\r\n} }\r\n```\r\n\r\nI think the first solution can be implemented in the current codebase easier, in pretty much the same way and place the existing workaround is implemented. For the second solution, a new Newtonsoft.JSON.LINQ.JWorkAroundArray or so could be created, allowing existing code for adding attN or other properties to vessels to keep working.",
+    "LastUpdatedDate": "2013-08-18T03:24:13.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-08-14T13:38:20.573-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Proposal to allow the JSON parser multiple properties",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 42
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

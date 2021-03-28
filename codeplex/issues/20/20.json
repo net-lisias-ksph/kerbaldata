@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Data Serialization",
+      "DisplayName": "Data Serialization"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-01-24T00:24:21.717-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The latest release includes some reflection code that is using a 4.5 only method. \r\n\r\nTo address:\r\n* Implement conditional compilation\r\n* Develop alternate code-lines for affected areas\r\n* Produce updated 0.2.0 release for as many .NET versions as possible.\r\n\r\nTarget Frameworks: .NET 4, .NET 3.5 and Mono 2.10.x\r\nNice to Have: .NET 3.0 and .NET 2.0\r\n\r\nNote: this is an out-of-band fix and may delay later releases but by putting this in place today I will be in a better place to ensure more universal support in future releases. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.2.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-23T12:08:01-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add Support for .NET4/3.5 and Mono",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

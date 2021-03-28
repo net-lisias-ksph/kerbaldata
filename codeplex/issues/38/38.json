@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Add methods to parts for size re-scaling. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.4.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-25T16:23:23.29-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Part Re-Scale",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 38
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

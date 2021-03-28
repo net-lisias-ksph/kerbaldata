@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Data Serialization",
+      "DisplayName": "Data Serialization"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Works with configured repository to store data in to alternate stores. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.1.0 Early Alpha Release (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-17T08:40:05.753-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Data Publisher",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 15
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

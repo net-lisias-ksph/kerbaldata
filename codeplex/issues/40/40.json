@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "packaged import/export of saves or parts and related files/folders",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "1.0.0 Beta (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-25T20:38:53.693-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Packaged part/save import export",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 40
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

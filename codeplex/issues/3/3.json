@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Async class that monitors a KSP save file and publishes to a configured target/format either the entire save or a delta from the last transmission. \r\n\r\nProvides support for, remote telemetry, cloud based save, other fun features. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.4.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-08T17:52:02.697-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SaveDataWatcher",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 3
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Pushed to 0.4.0 Not critical for this release without other features. May be re-scheduled completely. ",
+      "PostedDate": "2013-02-05T12:35:26.49-08:00",
+      "Id": 88631
+    }
+  ]
+}

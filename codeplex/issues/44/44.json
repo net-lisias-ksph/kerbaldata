@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Review and refactor/propose refactor of integrated class patterns such as storage object repos  and serialization classes. ",
+    "LastUpdatedDate": "2013-11-07T08:29:01.807-08:00",
+    "PlannedForRelease": "0.4.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-11-07T08:29:01.807-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Dependency Analysis",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 44
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,96 @@
+[
+  {
+    "Id": "0",
+    "Name": "1.0.0 Beta (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "Primary feature complete. Move to beta phase primarily focused on bugs, cleanup, and prepare for future stable release. \n\nEst Release: Week of TBD",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-01-21T23:11:05.497-08:00",
+    "Files": []
+  },
+  {
+    "Id": "1",
+    "Name": "0.4.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "* Publishing data repositories - store KSP data to other forms/formats\n* KSP DataDiff - detailed data difference",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-19T21:54:21.66-08:00",
+    "Files": []
+  },
+  {
+    "Id": "2",
+    "Name": "0.5.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "More options for managing orbits, craft import and launching multiple craft at once.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-19T21:54:34.173-08:00",
+    "Files": []
+  },
+  {
+    "Id": "3",
+    "Name": "0.6.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "Kessler",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-19T21:54:44.473-08:00",
+    "Files": []
+  },
+  {
+    "Id": "4",
+    "Name": "0.7.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "Craft/Vessel Merge (Payload/Docking management)",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-01-25T09:11:14.793-08:00",
+    "Files": []
+  },
+  {
+    "Id": "5",
+    "Name": "0.8.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "TBD",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-19T21:55:31.957-08:00",
+    "Files": []
+  },
+  {
+    "Id": "6",
+    "Name": "0.9.0 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Planning",
+    "Description": "TBD",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-02-19T21:55:48.55-08:00",
+    "Files": []
+  },
+  {
+    "Id": "7",
+    "Name": "0.3.2 Alpha (Jeb's Jalopy)",
+    "DevelopmentStatus": "Alpha",
+    "Description": "*0.3.2 Alpha Documentation [url:Web|http://manitcor.com/ksp/KerbalData/0.3.2Alpha/index.php] | [url:CHM|http://manitcor.com/ksp/KerbalData/0.3.2Alpha/KerbalDataApiReference.chm]*\n\n[url:Also check out the first application built with KerbalData. A Full KSP data editor|http://kerbaledit.codeplex.com/]\n\nRelease Notes\n----\n* Added tests for data helper methods on models.\n* Additions to Storable and KspData tests. Multiple bug fixes around standalone file load/save use cases.\n* Added code coverage and reporting, added additional tests for object CRUD operations, fixed bug with Delete() on StorableObjects{T}\n* Updated to general processing tests. Fixed bug in DataConverter for comments with special chars.\n* Moved around test data to match install folder locations. Added initial tests for KerbalData class.\n* Switching unit tests over to nUnit 2.6 to allow for wider testing on more platforms\n* Minor updates to remove default references to \"kerbalData\" configuration section. Using hard-coded default config for now to make things easier for end users.\n* General cleanup, added docs, fixed doc spelling.\n*  Bugfix for loading a single files without context. Added unit tests for single file load.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2013-03-10T23:46:14.34-07:00",
+    "Files": [
+      {
+        "Id": "e0986d9e-e026-46ff-a479-1fbc723f672c",
+        "FileName": "KerbalData_032_20130301_000.zip",
+        "Url": "./7/e0986d9e-e026-46ff-a479-1fbc723f672c",
+        "Type": "Application",
+        "UploadDate": "2013-02-28T22:13:36.53-08:00"
+      },
+      {
+        "Id": "25267427-719b-4728-a2e8-9cbcc5c8e12a",
+        "FileName": "KerbalData_src_032_20130301_000.zip",
+        "Url": "./7/25267427-719b-4728-a2e8-9cbcc5c8e12a",
+        "Type": "Source Code",
+        "UploadDate": "2013-02-28T22:13:36.687-08:00"
+      },
+      {
+        "Id": "11afea58-09cd-4a20-b442-72ab9b9c20ad",
+        "FileName": "RibbonUpdate_POC_001_001.zip",
+        "Url": "./7/11afea58-09cd-4a20-b442-72ab9b9c20ad",
+        "Type": "Example",
+        "UploadDate": "2013-03-10T23:46:12.56-07:00"
+      }
+    ]
+  }
+]

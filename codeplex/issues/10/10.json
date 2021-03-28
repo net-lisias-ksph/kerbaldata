@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "https://kerbaldata.codeplex.com/SourceControl/changeset/e40f7b4e569c\n\nUpdated to add at minimum top level access for all major types. ",
+    "ClosedDate": "2013-01-21T01:30:34.11-08:00",
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "0.1.5 has some basic wiring for key elements most developers would be interested in right away. \r\n\r\nFully \"flesh-out\" high level object structure to include easy access with as few lines for code possible to the following:\r\n\r\n* Crew\r\n* Game Parameters\r\n* Parts\r\n* Craft Files\r\n* Game Configuration\r\n ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.2.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-09T17:30:14.44-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Expose all main data elements",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 10
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Adding all save models. Including type conversion where sensible. For example, anywhere time is presented both the raw decimal value and a TimeSpan instance are available as properties on the model object. \n\nDue to floating point issues time calculations using TimeSpan seem to be about 5-20 mins off from game time. ",
+      "PostedDate": "2013-01-13T23:38:41.643-08:00",
+      "Id": 86072
+    },
+    {
+      "Message": "added data loading system and wired up primary top level classes. ",
+      "PostedDate": "2013-01-16T20:52:56.23-08:00",
+      "Id": 86341
+    },
+    {
+      "Message": "All top level except game scenarios have been exposed.",
+      "PostedDate": "2013-01-20T23:33:25.43-08:00",
+      "Id": 86712
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "When putting a craft in a custom orbit the common procedure calls for the end user to:\r\n\r\n* start the game\r\n* load a craft and put it on the pad\r\n* close the game\r\n* edit the orbit\r\n\r\nWith the current tools we have eliminated the need for a user to manually edit the file. \r\n\r\nAdd capabilities to import a .craft file directly into a game save by performing the same processing steps handled by KSP when putting a craft on the pad (mainly adding orbit nodes and setting up relationships using the additional craft file meta-data) \r\n\r\nSupport Import/Export of Craft and Vessels\r\n* Input > Output\r\n* Craft > Vessel\r\n* Vessel > Craft",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.5.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-09T17:24:45.53-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Craft File Import",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 8
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Craft file loading enabled. ",
+      "PostedDate": "2013-01-20T23:33:49.883-08:00",
+      "Id": 86713
+    },
+    {
+      "Message": "After taking a close look at a craft file and it's version loaded in save data I have determined the basic strategy used by the game to construct a VESSEL object. However it is going to take some time to test each part type to discover all the types of auto-generated modules that are added when the vessel is created. \n\nFurther I need to better understand the association between certain key values like attN and how to calculate them in  a VESSEL. \n\nAs to not delay the upcoming release which already has a lot of changes this task will be pushed to an upcoming release. ",
+      "PostedDate": "2013-01-21T10:07:19.67-08:00",
+      "Id": 86778
+    }
+  ]
+}

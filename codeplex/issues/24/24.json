@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "Implementation complete. Utilized a custom ObservableDictionary implmentation from Dr WPF to provide 2-way binding for unmapped properties. See source for details.",
+    "ClosedDate": "2013-02-10T19:57:31.44-08:00",
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Expand support on model patterns to allow for cross thread data updates and binding with models. Implement INotifyPropertyChanged pattern to support interactive model updates with UI systems that support the pattern. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-25T16:14:54.953-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Expanded WPF Support",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 24
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Mainly busy work as this should be pretty easy to implement an test.  (crosses fingers)",
+      "PostedDate": "2013-02-10T00:52:47.943-08:00",
+      "Id": 88984
+    }
+  ]
+}

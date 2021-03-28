@@ -1,0 +1,134 @@
+<div class="wikidoc">The core idea behind KerbalData is to allow developers the freedom to make their ideas real without struggling with day to day data management concerns. Focus and time can be placed on what is done with the data rather than how to store the data. <br /><br />The developer of <a href="https://kerbaldata.codeplex.com/wikipage?title=url%3ahttp%3a%2f%2fkerbalspaceport.com%2fpayloader%2f&referringTitle=Time%20Savings">PayLoader</a> writes some pretty decent code that was easy to follow, it also made a prime example of how KerbalData can help a developer. While there are differences between the Java and .NET platforms the syntax and readability issues are nearly identical. <br /><br />PayLoader uses a fast scan method to parse through a file and find data. This is fast and somewhat easy to write but can become complex and fragile very quickly. Further you have to mix parsing needs with your business needs of setting values making the code harder to read. Without an API, this is one option many developers take. <br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">int</span> line = 0; 
+String tmp = <span style="color:#A31515;">&quot;&quot;</span>;
+String[] pos = <span style="color:Blue;">new</span> String[3];
+String pref = <span style="color:#A31515;">&quot;    pos = &quot;</span>;
+String pref2 = <span style="color:#A31515;">&quot;pos =&quot;</span>; 
+
+String target; 
+
+BigDecimal Ypos = <span style="color:Blue;">new</span> BigDecimal(0); 
+
+BigDecimal XposPay = <span style="color:Blue;">new</span> BigDecimal(0); 
+BigDecimal ZposPay = <span style="color:Blue;">new</span> BigDecimal(0);
+BigDecimal XposLau = <span style="color:Blue;">new</span> BigDecimal(0); 
+BigDecimal ZposLau = <span style="color:Blue;">new</span> BigDecimal(0);
+
+BigDecimal Yoff = <span style="color:Blue;">new</span> BigDecimal(spacer); 
+
+BigDecimal XoffPay = <span style="color:Blue;">new</span> BigDecimal(0); 
+BigDecimal ZoffPay = <span style="color:Blue;">new</span> BigDecimal(0);
+BigDecimal XoffLau = <span style="color:Blue;">new</span> BigDecimal(0);
+BigDecimal ZoffLau = <span style="color:Blue;">new</span> BigDecimal(0);
+
+target = pref2;
+
+<span style="color:Blue;">for</span>(line = 0;line&lt;launcher.datalist.size()-1;line++) 
+{
+tmp=launcher.readString(line); 
+
+<span style="color:Blue;">if</span> (tmp.contains(target))
+{
+  XposLau = 
+	<span style="color:Blue;">new</span> BigDecimal(tmp.substring(tmp.lastIndexOf(<span style="color:#A31515;">&#39;=&#39;</span>)+2,tmp.indexOf(<span style="color:#A31515;">&#39;,&#39;</span>))); 
+  Ypos = 
+	 <span style="color:Blue;">new</span> BigDecimal(tmp.substring(tmp.indexOf(<span style="color:#A31515;">&#39;,&#39;</span>)+1,tmp.lastIndexOf(<span style="color:#A31515;">&#39;,&#39;</span>)));
+  ZposLau = 
+	 <span style="color:Blue;">new</span> BigDecimal(tmp.substring(tmp.lastIndexOf(<span style="color:#A31515;">&#39;,&#39;</span>)+1,tmp.length())); 
+  
+  <span style="color:Blue;">if</span>(centreOrigin == <span style="color:#A31515;">&#39;V&#39;</span>) 
+  {
+	XoffLau=XposLau; 
+	ZoffLau=ZposLau; 
+  }
+  <span style="color:Blue;">else</span> <span style="color:Blue;">if</span>(centreOrigin == <span style="color:#A31515;">&#39;P&#39;</span>) /
+  {
+	<span style="color:Blue;">for</span>(line = 0;line&lt;payload.datalist.size()-1;line++) 
+	{
+	  tmp=payload.readString(line); 
+	  <span style="color:Blue;">if</span> (tmp.contains(target)) 
+	  {
+		XposPay = 
+		  <span style="color:Blue;">new</span> BigDecimal(tmp.substring(tmp.lastIndexOf(<span style="color:#A31515;">&#39;=&#39;</span>)+2,tmp.indexOf(<span style="color:#A31515;">&#39;,&#39;</span>)));
+		ZposPay = 
+		  <span style="color:Blue;">new</span> BigDecimal(tmp.substring(tmp.lastIndexOf(<span style="color:#A31515;">&#39;,&#39;</span>)+1,tmp.length())); 
+		<span style="color:Blue;">break</span>;
+	  }
+	}
+	
+	XoffLau=XposPay.subtract(XposLau); 
+
+	XoffLau=XoffLau.negate(); 
+	ZoffLau=ZposPay.subtract(ZposLau); 
+	ZoffLau=ZoffLau.negate(); 
+  }
+  <span style="color:Blue;">else</span> <span style="color:Blue;">if</span>(centreOrigin == <span style="color:#A31515;">&#39;L&#39;</span>) 
+  {
+	XoffLau=<span style="color:Blue;">new</span> BigDecimal(0); 
+	ZoffLau=<span style="color:Blue;">new</span> BigDecimal(0);
+  }
+  <span style="color:Blue;">else</span> 
+  {
+	XoffLau=XposLau; 
+					 
+	ZoffLau=ZposLau; 
+  }
+  Yoff=Yoff.add(Ypos); 
+  
+  <span style="color:Blue;">break</span>;
+}
+
+<span style="color:Green;">// This code continues looping through the file reader </span>
+<span style="color:Green;">// making multiple operations to handle the task</span>
+<span style="color:Green;">// of centering the craft correctly. </span>
+</pre></div><br />Next we have similar code using the KerbalData API. Because the data is already parsed and loaded into an object structure the developer has the freedom to skip any parsing concerns and focus only on the feature at hand. <br /><br />The difference in loading strategy in this case, for a tool like payloader may actually make it so payloader is faster than using KerbalData API however for end users the hit should be minor. <br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">var</span> orgin = CenterOrgin.Vab;
+
+<span style="color:Blue;">var</span> kd = <span style="color:Blue;">new</span> KerbalData(<span style="color:#A31515;">@&quot;C:\myksp\install\location&quot;</span>);
+<span style="color:Blue;">var</span> launcher = kd.CraftInVab[<span style="color:#A31515;">&quot;mylauncher&quot;</span>];
+<span style="color:Blue;">var</span> payload = kd.CraftInVab[<span style="color:#A31515;">&quot;mypayload&quot;</span>];
+
+<span style="color:Blue;">decimal</span> ypos;
+<span style="color:Blue;">decimal</span> xposPay, zposPay, xposLau, zposLau;
+<span style="color:Blue;">decimal</span> yoff;
+<span style="color:Blue;">decimal</span> xoffPay, zoffPay, xoffLau, zoffLau;
+
+<span style="color:Blue;">var</span> launcherPart = launcher.Parts[0];
+<span style="color:Blue;">var</span> launcherPos = launcherPart[<span style="color:#A31515;">&quot;pos&quot;</span>].Select(p =&gt; <span style="color:Blue;">decimal</span>.Parse(p.ToString())).ToArray();
+
+xposLau = launcherPos[0];
+ypos = launcherPos[1];
+zposLau = launcherPos[2];
+
+<span style="color:Blue;">switch</span> (orgin)
+{
+	<span style="color:Blue;">case</span> CenterOrgin.Vab:
+		xoffLau = xposLau;
+		zoffLau = zposLau;
+		<span style="color:Blue;">break</span>;
+	<span style="color:Blue;">case</span> CenterOrgin.Payload:
+		<span style="color:Blue;">var</span> payloadPart = payload.Parts[0];
+		<span style="color:Blue;">var</span> payloadPos = 
+                  payloadPart[<span style="color:#A31515;">&quot;pos&quot;</span>].Select(p =&gt; <span style="color:Blue;">decimal</span>.Parse(p.ToString()));
+		
+		xposPay = payloadPos[0];
+                zposPay = payloadPos[1];
+                xoffLau = (xposPay - xposLau) * -1; 
+                zoffLau = (zposPay - zposLau) * -1; 
+		<span style="color:Blue;">break</span>;
+	<span style="color:Blue;">case</span> CenterOrgin.Launcher:
+		xoffLau = 0;
+		zoffLau = 0;	
+		<span style="color:Blue;">break</span>;
+	<span style="color:Blue;">default</span>:
+		xoffLau = xposLau;
+		zoffLau = zposLau;	
+		<span style="color:Blue;">break</span>;
+}
+
+yoff= yoff + ypos;
+
+<span style="color:Green;">// Here would be the rest of the method to match Java, the rest of the method</span>
+<span style="color:Green;">// is very similar to this small sample running operations on various fields and</span>
+<span style="color:Green;">// calculating new values based on context. </span>
+</pre></div><br />The above C# code was transposed in about 10mins (not including time to read/understand the code). It would not have taken much longer to do it from scratch if you knew what steps and calculations you wanted ahead of time.  <br /><br />Finally, when using KerbalData you have some additional protection against game upgrades from breaking your software. In many cases you won&#39;t have to do anything, the parsing system is designed to be very flexible to minor changes in the file format (and this will improve over time) while with larger changes KerbalData aims to keep developer impact minimal to at most (hopefully) just updating the KerbalData serialization binaries. Further even when code changes are done, due to simplified usage syntax grep tools are more effective in finding and updating code in bulk. </div><div class="ClearBoth"></div>

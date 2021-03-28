@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "987908",
+    "ThreadId": "429857",
+    "Html": "\r\n<p>For the time being I am adding a dependency on NAnt.Core.dll to take advantage of the powerful file filtering/selection classes. This may remain or be removed depending on tech needs and community response.&nbsp;</p>\r\n<p>The library and accompanying license has been added to the repo.</p>\r\n",
+    "PostedDate": "2013-01-16T20:51:11.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1046767",
+    "ThreadId": "429857",
+    "Html": "If you're going to keep the NAnt dependency, I'd recommend supplying a Client Profile compatible version.  This project doesn't use the Mail stuff anyway, and it might save some folks some headaches.<br />\n",
+    "PostedDate": "2013-05-21T15:31:23.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1048958",
+    "ThreadId": "429857",
+    "Html": "ill roll that into my next update since this may linger a while at least<br />\n",
+    "PostedDate": "2013-05-26T17:20:13.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

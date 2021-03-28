@@ -1,0 +1,148 @@
+<div class="wikidoc"><a href="https://kerbaldata.codeplex.com/wikipage?title=file%3a606842&referringTitle=Examples%20-%20KSPEditor">KSPEditor Example Source and PreCompiled Application</a> - Uses .NET 4.0. Runs on WindowsXP SP3, Vista, 7 and 8.<br /><br />The KSPEditor is an evolving example and starting point template for developers desiring to make a WPF based application using KerbalData. The API usage examples contained in this application are relevant to any desired use of the API, not just WPF.<br /><br />KSPEditor uses the default Visual Studio 2012 template for a WPF4 project with no real modification to the base setup. The project includes the <a href="https://kerbaldata.codeplex.com/wikipage?title=http%3a%2f%2fnuget.org%2fpackages%2fnetfx-System.Windows.Input.DelegateCommand%2f1.0.0.0&referringTitle=Examples%20-%20KSPEditor">DelegateCommand</a> package from <a href="https://kerbaldata.codeplex.com/wikipage?title=http%3a%2f%2fnuget.org&referringTitle=Examples%20-%20KSPEditor">Nuget</a> for handling events from the UI. <br /><br />The WPF application is developed using the <a href="https://kerbaldata.codeplex.com/wikipage?title=MVVM&referringTitle=Examples%20-%20KSPEditor">http&#58;&#47;&#47;msdn.microsoft.com&#47;en-us&#47;magazine&#47;dd419663.aspx</a>  pattern. This means there is no code behind for the XAML file. <br /><br />The project consists of the following files:<br />
+<ul><li>MainWindow.xaml - UI </li>
+<li>MainWindowViewModel.cs - Wireup of UI to KerbalData</li>
+<li>VisibilityConverter.cs - Simple class to assist in UI operations</li></ul>
+<br />The file of most interest is the MainWindowViewModel.cs. This file is setup like most view models with a number of exposed public properties that the UI binds to. <br /><br />KerbalData is being designed to be developer friendly, while attempting to give plenty of control and options. In the KSPEditor example the <a href="https://kerbaldata.codeplex.com/wikipage?title=0.2.0%20Alpha%20Documentation&referringTitle=Examples%20-%20KSPEditor">Consumer API</a> is used. This top level API is the easiest to use, requires the least code and provides features needed in most applications. <br /><br />NOTE: For full code <a href="https://kerbaldata.codeplex.com/wikipage?title=file%3a606842&referringTitle=Examples%20-%20KSPEditor">download the example with source</a>.<br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> MainWindowViewModel : INotifyPropertyChanged
+{
+        <span style="color:Green;">// Internal reference to KerbalData API</span>
+        <span style="color:Blue;">private</span> KerbalData kerbalData;
+
+        <span style="color:Green;">// Internal references for public properties (not shown)</span>
+        <span style="color:Blue;">private</span> SaveFile save;
+        <span style="color:Blue;">private</span> SaveFile scenario;
+        <span style="color:Blue;">private</span> SaveFile trainingScenario;
+        <span style="color:Blue;">private</span> CraftFile vabCraft;
+        <span style="color:Blue;">private</span> CraftFile sphCraft;
+        <span style="color:Blue;">private</span> PartFile part;
+        <span style="color:Blue;">private</span> ConfigFile setting;
+
+        <span style="color:Green;">// This method is called when the UI updates</span>
+        <span style="color:Blue;">private</span> <span style="color:Blue;">void</span> UpdateInstallPath()
+        {
+            <span style="color:Green;">// Clear out current KerbalData instance</span>
+            KerbalData = <span style="color:Blue;">null</span>;
+
+            <span style="color:Green;">// Create new instance. Only an install location is required.</span>
+            KerbalData = <span style="color:Blue;">new</span> KerbalData(installPath);
+        }
+      
+        <span style="color:Green;">// This method handles selecting a file and loading it. Values are </span>
+        <span style="color:Green;">// provided by the drop downs in the UI. No other code to expose </span>
+        <span style="color:Green;">// KSP data is used in the ViewModel. </span>
+        <span style="color:Blue;">private</span> <span style="color:Blue;">void</span> OnPropertyChanged(<span style="color:Blue;">string</span> name, <span style="color:Blue;">object</span> value = <span style="color:Blue;">null</span>)
+        {
+            <span style="color:Blue;">switch</span> (name)
+            {
+                <span style="color:Blue;">case</span> PropNameSelectedSave:
+                    Save = 
+                         kerbalData.Saves[SelectedSave];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedScenario:
+                    Scenario = 
+                         kerbalData.Scenarios[SelectedScenario];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedTrainingScenario:
+                    TrainingScenario = 
+                         kerbalData.TrainingScenarios[SelectedTrainingScenario];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedVabCraft:
+                    VabCraft = 
+                         kerbalData.CraftInVab[SelectedVabCraft];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedSphCraft:
+                    SphCraft = 
+                         kerbalData.CraftInSph[SelectedSphCraft];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedPart:
+                    Part = 
+                         kerbalData.Parts[SelectedPart];
+                    <span style="color:Blue;">break</span>;
+                <span style="color:Blue;">case</span> PropNameSelectedSetting:
+                    Setting = 
+                          kerbalData.KspSettings[SelectedSetting];
+                    <span style="color:Blue;">break</span>;
+            }   
+        }
+}
+</pre></div><br />The view itself handles all the mapping of data fields in KerbalData objects to the UI objects. The XAML file is broken into 2 sections. The top portion (not shown here) handles the UI controls that the end user will interact with. The general workflow of the application is:<br />
+<ol><li>Application Launch</li>
+<li>User Enters Install path (by hand, or by using Open button to select a folder)</li>
+<li>KerbalData is loaded and install path is scanned for files</li>
+<li>Files are listed in drop downs for user</li>
+<li>User selects a file</li>
+<li>File loads and associated grid exposed</li></ol>
+<br />Each major type has a UI grid of it&#39;s own, tailored to the data for that object.<br /><br />NOTE: Attributes/Tags not relevant to surfacing data omitted, Download example for full source.<br /><br /><b>Save</b><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=SelectedSave}</span><span style="color:Black;">&quot;</span> <span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Save.Game.Title}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Save.Game.Description}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Save.Game.Version}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Game Time Elapsed</span><span style="color:Black;">&quot;</span> <span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Save.Game.FlightState.UniverseTime}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid</span> <span style="color:Red;">ItemsSource</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Save.Game.FlightState.Crew}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span>  <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Name</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Name}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Brave</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Brave}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Dumb</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Dumb}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+      <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>            	
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid</span> 
+        <span style="color:Red;">Name</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">saveCrew</span><span style="color:Black;">&quot;</span> <span style="color:Red;">ItemsSource</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Save.Game.FlightState.Vessels}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Name</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Name}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Type</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Type}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Status</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Situation}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Body</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Orbit.Body}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+	<span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">MET</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=MissionElapsedTime}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span>
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;"># Parts</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Parts.Count}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+      <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+</pre></div><br />The scenario and training scenario XAML entries are nearly identical to the save file XAML. The only difference is binding to Scenario or TrainingScenario instead of Save. <br /><br /><b>Craft in VAB</b><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Style</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{StaticResource TitleText}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=VabCraft.Ship}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=VabCraft.Type}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=VabCraft.Version}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid</span> <span style="color:Red;">ItemsSource</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding VabCraft.Parts}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Name</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>                        
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Type</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Name}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Module Count</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Modules.Count}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Resource Count</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Resources.Count}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Action Count</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Actions.Count}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">DataGridTextColumn</span> 
+          <span style="color:Red;">Header</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">Event Count</span><span style="color:Black;">&quot;</span> <span style="color:Red;">Binding</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Events.Count}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+      <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid.Columns</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">DataGrid</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+</pre></div><br /><b>Parts</b><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">&lt;</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Name}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Description}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Author}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Category}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Mesh}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Cost}</span><span style="color:Black;">&quot;</span> <span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Mass}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.Manufacturer}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Label</span> <span style="color:Red;">Content</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">{Binding Path=Part.CrashTolerance}</span><span style="color:Black;">&quot;</span><span style="color:Blue;">/&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Grid</span><span style="color:Blue;">&gt;</span>
+</pre></div></div><div class="ClearBoth"></div>

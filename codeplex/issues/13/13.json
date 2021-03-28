@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Testing",
+      "DisplayName": "Testing"
+    },
+    "ClosedComment": "Completed base unit test suite. Coverage Report: http://manitcor.com/ksp/KerbalData/0.3.2Alpha/reports/coverage/de0537e3a86c/",
+    "ClosedDate": "2013-02-24T22:26:19.433-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Where appropriate expand unit tests and integrate unit testing into local CI build. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.2 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-13T23:50:48.357-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Expanded Unit Test Coverage",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 13
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

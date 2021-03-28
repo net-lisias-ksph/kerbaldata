@@ -1,0 +1,40 @@
+<div class="wikidoc"><h1>Design Goals</h1><ul><li>High level of encapsulation</li>
+<li>Swappable data interchange points (serializers, data providers)</li>
+<li>DI/Configuration friendly</li>
+<li>Thread Safe</li></ul>
+
+<h1>General Design</h1>
+To make serialization easier JSON.NET is used rather than spending much time parsing the raw KSP file. KSP format files are converted using a neutral text processor that is only interested in cleanly creating a JSON version of the document. From there I use JSON.NET to handle the heavy lifting of serialization and data management. Because all the data objects are based off JSON.NET JObjects, JTokens and JArrays all JSON.NET functionality is available on any de-serialized model (cloning, deep compares, etc). JSON.NET also has Linq libraries allowing use of lamda based functions like .Where() .Select(), .Join() etc.<br /><br />Once loaded as JSON.NET objects the data can be manipulated directly or the higher level data API can be used. This API is KSP install aware, simply point it at an install path and it will make available any relevant data (still adding classes here) using a lazy loading pattern to not eat up memory/cycles. <br /><br />At the very top level a user can easily access any desired data:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">// Use your own install path</span>
+<span style="color:Blue;">var</span> kd = <span style="color:Blue;">new</span> KerbalData(<span style="color:#A31515;">@&quot;C:\KSP&quot;</span>);
+
+<span style="color:Green;">// Load a save file using the same short name provided in the game UI</span>
+<span style="color:Blue;">var</span> sf = kd.Saves[<span style="color:#A31515;">&quot;testing&quot;</span>];
+
+<span style="color:Green;">// One of many helper methods, this one re-fills all ships</span>
+sf.Game.FlightState.FillResources();
+
+<span style="color:Green;">// Setting the title of the save game, this will change in-game name display (still need to wire in dir name change)</span>
+sf.Game.Title = <span style="color:#A31515;">&quot;I AM IRON MAN&quot;</span>;
+
+<span style="color:Green;">// Another helper method, this clears all vessels marked as debris or unknown vessel types.</span>
+sf.Game.FlightState.ClearDebris();
+
+<span style="color:Green;">// Grabbing a vessel from the game</span>
+<span style="color:Blue;">var</span> sat = sf.Game.FlightState.Vessels.Where(v =&gt; v.Name.Contains(<span style="color:#A31515;">&quot;Beta Geo-Sat&quot;</span>)).FirstOrDefault();
+
+<span style="color:Green;">// Changing the orbit (currently defaults to 100km above target)</span>
+sat.Orbit.Change(Body.Bop);
+
+<span style="color:Green;">// Save file, includes data backup of original file</span>
+sf.Save();
+</pre></div><br />The API curates the data providing a number of helpful methods along with:
+<ul><li><b>Data change tracking</b> -The API tracks data changes and marks instances that have changed (currently at the file level)</li></ul>
+
+<ul><li><b>Revert changes</b> - A copy of the original data is kept on hand ready for easy reversion.</li></ul>
+
+<ul><li><b>Configurable data source and parsing</b> - All parsers and data loading is handled via common encapsulation patterns (mainly Repository, Factory and Serializer). This means that you can configure data to read/save with a file system, a web service or anything you like. Also when Squad updates their file formats KerbalData will be able to change out the underlying parsers as needed to accommodate changes. Multiple parsers can be used together in order to create an upgrade path from one version of KSP data to the next.</li></ul>
+
+<ul><li><b>WPF and multi-thread friendly (upcoming)</b> - Dealing with data binding to your UI can be a pain, when data changes one places getting all the right values to change can be challenging and time consuming. The data classes in KerbalData will be developed to be thread safe for WPF and other multi-thread uses. Further additional properties will be available allowing the use of properly observable collections (through ObserverableCollection&lt;T&gt;). Combine with the upcoming watcher capabilities and watch game state update everytime there is save/autosave.</li></ul>
+<br />For more info on how the serialization works check out the code repo under src/KerbalData/Serialization/ <br />
+<h1>API Layers</h1><img src="http://i.imgur.com/VQ9h6IG.png" /></div><div class="ClearBoth"></div>

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Examples",
+      "DisplayName": "Examples"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-02-18T21:11:49.54-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Develop a working editor reference application providing an end user experience that allows the user to edit, save and manage any data handled by KerbalData. The application should also exercise all major features and tools. \r\n\r\nThe application should be updated to showcase new capabilities as KerbalData evolves. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.1 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-12T08:23:49.22-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "KerbalEdit Reference Application",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 27
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

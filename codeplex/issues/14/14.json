@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "As this application appears to be particularly interesting to the community and the implementation requirements hit on many features I am already planning I am creating this higher level \"Epic\" issue so those interested can keep track and will know when the upcoming release includes all the features needed to run a \"Kessler-like\" system. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.6.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-17T08:03:36.067-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "\"Kessler\" Capibilities",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 14
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hey Manitcor,\n\nI'm really excited about your lib here!\nI'm using it to try and develop a Kessler like application in Mono. The only thing that's blocking my Proof of Concept, is an that 'blank' saves get saved incorrectly, KSP is unable to read them.\n\nI'm willing to share the code if you'd like to have a look at it! Note it's a proof of concept though, so it's pretty messy code.\n\nBest regards,\n\nXiin",
+      "PostedDate": "2013-02-27T16:35:11.677-08:00",
+      "Id": 91751
+    },
+    {
+      "Message": "Sorry, it's late and my typing failed.\nThe problem is that when I try to create/update a save, starting from a 'blank' save, KSP will no longer read the save file, even after I added ships from another save.",
+      "PostedDate": "2013-02-27T16:49:07.17-08:00",
+      "Id": 91755
+    },
+    {
+      "Message": "Oh hey Xiin, I am sorry for the delayed response, I think you are one of the first comments in this place. \n\nSo right now KerbalData is not setup to create an EMPTY file that KSP would recognize as valid. It is possible and it is on my list of things to do but I have not done it yet. \n\nIf you want to do this with KerbalData 0.3.2 you will need to keep a copy of a freshgame save file somewhere in your app and load that. Then make changes and save as normal. \n\nI am happy to look at any code you are having trouble with. You can find me on Skype under Manitcor my email is Manitcor@gmail.com\n\nThanks for your interest.",
+      "PostedDate": "2013-03-12T18:10:33.757-07:00",
+      "Id": 93097
+    }
+  ]
+}

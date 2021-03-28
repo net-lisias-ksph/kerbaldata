@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Examples",
+      "DisplayName": "Examples"
+    },
+    "ClosedComment": "updated WPF example to flex data models",
+    "ClosedDate": "2013-01-23T00:05:53.43-08:00",
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Start building out full examples including simple editor application in WPF as real-world application/start template for developers.",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.2.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-21T02:30:29.627-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Comprehensive Examples for current functionality",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 17
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "As the Task for creating craft import has been pushed to 0.5.0 This task will be brought into 0.2.0 as a pre-release task for 0.2.0. Additional versions of this issue will come up from time to time to force an update to one ore more examples.",
+      "PostedDate": "2013-01-21T10:09:46.047-08:00",
+      "Id": 86779
+    },
+    {
+      "Message": "Updated existing examples to use new API. Make orbit is now only a few lines!\n\nFor comprehensive examples KSPEditor will be built out as a simple vanilla file manager/editor.",
+      "PostedDate": "2013-01-21T20:56:32.787-08:00",
+      "Id": 86824
+    }
+  ]
+}

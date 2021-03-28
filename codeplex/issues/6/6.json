@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Data Serialization",
+      "DisplayName": "Data Serialization"
+    },
+    "ClosedComment": "Provided support on all major api layers to allow consumers to either provide a pointer to a .NET configuration section or to provide a populated ApiConfig model directly. The model data can be sourced from anywhere the consumer desires.",
+    "ClosedDate": "2013-02-10T00:49:10.157-08:00",
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "Some files published by KSP and plugins use an older key/pair style format. Add simple serializer/deserializer for this format and include access to these files in the higher level context objects",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-09T17:21:12.543-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Support for Alternate Configs",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 6
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "wiring in configuration models using CSD.",
+      "PostedDate": "2013-02-04T00:14:56.877-08:00",
+      "Id": 88159
+    },
+    {
+      "Message": "CSD models mostly established. To accommodate this requirement at this stage all relevant classes and methods include overloads to accept:\n\n* A config section name to look up in the App.Config\n* A config model instance with the correct information (loaded from any source)\n* Key Repo, Converter and Serializer instances required by the API\n\nThis should, for the time being satisfy most if not all desired custom setup/init scenarios. \n\nThis story will be closed out when the implementations are complete however this is being done in parallel with configurable components. ",
+      "PostedDate": "2013-02-05T12:39:01.39-08:00",
+      "Id": 88633
+    },
+    {
+      "Message": "Note: All overloads include a default configuration section name of \"kerbalData\" to be used in \"Default\" scenarios where simple/quick access to data is configured. ",
+      "PostedDate": "2013-02-05T12:40:11.663-08:00",
+      "Id": 88634
+    }
+  ]
+}

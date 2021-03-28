@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "984262",
+    "ThreadId": "428939",
+    "Html": "\r\n<p>Added doc XML to all classes in KerbalData. I will work on getting SandCastle working with the build to create a useful doc site. Unitl then if you want detailed docs you may want to grab the latest source.</p>\r\n",
+    "PostedDate": "2013-01-08T17:47:48.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

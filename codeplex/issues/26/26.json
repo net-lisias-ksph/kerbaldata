@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "Configuration and model loading updates completed. Consumers can now create custom model structures to serialize KSP data TO/FROM ",
+    "ClosedDate": "2013-02-10T00:53:43.523-08:00",
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Currently the top level consumer API named KerbalData is the only way users can both have a fully de-serialized model and capabilities like Repo integration, automatic backup and data reversion (and diff in the future). \r\n\r\nThe goal of this story is to refactor KerbalData consumer API models for:\r\n\r\n* KerbalData consumer models pushed to \"2nd class\" API (aka suggested use but not required)\r\n* Add KerbalDataManager implementation for factory style loading of any models implmenting IStorable and/or IKerbalDataObject\r\n* Create quick static class for novice consumers so factory use is not required. \r\n\r\nOnce completed developers should be able to create their own structures of models using any JSON.NET model type conversion/mapping techniques desired. These custom classes should be able to be loaded and used through the KerbalDataManager implementation just as easily as the native KerbalData model implementation with full access to all the same features. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-05T12:47:23.197-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Custom Data Models",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 26
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Working on bubbling up the right configuration and constructing the KerbalDataManager to handle the construction of models.",
+      "PostedDate": "2013-02-05T12:58:54.33-08:00",
+      "Id": 88636
+    }
+  ]
+}

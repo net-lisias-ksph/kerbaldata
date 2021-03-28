@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "API Data Mapping",
+      "DisplayName": "API Data Mapping"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 2,
+    "Custom": null,
+    "Description": "Converters and mappers exist at lower level APIs to handle for the changes in the raw conversion process of KSP data to a usable string. However if the layout of the data changes, higher level classes (and real consumers) using the data may break. \r\n\r\nAnalysis and design should be conducted to determine the best strategy to handle for this as gracefully as possible. \r\n\r\nThis will likely dovetail with more aggressive wrapping of JSON.Net's object types. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "1.0.0 Beta (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-08T17:59:21.8-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Better support for changes to KSP data layout in high level classes",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This needs to be figured out to one degree or another (or simply accept fate and manage it)  on or before the release of the first beta. ",
+      "PostedDate": "2013-01-08T18:04:44.307-08:00",
+      "Id": 85585
+    },
+    {
+      "Message": "1st set of necessary re-factoring completed. \n\nThe framework must be moved toward independence from JSON.Net to take further control over model mapping. ",
+      "PostedDate": "2013-01-21T01:45:30.95-08:00",
+      "Id": 86728
+    }
+  ]
+}

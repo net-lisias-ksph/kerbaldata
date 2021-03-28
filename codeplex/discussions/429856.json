@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "987905",
+    "ThreadId": "429856",
+    "Html": "\r\n<p>Added base classes to make API install aware. Will now begin linking in other file types and building out&nbsp;their&nbsp;class&nbsp;strictures.&nbsp;</p>\r\n<p>Example usage</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">var</span> kd = <span style=\"color:blue\">new</span> KerbalData(<span style=\"color:#a31515\">@&quot;C:\\games\\KSP_win&quot;</span>);\n<span style=\"color:blue\">var</span> sf = kd.Saves[<span style=\"color:#a31515\">&quot;testing&quot;</span>];\n\nsf.Game.FlightState.FillResources();\nsf.Game.Title = <span style=\"color:#a31515\">&quot;I AM IRON MAN&quot;</span>;\nsf.Game.FlightState.ClearDebris();\n\n<span style=\"color:blue\">var</span> sat = sf.Game.FlightState.Vessels.Where(v =&gt; v.Name.Contains(<span style=\"color:#a31515\">&quot;Beta Geo-Sat&quot;</span>)).FirstOrDefault();\nsat.Orbit.Change(Body.Bop);\n\nsf.Save();\n</pre>\r\n</div>\r\n<p>https://kerbaldata.codeplex.com/SourceControl/changeset/5c55034faf6e</p>\r\n",
+    "PostedDate": "2013-01-16T20:24:19.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

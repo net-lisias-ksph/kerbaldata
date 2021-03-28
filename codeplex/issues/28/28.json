@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Docs",
+      "DisplayName": "Docs"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Create additional documentation for the help site to include quickstart walkthroughs for the following:\r\n\r\n* WPF Application\r\n* Class Library\r\n* Console Application\r\n* Web Application\r\n\r\nInitial code will be produced using .NET 4 as the target with expanded support for Mono 2.10.x\r\n\r\nNote: no examples will leverage the .NET 3.5 framework. While the API has a build for 3.5 and it is tested to work many modern UI development concepts start with .NET 4. These applications are much easier to develop in .NET 4 and as these are supposed to be quick examples I am dismissing .NET 3.5 use for them. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.1 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-12T08:26:59.967-08:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "QuickStart Guides/Examples",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 28
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

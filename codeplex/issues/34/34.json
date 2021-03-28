@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "Fixed with unit tests applied.",
+    "ClosedDate": "2013-02-23T21:25:18.697-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Loading a single file in 0.3.1 requires the provision of either a processor or a valid configuration name. This adds additional requirements to end users of the API that should not be necessary for a simple default usage scenario. \r\n\r\nUpdate KspData to load and save files using default configurations to reduce the requirements on the consumer for basic usage. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.2 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-23T17:53:49.763-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Single File Load Failure without Configuration",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 34
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Build",
+      "DisplayName": "Build"
+    },
+    "ClosedComment": "More complex issue than desired for a simple script to multi-target in multiple build environments. The core cs files and the project have been tested with MSBuild 4 and xbuild. Project should build without issue on win/linux/mac without issue. ",
+    "ClosedDate": "2013-02-28T21:57:06.68-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Complete build system with easy switches for different versions of .NET and Mono.\r\n\r\nCurrently targeted to support .Net 3.5-4.5 and Mono 2.10.x",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.2 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-13T23:46:28.883-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Full Build System",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 11
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

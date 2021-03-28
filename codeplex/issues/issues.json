@@ -1,0 +1,174 @@
+[
+  {
+    "Id": 2,
+    "Title": "Configurable data conversion"
+  },
+  {
+    "Id": 3,
+    "Title": "SaveDataWatcher"
+  },
+  {
+    "Id": 5,
+    "Title": "Better support for changes to KSP data layout in high level classes"
+  },
+  {
+    "Id": 6,
+    "Title": "Support for Alternate Configs"
+  },
+  {
+    "Id": 7,
+    "Title": "More Orbit Options"
+  },
+  {
+    "Id": 8,
+    "Title": "Craft File Import"
+  },
+  {
+    "Id": 9,
+    "Title": "Constellation Launcher"
+  },
+  {
+    "Id": 10,
+    "Title": "Expose all main data elements"
+  },
+  {
+    "Id": 11,
+    "Title": "Full Build System"
+  },
+  {
+    "Id": 12,
+    "Title": "NDocs Integration into Build"
+  },
+  {
+    "Id": 13,
+    "Title": "Expanded Unit Test Coverage"
+  },
+  {
+    "Id": 14,
+    "Title": "\"Kessler\" Capibilities"
+  },
+  {
+    "Id": 15,
+    "Title": "Data Publisher"
+  },
+  {
+    "Id": 16,
+    "Title": "DataDiff"
+  },
+  {
+    "Id": 17,
+    "Title": "Comprehensive Examples for current functionality"
+  },
+  {
+    "Id": 19,
+    "Title": "Update serialization to support KSP changes"
+  },
+  {
+    "Id": 20,
+    "Title": "Add Support for .NET4/3.5 and Mono"
+  },
+  {
+    "Id": 21,
+    "Title": "Craft/Vessel Data Merge"
+  },
+  {
+    "Id": 22,
+    "Title": "Base Data Templates for Model Ctors"
+  },
+  {
+    "Id": 23,
+    "Title": "Multi-Threading Testing/Analysis"
+  },
+  {
+    "Id": 24,
+    "Title": "Expanded WPF Support"
+  },
+  {
+    "Id": 25,
+    "Title": "Implement IKspReader and IKspWriter"
+  },
+  {
+    "Id": 26,
+    "Title": "Custom Data Models"
+  },
+  {
+    "Id": 27,
+    "Title": "KerbalEdit Reference Application"
+  },
+  {
+    "Id": 28,
+    "Title": "QuickStart Guides/Examples"
+  },
+  {
+    "Id": 29,
+    "Title": "Rip out Dictionaries"
+  },
+  {
+    "Id": 30,
+    "Title": "Bug Fixes from KerbalEdit Development"
+  },
+  {
+    "Id": 31,
+    "Title": "Batch Operation - Update Part Categories, Names Etc"
+  },
+  {
+    "Id": 32,
+    "Title": "Revert Implmentation"
+  },
+  {
+    "Id": 33,
+    "Title": "Log Parser/Models"
+  },
+  {
+    "Id": 34,
+    "Title": "Single File Load Failure without Configuration"
+  },
+  {
+    "Id": 35,
+    "Title": "Adopt nAnt classes into core "
+  },
+  {
+    "Id": 36,
+    "Title": "Expanded Usage Docs"
+  },
+  {
+    "Id": 37,
+    "Title": "Craft Export Options"
+  },
+  {
+    "Id": 38,
+    "Title": "Part Re-Scale"
+  },
+  {
+    "Id": 39,
+    "Title": "Craft Packaging Import/Export"
+  },
+  {
+    "Id": 40,
+    "Title": "Packaged part/save import export"
+  },
+  {
+    "Id": 41,
+    "Title": "UI Enhancements from KerbalEdit"
+  },
+  {
+    "Id": 42,
+    "Title": "Proposal to allow the JSON parser multiple properties"
+  },
+  {
+    "Id": 43,
+    "Title": "0.22 Catchup - Update Repos"
+  },
+  {
+    "Id": 44,
+    "Title": "Dependency Analysis"
+  },
+  {
+    "Id": 45,
+    "Title": "Encapsulation Refactoring"
+  },
+  {
+    "Id": 46,
+    "Title": "Base Unit Test Creation"
+  }
+]

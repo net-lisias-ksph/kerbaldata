@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "For the time being all classes have been marked as unsafe for multi-threaded use. This is only because testing has yet to be conducted. For the most part the API supports multi-threading as I take advantage of design practices as mush as possible.\r\n\r\nThis task is to certify multi-threadded use, change code where needed and update documentation ",
+    "LastUpdatedDate": "2013-01-25T16:13:28.187-08:00",
+    "PlannedForRelease": "1.0.0 Beta (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-25T16:13:28.187-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multi-Threading Testing/Analysis",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 23
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Docs",
+      "DisplayName": "Docs"
+    },
+    "ClosedComment": "added docs for save/import/export",
+    "ClosedDate": "2013-02-28T21:55:40.363-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "More usage samples for saving/loading/importing/exporting/etc",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.2 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-24T22:27:29.93-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Expanded Usage Docs",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 36
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

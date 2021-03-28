@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Consumer API",
+      "DisplayName": "Consumer API"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 1,
+    "Custom": null,
+    "Description": "Mods for mapping, GPS, comms and other features (as well as upcoming game features) require a number of craft in orbit in order to provide the feature. \r\n\r\nExtend orbit features to load a list of craft (or copies of a single craft) and place each craft in the same or differing orbits based on parameters. \r\n\r\nProvide common orbit group templates like:\r\n\r\n* traditional US GPS system\r\n* geo-sync\r\n* polar orbit mapping\r\n* comms relay network\r\n* suggestions for constellation types and popular orbits are welcome!",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.5.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-09T17:28:22.347-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Constellation Launcher",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 9
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Moved to 0.3.0 to make reasonable release time of 0.2.0",
+      "PostedDate": "2013-01-14T00:19:11.973-08:00",
+      "Id": 86075
+    }
+  ]
+}

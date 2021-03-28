@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Docs",
+      "DisplayName": "Docs"
+    },
+    "ClosedComment": "Integrated sandcastle into build. ",
+    "ClosedDate": "2013-01-25T08:01:27.437-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Add Doc generation option to build system. Publish documentation generated each release to perm home (location tbd) for end-developer reference. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "1.0.0 Beta (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-13T23:48:06.977-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NDocs Integration into Build",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 12
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Data Serialization",
+      "DisplayName": "Data Serialization"
+    },
+    "ClosedComment": "Took a closer look at the nant source and dug around for alternatives. Truthfully there is nothing really other than nant core and its quite a bit of work to tease out. For the indefinite future nant core will remain a part of KerbalData to support file search mask strings and helpers.",
+    "ClosedDate": "2013-02-23T21:24:50.273-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Simplify and convert nant file management helpers into classes inside of kerbaldata. According to the [nant license](http://nant.sourceforge.net/license.html) this should be allowed. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.2 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-02-23T17:57:21.257-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Adopt nAnt classes into core ",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 35
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

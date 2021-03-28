@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Configuration",
+      "DisplayName": "Configuration"
+    },
+    "ClosedComment": "Completed implementation for configurable serialization and data repositories. Included hard-coded default configuration so consumers may continue to use the API without needing an app.config if desired.",
+    "ClosedDate": "2013-02-10T00:50:20.173-08:00",
+    "CommentCount": 3,
+    "Custom": null,
+    "Description": "Make data converters swappable via config and DI to allow for custom stack based processing. This will enable the ability to create upgrade paths as well as publish/read/convert KSP data into any desired format. IE CSV for excel, PDF for a nice report, graphs, nav plotting, 3D systems, etc. \r\n\r\nChanges at this layer should have little to no impact on the consumer API. ",
+    "LastUpdatedDate": "2017-11-27T17:48:22.04-08:00",
+    "PlannedForRelease": "0.3.0 Alpha (Jeb's Jalopy)",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "KerbalData",
+    "ReportedDate": "2013-01-07T23:57:35.32-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Configurable data conversion",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Deferred to 0.3.0 (may push further)",
+      "PostedDate": "2013-01-13T23:40:13.99-08:00",
+      "Id": 86073
+    },
+    {
+      "Message": "This needs to be completed in this cycle. Analysis shows it may be necessary to further break things down using a Reader pattern. ",
+      "PostedDate": "2013-01-26T19:43:11.7-08:00",
+      "Id": 87436
+    },
+    {
+      "Message": "Serialization pattern re-factored to be closer to other project patterns. Processor and a factory pattern for the processor will handling loading the correct Serializer and Converter based on class metadata and configuration. ",
+      "PostedDate": "2013-02-02T17:18:15.75-08:00",
+      "Id": 88108
+    }
+  ]
+}
